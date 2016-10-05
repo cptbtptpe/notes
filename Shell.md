@@ -2,23 +2,18 @@
 ## Shell
 
 - [x] \$\$ 
-
 > Shell本身的PID（ProcessID） 
 
 - [x] \$! 
-
 > Shell最后运行的后台Process的PID 
 
 - [x] \$? 
-
 > 最后运行的命令的结束代码（返回值） 
 
 - [x] \$- 
-
 > 使用Set命令设定的Flag一览 
 
 - [x] \$_
-
 > 上一条执行的命令的参数部分
 
 - [x] \$* 
