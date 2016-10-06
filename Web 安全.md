@@ -10,13 +10,13 @@
   
 * 通过 document.cookie 获取当前用户的 cookie 信息，该 cookie 必须是非 httponly 状态才能用 javascript 代码获取  
 * HTML URL 编码  
-    * " => %22  
-    * ; => %3B  
+    * `"` => `%22`  
+    * `;` => `%3B`  
     * 可以使用 escape('x') 函数获取字符的 URL 编码  
 * HTML 实体编码  
-    * < => <  
-    * > => >  
-    * " => "  
+    * `<` => `&lt;`  
+    * `>` => `&gt;`  
+    * `"` => `&quot;`  
 * 扩展攻击之蠕虫攻击  
     * 通过攻击页面，然后在页面中再次嵌入该攻击 URL 进行扇形扩展式攻击  
   
@@ -30,8 +30,8 @@
     * 注释：username=xxx --  
     * 条件：username=xxx OR 1=1  
     * 条件：username=xxx || 1=1  
-    * 截断：username=xxx'; DROP TABLE `users`;  
-    * 合并：username=xxx UNION SELECT * FROM `users`;  
+    * 截断：username=xxx'; DROP TABLE \`users\`;  
+    * 合并：username=xxx UNION SELECT * FROM \`users\`;  
   
 ### 上传文件漏洞 - 适用于 php web 服务器  
   

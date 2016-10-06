@@ -148,7 +148,7 @@ echo 2 ** 3; // 2的3次方=8
 ```  
   
   
-**try catch**  
+**Try Catch**  
 ```php  
 try {  
     un_exists_function();  
