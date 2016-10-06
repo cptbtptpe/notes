@@ -1,5 +1,5 @@
-# notes
-Notes about fullstack
-
-## Email
-* jiangxilee@gmail.com
+# notes  
+Notes about fullstack  
+  
+## Email  
+* jiangxilee@gmail.com  
