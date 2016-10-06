@@ -64,15 +64,15 @@ chkconfig –level 35 crond on
  
 ### crontab命令详解
 
-1．命令格式：
+1．命令格式：  
 
 crontab [-u user] file
 crontab [-u user] [ -e | -l | -r ]
 
-2．命令功能：
+2．命令功能：  
 通过crontab 命令，我们可以在固定的间隔时间执行指定的系统指令或 shell script脚本。时间间隔的单位可以是分钟、小时、日、月、周及以上的任意组合。这个命令非常设合周期性的日志分析或数据备份等工作。
 
-3．命令参数：
+3．命令参数：  
 -u user：用来设定某个用户的crontab服务，例如，“-u ixdba”表示设定ixdba用户的crontab服务，此参数一般有root用户来运行。
 file：file是命令文件的名字,表示将file做为crontab的任务列表文件并载入crontab。如果在命令行中没有指定这个文件，crontab命令将接受标准输入（键盘）上键入的命令，并将它们载入crontab。
 -e：编辑某个用户的crontab文件内容。如果不指定用户，则表示编辑当前用户的crontab文件。
@@ -82,7 +82,7 @@ file：file是命令文件的名字,表示将file做为crontab的任务列表文
 
 4．常用方法：
 
-1). 创建一个新的crontab文件
+1). 创建一个新的crontab文件  
  
 在考虑向cron进程提交一个crontab文件之前，首先要做的一件事情就是设置环境变量EDITOR。cron进程根据它来确定使用哪个编辑器编辑crontab文件。9 9 %的UNIX和LINUX用户都使用vi，如果你也是这样，那么你就编辑$ HOME目录下的. profile文件，在其中加入这样一行：
 ```
@@ -106,7 +106,7 @@ $ crontab davecron
 现在该文件已经提交给cron进程，它将每隔1 5分钟运行一次。
 同时，新创建文件的一个副本已经被放在/var/spool/cron目录中，文件名就是用户名(即dave)。
 
-2). 列出crontab文件
+2). 列出crontab文件  
 为了列出crontab文件，可以用：
 ```shell
  $ crontab -l
@@ -120,7 +120,7 @@ $ crontab -l > $HOME/mycron
 
 这样，一旦不小心误删了crontab文件，可以用上一节所讲述的方法迅速恢复。
 
-3). 编辑crontab文件
+3). 编辑crontab文件  
 如果希望添加、删除或编辑crontab文件中的条目，而E D I TO R环境变量又设置为v i，那么就可以用v i来编辑crontab文件，相应的命令为：
 ```shell
 $ crontab -e
@@ -144,67 +144,68 @@ $ crontab -l
 30 3 1,7,14,21,26 * * /bin/find -name "core' -exec rm {} \;
 ```
 
-4). 删除crontab文件
+4). 删除crontab文件  
 要删除crontab文件，可以用：
 ```shell
 $ crontab -r
 ```
 
-5). 恢复丢失的crontab文件
-如果不小心误删了crontab文件，假设你在自己的$HOME目录下还有一个备份，那么可以将其拷贝到/var/spool/cron/，其中是用户名。如果由于权限问题无法完成拷贝，可以用：
+5). 恢复丢失的crontab文件  
+如果不小心误删了crontab文件，假设你在自己的\$HOME目录下还有一个备份，那么可以将其拷贝到/var/spool/cron/，其中是用户名。如果由于权限问题无法完成拷贝，可以用：
 ```shell
 $ crontab
 ```
 
-其中，是你在$HOME目录中副本的文件名。
-我建议你在自己的$HOME目录中保存一个该文件的副本。我就有过类似的经历，有数次误删了crontab文件（因为r键紧挨在e键的右边）。这就是为什么有些系统文档建议不要直接编辑crontab文件，而是编辑该文件的一个副本，然后重新提交新的文件。
+其中，是你在\$HOME目录中副本的文件名。  
+我建议你在自己的\$HOME目录中保存一个该文件的副本。我就有过类似的经历，有数次误删了crontab文件（因为r键紧挨在e键的右边）。这就是为什么有些系统文档建议不要直接编辑crontab文件，而是编辑该文件的一个副本，然后重新提交新的文件。  
 有些crontab的变体有些怪异，所以在使用crontab命令时要格外小心。如果遗漏了任何选项，crontab可能会打开一个空文件，或者看起来像是个空文件。这时敲delete键退出，不要按，否则你将丢失crontab文件。
 
 5．使用实例
-实例1：每1分钟执行一次command  
-命令： * * * * * command  
+
+    实例1：每1分钟执行一次command  
+    命令： * * * * * command  
  
-实例2：每小时的第3和第15分钟执行  
-命令： 3,15 * * * * command  
+    实例2：每小时的第3和第15分钟执行  
+    命令： 3,15 * * * * command  
  
-实例3：在上午8点到11点的第3和第15分钟执行  
-命令： 3,15 8-11 * * * command  
- 
-实例4：每隔两天的上午8点到11点的第3和第15分钟执行  
-命令： 3,15 8-11 */2 * * command  
- 
-实例5：每个星期一的上午8点到11点的第3和第15分钟执行  
-命令： 3,15 8-11 * * 1 command  
- 
-实例6：每晚的21:30重启smb  
-命令： 30 21 * * * /etc/init.d/smb restart  
- 
-实例7：每月1、10、22日的4 : 45重启smb  
-命令： 45 4 1,10,22 * * /etc/init.d/smb restart  
- 
-实例8：每周六、周日的1 : 10重启smb  
-命令： 10 1 * * 6,0 /etc/init.d/smb restart  
- 
-实例9：每天18 : 00至23 : 00之间每隔30分钟重启smb  
-命令： 0,30 18-23 * * * /etc/init.d/smb restart  
- 
-实例10：每星期六的晚上11 : 00 pm重启smb  
-命令： 0 23 * * 6 /etc/init.d/smb restart  
- 
-实例11：每一小时重启smb  
-命令： * */1 * * * /etc/init.d/smb restart  
- 
-实例12：晚上11点到早上7点之间，每隔一小时重启smb  
-命令： * 23-7/1 * * * /etc/init.d/smb restart  
- 
-实例13：每月的4号与每周一到周三的11点重启smb  
-命令： 0 11 4 * mon-wed /etc/init.d/smb restart  
- 
-实例14：一月一号的4点重启smb  
-命令： 0 4 1 jan * /etc/init.d/smb restart  
- 
-实例15：每小时执行/etc/cron.hourly目录内的脚本  
-命令： 01 * * * * root run-parts /etc/cron.hourly  
+    实例3：在上午8点到11点的第3和第15分钟执行  
+    命令： 3,15 8-11 * * * command  
+     
+    实例4：每隔两天的上午8点到11点的第3和第15分钟执行  
+    命令： 3,15 8-11 */2 * * command  
+     
+    实例5：每个星期一的上午8点到11点的第3和第15分钟执行  
+    命令： 3,15 8-11 * * 1 command  
+     
+    实例6：每晚的21:30重启smb  
+    命令： 30 21 * * * /etc/init.d/smb restart  
+     
+    实例7：每月1、10、22日的4 : 45重启smb  
+    命令： 45 4 1,10,22 * * /etc/init.d/smb restart  
+     
+    实例8：每周六、周日的1 : 10重启smb  
+    命令： 10 1 * * 6,0 /etc/init.d/smb restart  
+     
+    实例9：每天18 : 00至23 : 00之间每隔30分钟重启smb  
+    命令： 0,30 18-23 * * * /etc/init.d/smb restart  
+     
+    实例10：每星期六的晚上11 : 00 pm重启smb  
+    命令： 0 23 * * 6 /etc/init.d/smb restart  
+     
+    实例11：每一小时重启smb  
+    命令： * */1 * * * /etc/init.d/smb restart  
+     
+    实例12：晚上11点到早上7点之间，每隔一小时重启smb  
+    命令： * 23-7/1 * * * /etc/init.d/smb restart  
+     
+    实例13：每月的4号与每周一到周三的11点重启smb  
+    命令： 0 11 4 * mon-wed /etc/init.d/smb restart  
+     
+    实例14：一月一号的4点重启smb  
+    命令： 0 4 1 jan * /etc/init.d/smb restart  
+     
+    实例15：每小时执行/etc/cron.hourly目录内的脚本  
+    命令： 01 * * * * root run-parts /etc/cron.hourly  
 
 说明：  
 run-parts这个参数了，如果去掉这个参数的话，后面就可以写要运行的某个脚本名，而不是目录名了

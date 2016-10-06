@@ -1,4 +1,4 @@
-
+﻿
 # FIG PSR-4 框架规范-自动载入
 
 ## 1. 概况
@@ -34,12 +34,12 @@
 
 如下表格展示的是与完全限定类名、命名空间前缀和基础目录相对应的文件路径：
 
-| 完全限定类名                    | 命名空间前缀       | 基础目录                 | 实际的文件路径
-| ----------------------------- |--------------------|--------------------------|-------------------------------------------
-| \Acme\Log\Writer\File_Writer  | Acme\Log\Writer    | ./acme-log-writer/lib/   | ./acme-log-writer/lib/File_Writer.php
-| \Aura\Web\Response\Status     | Aura\Web           | /path/to/aura-web/src/   | /path/to/aura-web/src/Response/Status.php
-| \Symfony\Core\Request         | Symfony\Core       | ./vendor/Symfony/Core/   | ./vendor/Symfony/Core/Request.php
-| \Zend\Acl                     | Zend               | /usr/includes/Zend/      | /usr/includes/Zend/Acl.php
+| 完全限定类名 | 命名空间前缀 | 基础目录 | 实际的文件路径 |
+| --- | --- | --- | --- |
+| \Acme\Log\Writer\File\_Writer | Acme\Log\Writer | ./acme-log-writer/lib/ | ./acme-log-writer/lib/File_Writer.php |
+| \Aura\Web\Response\Status | Aura\Web | /path/to/aura-web/src/ | /path/to/aura-web/src/Response/Status.php |
+| \Symfony\Core\Request | Symfony\Core | ./vendor/Symfony/Core/ | ./vendor/Symfony/Core/Request.php |
+| \Zend\Acl | Zend | /usr/includes/Zend/ | /usr/includes/Zend/Acl.php |
 
 例子中的自动载入器非常适应这个指南，请参照 [示例文件][]。由于可能随时变更，实例不能作为指南的一部分。
 
