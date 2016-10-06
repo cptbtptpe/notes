@@ -3,7 +3,7 @@
   
 > Note: 测试环境为 Chrome 浏览器  
   
-### prototype 和 __proto__  
+### prototype 和 \__proto__  
 ```javascript  
 function person(name) {  
     this.name = name;  

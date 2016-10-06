@@ -12,7 +12,7 @@
   
 2. 完全限定类名应该类似如下范例：  
   
-    \<NamespaceName>(\<SubNamespaceNames>)*\<ClassName>  
+    `\<NamespaceName>(\<SubNamespaceNames>)*\<ClassName>`  
   
     1. 完全限定类名必须有一个顶级命名空间（Vendor Name）；  
     2. 完全限定类名可以有多个子命名空间；  

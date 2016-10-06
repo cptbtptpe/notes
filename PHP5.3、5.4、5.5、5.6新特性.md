@@ -1,25 +1,25 @@
 ﻿  
-## PHP 5.3、5.4、5.5、5.6 中的新特性  
+## PHP5.3、5.4、5.5、5.6新特性  
   
 ### PHP 5.6  
 1、可以使用表达式定义常量。 [Document](https://php.net/manual/zh/migration56.new-features.php)  
   
 在之前的 PHP 版本中，必须使用静态值来定义常量，声明属性以及指定函数参数默认值。 现在你可以使用包括数值、字符串字面量以及其他常量在内的数值表达式来 定义常量、声明属性以及设置函数参数默认值。  
 ```php  
-const style="box-sizing: border-box; color: rgb(42, 161, 152);">1;  
-const TWO = style="box-sizing: border-box; color: rgb(42, 161, 152);">2;    //定义常量时允许使用之前定义的常量进行计算  
-  
-class C {  
-    const THREE = TWO + 1;  
-    const style="box-sizing: border-box; color: rgb(133, 153, 0);">self::THREE;  
-    const SENTENCE = 'The value of THREE is '.self::THREE;  
-  
-    public function f($a = style="box-sizing: border-box; color: rgb(147, 161, 161);">//允许常量作为函数参数默认值  
-        return $a;  
-    }  
-}  
-  
-echo (new C)->f()."\n";  
+const ONE = 1;
+const TWO = ONE * 2;    //定义常量时允许使用之前定义的常量进行计算
+
+class C {
+    const THREE = TWO + 1;
+    const ONE_THIRD = ONE / self::THREE;
+    const SENTENCE = 'The value of THREE is '.self::THREE;
+
+    public function f($a = ONE + self::THREE) { //允许常量作为函数参数默认值
+        return $a;
+    }
+}
+
+echo (new C)->f()."\n";
 echo C::SENTENCE;  
 ```  
   
