@@ -231,12 +231,19 @@ vim +/findString filename 打开文件并将光标定位到含findString字符�
   
 ```shell  
 tar -xzvf - 解压 .tar 文件，-C 参数指定目标文件夹  
+
 tar -xjf - 解压 .tar.bz2 文件  
+
 tar -xZf - 解压 .tar.Z 文件  
+
 gzip -d / gunzip - 解压 .gz 文件  
+
 bzip2 -d / bunzip2 - 解压 .bz2 文件  
+
 uncompress - 解压 .Z 文件  
+
 unrar e - 解压 .rar 文件  
+
 unzip -o - 解压 .zip 文件  
 ```  
   
@@ -245,9 +252,13 @@ unzip -o - 解压 .zip 文件
 **创建文件**  
 ```shell  
 touch path/filename  
+
 vi path/filename  
+
 echo xxx > path/filename  
+
 cat xxx > path/filename  
+
 less xxx > path/filename  
 ```  
   
@@ -279,7 +290,9 @@ rm -r path
 **更改文件权限**  
 ```shell  
 chmod 0777 path/filename  
+
 chmod u+x path/filename  
+
 chmod 用于修改文件 / 文件夹所属者（u）或所属组（g）或其它用户（o）的权限（读 - r - 4）、（写 - w - 2）、（执行 - x - 1）  
 ```  
   

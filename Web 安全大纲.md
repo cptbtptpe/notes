@@ -24,9 +24,10 @@
 * 压力测试  
     * 相关知识  
         apache 压力测试工具ab  
-    ```shell  
-    ab -n 1000 -c 100 http://www.baidu.com/  
-    ```  
+        
+        ```shell  
+        ab -n 1000 -c 100 http://www.baidu.com/  
+        ```  
     * 引起原因  
         单ip恶意访问  
     * 危害  
@@ -66,7 +67,7 @@
         ---  
   
         | Method | 含义 |  
-        | - | - |  
+        | --- | --- |  
         | GET | 请求服务器发送某个资源 |  
         | HEAD | 与GET方法的行为很类似，但服务器在响应中只返回首部。不会反回实体的主体部分 |  
         | POST | 创建一个不存在的资源，通常用于html的form表单 |  
@@ -85,7 +86,11 @@
 * sql注入  
     * 相关知识  
         UNION 把两次或多次的查询结果合并(查询的field数目必须一致)  
-        SELECT `id`,`uri`,`remark` FROM `integle_notes`.`menu` LIMIT 3 UNION SELECT `id`,`email`,`password` FROM `integle_notes`.`user`  
+
+        ```mysql
+        SELECT id,uri,remark FROM integle_notes.menu LIMIT 3 UNION SELECT id,email,password FROM integle_notes.user  
+        ```   
+        
     * 定义  
         SQL注入攻击中以SQL语句作为用户输入，从而达到查询/修改/删除数据的目的  
     * 解决方案  
