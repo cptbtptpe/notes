@@ -44,7 +44,9 @@
   
 // PHP超全局变量  
 // 如果已经弃用的register_globals指令被设置为On那么局部变量也将在脚本的全局作用域中可用。
-// 例如$_POST['foo']也将以$foo的形式存在。在函数或类方法中，超全局变量不能被用作可变变量。  
+// 例如$_POST['foo']也将以$foo的形式存在。
+
+// 在函数或类方法中，超全局变量不能被用作可变变量。  
     $GLOBALS        // 引用全局作用域中可用的全部变量,包含了全部变量的全局组合数组。  
     $_SERVER        // 服务器和执行环境信息  
     $_GET           // 通过URL参数传递给当前脚本的变量的数组  
@@ -76,7 +78,7 @@
     extract($arr);  
   
 // 将多个变量组合成数组，与extract相反  
-    compact($varname1,$varname2,...);  
+    compact('$varname1','$varname2',...);  
   
 // 数组去重复值  
     array_unique($arr);  
@@ -190,7 +192,7 @@
     while(list($key,$val)=each($arr)){  
         echo $key.'=>'.$val.PHP_EOL;  
     }  
-    for($i=0;$i  
+    for($i=0;$i<count($arr);$i++){  
         echo $arr[$i].PHP_EOL;  
     }  
     while($val=current($arr)){  
@@ -230,10 +232,10 @@
 // MYSQL取得当前时间的函数是?，格式化日期的函数是  
     
     当前时间：NOW()结果为日期格式、UNIX_TIMESTAMP(NOW())结果为时间戳格式  
-    格式日期：DATE_FORMAT('日期格式','%Y-%m-%d %H:%i:%S')、FROM_UNIXTIME('时间戳格式','%Y-%m-%d %H:%i:%S')  
+    格式日期：DATE_FORMAT('日期','%Y-%m-%d %H:%i:%S')、FROM_UNIXTIME('时间戳','%Y-%m-%d %H:%i:%S')  
   
 // 实现中文字串截取无乱码的方法  
-    mb_substr($str,1,1,"GB2312");  
+    mb_substr($str,$start,$length,"GB2312");  
   
 // 用PHP写出显示客户端IP与服务器IP的代码  
     $_SERVER["REMOTE_ADDR"]  
@@ -287,7 +289,7 @@
     
     503 Service Unavailable 由于临时的服务器维护或者过载，服务器当前无法处理请求。  
     
-    504 Gateway Timeout     作为网关或者代理工作的服务器尝试执行请求时  
+    504 Gateway Timeout     作为网关或者代理工作的服务器尝试执行请求超时  
   
 // 在PHP中，heredoc是一种特殊的字符串，它的结束标志必须?  
     结束标记与开始标记一致并且不再其中出现过，需顶头书写(无任何缩进)，并跟上;号  
@@ -295,7 +297,7 @@
 // 请写一个函数验证电子邮件的格式是否正确  
     
     正则
-    preg_match('([a−z0−9\.−]+)@([\da−z\.−]+)\.([a−z\.]2,6)',$email)  
+    preg_match('([a−z0−9\.−]+)@([a−z0-9\.−]+)\.([a−z\.]2,6)',$email)  
     
     函数
     filter_var($email,FILTER_VALIDATE_EMAIL);  
@@ -346,19 +348,22 @@
     
     function allFile($dir){  
         $fileArr=array();  
-        if(is_dir($dir)){  
-            $handle=opendir($dir);  
-            while(($file=readdir($handle))!== false){  
-                if($file!="." && $file!=".."){  
-                    if(is_file($dir."/".$file)){  
-                        $fileArr[]=$file;  
-                    }elseif(is_dir($dir."/".$file)){  
-                        $fileArr[$file]=allFile($dir."/".$file);  
-                    }  
+        if(!is_dir($dir)){  
+            return $fileArr;
+        }
+        
+        $handle=opendir($dir);  
+        while(false!==($file=readdir($handle))){  
+            if($file!="." && $file!=".."){  
+                $tmp=$dir."/".$file;
+                if(is_file($tmp)){  
+                    $fileArr[]=$file;  
+                }elseif(is_dir($tmp)){  
+                    $fileArr[$file]=allFile($tmp);  
                 }  
             }  
-            closedir($handle);  
         }  
+        closedir($handle);  
         return $fileArr;  
     }  
     var_dump(allFile("/home/test/sql"));  
@@ -377,7 +382,7 @@
     
     $connect=mysql_connect('localhost','root','pwd') or die('连接数据库出错：'.mysql_error());  
     mysql_select_db('dbName',$connect) or die('选择数据出错：'.mysql_error());  
-    mysql_query("set names 'gbk'",$connect);  
+    mysql_query("set names 'utf8'",$connect);  
   
     //查询并输出  
     $sql="SELECT * FROM `tableName`";  
@@ -396,9 +401,10 @@
 // 数据库中的事务(transaction)是什么?  
     
     事务是作为一个单元的一组有序的数据库操作。  
-    如果组中的所有操作都成功，则认为事务成功，即使只有一个操作失败，事务也不成功。  
+    如果组中的所有操作都成功，事务才算成功，即使只有一个操作失败，则事务失败。  
     如果所有操作完成，事务则提交，其修改将作用于所有其他数据库进程。  
-    如果一个操作失败，则事务将回滚，该事务所有操作的影响都将取消。  
+    如果一个操作失败，则事务将回滚，该事务所有操作的影响都将取消。 
+    事务具有：原子性、一致性、隔离性、持久性 （ACID）
   
 // MYSQL视图  
     mysql_query("  
@@ -468,9 +474,9 @@
 // Mysql常用引擎的特点  
     
     MySQL常用的存储引擎为MyISAM、InnoDB、MEMORY、MERGE
-    其中InnoDB提供事务安全表，其他存储引擎都是非事务安全表。  
+    其中InnoDB提供事务安全表，其他存储引擎都是非事务安全。  
   
-    MyISAM是MySQL的默认存储引擎。
+    MyISAM是MySQL的默认存储引擎。（MySQL5.5 以前默认是 MyISAM，之后默认是 InnoDB）
     MyISAM不支持事务、也不支持外键，但其访问速度快，对事务完整性没有要求。  
     
     InnoDB存储引擎提供了具有提交、回滚和崩溃恢复能力的事务安全。
@@ -503,7 +509,8 @@
     FLOAT       4 字节              // 单精度  
     DOUBLE      8 字节              // 双精度  
     CHAR        0-255字节           // 定长字符串  
-    VARCHAR     0-255字节           // 变长字符串  
+    VARCHAR     0-255字节           // 变长字符串 （版本不一致，范围不一致）
+                                    // 最大65535（ALLOW NULL - 65533, NOT NULL - 65532）
     TINYBLOB    0-255字节           // 不超过 255 个字符的二进制字符串  
     TINYTEXT    0-255字节           // 短文本字符串  
     BLOB        0-65535字节         // 二进制形式的长文本数据  
@@ -634,7 +641,7 @@
     语言结构和函数的不同
     
     语言结构比对应功能的函数快  
-    语言结构在错误处理上比较鲁棒，由于是语言关键词，所以不具备再处理的环节  
+    语言结构在错误处理上比较鲁莽，由于是语言关键词，所以不具备再处理的环节  
     语言结构不能在配置项(php.ini)中禁用，函数则可以。  
     语言结构不能被用做回调函数  
   
