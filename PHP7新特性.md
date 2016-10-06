@@ -60,6 +60,7 @@ echo NAME[1];
 
 > 这接受一个以 16 进制形式的 Unicode codepoint ，并打印出一个双引号或 heredoc包围的 UTF-8 编码格式的字符串。 
 可以接受任何有效的 codepoint ，并且开头的 0 是可以省略的。
+
 ```php
 echo "\u{9876}"; // 顶
 ```
