@@ -254,9 +254,6 @@ $str1 = 'hello';
 $str2 = "hello";  
   
 // heredoc 语法结构  
-$str3 = <<  
-    hello  
-EOF;  
 $str3 = <<<"EOF"  
     hello  
 EOF;  
@@ -688,7 +685,7 @@ hr();
 # 此外，如果当前脚本是被 include 的，则 return 的值会被当作 include 调用的返回值。  
 # 如果在主脚本文件中调用 return，则脚本中止运行。  
 # 如果当前脚本文件是在 php.ini 中的配置选项 auto_prepend_file 或者 auto_append_file 所指定的，则此脚本文件中止运行。  
-$code = <<  
+$code = <<<EOF  
 if (0) :  
     return 'TRUE';  
 else :  
