@@ -20,15 +20,15 @@ function hr($num = 1) {
 #-----------------------  
 # PHP代码标记的方式  
 /**  
- * <#php ?>                             标准支持并推荐推荐  
- *      标准支持  
- * <# ?>                                需要在 php.ini 中开启 short_open_tag 配置  
- * <# %>                                需要在 php.ini 中开启 asp_tags 配置  
+ * <?php ?>                             标准支持并推荐推荐  
+ * <script type="text/php"></script>    标准支持  
+ * <?= ?>                                需要在 php.ini 中开启 short_open_tag 配置  
+ * <% %>                                需要在 php.ini 中开启 asp_tags 配置  
  */  
   
   
 #-----------------------  
-# 自 PHP 5.4 起，短格式的 echo 标记 <#= 总会被识别并且合法，而不管 short_open_tag 的设置是什么。  
+# 自 PHP 5.4 起，短格式的 echo 标记 <?= 总会被识别并且合法，而不管 short_open_tag 的设置是什么。  
   
   
 #-----------------------  

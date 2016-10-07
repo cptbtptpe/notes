@@ -110,7 +110,7 @@
 // 返回给定ASCII码的单个字符  
     chr();  
   
-// 返回给定string的ASCII码  
+// 返回给定字符的ASCII码  
     ord();  
   
 // 能够返回指定月份共有多少天。  
@@ -121,7 +121,7 @@
     unpack();  
   
 // 数据压缩/解压缩  
-    gzcompress($str,9);   // 度最快，压缩比率较高  
+    gzcompress($str,9);   // 速度最快，压缩比率较高  
     gzuncompress();  
   
     gzencode($str,9);     // 与gzdeflate()比较接近，gzdeflate()稍有优势  
@@ -134,8 +134,8 @@
     bzdecompress();  
   
 // 可以获得系统负载情况。
-// 该函数返回一个包含三个元素的数组，每个元素分别代表系统再过去的1分钟、5分钟、15分钟的系统负载情况  
-    sys_getloadavg();  
+// 该函数返回一个包含三个元素的数组，每个元素分别代表系统在过去的1分钟、5分钟、15分钟的系统负载情况  
+    sys_getloadavg();  // Use uptime on linux 
   
 // 返回脚本执行的过程  
     debug_print_backtrace();  
@@ -400,7 +400,7 @@
   
 // 数据库中的事务(transaction)是什么?  
     
-    事务是作为一个单元的一组有序的数据库操作。  
+    事务是一组有序的数据库操作。  
     如果组中的所有操作都成功，事务才算成功，即使只有一个操作失败，则事务失败。  
     如果所有操作完成，事务则提交，其修改将作用于所有其他数据库进程。  
     如果一个操作失败，则事务将回滚，该事务所有操作的影响都将取消。 
@@ -501,11 +501,11 @@
   
 // MySQL 数据类型长度列表。(2进制的8位表示一个字节)  
     
-    TINYINT     1 字节 (-128，127) (0，255) (2^8-1)         // 小整数值  
-    SMALLINT    2 字节 (-32768，32767) (0，65535) (2^16-1)  // 大整数值  
-    MEDIUMINT   3 字节 (0，16777215) (2^24-1)               // 大整数值  
-    INT/INTEGER 4 字节 (0，4294967295) (2^32-1)             // 大整数值  
-    BIGINT      8 字节 (0，18446744073709551615) (2^64-1)   // 极大整数值  
+    TINYINT     1 字节 (-128，127) (0，255) (2^8-1)         // 微整数值  
+    SMALLINT    2 字节 (-32768，32767) (0，65535) (2^16-1)  // 小整数值  
+    MEDIUMINT   3 字节 (0，16777215) (2^24-1)               // 中整数值  
+    INT/INTEGER 4 字节 (0，4294967295) (2^32-1)             // 整数值  
+    BIGINT      8 字节 (0，18446744073709551615) (2^64-1)   // 大整数值  
     FLOAT       4 字节              // 单精度  
     DOUBLE      8 字节              // 双精度  
     CHAR        0-255字节           // 定长字符串  
@@ -552,12 +552,28 @@
 // error_reporting(2047)什么作用？  
     E_ERROR | E_WARNING | E_PARSE | E_NOTICE | E_CORE_ERROR | E_CORE_WARNING | E_COMPILE_ERROR | E_COMPILE_WARNING | E_USER_ERROR | E_USER_WARNING | E_USER_NOTICE  
     
-    或者  
+    |       => 相当于加法  
+    ^       => 相当于减法
+    & ~     => 相当于减法  
     
-    E_ALL ^ E_RECOVERABLE_ERROR ^ E_STRICT  
+    参考：http://php.net/manual/zh/errorfunc.constants.php
     
-    |相当于加法  
-    ^或者& ~相当于减法  
+    1	    E_ERROR (integer)	            运行时致命错误
+    2	    E_WARNING (integer)	            运行时警告 
+    4	    E_PARSE (integer)	            编译时语法解析错误
+    8	    E_NOTICE (integer)	            运行时通知	 
+    16	    E_CORE_ERROR (integer)	        PHP初始化启动过程中发生的致命错误
+    32	    E_CORE_WARNING (integer)	    PHP初始化启动过程中发生的警告
+    64	    E_COMPILE_ERROR (integer)	    编译时致命错误
+    128	    E_COMPILE_WARNING (integer)	    编译时警告
+    256	    E_USER_ERROR (integer)	        用户产生的错误信息
+    512	    E_USER_WARNING (integer)	    用户产生的警告信息
+    1024	E_USER_NOTICE (integer)	        用户产生的通知信息
+    2048	E_STRICT (integer)	            启用 PHP 对代码的修改建议
+    4096	E_RECOVERABLE_ERROR (integer)	可被捕捉的致命错误
+    8192	E_DEPRECATED (integer)	        运行时通知
+    16384	E_USER_DEPRECATED (integer)	    用户产生的警告信息
+    30719	E_ALL (integer)	                E_STRICT除外的所有错误和警告信息
   
 // 打开php.ini中的Safe_mode，会影响哪些参数？至少说出6个。  
     此模块打开时，php将检查当前脚本的拥有者是否和被操作文件的拥有者相同，因此，将影响文件操作类函数，程序执行函数（program Execution Functions）。这些函数有.pathinfo,basename,fopen,system,exec,proc_open 等函数  
@@ -611,7 +627,7 @@
     一个类可以实现多个接口(多个接口用逗号隔开)
     但只能继承一个抽象类(不管什么类，都只能继承一个 - 单一继承)  
     接口中每个方法都只有声明而没有实现，实现类必须要全部实现；而抽象类中只需要实现抽象方法(即用abstract修饰的方法)，其它方法可以选择性的实现；  
-    接口中只能声明public的方法，不能声明private和protected的方法，不能对方法进行实现，也不能声明实例变量；但是抽象类中可以。  
+    接口中只能声明public的方法，不能声明private和protected的方法，也不能声明属性；但是抽象类中可以。  
   
 // 安全相关的函数：  
     
