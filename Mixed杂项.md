@@ -59,3 +59,36 @@ $a = &test();       // 这条语句会输出 $b的值为3
 $a = 5;
 $a = test();        // 这条语句会输出 $b的值为6
 ```
+
+-
+
+### PHP大小写区分
+
+* 大小写敏感 
+
+    * 变量名区分大小写 
+    > 所有变量均区分大小写，包括普通变量以以及\$_GET, \$_POST, \$_REQUEST, \$_COOKIE, \$_SESSION, \$GLOBALS, \$_SERVER, \$_FILES, \$_ENV等
+
+    * 常量名默认区分大小写，通常都写为大写 
+
+    * php.ini 配置项指令区分大小写 
+
+* 大小写不敏感 
+
+    * 函数名  
+    
+    * 方法名  
+    
+    * 类名  
+    
+    * 魔术常量不区分大小写，推荐大写
+    > \__LINE__、\__FILE__、\__DIR__、\__FUNCTION__、\__CLASS__、\__METHOD__、\__NAMESPACE__
+
+    * NULL、TRUE、FALSE 不区分大小写 
+
+    * 类型强制转换，不区分大小写
+    > int、integer、bool、boolean、float、double、real、string、array、object
+    
+-
+
+### 
