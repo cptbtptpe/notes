@@ -1,7 +1,7 @@
 
 ## Docker 技巧
 
-> 操作容器
+> 容器常用操作
 
 ### 持久化容器
 
@@ -17,9 +17,47 @@ cat ~/Downloads/export.tar | sudo docker import - export:latest
 sudo docker rm $(sudo docker ps -q -a)
 ```
 
+### 查看容器 root 用户的密码
+```
+sudo docker logs <CONTAINER ID> 2>&1 | grep '^User: ' | tail -n1
+```
+
+### 运行一个新容器
+```
+# 同时为它命名、端口映射、文件夹映射
+# -d 后台运行
+# -p 暴露端口
+sudo docker run 
+	--name redmine 
+	-p 9003:80 
+	-p 9023:22 
+	-d 
+	-v /var/redmine/files:/redmine/files 
+	-v /var/redmine/mysql:/var/lib/mysql 
+	sameersbn/redmine
+```
+
+### 一个容器连接到另一个容器
+```
+# 容器连接到 mmysql 容器，并将 mmysql 容器重命名为db
+# 这样，sonar 容器就可以使用 db 的相关的环境变量了
+sudo docker run 
+	-i 
+	-t 
+	--name sonar 
+	-d 
+	-link mmysql:db
+	tpires/sonar-server
+```
+
+### 从容器中拷贝文件到宿主机
+```
+sudo docker cp <CONTAINER ID>:<FILE PATH> <SAVE PATH>
+```
+
 -
 
-> 操作镜像
+> 镜像常用操作
 
 ### 持久化镜像
 
@@ -34,6 +72,18 @@ sudo docker load < ~/Downloads/save.tar
 ```shell
 sudo docker rmi $(sudo docker images -q)
 ```
+
+### 构建自己的镜像
+```
+sudo docker build -t <IMAGE NAME> <DOCKERFILE PATH>
+```
+
+-
+
+> 其他及注意事项
+
+> Dockerfile 的 EXPOSE 相当于 docker run --expose，提供 container 之间的端口访问
+> docker run -p 允许 container 外部主机访问 container 的端口
 
 -
 
