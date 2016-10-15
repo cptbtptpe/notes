@@ -12,6 +12,11 @@ sudo docker export <CONTAINER ID> > ~/Downloads/export.tar
 cat ~/Downloads/export.tar | sudo docker import - export:latest
 ```
 
+### 停止所有容器
+```
+sudo docker kill $(sudo docker ps -q -a)
+```
+
 ### 删除所有容器
 ```shell
 sudo docker rm $(sudo docker ps -q -a)
@@ -70,7 +75,7 @@ sudo docker load < ~/Downloads/save.tar
 
 ### 删除所有镜像
 ```shell
-sudo docker rmi $(sudo docker images -q)
+sudo docker rmi $(sudo docker images -q -a)
 ```
 
 ### 构建自己的镜像
