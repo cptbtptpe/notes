@@ -32,6 +32,7 @@ sudo docker logs <CONTAINER ID> 2>&1 | grep '^User: ' | tail -n1
 # 同时为它命名、端口映射、文件夹映射
 # -d 后台运行
 # -p 暴露端口
+
 sudo docker run 
 	--name redmine 
 	-p 9003:80 
@@ -46,6 +47,7 @@ sudo docker run
 ```
 # 容器连接到 mmysql 容器，并将 mmysql 容器重命名为db
 # 这样，sonar 容器就可以使用 db 的相关的环境变量了
+
 sudo docker run 
 	-i 
 	-t 
@@ -58,6 +60,15 @@ sudo docker run
 ### 从容器中拷贝文件到宿主机
 ```
 sudo docker cp <CONTAINER ID>:<FILE PATH> <SAVE PATH>
+```
+
+### 退出时删除容器
+
+```
+# 如果你仅仅想在一个容器中快速的运行一个命令，然后退出，并且不用担心容器状态
+# 只需要把 --rm 参数加入 run 命令后面，这将结束很多你保存了的容器，并且清理它们
+
+sudo docker run --rm -i -t busybox /bin/bash
 ```
 
 -
