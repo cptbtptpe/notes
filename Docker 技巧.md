@@ -59,16 +59,25 @@ sudo docker run
 
 ### 从容器中拷贝文件到宿主机
 ```
-sudo docker cp <CONTAINER ID>:<FILE PATH> <SAVE PATH>
+sudo docker cp <CONTAINER ID|NAME>:<FILE PATH> <SAVE PATH>
 ```
 
 ### 退出时删除容器
-
 ```
 # 如果你仅仅想在一个容器中快速的运行一个命令，然后退出，并且不用担心容器状态
 # 只需要把 --rm 参数加入 run 命令后面，这将结束很多你保存了的容器，并且清理它们
 
 sudo docker run --rm -i -t busybox /bin/bash
+```
+
+### 显示容器中运行的进程
+```
+sudo docker top <CONTAINER ID|NAME>
+```
+
+### 实时查看容器日志
+```
+sudo docker logs -f <CONTAINER ID|NAME>
 ```
 
 -
