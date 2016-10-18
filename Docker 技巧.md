@@ -114,7 +114,7 @@ sudo docker build -t <IMAGE NAME> <DOCKERFILE PATH>
 
 > 用户手册
 
-### docker command
+### Docker Command
 ```
 1. docker version
 显示 Docker 版本信息
@@ -402,7 +402,7 @@ docker run [options "o">] <image> [ "nb">command]  "o">[arg...]
 
 ```
 
-### docker --help
+### Docker --help
 ```
 # docker --help
 Usage: docker [OPTIONS] COMMAND [arg...]
