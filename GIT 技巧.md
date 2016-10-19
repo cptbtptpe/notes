@@ -124,7 +124,7 @@ git fsck --lost-found
 git blame <FILE NAME>
 
 # 查看更新详情，默认是行级对比
-git log -p -2
+git log -p -1
 # ↓↓
 git log -U1
 # ↓↓
@@ -162,6 +162,16 @@ git branch -d <BRANCH NAME>
 git branch -d -r <BRANCH NAME>
 ```
 
+### 初始化本地项目 Github 为例
+```
+git init
+git add *
+git commit -m "init project."
+git remote add <REPO NAME> git@github.com:<AUTHOR>/<PROJECT>.git
+git push -u <REPO NAME> <BRANCH NAME>
+
+# <REPO NAME> standard used default `origin`
+```
 
 ### Git Command
 ```
@@ -284,13 +294,15 @@ git remote rm <repository>
 
 创建远程仓库
 
+git clone git@github.com:robbin/robbin_site.git
+					# 获取/下载/备份远程仓库代码
 git clone --bare robbin_site robbin_site.git 
 					# 用带版本的项目创建纯版本仓库
 scp -r my_project.git git@ git.csdn.net:~ 
 					# 将纯仓库上传到服务器上
 mkdir robbin_site.git && cd robbin_site.git && git --bare init 
 					# 在服务器创建纯仓库
-git remote add origin git@ github.com:robbin/robbin_site.git 
+git remote add origin git@github.com:robbin/robbin_site.git 
 					# 设置远程仓库地址
 git push -u origin master 
 					# 客户端首次提交
