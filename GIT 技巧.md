@@ -294,7 +294,7 @@ git remote rm <repository>
 
 创建远程仓库
 
-git clone git@github.com:robbin/robbin_site.git
+git clone git@github.com:robbin/robbin_site.git [project name]
 					# 获取/下载/备份远程仓库代码
 git clone --bare robbin_site robbin_site.git 
 					# 用带版本的项目创建纯版本仓库
