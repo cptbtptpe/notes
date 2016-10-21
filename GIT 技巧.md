@@ -88,7 +88,11 @@ git rebase -i HEAD~<NUMBER OF COMMITS>
 
 ### 暂存未提交的更改
 ```
+# 将当前工作空间暂存
 git stash
+
+# 恢复指定的文件
+git reset HEAD <FILE>
 
 # 查看暂存列表
 git stash list
@@ -173,6 +177,16 @@ git push -u <REPO NAME> <BRANCH NAME>
 # <REPO NAME> standard used default `origin`
 ```
 
+### 修改 Commint 信息或漏传文件
+```
+git commit -m 'initial commit'
+git add forgotten_file.md
+git commit --amend
+
+# 最终你只会有一个提交
+# 第二次提交将代替第一次提交的结果
+```
+
 ### Git Command
 ```
 常用操作
@@ -215,8 +229,7 @@ git diff --stat 	# 仅仅比较统计信息
 
 查看提交记录
 
-git log git log <FILE> 
-					# 查看该文件每次提交记录
+git log <FILE> 		# 查看该文件每次提交记录
 git log -p <FILE> 	# 查看每次详细修改内容的 diff
 git log -p -2 		# 查看最近两次详细修改内容的 diff
 git log --stat 		# 查看提交统计信息
@@ -271,7 +284,7 @@ git stash drop 		# 删除暂存区
 
 Git远程分支管理
 
-git pull 			# 抓取远程仓库所有分支更新并合并到本地
+git pull 			# 抓取远程仓库所有分支更新并合并到本地, 相当于 git fetch && git merge
 git pull --no-ff 	# 抓取远程仓库所有分支更新并合并到本地，不要快进合并
 git fetch origin 	# 抓取远程仓库更新
 git merge origin/master 
@@ -297,12 +310,14 @@ Git远程仓库管理
 git remote -v 		# 查看远程服务器地址和仓库名称
 git remote show origin 
 					# 查看远程服务器仓库状态
-git remote add origin <REPO ADDRESS>
+git remote add <REPO NAME> <REPO ADDRESS>
 					# 添加远程仓库地址
 git remote set-url origin <REPO ADDRESS>
 					# 设置远程仓库地址(用于修改远程仓库地址)
 git remote rm <REPO NAME> 
 					# 删除远程仓库
+git remote rename <OLD REPO NAME> <NEW REPO NAME>
+					# 远程仓库的重命名
 
 创建远程仓库
 
