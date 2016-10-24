@@ -1,4 +1,4 @@
-﻿  
+  
 ## PHP面试题-牛客  
   
 php是一门：  
@@ -16,7 +16,7 @@ echo 24%(-5);
 输出结果是？  
   
 - [ ] 5  
-- [x] 4 （取模运算结果和除数 `左侧` 符号保持一致）  
+- [x] 4 （取模运算结果和除数 `左侧` 符号保持一致，并摒弃小数部分）  
 - [ ] -4  
 - [ ] 19  
   
@@ -43,9 +43,9 @@ echo 24%(-5);
 下列那一个是非法的变量定义 
   
 - [ ] my_function  
-- [ ] \$_name  
+- [ ] $_name  
 - [ ] declare  
-- [x] \$1_1  
+- [x] $1_1  
   
 ---  
   
@@ -71,9 +71,9 @@ if ($a<10){
 }  
 ```  
   
-- [ ] \$x = (\$a < 10 || \$b > 11 || \$c == 10 && \$d !=\$c ) ? 0 : 1;  
-- [ ] \$x = ((\$a < 10 && \$b > 11) || (\$c == 10&& \$d !=\$c ) ) ? 0 : 1;  
-- [ ] \$x = (\$a < 10 && \$b > 11 && \$c == 10 && \$d !=\$c ) ? 0 : 1;  
+- [ ] $x = ($a < 10 || $b > 11 || $c == 10 && $d !=$c ) ? 0 : 1;  
+- [ ] $x = (($a < 10 && $b > 11) || ($c == 10&& $d !=$c ) ) ? 0 : 1;  
+- [ ] $x = ($a < 10 && $b > 11 && $c == 10 && $d !=$c ) ? 0 : 1;  
 - [x] 以上都不是  
   
 ---  
@@ -335,7 +335,7 @@ echo $b->num;
   
 - [ ] `__call` 方法在调用对象中不存在的方法时自动调用的。  
 - [ ] `__call` 方法有两个参数。  
-- [ ] 格式如下： function `__call`（\$方法名，\$参数数组）{ //.....}  
+- [ ] 格式如下： function `__call`（$方法名，$参数数组）{ //.....}  
 - [x] `__call` 方法在使用对象报错时自动调用的。  
   
 ---  
@@ -476,10 +476,10 @@ echo $rest1, $rest2;
   
 在php中哪一个方法来获取浏览器属性  
   
-- [ ] \$_SERVER['PHP_SELF']  
-- [ ] \$_SERVER['HTTP_VARIENT']  
-- [x] \$_SERVER['HTTP_USER_AGENT']  
-- [ ] \$_SERVER['SERVER_NAME']  
+- [ ] $_SERVER['PHP_SELF']  
+- [ ] $_SERVER['HTTP_VARIENT']  
+- [x] $_SERVER['HTTP_USER_AGENT']  
+- [ ] $_SERVER['SERVER_NAME']  
   
 ---  
   
@@ -499,10 +499,10 @@ echo $y["ttt"];
   
 如何从一个get的form中获取信息？  
   
-- [x] \$_GET[];  
+- [x] $_GET[];  
 - [ ] Request.Form;  
 - [ ] Request.Query String;  
-- [ ] \$_POST[];  
+- [ ] $_POST[];  
   
 ---  
   
@@ -538,16 +538,16 @@ addit ()
 - [ ] somevar is 15  
 - [x] somevar is 16  
 - [ ] somevar is 1  
-- [ ] somevar is \$ somevar  
+- [ ] somevar is $ somevar  
   
 ---  
   
-下列那一个不会将\$s1和\$s2合并到一个String  
+下列那一个不会将$s1和$s2合并到一个String  
   
-- [x] \$s1 + \$s2  
-- [ ] "{\$s1}{\$s2}"  
-- [ ] \$s1.\$s2  
-- [ ] implode(' ', array(\$s1,\$s2))  
+- [x] $s1 + $s2  
+- [ ] "{$s1}{$s2}"  
+- [ ] $s1.$s2  
+- [ ] implode(' ', array($s1,$s2))  
   
 ---  
   
@@ -633,7 +633,7 @@ echo var_dump($arr);
   
 ---  
   
-假设你有一个名为'index.php'的文件的路径为c:/apache/htdocs/phptutor/index.php，那么basename(\$_SERVER['PHP_SELF'])的返回值为？  
+假设你有一个名为'index.php'的文件的路径为c:/apache/htdocs/phptutor/index.php，那么basename($_SERVER['PHP_SELF'])的返回值为？  
   
 - [ ] phptutor  
 - [ ] phptutor/index.php  
@@ -649,8 +649,8 @@ $link2 = mysql_connect("localhost","root","");
 mysql_close();  
 ```  
   
-- [ ] \$link1  
-- [x] \$link2  
+- [ ] $link1  
+- [x] $link2  
 - [ ] 全部关闭  
 - [ ] 报错  
   
@@ -665,7 +665,7 @@ mysql_close();
   
 ---  
   
-若\$y,\$x为int型变量，则执行以下语句后，\$y的值为：（     ）  
+若$y,$x为int型变量，则执行以下语句后，$y的值为：（     ）  
 ```php  
 $x=1;  
 ++$x;  
@@ -710,7 +710,7 @@ print_A();
 PHP中的错误控制操作符是：（ ）  
   
 - [ ] %  
-- [ ] \$  
+- [ ] $  
 - [ ] #  
 - [x] @  
   
@@ -758,7 +758,7 @@ total_Sum(1);
   
 ---  
   
-下面的脚本运行以后，\$array数组所包含的值是什么？（    ）  
+下面的脚本运行以后，$array数组所包含的值是什么？（    ）  
 ```php  
 $array= array('1','1');  
 foreach($array as $k=>$v){  
@@ -787,12 +787,12 @@ echo $s;
   
 ---  
   
-假如有个类Person，实例化（new）一个对象\$p，那么如何使用对象\$p调用Person类中的getInfo方法？( )  
+假如有个类Person，实例化（new）一个对象$p，那么如何使用对象$p调用Person类中的getInfo方法？( )  
   
-- [ ] \$p=>getInfo();  
-- [ ] \$this->getInfo();  
-- [x] \$p->getInfo();  
-- [ ] \$p::getInfo();  
+- [ ] $p=>getInfo();  
+- [ ] $this->getInfo();  
+- [x] $p->getInfo();  
+- [ ] $p::getInfo();  
   
 ---  
   
@@ -817,8 +817,8 @@ echo $b->num;
 以下说法错误的是（ ）  
   
 - [ ] 在外部访问静态成员属性时使用类名：：静态成员属性名  
-- [x] 在外部访问静态成员属性时使用\$实例化对象->静态成员属性名  
-- [ ] 在外部访问静态方法时使用\$实例化对象 ->静态方法名  
+- [x] 在外部访问静态成员属性时使用$实例化对象->静态成员属性名  
+- [ ] 在外部访问静态方法时使用$实例化对象 ->静态方法名  
 - [ ] 在外部访问静态方法时使用类名：：静态方法名  
   
 ---  
