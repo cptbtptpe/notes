@@ -340,4 +340,12 @@ git remote set-head origin master
 
 git branch --set-upstream master origin/master
 git branch --set-upstream develop origin/develop
+
+打标签
+
+git tag				# 列出已有的标签
+git tag -a v1.0.0 -m 'my version 1.0.0'
+					# 创建附注标签
+git show v1.0.0		# 查看对应标签的信息
+git tag v1.0.0-rc	# 创建轻量标签
 ```
