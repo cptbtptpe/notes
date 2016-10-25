@@ -105,7 +105,28 @@ ALTER TABLE `旧表名` RENAME TO `新表名`;
 TRUNCATE TABLE `表名`;  
 ```  
   
-### 其他  
+### binlog
+```
+// 获取 binlog 文件列表
+show binary logs;
+
+// 查看第一个 binlog 文件的内容
+show binlog events;
+
+// 查看指定 binlog 文件的内容
+show binlog events in 'mysql-bin.000002';
+
+// 查看当前正在写入的 binlog 文件
+show master status;
+
+// 基于开始/结束时间
+mysqlbinlog --start-datetime='2013-09-10 00:00:00' --stop-datetime='2013-09-10 01:01:01' -d 库名 二进制文件
+
+// 基于 position 值
+mysqlbinlog --start-postion=107 --stop-position=1000 -d 库名 二进制文件
+```
+
+### 常用查询  
   
 ```mysql  
 // 查询结果默认按行格式打印  
