@@ -193,6 +193,8 @@ git commit --amend
 
 git clone <REPO ADDRESS> [<ALIAS>]
 					# 获取/下载/备份远程仓库代码
+git clone -b <BRANCH NAME> <REPO ADDRESS>
+					# 仅克隆指定的分支
 
 查看、添加、提交、删除、找回，重置修改文件
 
