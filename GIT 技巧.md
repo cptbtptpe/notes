@@ -162,8 +162,11 @@ git branch -m <OLD BRANCH NAME> <NEW BRANCH NAME>
 # 删除本地分支，-D 强制 (该分支有未合并到当前分支的内容)
 git branch -d <BRANCH NAME>
 
-# 删除远程分支
-git branch -d -r <BRANCH NAME>
+# 删除远程分支 (错误姿势)
+git branch -d -r <REPO NAME>/<BRANCH NAME>
+
+# 删除远程分支 (正确姿势，冒号前有空格)
+git push <REPO NAME> :<BRANCH NAME>
 ```
 
 ### 初始化本地项目 Github 为例
