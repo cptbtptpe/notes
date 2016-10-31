@@ -3,6 +3,33 @@
 
 ### 成熟的 RPC 框架方案
 
+* Thrift
+    - [x] 拥有功能强大的代码生成引擎
+    - [x] 非常广泛的语言支持
+    
+        > C++, C#, Cocoa, Erlang, Haskell, Java, Ocami, Perl, PHP, Python, Ruby, Smalltalk
+    
+    - [x] 规范的描述文件（IDL）
+    - [x] 基于 `SOCKET` 的通讯方式、
+    - [x] 实现了多线程（`TThreadPolServer`）、单线程非阻塞 `IO`（`TNonBlockingServer`）、多线程非阻塞 `IO`（`THsHaServer`）
+    - [x] 实现了最高效的二进制序列化协议 `TCompactProtocol`，但并不支持所有语言
+    - [x] 成熟在开源软件
+    - [ ] 需要先确定好他的数据结构，当数据结构发生变化时，必须重新编辑 `IDL` 文件
+    - [ ] `RPC` 方法非线程安全
+
+* gRPC
+    - [x] 使用 `HTTP/2` 协议
+    - [x] 使用 `ProtoBuf`（`Protocol Buffers`） 作为序列化工具
+    
+        > 类似 `XML` 把数据结构信息，以某种格式保存起来。主要用于数据存储、传输协议格式等场合
+    
+    - [x] 天生适合移动端到服务器端的通讯
+    - [x] 和 `REST` 一样遵循 `HTTP` 协议
+    - [x] 和 `REST` 不同的是 `gRPC` 使用了静态路径来提高性能
+    - [x] 用格式化的错误码代替了 `HTTP` 的状态码来标识错误
+    - [x] 提供了集群服务
+    - [ ] 某些情况下在性能方面较 `Thrift` 差
+
 * RMI
     - [x] 基于 `JAVA` 远程方法协议
     - [x] `JAVA` 的原生序列化
@@ -22,44 +49,19 @@
     - [ ] 异常机制不完善
     - [ ] 事务处理欠缺
 
-* Thrift
-    - [x] 拥有功能强大的代码生成引擎
-    - [x] 非常广泛的语言支持
-    
-        > C++, C#, Cocoa, Erlang, Haskell, Java, Ocami, Perl, PHP, Python, Ruby, Smalltalk
-    
-    - [x] 规范的描述文件（IDL）
-    - [x] 基于 `SOCKET` 的通讯方式、
-    - [x] 实现了多线程（`TThreadPolServer`）、单线程非阻塞 `IO`（`TNonBlockingServer`）、多线程非阻塞 `IO`（`THsHaServer`）
-    - [x] 实现了最高效的二进制序列化协议 `TCompactProtocol`，但并不支持所有语言
-    - [x] 成熟在开源软件
-    - [ ] 需要先确定好他的数据结构，当数据结构发生变化时，必须重新编辑 `IDL` 文件
-    - [ ] `RPC` 方法非线程安全
-
 * Hprose
     - [x] 动态的 `RPC`
     - [x] 支持的语言众多，兼容性较好
     - [x] 文档齐全
     - [x] 集成 `workerman` 的 `workerman-thrift-rpc` 框架
-    - [ ] 仅是功能更强大的 `web service`
+    - [ ] 仅是功能更强大的 `Web Service`
+
+    	> 基于 `SOAP` 消息格式的 `Web Service` 在性能和安全方面已经落后了
 
 * Dubbo
     - [x] 分布式服务框架
     - [x] 高性能，多节点自发现远程调用
     - [ ] 开源后社区活跃度较低
-
-* gRPC
-    - [x] 使用 `HTTP/2` 协议
-    - [x] 使用 `ProtoBuf`（`Protocol Buffers`） 作为序列化工具
-    
-        > 类似 `XML` 把数据结构信息，以某种格式保存起来。主要用于数据存储、传输协议格式等场合
-    
-    - [x] 天生适合移动端到服务器端的通讯
-    - [x] 和 `REST` 一样遵循 `HTTP` 协议
-    - [x] 和 `REST` 不同的是 `gRPC` 使用了静态路径来提高性能
-    - [x] 用格式化的错误码代替了 `HTTP` 的状态码来标识错误
-    - [x] 提供了集群服务
-    - [ ] 在性能方面较 `Thrift` 差些
 
 ### RPC 和传统的 cURL 比较
 
@@ -74,6 +76,3 @@
     * 序列化方式
     * 资源描述（接口描述）
     * 安全
-
-
-### Thrift 的安装和使用
