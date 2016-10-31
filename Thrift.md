@@ -31,14 +31,14 @@
 	- `TSaslServerTransport` - 提供 `SSL` 校验
 
 * 在 `Transport` 传输控制的基础上创建 `Protocol` 传输方式
+
+	> 必须与服务端 `Protocol ` 保持一致
 	
 	- `TBinaryProtocol` – 二进制格式
 	- `TCompactProtocol` – 压缩格式
 	- `TDenseProtocol` - 继承 `TCompactProtocol`，不包含 `meta` 信息
 	- `TJSONProtocol` – `JSON` 格式
 	- `TSimpleJSONProtocol` – 提供 `JSON` 只写协议, 生成的文件很容易通过脚本语言解析
-
-	> 必须与服务端 `Protocol ` 保持一致
 
 * 在 `Protocol ` 传输方式的基础上创建 `Client` 客户端
 
