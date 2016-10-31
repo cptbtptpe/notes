@@ -28,7 +28,6 @@
 	- `TFramedTransport` – 以 `frame` 为单位进行传输，非阻塞式服务中使用。类似于 `Java` 中的 `NIO`
 	- `TFastFramedTransport` - 与 `TFramedTransport` 相比，始终使用相同的 `Buffer`，提高了内存的使用率
 	- `TSaslClientTransport` - 提供 `SSL` 校验
-	- `TSaslServerTransport` - 提供 `SSL` 校验
 
 * 在 `Transport` 传输控制的基础上创建 `Protocol` 传输方式
 
@@ -52,17 +51,21 @@
 - [x] `TThreadedServer` – 多线程服务模型，使用阻塞式 `IO`，每个请求创建一个线程
 - [x] `TThreadPoolServer` – 多线程服务模型，使用标准的阻塞式 `IO`，预先创建一组线程处理请求
 - [x] `TThreadedSelectorServer` 允许你用多个线程来处理网络 `IO`，它维护了两个线程池（网络 `IO` 处理线程池、请求处理线程池）
-- [x] `TNonblockingServer` – 多线程服务模型，使用非阻塞式 `IO`，只有一个线程来处理消息
+- [x] `TNonblockingServer` – 多线程服务模型，使用非阻塞式 `IO`
 - [x] `THsHaServer` - 半同步半异步的服务模型，一个单独的线程用来处理网络 `IO`，一个 `worker` 线程池用来进行消息的处理
 
 ### 服务端流程
 
-* 基于实现的服务模块创建 `Processor` 处理器
+* 基于实现的服务模式创建 `Processor` 处理器
 
-* 创建 `Service` 服务端的 `Socket` 和 `Transport` 传输控制
+* 创建 `Socket`
 
-	- `TServerSocket` - 阻塞型 `Socket`，用于服务器端，`accecpt` 到的 `Socket` 类型都是 `TSocket`（阻塞型）
+    - `TServerSocket` - 阻塞型 `Socket`，用于服务器端，`accecpt` 到的 `Socket` 类型都是 `TSocket`（阻塞型）
 	- `TNonblockingServerSocket` - 非阻塞型 `Socket`，用于服务器端 (`NIO`)
+
+* 创建 `Transport` 传输控制
+	
+	- `TSaslServerTransport` - 提供 `SSL` 校验
 
 * 在 `Transport ` 传输控制的基础上创建 `Protocol` 传输方式
 
