@@ -45,6 +45,8 @@
 
 * `Client` 客户端调用 `Service` 服务端
 
+* 关闭 `Client` 客户端
+
 ### 实现的服务模式
 
 - [x] `TSimpleServer` - 简单的单线程服务模型，一般用于测试
@@ -73,6 +75,11 @@
 
 * 在 `Protocol ` 传输方式的基础上创建 `Service` 服务端
 
+* 开启 `Transport` 传输
+
+* `Service` 服务端进行相关处理
+
+* 关闭 `Service ` 服务端
 
 ### 数据类型
 
@@ -97,7 +104,7 @@
 * 同一文件可以定义多个 `struct`，也可以定义在不同的文件，进行 `include` 引入
 
 ```c
-struct Report
+struct Message
 {
 	1: required string msg, 	// 字段必须填写
 	2: optional i32 type = 0; 	// 默认值
@@ -121,7 +128,7 @@ struct Report
 	
 
 ```c
-struct Test {
+struct User {
 	1: map<Numberz, UserId> user_map,
 	2: set<Numberz> num_sets,
 	3: list<Stusers> users
@@ -139,14 +146,14 @@ struct Test {
 * 给常量赋缺省值时，使用常量的全称
 
 ```c
-enum EnOpType {
+enum Operation {
 	CMD_OK = 0,
 	CMD_NOT_EXIT = 2000,
 	CMD_EXIT = 2001,
 	CMD_ADD = 2002
 }
 
-struct StUser {
+struct Student {
 	1: required i32 userId;
 	2: required string userName;
 	3: optional EnOpType cmd_code = EnOpType.CMD_OK;
@@ -159,7 +166,7 @@ struct StUser {
 > `Exception` 几乎与 `Struct` 一致，使用 `exception` 关键字定义，而且异常是继承每种语言的基础异常类
 
 ```c
-exception Extest {
+exception EHandler {
 	1: i32 errorCode,
 	2: string message,
 	3: StUser userinfo
@@ -172,10 +179,10 @@ exception Extest {
 > `Thrift` 编译器会产生执行这些接口的 `client` 和 `server stub`
 
 ```c
-service SeTest {
+service Common {
 	void ping(),
-	bool postTweet(1: StUser user);
-	StUser searchTweets(1:string name);
+	bool postTweet(1: Student user);
+	Student searchTweets(1:string name);
 	oneway void zip()
 }
 ```
@@ -186,9 +193,9 @@ service SeTest {
 > 名字空间也可以用于解决类型定义中的名字冲突
 
 ```c
-namespace cpp com.example.test
-namespace java com.example.test
-namespace php com.example.test
+namespace cpp api
+namespace java api
+namespace php api
 ```
 
 **Includes**
@@ -200,7 +207,7 @@ namespace php com.example.test
 ```c
 include "test.thrift"   
 ...
-struct StSearchResult {
+struct StudentSearchResult {
 	1: in32 uid; 
 	...
 }
@@ -212,13 +219,13 @@ struct StSearchResult {
 
 ```c
 struct User{
-	1:i64 id,
-	2:string name,
-	3:i64 timestamp,
-	4:bool vip  
+	1: i64 id,
+	2: string name,
+	3: i64 timestamp,
+	4: bool vip  
 }
 
 service UserService{
-	User getById(1:i64 id)
+	User getById(1: i64 id)
 }
 ```
