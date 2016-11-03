@@ -29,7 +29,7 @@
 ### 1.1 基础
   
   
-- `LoggerInterface`暴露八个接口用来记录八个等级(debug, info, notice, warning, error, critical, alert, emergency)的日志。
+- `LoggerInterface`暴露八个接口用来记录八个等级(debug-调试, info-信息, notice-通知, warning-警告, error-错误, critical-关键, alert-警报, emergency-紧急情况)的日志。
   
   
 - 第九个方法是`log`，接受日志等级作为第一个参数。用一个日志等级常量来调用这个方法`必须`和直接调用指定等级方法的结果一致。用一个本规范中未定义且不为具体实现所知的日志等级来调用该方法`必须`抛出一个`Psr\Log\InvalidArgumentException`。`不推荐`使用自定义的日志等级，除非你非常确定当前类库对其有所支持。
