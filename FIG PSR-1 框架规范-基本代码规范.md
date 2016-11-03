@@ -21,11 +21,11 @@
   
 - `命名空间(namespace)`和`类(class)` `必须`遵守[PSR-0][]标准。
   
-- `类名(class name)` `必须`使用`骆驼式(StudlyCaps)`写法 (译者注：`驼峰式(cameCase)`的一种变种，后文将直接用`StudlyCaps`表示)。
+- `类名(class name)` `必须`使用`骆驼式(StudlyCaps)`写法(译者注：`驼峰式(cameCase)`的一种变种), 后文将直接用`StudlyCaps`表示。
   
 - `类(class)`中的常量`必须`只由大写字母和`下划线(_)`组成。
   
-- `方法名(method name)` `必须`使用`驼峰式(cameCase)`写法(译者注：后文将直接用`camelCase`表示)。
+- `方法名(method name)` `必须`使用`驼峰式(cameCase)`写法, 后文将直接用`camelCase`表示。
   
 2. 文件
   
