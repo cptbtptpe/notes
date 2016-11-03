@@ -114,7 +114,7 @@ find / -type d - 查找根目录下的所有目录类型
   
 find . name "a*" -exec 命令 {} \; - 查找当前目录下文件名以 a 开头的文件集并执行子命令，子命令两边的符号为固定格式  
   
-find path |grep xxx - 在 path 下查找并将结果作为 grep 的标准输入继续查找 xxx 字符串  
+find path | grep xxx - 在 path 下查找并将结果作为 grep 的标准输入继续查找 xxx 字符串  
   
 find path | xargs grep xxx - 在 path 下查找并将结果作为 grep 的输入参数继续查找 xxx 字符串  
   
@@ -124,9 +124,11 @@ grep xxx -R path -  在指定目录下查找 xxx 字符串的行
   
 env | grep GOROOT - 查找环境变量 GOROOT  
   
-netstat -nat | grep 9000 - 查看端口 9000 是否开启  
+netstat -nat | grep 9000 - 查看端口 9000 情况  
   
-ps -ef | grep 9000 - 查看端口 9000 是否开启  
+ps -ef | grep 9000 - 查看端口 9000 情况  
+  
+lsof -i:9000 - 查看端口 9000 情况  
 ```  
   
 ### 命令行中的常用快捷键  
@@ -139,10 +141,20 @@ ctrl+a - 跳到本行的行首
 ctrl+e - 跳到本行的行尾  
   
 ctrl+w - 删除光标前面的单词  
+
+alt+d - 删除光标后面的单词 （同 alt+backsapce）  
   
-alt+d - 则删除后面的字  
+backspace - 删除光标之前的字符  
+
+ctrl+d - 删除光标后面的字符  
   
-ctrl+y - 恢复删除  
+ctrl+u - 删除光标之前所有的字符  
+
+ctrl+k - 删除光标之后所有的字符
+
+ctrl+y - 恢复删除
+
+ctrl+l - 清屏
 ```  
   
 ### vim 操作  
@@ -375,9 +387,10 @@ Linux权限基于UGO模型进行控制
   
 ls -l命令列出的文件信息格式如下  
 `drwxr-xr-- 2 leon leon 58 Oct 1 13:50 filename`  
-| drwxr-xr-- | 2 | leon | leon | 58 | Oct 1 13:50 | filename |  
-| --- | --- | --- | --- | --- | --- |  
+
 | UGO权限 | 链接数 | 所属用户 | 所属用户组 | 大小 | 创建修改时间 | 文件名称 |  
+| --- | --- | --- | --- | --- | --- | --- |  
+| drwxr-xr-- | 2 | leon | leon | 58 | Oct 1 13:50 | filename |  
   
 其中 UGO 部分第一个字符表示类型，d表文件夹，-表文件，l表链接 … 后面 9 位每 3 位分别对于 User-Group-Other 的权限  
   
