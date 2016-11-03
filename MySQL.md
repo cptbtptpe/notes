@@ -168,4 +168,20 @@ LIMIT 10
   
 * mysqldumpslow  
 * pt-query-digest  
-* explain [query sql]  
+* explain [query sql] 
+
+### 其他
+```
+// 查看当前状态
+status;
+
+SHOW status;
+
+SHOW processlist;
+
+// 查看索引相关使用情况
+EXPLAIN `SQL语句`
+
+// 强制使用索引
+SELECT * FROM `表名` FORCE INDEX (`索引名`) 
+``` 
