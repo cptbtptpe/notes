@@ -1,22 +1,22 @@
 ﻿  
-## Web 安全大纲  
+## `Web` 安全大纲  
   
 ### 网络传输安全  
   
-* tcp协议数据包  
+* `TCP` 协议数据包  
     * 相关知识  
         
         | OSI层 | 协议 | 作用 | 设备 |
         | --- | --- | --- | --- |
-        | 应用层 | http | | 网关（程序）  
-        | 安全层(https) | ssl/tsl | 数据封装、压缩、加密  | | 
-        | 传输层 | tcp | 数据块、数据分组 | |
-        | 网络层 | ip | | 路由器 |
+        | 应用层 | HTTP | | 网关（程序）  
+        | 安全层(HTTPs) | SSL/TSL | 数据封装、压缩、加密  | | 
+        | 传输层 | TCP | 数据块、数据分组 | |
+        | 网络层 | IP | | 路由器 |
         | 数据链路层 | | 网络特有的链路接口 | 网桥（Bridge）、交换机（Switch）| 
         | 物理层 | | 网络硬件 | 集线器（Hub）、中继器（Repeater） |
   
-        http    超文本传输协议  
-        tcp     传输控制协议  
+        HTTP    超文本传输协议  
+        TCP     传输控制协议  
     * 引起原因  
         
         数据在传输过程中被修改或泄露  
@@ -32,16 +32,16 @@
 * 压力测试  
     * 相关知识  
         
-        apache 压力测试工具ab  
+        `apache` 压力测试工具ab  
         
         ```shell  
-        # ulimit 可修改最多连接数
-        ab -n 1000 -c 100 http://www.baidu.com/  
+        # `ulimit` 可修改最多连接数
+        ab -n 1000 -c 100 HTTP://www.baidu.com/  
         ```  
 
     * 引起原因  
         
-        单ip恶意访问  
+        单 `ip` 恶意访问  
     
     * 危害  
         
@@ -49,47 +49,47 @@
     
     * 解决方案  
         
-        通过web服务器对单ip并发进行限制  
+        通过 `web` 服务器对单 `ip` 并发进行限制  
   
-* 洪水攻击 - synflood  
+* 洪水攻击 - `SYNflood`  
     * 相关知识  
         
-        tcp协议漏洞之三部握手: syn -> ack + syn -> ack  
+        `TCP` 协议漏洞之三部握手: `SYN` -> `ACK` + `SYN` -> `ACK`  
     
     * 引起原因  
         
-        syn类型的请求只有40~60字节  
-        当开放了一个TCP端口后，该端口就处于Listening状态，不停地监视发到该端口的Syn报文  
-        一旦接收到Client发来的Syn报文，就需要为该请求分配一个TCB（Transmission Control Block）  
-        通常一个TCB至少需要280个字节，在某些操作系统中TCB甚至需要1300个字节，并返回一个SYN ACK命令，立即转为SYN-RECEIVED即半开连接状态  
+        `SYN` 类型的请求只有 40~60 字节  
+        当开放了一个 `TCP` 端口后，该端口就处于 `Listening` 状态，不停地监视发到该端口的 `SYN` 报文  
+        一旦接收到 `client` 发来的 `SYN` 报文，就需要为该请求分配一个 `TCB`（Transmission Control Block）  
+        通常一个 `TCB` 至少需要 280 个字节，在某些操作系统中 `TCB` 甚至需要 1300 个字节，并返回一个 `SYN` `ACK` 命令，立即转为 `SYN-RECEIVED` 即半开连接状态  
     
     * 危害  
         
-        属于DOS攻击的一种，通过发送大量的半连接请求，耗费主机的CPU和内存资源，还可以影响路由器、防火墙  
+        属于 `DOS` 攻击的一种，通过发送大量的半连接请求，耗费主机的 `CPU` 和内存资源，还可以影响路由器、防火墙  
     
     * 解决方案  
         
-        网关超时设置、tcp\ip协议栈的SynAttackProtect保护机制  
+        网关超时设置、`TCP`\`ip` 协议栈的 `SynAttACKProtect` 保护机制  
   
 ---  
   
 ### 逻辑安全  
   
-* xss(跨站脚本攻击 - Cross Site Scripting)  
+* `XSS` (跨站脚本攻击 - Cross Site Scripting)  
     * 定义  
         
         通过插入恶意脚本，实现对用户游览器的控制  
     
     * 解决方案  
         
-        通过 strip_tags、htmlentities、htmlspecialchars  
-* csrf(跨站请求伪造 - Cross Site Request Forgery)  
+        通过 `strip_tags`、`htmlentities`、`htmlspecialchars`  
+* `CSRF` (跨站请求伪造 - Cross Site Request Forgery)  
     * 相关知识  
         
-        http协议本身是一个无状态的协议，在请求时判断不了客户端的用户信息  
-        于是在http请求报文首部会携带Cookie头部  
-        cookie中含有一个PHPSESSID的值，就是用来存储session的用户唯一标记，用户获取session的时候php会到cookie中找到这个PHPSESSID的值  
-        然后到session文件存储目录中找sess_{PHPSESSID}的文件，获取里面的内容并反序列化  
+        `HTTP` 协议本身是一个无状态的协议，在请求时判断不了客户端的用户信息  
+        于是在 `HTTP` 请求报文首部会携带 `Cookie` 头部  
+        `Cookie` 中含有一个 `PHPSESSID` 的值，就是用来存储 `session` 的用户唯一标记，用户获取 `session` 的时候 `php` 会到 `Cookie` 中找到这个 `PHPSESSID` 的值  
+        然后到 `session` 文件存储目录中找 `sess_{PHPSESSID}` 的文件，获取里面的内容并反序列化  
   
         ---  
   
@@ -110,13 +110,13 @@
     
     * 解决方案  
         
-        在客户端请求服务端时加入一个token，因为这个token在理论上是不会被第三方网站获取的(含xss隐患除外)  
-        通过对比提交的token和服务器的token来判断请求是非来自第三方网站  
+        在客户端请求服务端时加入一个 `token`，因为这个 `token` 在理论上是不会被第三方网站获取的(含 `XSS` 隐患除外)  
+        通过对比提交的 `token` 和服务器的 `token` 来判断请求是非来自第三方网站  
   
-* sql注入  
+* `sql` 注入  
     * 相关知识  
         
-        UNION 把两次或多次的查询结果合并(查询的field数目必须一致)  
+        `UNION` 把两次或多次的查询结果合并(查询的 `field` 数目必须一致)  
 
         ```mysql
         SELECT id,uri,remark 
@@ -129,23 +129,23 @@
         
     * 定义  
         
-        SQL注入攻击中以SQL语句作为用户输入，从而达到查询/修改/删除数据的目的  
+        `SQL` 注入攻击中以 `SQL` 语句作为用户输入，从而达到查询/修改/删除数据的目的  
     
     * 解决方案  
         
-        将 php.ini 文件中的 safe_mode 设置为 on 开启安全模式  
-        将 php.ini 文件中的 magic_quotes_gpc 设置为 on 对用户提交的数据自动添加斜线(转义)  
-        使用 mysql_real_escape_string、mysql_escape_string、addslashes、过滤 sql 关键字  
+        将 `php.ini` 文件中的 `safe_mode` 设置为 `on` 开启安全模式  
+        将 `php.ini` 文件中的 `magic_quotes_gpc` 设置为 `on` 对用户提交的数据自动添加斜线(转义)  
+        使用 `mysql_real_escape_string`、`mysql_escape_string`、`addslashes`、过滤 `sql` 关键字  
   
 ---  
   
-### 代码安全(php)  
+### 代码安全(`php`)  
   
-* eval/assert/system  
+* `eval`/`assert`/`system`  
 * 文件上传漏洞  
   
 ---  
   
 ### 相关知识书籍推荐  
 * 《白帽子讲web安全》  
-* 《http权威指南》  
+* 《HTTP权威指南》  
