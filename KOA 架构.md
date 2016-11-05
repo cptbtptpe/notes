@@ -4,4 +4,4 @@
 ![KOA][1]  
   
   
-  [1]: http://blog.angular.in/content/images/2015/05/koa.jpg  
+  [1]: https://github.com/jtleon/notes/blob/master/source/koa.jpeg  
