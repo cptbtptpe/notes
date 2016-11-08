@@ -64,4 +64,4 @@ TCP/IP协议与低层的数据链路层和物理层无关，这也是TCP/IP的�
 - 第七层：应用层  
 应用层为操作系统或网络应用程序提供访问网络服务的接口。应用层协议的代表包括：Telnet、FTP、HTTP、SNMP等。  
 
-![网络七层](http://p1.qhimg.com/t01177c54b69eac84f1.jpg)  
+![网络七层](https://github.com/jtleon/notes/blob/master/source/osi.jpeg)  
