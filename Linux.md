@@ -1,4 +1,4 @@
-﻿  
+  
 ## Linux  
   
 ### 常用命令  
@@ -521,3 +521,18 @@ hostname xxx  - 修改当前主机名为 xxx 重新打开终端才能看到 一�
     host www.baidu.com  
     host www.126.com  
     host www.douban.com  
+
+### Ubuntu
+**修改 DNS**
+	
+	提醒：手动修改 /etc/resolv.conf 文件将自动被重置
+	
+	新建 tail 文件
+	sudo vi /etc/resolvconf/resolv.conf.d/tail
+	
+	写入以下两行
+	nameserver 8.8.8.8  
+	nameserver 114.114.114.114
+	
+	重启服务
+	sudo /etc/init.d/resolvconf restart 
