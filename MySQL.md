@@ -15,6 +15,7 @@ SHOW DATABASES;
   
 // 新建数据库  
 CREATE DATABASE `库名`;  
+CREATE DATABASE `库名` DEFAULT CHARSET utf8 COLLATE utf8_general_ci;
   
 // 删除数据库  
 DROP DATABASE  `库名`;  
@@ -185,3 +186,25 @@ EXPLAIN `SQL语句`
 // 强制使用索引
 SELECT * FROM `表名` FORCE INDEX (`索引名`) 
 ``` 
+
+### MySQL5.7修改密码
+```
+$ sudo killall -TERM mysqld
+$ mysqld_safe --skip-grant-tables & 
+$ mysqld_safe --skip-grant-tables --skip-networking &
+$ mysql -p
+> update mysql.user set authentication_string=password('xxx') where user='root' and Host = 'localhost';
+$ sudo service mysql restart
+```
+
+### MySQL远程登录
+```
+$ mysql -u root -pxxx
+> use mysql
+> update user set host = '%' where user = 'root';
+> select host, user from user;
+> FLUSH PRIVILEGES;
+
+$ sudo vim /etc/mysql/mysql.conf.d/mysqld.cnf
+注释 bind-address 127.0.0.1
+```
