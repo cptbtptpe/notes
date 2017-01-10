@@ -536,3 +536,20 @@ hostname xxx  - 修改当前主机名为 xxx 重新打开终端才能看到 一�
 	
 	重启服务
 	sudo /etc/init.d/resolvconf restart 
+	
+### 反向代理 - 外网访问内网
+**内网机器执行**  
+
+	autossh -M <外网端口-守护> -NR <外网端口>:localhost:<内网ssh端口> <外网用户名>@<外网IP>
+	autossh -M 5678 -NR 19999:localhost:22 ubuntu@123.206.210.77
+	
+**外网机器执行**
+
+	ssh -fCNL '*:<外网端口-转发>:localhost:<外网端口>' localhost
+	ssh -fCNL '*:19998:localhost:19999' localhost
+	
+**要连接内网的机器执行**
+
+	ssh -p <外网端口-转发> <内网用户名>@<外网IP>
+	ssh -p 19998 leon@123.206.210.77
+	
