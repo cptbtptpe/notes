@@ -553,3 +553,15 @@ hostname xxx  - 修改当前主机名为 xxx 重新打开终端才能看到 一�
 	ssh -p <外网端口-转发> <内网用户名>@<外网IP>
 	ssh -p 19998 leon@123.206.210.77
 	
+### GitLab
+**编辑配置文件**
+
+	vim /etc/gitlab/gitlab.rb
+	
+**重新加载配置文件**
+
+	sudo gitlab-ctl reconfigure
+	
+**启动、关闭、重启..**
+
+	sudo gitlab-ctl start | stop | restart
