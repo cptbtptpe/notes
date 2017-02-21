@@ -1,7 +1,4 @@
-﻿  
 ## ECMAScript 6 入门大纲  
-  
----  
   
 ### ECMAScript 和 JavaScript  
   
@@ -34,8 +31,6 @@
 * `Async` 函数，在 `Promise` 和 `Generator` 函数基础上，提出的异步操作解决方案  
 * `Multi-Threading` 多线程支持  
 * `Traits` 它将是 `class` 的一个替代  
-  
----  
   
 ### 知识点  
   
@@ -100,7 +95,7 @@
 		let [x = 1] = [undefined];			// 使用严格 === undefined 解构赋值，此处 x = 1  
 		let [x = 1] = [null];				// 同上原理，此处 x = null  
 		  
-		---------------------------------  
+		---
 		  
 		// 对象方式的解构赋值  
 		// 右侧对应的 key 的值将赋给左边与 key 同名的变量，与顺序无关  
@@ -113,13 +108,13 @@
 		// 默认值  
 		let {say, word = 'World'} = {say: 'Hello'};  
 		  
-		---------------------------------  
+		---
 		  
 		// 字符串也可以解构赋值。字符串将进行隐式转换，同 new Sting()  
 		let [a, b] = 'hi';  
 		let {length} = 'hi';  
 		  
-		---------------------------------  
+		---
 		  
 		// 函数参数的解构赋值  
 		// 解构方式与上述类型解构赋值保持一致  
@@ -404,9 +399,7 @@
 		* `module` 命令可以取代 `import` 语句，达到整体输入模块的作用  
 			* `import {name1, name2} from xxx`  
 			* `import * as name from xxx`  
-			* `module name from xxx`  
-  
----  
+			* `module name from xxx`   
   
 ### 小结  
 * `ES6` 和 `ES5` 中有许多一样的表达式，但是解释器能根据不同的上下文进行解释，需要及其小心  

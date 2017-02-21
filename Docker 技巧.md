@@ -1,4 +1,3 @@
-
 ## Docker 技巧
 
 > 容器常用操作
@@ -13,21 +12,25 @@ cat ~/Downloads/export.tar | sudo docker import - export:latest
 ```
 
 ### 停止所有容器
+
 ```
 sudo docker kill $(sudo docker ps -q -a)
 ```
 
 ### 删除所有容器
+
 ```shell
 sudo docker rm $(sudo docker ps -q -a)
 ```
 
 ### 查看容器 root 用户的密码
+
 ```
 sudo docker logs <CONTAINER ID> 2>&1 | grep '^User: ' | tail -n1
 ```
 
 ### 运行一个新容器
+
 ```
 # 同时为它命名、端口映射、文件夹映射
 # -d 后台运行
@@ -44,6 +47,7 @@ sudo docker run
 ```
 
 ### 一个容器连接到另一个容器
+
 ```
 # 容器连接到 mmysql 容器，并将 mmysql 容器重命名为db
 # 这样，sonar 容器就可以使用 db 的相关的环境变量了
@@ -58,11 +62,13 @@ sudo docker run
 ```
 
 ### 从容器中拷贝文件到宿主机
+
 ```
 sudo docker cp <CONTAINER ID|NAME>:<FILE PATH> <SAVE PATH>
 ```
 
 ### 退出时删除容器
+
 ```
 # 如果你仅仅想在一个容器中快速的运行一个命令，然后退出，并且不用担心容器状态
 # 只需要把 --rm 参数加入 run 命令后面，这将结束很多你保存了的容器，并且清理它们
@@ -71,11 +77,13 @@ sudo docker run --rm -i -t busybox /bin/bash
 ```
 
 ### 显示容器中运行的进程
+
 ```
 sudo docker top <CONTAINER ID|NAME>
 ```
 
 ### 实时查看容器日志
+
 ```
 sudo docker logs -f <CONTAINER ID|NAME>
 ```
@@ -94,16 +102,17 @@ sudo docker load < ~/Downloads/save.tar
 ```
 
 ### 删除所有镜像
+
 ```shell
 sudo docker rmi $(sudo docker images -q -a)
 ```
 
 ### 构建自己的镜像
+
 ```
 sudo docker build -t <IMAGE NAME> <DOCKERFILE PATH>
 ```
 
--
 
 > 其他及注意事项
 
@@ -119,12 +128,12 @@ sudo docker build -t <IMAGE NAME> <DOCKERFILE PATH>
 1. docker version
 显示 Docker 版本信息
 
-------
+---
 
 2. docker info
 显示 Docker 系统信息，包括镜像和容器数
 
-------
+---
 
 3. docker search
 
@@ -137,7 +146,7 @@ docker search -s  django
 --no-trunc 可显示完整的镜像描述
 -s 40 列出收藏数不小于40的镜像
 
-------
+---
 
 4. docker pull
 
@@ -148,7 +157,7 @@ docker pull laozhu/telescope:latest
 
 -a 拉取所有 tagged 镜像
 
-------
+---
 
 5. docker login
 
@@ -160,12 +169,12 @@ Login Succeeded
 
 按步骤输入在 Docker Hub 注册的用户名、密码和邮箱即可完成登录
 
-------
+---
 
 6. docker logout
 运行后从指定服务器登出，默认为官方服务器
 
-------
+---
 
 7. docker images
 
@@ -179,7 +188,7 @@ docker images [options "o">] [name]
 -q 仅列出镜像ID
 --tree 以树状结构列出镜像的所有提交历史
 
-------
+---
 
 8. docker ps
 列出所有运行中容器
@@ -194,7 +203,7 @@ docker images [options "o">] [name]
 -q 仅列出容器ID
 -s 显示容器大小
 
-------
+---
 
 9. docker rmi
 
@@ -206,7 +215,7 @@ docker rmi nginx:latest postgres:latest python:latest
 -f 强行移除该镜像，即使其正被使用
 --no-prune 不移除该镜像的过程镜像，默认移除
 
-------
+---
 
 10. docker rm
 
@@ -219,7 +228,7 @@ sudo docker rm -l /webapp/redis
 -l 移除容器间的网络连接，而非容器本身
 -v 移除与容器关联的空间
 
-------
+---
 
 11. docker history
 
@@ -230,7 +239,7 @@ docker history  "o">[options] <image>
 --no-trunc 显示完整的提交记录
 -q 仅列出提交记录ID
 
-------
+---
 
 12. docker start|stop|restart
 
@@ -242,7 +251,7 @@ docker start|stop "p">|restart [options "o">] <container>  "o">[container...]
 -i 启动一个容器并进入交互模式
 -t 10 停止或者重启容器的超时时间（秒），超时后系统将杀死进程
 
-------
+---
 
 13. docker kill
 
@@ -252,7 +261,7 @@ docker kill  "o">[options "o">] <container>  "o">[container...]
 
 -s "KILL" 自定义发送至容器的信号
 
-------
+---
 
 14. docker events
 
@@ -262,7 +271,7 @@ docker events --until= "s2">"20120310"
 
 从服务器拉取个人动态，可选择时间区间
 
-------
+---
 
 15. docker save
 
@@ -273,7 +282,7 @@ docker save > "debian.tar"
 
 -o "debian.tar" 指定保存的镜像归档
 
-------
+---
 
 16. docker load
 
@@ -286,7 +295,7 @@ docker load -i "debian.tar"
 
 -i "debian.tar" 指定载入的镜像归档
 
-------
+---
 
 17. docker export
 
@@ -296,7 +305,7 @@ docker export nginx-01 > export.tar
 将指定的容器保存成 tar 归档文件， docker import 的逆操作
 导出后导入（exported-imported)）的容器会丢失所有的提交历史，无法回滚
 
-------
+---
 
 18. docker import
 
@@ -307,7 +316,7 @@ docker import http://example.com/export.tar
 从归档文件（支持远程文件）创建一个镜像， export 的逆操作，可为导入镜像打上标签
 导出后导入（exported-imported)）的容器会丢失所有的提交历史，无法回滚
 
-------
+---
 
 19. docker top
 
@@ -315,7 +324,7 @@ docker top <running_container>  "o">[ps options]
 
 查看一个正在运行容器进程，支持 ps 命令参数
 
-------
+---
 
 20. docker inspect
 
@@ -326,20 +335,20 @@ docker inspect nginx-container
 
 -f 指定返回值的模板文件
 
-------
+---
 
 21. docker pause
 
 暂停某一容器的所有进程
 
-------
+---
 
 22. docker unpause
 docker unpause <container>
 
 恢复某一容器的所有进程
 
-------
+---
 
 23. docker tag
 
@@ -349,7 +358,7 @@ docker tag [options "o">] <image>[:tag "o">] [repository/ "o">][username/]name "
 
 -f 覆盖已有标记
 
-------
+---
 
 24. docker push
 
@@ -358,7 +367,7 @@ docker push laozhu/nginx:latest
 
 将镜像推送至远程仓库，默认为 Docker Hub
 
-------
+---
 
 25. docker logs
 
@@ -371,7 +380,7 @@ docker logs -f -t --tail= "s2">"10" insane_babbage
 -t 显示容器日志的时间戳
 --tail="10" 仅列出最新10条容器日志
 
-------
+---
 
 26. docker run
 
@@ -398,11 +407,10 @@ docker run [options "o">] <image> [ "nb">command]  "o">[arg...]
 --net="bridge" 指定容器的网络连接类型，支持 bridge / host / none / container:<name|id> 四种类型
 --link=[] 待完成
 --expose=[] 待完成
-
-
 ```
 
 ### Docker --help
+
 ```
 # docker --help
 Usage: docker [OPTIONS] COMMAND [arg...]
@@ -1086,5 +1094,4 @@ cpu_shares		这些都是和 docker run 支持的选项
 				restart: always
 				stdin_open: true
 				tty: true
-
 ```

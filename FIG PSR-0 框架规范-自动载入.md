@@ -1,22 +1,6 @@
-﻿
+## FIG PSR-0 框架规范-自动载入  
   
-## FIG PSR-0 框架规范-自动载入
-  
-
-  
-> **已弃用** - 截止到2014年10月21日，PSR-0已被弃用。 推荐替代使用[PSR-4](http://www.php-fig.org/psr/psr-4/)。
-  
-
-  
-下文描述了若要使用一个通用的`自动加载器(autoloader)`，你所需要遵守的规范：
-  
-
-  
-规范
-  
----------
-  
-
+> **已弃用** - 截止到 2014-10-21 日，PSR-0 已被弃用，使用 PSR-4 代替
   
 * 一个完全标准的`命名空间(namespace)`和`类(class)`的结构是这样的：`\<Vendor Name>\(<Namespace>\)*<Class Name>`
   
@@ -32,49 +16,18 @@
   
 * `组织名(vendor name)`，`空间名(namespace)`，`类名(class name)`都由大小写字母组合而成。
   
-
   
-示例
-  
---------
-  
-
+### 示例
   
 * `\Doctrine\Common\IsolatedClassLoader` => `/path/to/project/lib/vendor/Doctrine/Common/IsolatedClassLoader.php`
-  
-* `\Symfony\Core\Request` => `/path/to/project/lib/vendor/Symfony/Core/Request.php`
-  
-* `\Zend\Acl` => `/path/to/project/lib/vendor/Zend/Acl.php`
-  
-* `\Zend\Mail\Message` => `/path/to/project/lib/vendor/Zend/Mail/Message.php`
-  
-
-  
-`空间名(namespace)`和`类名(class name)`中的下划线
-  
------------------------------------------
-  
-
   
 * `\namespace\package\Class_Name` => `/path/to/project/lib/vendor/namespace/package/Class/Name.php`
   
 * `\namespace\package_name\Class_Name` => `/path/to/project/lib/vendor/namespace/package_name/Class/Name.php`
   
-
-  
 以上是我们为实现通用的自动加载而制定的最低标准。你可以利用能够自动加载`PHP 5.3`类的`SplClassLoader`来测试你的代码是否符合这些标准。
   
-
-  
-实例
-  
-----------------------
-  
-
-  
-下面是一个怎样利用上述标准来实现自动加载的示例函数。
-  
-
+下面是一个怎样利用上述标准来实现自动加载的示例函数
   
 ```php
 function autoload($className)
@@ -92,18 +45,4 @@ function autoload($className)
     $fileName .= str_replace('_', DIRECTORY_SEPARATOR, $className) . '.php';
     require $fileName;
 }
-  
 ```
-  
-`SplClassLoader`实现
-  
------------------------------
-  
-下面的gist是一个按照上面建议的标准来自动加载类的`SplClassLoader`实例。这是依据这些标准来加载`PHP 5.3`类的推荐方案。
-  
-* [http://gist.github.com/221634](http://gist.github.com/221634)
-  
-
-  
-
-  

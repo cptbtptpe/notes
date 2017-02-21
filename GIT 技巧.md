@@ -1,12 +1,13 @@
-
 ## GIT 技巧
 
 ### 知识点
+
 1. 在 `Git` 中，`HEAD` 表示当前版本
 2. 当前版本的上一个版本是 `HEAD^`，上上一个版本是 `HEAD^^`，当然往上 `100` 个版本 `^` 太多，所以写成 `HEAD~100`
 3. `Hash` 号可以不写全，能让 `Git` 唯一确定就行了，当然一般写全是为了安全起见
 
 ### 拉取代码
+
 ```
 # 拉取指定 origin repo 库的 master 分支
 git pull <REPO NAME> <BRANCH NAME>
@@ -20,6 +21,7 @@ git pull --rebase <REPO NAME> <BRANCH NAME>
 ```
 
 ### 创建本地分支
+
 ```
 git checkout <BRANCH NAME>
 
@@ -28,6 +30,7 @@ git checkout -b <BRANCH NAME>
 ```
 
 ### 文件回退版本
+
 ```
 # 查看文件的修改日志
 git log <FILE NAME>
@@ -46,6 +49,7 @@ git push <REPO NAME> <BRANCH NAME>
 ```
 
 ### 整体回退版本
+
 ```
 git reset --hard <HASH>
 
@@ -54,6 +58,7 @@ git reset --hard <HASH>
 ```
 
 ### 设置用户名和邮箱
+
 ```
 git config --global user.name <USERNAME>
 git config --global user.email <EMAIL>
@@ -62,11 +67,13 @@ git config --global user.email <EMAIL>
 ```
 
 ### 修改用户名和邮箱
+
 ```
 git commit --amend --author='<USERNAME> <EMAIL>'
 ```
 
 ### Pull Request 流程
+
 1. 首先 `git fork` 我的项目
 2. 把 `git fork` 过去的项目，也就是你的项目 `git clone` 到你的本地
 3. 运行 `git remote add <REPO NAME> git@github.com:<AUTHOR>/<PROJECT>.git` 把我的库添加为远端库
@@ -79,6 +86,7 @@ git commit --amend --author='<USERNAME> <EMAIL>'
 > 在修改代码前必须执行第4步同步远程(上游)库，然后继续下面的步骤，否则容易发生冲突
 
 ### 压缩多个 Commit
+
 ```
 git rebase -i HEAD~<NUMBER OF COMMITS>
 
@@ -87,6 +95,7 @@ git rebase -i HEAD~<NUMBER OF COMMITS>
 ```
 
 ### 暂存未提交的更改
+
 ```
 # 将当前工作空间暂存
 git stash
@@ -105,6 +114,7 @@ git stash apply <STASH>
 ```
 
 ### 查看日志
+
 ```
 # 显示 Hash、作者、日期、提交描述信息
 git log
@@ -146,6 +156,7 @@ git show <HASH>
 ```
 
 ### 查看分支
+
 ```
 # 列出本地已经存在的分支，并且在当前分支的前面加 * 号标记
 git branch
@@ -170,6 +181,7 @@ git push <REPO NAME> :<BRANCH NAME>
 ```
 
 ### 初始化本地项目 Github 为例
+
 ```
 git init
 git add *
@@ -181,6 +193,7 @@ git push -u <REPO NAME> <BRANCH NAME>
 ```
 
 ### 修改 Commint 信息或漏传文件
+
 ```
 git commit -m 'initial commit'
 git add forgotten_file.md
@@ -191,6 +204,7 @@ git commit --amend
 ```
 
 ### Git Command
+
 ```
 常用操作
 
@@ -356,8 +370,9 @@ git tag v1.0.0-rc	# 创建轻量标签
 ```
 
 ### .gitignore
+
 ```
-二、关于Git的忽略文件的语法规则
+关于Git的忽略文件的语法规则
 
 忽略文件中的空行或以井号（#）开始的行将会被忽略
 可以使用Linux通配符
