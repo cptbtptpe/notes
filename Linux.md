@@ -537,7 +537,7 @@ hostname xxx  - 修改当前主机名为 xxx 重新打开终端才能看到 一�
 	重启服务
 	sudo /etc/init.d/resolvconf restart 
 	
-### 本地利用公司开发机&公司个人做开发  
+### 本地利用公司开发机&公司个人机器做开发  
 
 **公司开发机执行**  
 
@@ -545,7 +545,7 @@ hostname xxx  - 修改当前主机名为 xxx 重新打开终端才能看到 一�
 	autossh -M <外网端口-守护> -NR <外网端口>:localhost:<内网ssh端口> <外网用户名>@<外网IP>
 	
 	# 反向代理 22 端口
-	autossh -M 5678 -NR 19999:localhost:22 ubuntu@123.206.210.77
+	autossh -M 5678 -NR 19999:localhost:22 ubuntu@123.206.210.77 &
 	
 	# 反向代理 80 端口
 	autossh -M 8600 -NR 38081:localhost:80 ubuntu@123.206.210.77 &
@@ -553,7 +553,7 @@ hostname xxx  - 修改当前主机名为 xxx 重新打开终端才能看到 一�
 **公司个人机执行**  
 	
 	# 反向代理 22 端口
-	autossh -M 5678 -NR 29999:localhost:22 ubuntu@123.206.210.77
+	autossh -M 5678 -NR 29999:localhost:22 ubuntu@123.206.210.77 &
 	
 	# 反向代理 80 端口
 	autossh -M 6600 -NR 18081:localhost:80 ubuntu@123.206.210.77 &
@@ -613,3 +613,38 @@ hostname xxx  - 修改当前主机名为 xxx 重新打开终端才能看到 一�
 
 	sudo gitlab-ctl start | stop | restart
 
+### 禅道
+**下载**
+	
+	wget http://dl.cnezsoft.com/zentao/9.0.1/ZenTaoPMS.9.0.1.zbox_64.tar.gz
+	
+**解压**
+	
+	tar -zxvf ZenTaoPMS.9.0.1.zbox_64.tar.gz -C /opt	# 必须是 opt 目录
+	
+**修改默认端口**
+
+	/opt/zbox/zbox -ap 60001 	# apache
+	/opt/zbox/zbox -mp 60002 	# mysql
+	
+**启动/停止/重启**
+
+	/opt/zbox/zbox start
+	/opt/zbox/zbox stop
+	/opt/zbox/zbox restart
+	
+**创建数据库账户**
+
+	/opt/zbox/auth/adduser.sh
+	
+**配置并重启防火墙**
+
+	iptables -A INPUT -p tcp --dport 60001 -j ACCEPT
+	iptables -A INPUT -p tcp --dport 60002 -j ACCEPT
+	
+	service iptables save
+	service iptables restart
+	
+**访问**
+
+	http:://127.0.0.1:60001
