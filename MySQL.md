@@ -3,13 +3,13 @@
   
 ### 连接mysql  
   
-```mysql  
+```  
 mysql -u root -p root  
 ```  
   
 ### 库相关  
   
-```mysql  
+```  
 // 列出所有数据库  
 SHOW DATABASES;  
   
@@ -39,7 +39,7 @@ SHOW TABLE STATUS FROM `库名` LIKE `关键字`
   
 ### 表相关  
   
-```mysql  
+```  
 // 列表数据表  
 SHOW TABLES;  
   
@@ -107,6 +107,7 @@ TRUNCATE TABLE `表名`;
 ```  
   
 ### binlog
+
 ```
 // 获取 binlog 文件列表
 show binary logs;
@@ -129,7 +130,7 @@ mysqlbinlog --start-postion=107 --stop-position=1000 -d 库名 二进制文件
 
 ### 常用查询  
   
-```mysql  
+```  
 // 查询结果默认按行格式打印  
 // 查询结果按列格式打印  
 SELECT * FROM `表名`\G;  
@@ -172,6 +173,7 @@ LIMIT 10
 * explain [query sql] 
 
 ### 其他
+
 ```
 // 查看当前状态
 status;
@@ -188,6 +190,7 @@ SELECT * FROM `表名` FORCE INDEX (`索引名`)
 ``` 
 
 ### MySQL5.7修改密码
+
 ```
 $ sudo killall -TERM mysqld
 $ mysqld_safe --skip-grant-tables & 
@@ -198,6 +201,7 @@ $ sudo service mysql restart
 ```
 
 ### MySQL远程登录
+
 ```
 $ mysql -u root -pxxx
 > use mysql
@@ -208,3 +212,137 @@ $ mysql -u root -pxxx
 $ sudo vim /etc/mysql/mysql.conf.d/mysqld.cnf
 注释 bind-address 127.0.0.1
 ```
+
+### msyql group 后取前N条
+
+```
+SELECT
+    a.*,
+    b.deep_path,
+    b.filename,
+    c.deep_path AS hover_deep_path,
+    c.filename AS hover_filename
+FROM `icon` a
+LEFT JOIN `attachment` b ON a.attachment_id = b.id
+LEFT JOIN `attachment` c ON a.hover_attachment_id = c.id
+WHERE 5 >
+(
+    SELECT COUNT(*)
+    FROM `icon`
+    WHERE `group` = a.`group` AND `id` > a.`id` AND `state` = 1
+)
+ORDER BY a.`sort` ASC, a.`update_time` DESC
+```
+
+### 按天统计
+
+```  
+SELECT  
+    DATE_FORMAT(active_time, '%Y-%m-%d') `active_date`, count(*) AS `active`  
+FROM  
+    active_log  
+WHERE  
+    active_time BETWEEN '2016-05-16 00:00:00'  
+AND '2016-05-22 23:59:59'  
+GROUP BY  
+    `active_date`  
+```  
+  
+### 按小时统计
+
+```  
+SELECT  
+    DATE_FORMAT(addtime,'%H') AS `hour`, count(*) AS `total`  
+FROM  
+    `device_score_lively_xyweather`  
+WHERE  
+    `date` = '2016-09-07'  
+GROUP BY  
+    `hour`;  
+```  
+
+### ACID  
+
+* `事务的原子性(Atomicity)`  
+
+    > 是指一个事务要么全部执行,要么不执行.也就是说一个事务不可能只执行了一半就停止了.比如你从取款机取钱,这个事务可以分成两个步骤:1划卡,2出钱.不可能划了卡,而钱却没出来.这两步必须同时完成.要么就不完成.
+
+* `事务的一致性(Consistency)`
+
+    > 是指事务的运行并不改变数据库中数据的一致性.例如,完整性约束了a+b=10,一个事务改变了a,那么b也应该随之改变.
+
+* `独立性(Isolation）`
+
+    > 事务的独立性也有称作隔离性,是指两个以上的事务不会出现交错执行的状态.因为这样可能会导致数据不一致.
+
+* `持久性(Durability）`
+
+    > 事务的持久性是指事务执行成功以后,该事务所对数据库所作的更改便是持久的保存在数据库之中，不会无缘无故的回滚.
+
+### MySQL锁    
+    
+**行级锁 － InnoDB**    
+
+`特点`：开销大，加锁慢，容易出现死锁；锁粒度最小，发生冲突概率最低，并发度最高。    
+注意事项：行锁说通过给索引加锁来实现的，只有通过索引条件检索的数据才能使用到行级锁，否则将使用表锁。    
+
+`死锁`：MyISAM中是一次性获取所需的全部锁，所以不会出现死锁现象；当SQL语句操作了主键索引时，会锁定主键索引；当SQL语句操作了非主键索引时，会锁定非主键索引，然后锁定主键索引；在UPDATE、DELETE操作时，MYSQL不仅会锁定WHERE扫描过的索引，还会锁定相邻的键值（next－key locking）    
+产生死锁情况：事务A锁定主键索引，在等待其他相关索引；事务B锁定非主键索引，在等待主键索引。这样就产生了死锁。    
+
+-
+
+**表级锁 － MyISAM**    
+`特点`：开销小，加锁快，不会出现死锁；锁粒度最大，发送冲突概率最大，并发度最低。    
+
+-
+
+**页级锁 － BDB**    
+`特点`：开销和加锁时间介于表锁和行锁之间；会出现死锁，锁粒度适中，并发度一般。    
+
+-
+
+**隔离级别**    
+
+`脏读`：事务A读取了事务B还未提交的修改。    
+
+`不可重复读`：两次相同的查询返回了不同的结果。    
+
+`幻读`：两次相同的查询返回了不同的记录条数。    
+
+-
+
+**乐观锁**    
+在事务中，每个读操作不会上锁，但是在执行写操作时候会判断一下在此期间是否有人修改过该数据，如果有，则取消当前更新操作。    
+
+-
+
+**悲观锁**    
+在事务中，每个读操作都会上锁，别人要想更新这个数据需要等待悲观锁结束后才能执行。    
+    
+-
+
+**InnoDB又分共享锁和排它锁**    
+
+`共享锁`：又称为读锁，是读取操作创建的锁，当数据被加上共享锁后，其他session可以并发读取数据，但不能对数据进行修改，不能获取数据上的排他锁，但可以继续加共享锁，只能对数据进行读取操作，不能对数据执行写操作。    
+```    
+SELECT ＊ FROM table WHERE id = 1 LOCK IN SHARE MODE;    
+```    
+    
+`排他锁`：又称为写锁，当数据被加上排他锁后，其他session不能对该数据进行任何加锁操作，也不能进行读写操作。    
+```    
+SELECT ＊ FROM table WHERE id = 1 FOR UPDATE;    
+```    
+
+-
+
+**FOR UPDATE**    
+`特点`：仅仅适用于InnoDB，并且需要出现在BEGIN和COMMIT块中（事务）    
+    
+| 上下文 | 锁状态 | 锁描述 |    
+| --- | --- | --- |    
+| 明确指定主键并存在该记录 | row lock | 行锁 |    
+| 明确制定主键但不存在该记录 | no lock | 无锁 |    
+| 无主键 | table lock | 表锁 |    
+| 主键不明确 | table lock | 表锁 |    
+    
+表级锁时，不管是否查询到记录，都会锁定表    

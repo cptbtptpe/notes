@@ -1,4 +1,4 @@
-## fast-cgi 和 php-fpm
+## FAST-CGI 和 PHP-FPM
   
 > 首先， cgi 是为了保证 web server 传递过来的数据是标准格式的，方便 cgi 程序的编写者。  
   
