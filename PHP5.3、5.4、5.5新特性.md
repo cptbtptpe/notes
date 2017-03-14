@@ -1,5 +1,4 @@
-﻿  
-## PHP5.3、5.4、5.5新特性  
+﻿## PHP5.3、5.4、5.5新特性  
   
 ### PHP 5.3中的新特性  
 **支持命名空间 （Namespace）**  
@@ -35,7 +34,7 @@ PHP5.3新增一种书写方式，可以省略中间部分，书写为expr1 ?: ex
   
 **支持动态调用静态方法**  
     
-```php  
+```  
 class Test {  
     public static function testgo() {  
         echo "gogo!";  
@@ -56,15 +55,15 @@ $class::$action();  //输出 "gogo!"
 
 把当前目录作为Root Document只需要这条命令即可:  
     
-```shell  
+```  
 # php -S localhost:3300  
 ```  
 也可以指定其它路径：  
-```shell  
+```  
 # php -S localhost:3300 -t /path/to/root  
 ```  
 还可以指定路由：  
-```shell  
+```  
 # php -S localhost:3300 router.php  
 ```  
   
@@ -73,7 +72,7 @@ $class::$action();  //输出 "gogo!"
 魔术常量为`__TRAIT__`  
   
 **Short array syntax 数组简短语法**  
-```php  
+```  
 $arr = [1, 'tsing', 'tsingpost.com'];  
 $array = [  
 　　"foo" => "bar",  
@@ -83,7 +82,7 @@ $array = [
   
 **Array dereferencing 数组值**  
   
-```php  
+```  
 function myfunc() {  
     return array(1, 'tsing', 'tsingpost.com');  
 }  
@@ -91,14 +90,14 @@ function myfunc() {
 
 我认为比数组简短语法更方便的是dereferencing，以前我们需要这样：  
 
-```php  
+```  
 $arr = myfunc();  
 echo $arr[1];  
 ```  
 
 在PHP5.4中这样就行了：  
 
-```php  
+```  
 echo myfunc()[1];  
 
 $name = explode(",", "tsings,male")[0];  
@@ -114,7 +113,7 @@ explode(",", "tsings,male")[3] = "phper";
 **Use mysqlnd by default**  
   
 **实例化类**  
-```php  
+```  
 class test{  
     function show(){  
         return 'test';  
@@ -125,7 +124,7 @@ echo (new test())->show();
 ```  
   
 **支持 Class::{expr}() 语法**  
-```php  
+```  
 class Human {
     function __construct($name) {
         $this->name = $name;
@@ -142,7 +141,7 @@ foreach ([new Human("Gonzalo"), new Human("Peter")] as $human) {
 ```  
   
 **Callable typehint**  
-```php  
+```  
 function foo(callable $callback) { }  
 
 foo("false"); //错误，因为false不是callable类型  
@@ -160,18 +159,18 @@ foo(array("A", "show")); //正确
   
 **新增加了$_SERVER["REQUEST_TIME_FLOAT"]，这个是用来统计服务请求时间的，并用ms来表示**  
   
-```php  
+```  
 echo "脚本执行时间 ", round(microtime(true) - $_SERVER["REQUEST_TIME_FLOAT"], 2), "s";  
 ```  
   
 **让Json更懂中文(JSON_UNESCAPED_UNICODE)**  
   
-```php  
+```  
 echo json_encode("中文", JSON_UNESCAPED_UNICODE); //"中文"  
 ```  
   
 **二进制直接量(binary number format)**  
-```php  
+```  
 $bin  = 0b1101;  
 echo $bin; //13  
 ```  
@@ -193,7 +192,7 @@ echo $bin; //13
 
 * array_column()  
   
-    ```php  
+    ```  
     $userNames = array_column($users, 'name');  
     // is the same as  
   
@@ -207,7 +206,7 @@ echo $bin; //13
 > 将有许多改进 intl的扩展。例如，将会有新的IntlCalendar,IntlGregorianCalendar,IntlTimeZone,IntlBreakIterator,IntlRuleBasedBreakIterator,IntlCodePointBreakIterator类。之前，我竟然不知道有这么多关于intl扩展，如果你想知道更多，我建议你去最新公告里找 Calendar和 BreakIterator。  
   
 **一个简单的密码散列API**  
-```php  
+```  
 $password = "foo";  
 
 // creating the hash  
@@ -225,7 +224,7 @@ if (password_verify($password, $hash)) {
 
 举两个例子:  
   
-```php  
+```  
 function randomHexString($length) {  
     $str = '';  
     for ($i = 0; $i < $length; ++$i) {  
@@ -243,7 +242,7 @@ function randomBool() {
 在特定的代码像empty($this->getFriends())将会抛出一个错误。作为PHP5.5 这将成为有效的代码  
   
 **获取完整类别名称**  
-```php  
+```  
 // PHP5.3 中引入命名空间的别名类和命名空间短版本的功能。虽然这并不适用于字符串类名称  
 use Some\Deeply\Nested\Namespace\FooBar;  
 
@@ -258,13 +257,13 @@ echo FooBar::class;
 **参数跳跃**  
 > 如果你有一个函数接受多个可选的参数，目前没有办法只改变最后一个参数，而让其他所有参数为默认值。  
   
-```php  
+```  
 function create_query($where, $order_by, $join_type='', $execute = false, $report_errors = true) 
 { }  
 ```  
   
 那么有没有办法设置 `$report_errors=false`，而其他两个为默认值。为了解决这个跳跃参数的问题而提出：  
-```php  
+```  
 create_query("deleted=0", "name", default, default, false);  
 ```  
   
@@ -272,7 +271,7 @@ create_query("deleted=0", "name", default, default, false);
   
 **标量类型提示**  
   
-```php  
+```  
 function foo(int $i) { ... }  
 
 foo(1);      // $i = 1  
@@ -286,7 +285,7 @@ foo("abc");  // error
   
 **Getter 和 Setter**  
   
-```php  
+```  
 // 如果你从不喜欢写这些getXYZ()和setXYZ($value)方法，那么这应该是你最受欢迎的改变。提议添加一个新的语法来定义一个属性的设置/读取  
 
 class TimePeriod {  
@@ -305,7 +304,7 @@ var_dump($timePeriod->hours);   // int(10)
 ```  
   
 **生成器**  
-```php  
+```  
 function *xrange($start, $end, $step = 1) {  
     for ($i = $start; $i < $end; $i += $step) {  
         yield $i;  
@@ -320,13 +319,13 @@ foreach (xrange(10, 20) as $i) {
   
 **列表解析和生成器表达式**  
   
-```php  
+```  
 $firstNames = [foreach ($users as $user) yield $user->firstName];  
 ```  
   
 上述列表解析相等于下面的代码：  
   
-```php  
+```  
 $firstNames = [];  
 foreach ($users as $user) {  
 $firstNames[] = $user->firstName;  
@@ -335,7 +334,7 @@ $firstNames[] = $user->firstName;
   
 也可以这样过滤数组:  
 
-```php  
+```  
 $underageUsers = [foreach ($users as $user) if ($user->age < 18) yield $user];  
 ```  
   
@@ -345,7 +344,7 @@ $underageUsers = [foreach ($users as $user) if ($user->age < 18) yield $user];
 > 这个和java中的finally一样，经典的try ... catch ... finally 三段式异常处理。  
   
 **foreach 支持list()**  
-```php  
+```  
 $array = [  
     [1, 2],  
     [3, 4],  
@@ -361,7 +360,7 @@ foreach ($array as list($a, $b)) {
   
 **非变量array和string也能支持下标获取了**  
   
-```php  
+```  
 echo array(1, 2, 3)[0];  
 echo [1, 2, 3][0];  
 echo "foobar"[2];  

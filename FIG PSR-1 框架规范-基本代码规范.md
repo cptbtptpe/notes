@@ -18,7 +18,7 @@ PHP代码的编码格式`必须`只使用不带`字节顺序标记(BOM)`的`UTF-
   
 下面是一个既包含声明又有副作用的示例文件；即应避免的例子：
   
-```php
+```
 // 副作用：修改了ini配置
 ini_set('error_reporting', E_ALL);
   
@@ -37,7 +37,7 @@ function foo()
   
 下面是一个仅包含声明的示例文件；即应提倡的例子：
   
-```php
+```
 // 声明
   
 function foo()
@@ -55,7 +55,7 @@ if (! function_exists('bar')) {
 ```
   
   
-`命名空间(namespace)`和`类(class)`必须遵守 [PSR-0][].
+`命名空间(namespace)`和`类(class)`必须遵守 `PSR-0`
   
 这意味着一个源文件中只能有一个`类(class)`，并且每个`类(class)`至少要有一级`空间名（namespace）`：即一个顶级的`组织名(vendor name)`。
   
@@ -65,7 +65,7 @@ if (! function_exists('bar')) {
   
 例子：
   
-```php
+```
 // PHP 5.3 及之后:
 namespace Vendor\Model;
   
@@ -77,7 +77,7 @@ class Foo
   
 `PHP5.2.x`之前的代码`建议`用伪命名空间`Vendor_`作为`类名(class name)`的前缀
   
-```php
+```
 // PHP 5.2.x 及之前:
 class Vendor_Model_Foo
 {
@@ -93,7 +93,7 @@ class Vendor_Model_Foo
   
 例子：
   
-```php
+```
 namespace Vendor\Model;
   
 class Foo

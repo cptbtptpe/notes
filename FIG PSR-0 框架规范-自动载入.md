@@ -29,7 +29,7 @@
   
 下面是一个怎样利用上述标准来实现自动加载的示例函数
   
-```php
+```
 function autoload($className)
 {
     $className = ltrim($className, '\\');

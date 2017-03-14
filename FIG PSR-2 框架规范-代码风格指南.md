@@ -1,12 +1,12 @@
 ## FIG PSR-2 框架规范-代码风格指南
   
-> 本手册是基础代码规范 PSR-1 的继承和扩展。
+> 本手册是基础代码规范 `PSR-1` 的继承和扩展。
   
 ### 示例
   
 这个示例中简单展示了上文中提到的一些规则：
   
-```php
+```
 namespace Vendor\Package;
   
 use FooInterface;
@@ -35,7 +35,7 @@ class Foo extends Bar implements FooInterface
   
 ### 基础代码规范
   
-代码`必须`遵守 [PSR-1][] 中的所有规则。
+代码`必须`遵守 `PSR-1` 中的所有规则。
   
 ### 源文件
   
@@ -85,7 +85,7 @@ PHP常量`true`, `false`和`null` `必须`使用小写字母。
   
 示例：
   
-```php
+```
 namespace Vendor\Package;
   
 use FooClass;
@@ -102,7 +102,7 @@ use OtherVendor\OtherPackage\BazClass;
   
 `类(class)`的左花括号`必须`放在下面自成一行；右花括号必须放在`类(class)`主体的后面自成一行。
   
-```php
+```
 namespace Vendor\Package;
   
 use FooClass;
@@ -117,7 +117,7 @@ class ClassName extends ParentClass implements \ArrayAccess, \Countable
   
 `实现(implement)`列表`可以`被拆分为多个缩进了一次的子行。如果要拆成多个子行，列表的第一项`必须`要放在下一行，并且每行`必须`只有一个`接口(interface)`。
   
-```php
+```
 namespace Vendor\Package;
   
 use FooClass;
@@ -145,7 +145,7 @@ class ClassName extends ParentClass implements
   
 一个`属性(property)`声明看起来应该像下面这样。
   
-```php
+```
 namespace Vendor\Package;
   
 class ClassName
@@ -164,7 +164,7 @@ class ClassName
   
 一个`方法(method)`声明看来应该像下面这样。 注意括号，逗号，空格和花括号的位置：
   
-```php
+```
 namespace Vendor\Package;
   
 class ClassName
@@ -182,7 +182,7 @@ class ClassName
   
 `方法(method)`中有默认值的参数必须放在参数列表的最后面。
   
-```php
+```
 namespace Vendor\Package;
   
 class ClassName
@@ -198,7 +198,7 @@ class ClassName
   
 当参数列表被拆分成多个子行，右括号和左花括号之间`必须`又一个空格并且自成一行。
   
-```php
+```
 namespace Vendor\Package;
   
 class ClassName
@@ -219,7 +219,7 @@ class ClassName
   
 而当用到`静态(static)`来做类声明时，则`必须`放在可见性声明的后面。
   
-```php
+```
 namespace Vendor\Package;
   
 abstract class ClassName
@@ -237,7 +237,7 @@ abstract class ClassName
   
 调用一个方法或函数时，在方法名或者函数名和左括号之间`不可`有空格，左括号之后`不可`有空格，右括号之前也`不可`有空格。参数列表中，逗号之前`不可`有空格，逗号之后则`必须`有一个空格。
   
-```php
+```
 bar();
 $foo->bar($arg1);
 Foo::bar($arg2, $arg3);
@@ -245,7 +245,7 @@ Foo::bar($arg2, $arg3);
   
 参数列表`可以`被拆分成多个缩进了一次的子行。如果拆分成子行，列表中的第一项`必须`放在下一行，并且每一行`必须`只能有一个参数。
   
-```php
+```
 $foo->bar(
     $longArgument,
     $longerArgument,
@@ -275,7 +275,7 @@ $foo->bar(
   
 下面是一个`if`条件控制结构的示例，注意其中括号，空格和花括号的位置。同时注意`else`和`elseif`要和前一个条件控制结构的右花括号在同一行。
   
-```php
+```
 if ($expr1) {
     // if body
 } elseif ($expr2) {
@@ -292,7 +292,7 @@ if ($expr1) {
   
 下面是一个`switch`条件控制结构的示例，注意其中括号，空格和花括号的位置。`case`语句`必须`要缩进一级，而`break`关键字（或其他中止关键字）`必须`和`case`结构的代码主体在同一个缩进层级。如果一个有主体代码的`case`结构故意的继续向下执行则`必须`要有一个类似于`// no break`的注释。
   
-```php
+```
 switch ($expr) {
     case 0:
         echo 'First case, with a break';
@@ -315,7 +315,7 @@ switch ($expr) {
   
 下面是一个`while`循环控制结构的示例，注意其中括号，空格和花括号的位置。
   
-```php
+```
 while ($expr) {
     // structure body
 }
@@ -323,7 +323,7 @@ while ($expr) {
   
 下面是一个`do while`循环控制结构的示例，注意其中括号，空格和花括号的位置。
   
-```php
+```
 do {
     // structure body;
 } while ($expr);
@@ -333,7 +333,7 @@ do {
   
 下面是一个`for`循环控制结构的示例，注意其中括号，空格和花括号的位置。
   
-```php
+```
 for ($i = 0; $i < 10; $i++) {
     // for body
 }
@@ -343,7 +343,7 @@ for ($i = 0; $i < 10; $i++) {
   
 下面是一个`foreach`循环控制结构的示例，注意其中括号，空格和花括号的位置。
   
-```php
+```
 foreach ($iterable as $key => $value) {
     // foreach body
 }
@@ -353,7 +353,7 @@ foreach ($iterable as $key => $value) {
   
 下面是一个`try catch`异常处理控制结构的示例，注意其中括号，空格和花括号的位置。
   
-```php
+```
 try {
     // try body
 } catch (FirstExceptionType $e) {
@@ -377,7 +377,7 @@ try {
   
 下面是一个闭包的示例。注意括号，空格和花括号的位置。
   
-```php
+```
 $closureWithArgs = function ($arg1, $arg2) {
     // body
 };
@@ -393,7 +393,7 @@ $closureWithArgsAndVars = function ($arg1, $arg2) use ($var1, $var2) {
   
 下面是一个参数列表和变量列表被拆分成多个子行的示例。
   
-```php
+```
 $longArgs_noVars = function (
     $longArgument,
     $longerArgument,
@@ -442,7 +442,7 @@ $shortArgs_longVars = function ($arg) use (
   
 把闭包作为一个参数在函数或者方法中调用时，依然要遵守上述规则。
   
-```php
+```
 $foo->bar(
     $arg1,
     function ($arg2) use ($var1) {

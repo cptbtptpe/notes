@@ -21,7 +21,7 @@
   下面提供一个占位符替换的例子，仅作为参考：
   
   
-    ```php
+    ```
     /**
      * Interpolates context values into the message placeholders.
      */
@@ -67,9 +67,9 @@
   
 - `Psr\Log\LogLevel`类拥有八个日志等级的常量。
   
-### `Psr\Log\LoggerInterface`
+### Psr\Log\LoggerInterface
   
-```php
+```
 namespace Psr\Log;
   
 /**
@@ -184,9 +184,9 @@ interface LoggerInterface
 }
 ```
   
-### `Psr\Log\LoggerAwareInterface`
+### Psr\Log\LoggerAwareInterface
   
-```php
+```
 namespace Psr\Log;
   
 /**
@@ -205,9 +205,9 @@ interface LoggerAwareInterface
   
 ```
   
-### `Psr\Log\LogLevel`
+### Psr\Log\LogLevel
   
-```php
+```
 namespace Psr\Log;
   
 /**

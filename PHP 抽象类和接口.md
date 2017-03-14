@@ -1,5 +1,4 @@
-﻿  
-## PHP 抽象类和接口  
+﻿## PHP 抽象类和接口  
   
 * 接口  
   
@@ -30,7 +29,7 @@
     * 可以不实例化类而直接访问  
     * 静态属性不可以由对象通过->操作符来访问,用::方式调用  
       
-```php  
+```  
 interface Human{  
     const TEST_CONST = "test const"; // 定义常量  
     // public $v; // error，不能定义变量  
@@ -41,7 +40,7 @@ interface Human{
 }  
 ```  
   
-```php  
+```  
 abstract class Father implements Human{  
   
     public function __construct(){  
@@ -60,7 +59,7 @@ abstract class Father implements Human{
 }  
 ```  
   
-```php  
+```  
 class Mother implements Human{  
   
     public function __construct(){  

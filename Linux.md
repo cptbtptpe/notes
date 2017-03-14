@@ -1,9 +1,8 @@
-  
 ## Linux  
   
 ### 常用命令  
   
-```shell  
+```  
 hostname - 显示主机名  
   
 uname - 显示底层系统信息  
@@ -89,7 +88,7 @@ rsync - 远程同步命令
   
 ### which、whereis、locate、find 的区别  
   
-```shell  
+```  
 which - 在PATH变量指定的路径中，搜索某个系统命令的位置，并且返回第一个搜索结果。  
   
 whereis - whereis命令只能用于程序名的搜索，而且只搜索二进制文件（参数-b）、man说明文件（参数-m）和源代码文件（参数-s）  
@@ -101,7 +100,7 @@ find - 实际搜寻硬盘查询文件名称
   
 ### 搜索和查找  
   
-```shell  
+```  
 locate  - 快速查找文件，需预先建立的数据库，数据库每天更新，查找速度快，但实时性比较差，可用 updatedb 命令更新这个数据库  
   
 find . -name *xxx* - 查找当前目录下文件名中含 xxx 关键字的文件  
@@ -133,7 +132,7 @@ lsof -i:9000 - 查看端口 9000 情况
   
 ### 命令行中的常用快捷键  
   
-```shell  
+```  
 ctrl+左右键 - 单词自己的切换  
   
 ctrl+a - 跳到本行的行首  
@@ -158,7 +157,7 @@ ctrl+l - 清屏
 ```  
   
 ### vim 操作  
-```shell  
+```  
 vim filename 打开一个文件，如果文件不存在则会新建  
   
 vim filename1 filename2 filename3 可以打开或新建多个文件  
@@ -239,7 +238,7 @@ vim +/findString filename 打开文件并将光标定位到含findString字符�
   
 ### 解压  
   
-```shell  
+```  
 tar -xzvf - 解压 .tar 文件，-C 参数指定目标文件夹  
 
 tar -xjf - 解压 .tar.bz2 文件  
@@ -260,7 +259,7 @@ unzip -o - 解压 .zip 文件
 ### 文件操作  
   
 **创建文件**  
-```shell  
+```  
 touch path/filename  
 
 vi path/filename  
@@ -273,32 +272,32 @@ less xxx > path/filename
 ```  
   
 **移动或重命名**  
-```shell  
+```  
 mv oldpath/oldfilename newpath/newfilename  
 ```  
   
 **拷贝文件**  
-```shell  
+```  
 cp oldpath/oldfilename newpath/newfilename  
 ```  
   
 **拷贝目录**  
-```shell  
+```  
 cp -R oldpath newpath  
 ```  
   
 **删除文件**  
-```shell  
+```  
 rm path/filename  
 ```  
   
 **删除目录**  
-```shell  
+```  
 rm -r path  
 ```  
   
 **更改文件权限**  
-```shell  
+```  
 chmod 0777 path/filename  
 
 chmod u+x path/filename  
@@ -307,7 +306,7 @@ chmod 用于修改文件 / 文件夹所属者（u）或所属组（g）或其它
 ```  
   
 **更改目录权限**  
-```shell  
+```  
 chmod -R 0777 path  
 ```  
   
@@ -455,7 +454,7 @@ umask 022 - 设置当前用户（当前终端）的 umask 值为 022
   
 ### 网络管理  
   
-```shell  
+```  
 lspci 可以查看网卡即其他pci类型硬件信息  
   
 lsusb 可以查看所有的USB设备信息  
@@ -478,14 +477,14 @@ DNS配置文件保存在 /etc/resolv.conf
   
 ### 测试网络连通命令  
   
-```shell  
+```  
 ping 192.168.2.2 - 直接ping IP地址  
 ping www.baidu.com - ping域名，先会进行 dns 解析  
 ```  
   
 ### 测试 dns 解析  
   
-```shell  
+```  
 host www.baidu.com  
 dig www.baidu.com  
 ```  
@@ -522,8 +521,7 @@ hostname xxx  - 修改当前主机名为 xxx 重新打开终端才能看到 一�
     host www.126.com  
     host www.douban.com  
 
-### Ubuntu
-**修改 DNS**
+### Ubuntu 修改 DNS
 	
 	提醒：手动修改 /etc/resolv.conf 文件将自动被重置
 	
@@ -601,6 +599,7 @@ hostname xxx  - 修改当前主机名为 xxx 重新打开终端才能看到 一�
 	ssh -p 29998 leon@123.206.210.77
 
 ### GitLab
+
 **编辑配置文件**
 
 	vim /etc/gitlab/gitlab.rb
@@ -614,6 +613,7 @@ hostname xxx  - 修改当前主机名为 xxx 重新打开终端才能看到 一�
 	sudo gitlab-ctl start | stop | restart
 
 ### 禅道
+
 **下载**
 	
 	wget http://dl.cnezsoft.com/zentao/9.0.1/ZenTaoPMS.9.0.1.zbox_64.tar.gz
@@ -648,3 +648,105 @@ hostname xxx  - 修改当前主机名为 xxx 重新打开终端才能看到 一�
 **访问**
 
 	http:://127.0.0.1:60001
+
+### Shell 语法
+  
+**$$**
+
+    Shell本身的PID（ProcessID）  
+
+**$!**
+
+    Shell最后运行的后台Process的PID  
+  
+**$?**
+
+    最后运行的命令的结束代码（返回值）  
+  
+**$-**
+
+    使用Set命令设定的Flag一览  
+  
+**$_**
+
+    上一条执行的命令的参数部分  
+  
+**$\***
+
+    (命令行中)所有参数列表。如"$*"用「"」括起来的情况、以"$1 $2 … $n"的形式输出所有参数。  
+  
+**$@**
+
+    (命令行中)所有参数列表。如"$@"用「"」括起来的情况、以"$1" "$2" … "$n" 的形式输出所有参数。   
+  
+**$#**
+
+    (命令行中)添加到Shell的参数个数  
+  
+**$0**
+
+    (命令行中)Shell本身的文件名  
+  
+**$1～$n**
+
+    (命令行中)添加到Shell的各参数值。$1是第1参数、$2是第2参数…。  
+  
+**result=$(ls)**
+
+    将括号中的表达式以命令方式执行并把结果赋值给变量result  
+
+**result=${abc}**
+
+    {}中的将和$合并解析成变量，同 result="$abc"  
+  
+**result=$(($a + $b))**
+
+    计算变量a和变量b的和，同 result=$[$a + $b]、result=$(expr $a + $b)  
+  
+**动态获取变量**
+
+    abhehe=hello world  
+    c=hehe  
+    varName=abc${c}  
+    
+    echo ${!varName}  # hello world  
+  
+**动态定义变量**
+
+    c=hehe  
+    declare -r $c='hello world'  
+    
+    echo ${hehe} # hello world  
+  
+**动态定义数组变量**
+
+    a=arr  
+    declare -a arr  
+    
+    (($a[1]=111))  
+    
+    (($a[2]=222))  
+    
+    echo ${arr[1]} # 111  
+    
+    echo ${arr[2]} # 222  
+  
+**获取字符串的长度**
+
+    str=helloworld  
+    echo ${#str}  
+  
+**获取数组的长度**
+
+    arr=("a" "b" "c")  
+    echo ${#arr[@]}  
+  
+**双小括号表达式 (())**
+
+    所有表达式可以像c语言一样，如：a++,b--,c+=1等  
+    所有变量可以不加入$符号进行调用  
+    
+    可以进行逻辑运算，四则运算  
+    扩展了for,while,if条件测试运算  
+    支持多个表达式运算，各个表达式之间用逗号分开  
+    d=$((1,2,3,4,5)) $d的值为最后一个表达式的值  

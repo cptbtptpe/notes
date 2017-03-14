@@ -1,11 +1,10 @@
-﻿  
-## PHP5.3、5.4、5.5、5.6新特性  
+﻿## PHP5.3、5.4、5.5、5.6新特性  
   
 ### PHP 5.6  
 1、可以使用表达式定义常量。 [Document](https://php.net/manual/zh/migration56.new-features.php)  
   
 在之前的 PHP 版本中，必须使用静态值来定义常量，声明属性以及指定函数参数默认值。 现在你可以使用包括数值、字符串字面量以及其他常量在内的数值表达式来 定义常量、声明属性以及设置函数参数默认值。  
-```php  
+```  
 const ONE = 1;
 const TWO = ONE * 2;    //定义常量时允许使用之前定义的常量进行计算
 
@@ -24,14 +23,14 @@ echo C::SENTENCE;
 ```  
   
 可以通过 const 关键字来定义类型为 array 的常量。  
-```php  
+```  
 const ARR = ['a', 'b'];  
 echo ARR[0];  
 ```  
   
 2、使用 ... 运算符定义变长参数函数  
 现在可以不依赖 func_get_args()， 使用 ... 运算符 来实现 变长参数函数。  
-```php  
+```  
 function test(...$args)  
 {  
     print_r($args);  
@@ -49,7 +48,7 @@ Array
   
 3、使用 ** 进行幂运算  
 加入右连接运算符 ** 来进行幂运算。 同时还支持简写的 **= 运算符，表示进行幂运算并赋值。  
-```php  
+```  
 printf(2 ** 3); // 8  
   
 $a = 2;  
@@ -59,7 +58,7 @@ printf($a);  // 8
   
 4、use function 以及 use const  
 use 运算符可以在类中导入外部的函数和常量了。 对应的结构为 use function 和 use const。  
-```php  
+```  
 namespace Name\Space {  
     const FOO = 42;  
     function f() { echo __FUNCTION__."\n"; }  
@@ -75,7 +74,7 @@ namespace {
 ```  
   
 5、加入 hash_equals() 函数，以恒定的时间消耗来进行字符串比较，以避免时序攻击  
-```php  
+```  
 $expected  = crypt('12345', '$2a$07$usesomesillystringforsalt$');  
 $incorrect = crypt('1234',  '$2a$07$usesomesillystringforsalt$');  
   
@@ -84,7 +83,7 @@ var_dump(hash_equals($expected, $incorrect)); // false
   
 6、加入 __debugInfo()  
 当使用 var_dump() 输出对象的时候，可以用来控制要输出的属性和值。返回值必须是个数组。  
-```php  
+```  
 class C {  
     private $prop;  
   
@@ -106,7 +105,7 @@ var_dump(new C(42));
   
 1、新增 Generators  
 yield关键字用于当函数需要返回一个迭代器的时候，逐个返回值。  
-```php  
+```  
 function number10()  
 {  
     for($i = 1; $i <= 10; $i += 1)  
@@ -114,7 +113,7 @@ function number10()
 }  
 ```  
 该函数的返回值是一个数组：  
-```php  
+```  
 [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]  
 ```  
   
@@ -124,7 +123,7 @@ Finally处理流程:
   
 3、foreach 支持 list()  
 foreach 支持通过 list() 将嵌套数组分离到单独的变量。  
-```php  
+```  
 $array = [  
     [1, 2],  
     [3, 4],  
@@ -136,7 +135,7 @@ foreach ($array as list($a, $b)) {
 ```  
   
 4、empty() 支持传入一个任意表达式，而不仅是一个变量  
-```php  
+```  
 function always_false() {  
     return false;  
 }  
@@ -147,14 +146,14 @@ if (empty(always_false())) {
 ```  
   
 5、直接通过下标获取访问数组和字符串字面量的元素或字符  
-```php  
+```  
 echo [1, 2, 3][0]; // 1  
 echo 'PHP'[0]; // P  
 ```  
 6、新的密码哈希 API. [Document](https://php.net/manual/zh/book.password.php)  
 缺点是缺乏互操作性，在需要和其他语言对接时会比较麻烦。  
   
-```php  
+```  
 //加密  
 echo $hash = password_hash('rasmuslerdorf', PASSWORD_DEFAULT);  
 //输出结果类似于：$2y$10$.vGA1O9wmRjrwAVXD98HNOgsNpDczlqm3Jq7KnEd1rVAGv3Fykk1a  
@@ -172,7 +171,7 @@ PHP已经实现了strval、intval和floatval的函数。为了达到一致性将
   
 8、新增 array_column() 函数  
 可用来返回数组中指定的一列。  
-```php  
+```  
 $records = array(  
     array('id' => 2135,'name' => 'John'),  
     array('id' => 3245,'name' => 'Smith'),  
@@ -191,7 +190,7 @@ print_r($names);
 ### PHP 5.4  
   
 1、新增 Traits. [Document](https://php.net/manual/zh/language.oop5.traits.php)  
-```php  
+```  
 // Traits不能被单独实例化，只能被类所包含  
 trait SayWorld  
 {  
@@ -213,7 +212,7 @@ $xxoo->sayHello();
 ```  
   
 2、新增短数组语法  
-```php  
+```  
 // 原来的数组写法  
 $arr = array("key" => "value", "key2" => "value2");  
 $arr = array(1,2,3,4);  
@@ -223,7 +222,7 @@ $arr = [1,2,3,4];
 ```  
   
 3、新增支持对函数返回数组的成员访问解析  
-```php  
+```  
 print func()[0];  
 ```  
   
@@ -231,7 +230,7 @@ print func()[0];
 这种简写形式被称为 Short Open Tag, 在 PHP5.3 起被默认开启，在 PHP5.4 起总是可用。 使用这种简写形式在 HTML 中嵌入 PHP 变量将会非常方便。  
   
 5、内置用于开发的 CLI 模式的 web server  
-```shell  
+```  
 //启动Web服务器  
 php -S localhost:8000  
 //启动时指定根目录  
@@ -241,19 +240,19 @@ php -S localhost:8000 index.php //所有的请求都会由index.php来处理。
 ```  
   
 6、新增在实例化时访问类成员  
-```php  
+```  
  (new Foo)->bar();  
 ```  
   
 7、新增了动态访问静态方法的方式  
-```php  
+```  
 $func = "funcXXOO";  
 A::{$func}();  
 ```  
 8、闭包支持 $this  
   
 9、新增二进制直接量  
-```php  
+```  
 $bin = bindec('110011'); //之前需要这样写  
 $bin = 0b110011;  
 echo $bin; //51  
@@ -267,7 +266,7 @@ echo $bin; //51
 现在：./configure --with-mysqli  
   
 12、让 json 更懂中文  
-```php  
+```  
 echo json_encode("中文", JSON_UNESCAPED_UNICODE);  
 //"中文"  
 ```  
@@ -278,7 +277,7 @@ echo json_encode("中文", JSON_UNESCAPED_UNICODE);
 ### PHP 5.3  
   
 1、支持命名空间. [Document](https://php.net/manual/zh/language.namespaces.php)  
-```php  
+```  
 namespace my\name; // 定义命名空间  
   
 class MyClass {}  
@@ -305,7 +304,7 @@ int(1)
 2、增加后期静态绑定. [Document](https://php.net/manual/zh/language.oop5.late-static-bindings.php)  
   
 在PHP中，我们可以在类中通过self关键字或者CLASS来判断或调用当前类。但有一个问题，如果我们是在子类中调用，得到的结果将是父类。因为在继承父类的时候，静态成员就已经被绑定了。  
-```php  
+```  
 class A  
 {  
     static public function callFuncXXOO()  
@@ -332,12 +331,12 @@ $b->callFuncXXOO();
 ```  
   
 输出是：  
-```php  
+```  
 A::funcXXOO()  
 ```  
   
 PHP 5.3.0中增加了一个static关键字来引用当前类，即实现了延迟静态绑定：  
-```php  
+```  
 class A  
 {  
     static public function callFuncXXOO()  
@@ -352,14 +351,14 @@ class A
 ```  
   
 这样就会像预期一样输出了：  
-```php  
+```  
 B::funcXXOO  
 ```  
   
 3、增加 goto 操作符. [Document](https://php.net/manual/zh/control-structures.goto.php)  
   
 goto 语句有可能会导致程序流程不清晰，可读性减弱，但在某些情况下具有其独特的方便之处，例如中断深度嵌套的循环和 if 语句。  
-```php  
+```  
 goto test;  
 echo '1';  
   
@@ -375,7 +374,7 @@ echo '2';
   
 用静态方式中调用一个不可访问方法时，__callStatic() 会被调用。  
 当尝试以调用函数的方式调用一个对象时，__invoke() 方法会被自动调用。  
-```php  
+```  
 class A  
 {  
     public function __invoke($str)  
@@ -389,13 +388,13 @@ $a("Hello World");
 ```  
   
 输出是：  
-```php  
+```  
 A::__invoke(): Hello World  
 ```  
   
 6、添加 Nowdoc 语法支持. [Document](https://php.net/manual/zh/language.types.string.php#language.types.str...)  
   
-```php  
+```  
 $str = <<<'EOD'  
 Example of string  
 spanning multiple lines  
@@ -406,14 +405,14 @@ EOD;
 就象 heredoc 结构类似于双引号字符串，Nowdoc 结构是类似于单引号字符串的。Nowdoc 结构很象 heredoc 结构，但是 nowdoc 中不进行解析操作。  
   
 7、Heredoc 结构中可以用双引号来声明标识符了。[Document](https://php.net/manual/zh/language.types.string.php#language.types.str...)  
-```php  
+```  
 echo <<<"FOOBAR"  
 Hello World!  
 FOOBAR;  
 ```  
   
 8、const 关键字可用来在类定义之外定义常量了. [Document](https://php.net/manual/zh/language.constants.syntax.php)  
-```php  
+```  
 define("CONSTANT_A", "Hello world");  
 const CONSTANT_B = 'Hello World';  
 const 形式仅适用于常量，不适用于运行时才能求值的表达式：  
@@ -430,7 +429,7 @@ const XXOO = 2 * 617;
 表达式 expr1 ?: expr3 ，当 expr1 为 TRUE 时返回 expr1，否则返回 expr3。  
   
 10、异常可以嵌套了  
-```php  
+```  
 class MyException extends Exception { }  
   
 class Test {  
@@ -453,7 +452,7 @@ $foo->testing();
 ```  
   
 11、可以动态访问静态变量了  
-```php  
+```  
 class C {  
    public static $foo = 123;  
 }  
@@ -463,7 +462,7 @@ echo $a::$foo;
 ```  
   
 上边运行时输出：  
-```php  
+```  
 123  
 ```  
   

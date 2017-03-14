@@ -1,6 +1,7 @@
 ## Nginx
 
 ### set 指令
+
 ```
 用于定义一个变量，并为变量赋值
 作用范围为
@@ -12,6 +13,7 @@
 ```
 
 ### if 指令
+
 ```
 if( condition )
 {
@@ -41,12 +43,14 @@ if指令不支持嵌套，不支持多个 && 或 ||
 ```
 
 ### nginx 内置变量
+
 ```
 $host				请求的主机名
 $request_filename	请求的文件名
 ```
 
 ### rewrite 指令
+
 ```
 rewrite regex replacement flag;
 
