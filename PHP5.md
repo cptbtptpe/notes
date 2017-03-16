@@ -1,4 +1,4 @@
-## PHP5.3、5.4、5.5、5.6新特性  
+﻿## PHP5  
   
 ### PHP 5.6  
 1、可以使用表达式定义常量。 [Document](https://php.net/manual/zh/migration56.new-features.php)  
@@ -7,14 +7,17 @@
 
 ```  
 const ONE = 1;
-const TWO = ONE * 2;    //定义常量时允许使用之前定义的常量进行计算
+
+// 定义常量时允许使用之前定义的常量进行计算
+const TWO = ONE * 2;
 
 class C {
     const THREE = TWO + 1;
     const ONE_THIRD = ONE / self::THREE;
     const SENTENCE = 'The value of THREE is '.self::THREE;
 
-    public function f($a = ONE + self::THREE) { //允许常量作为函数参数默认值
+    // 允许常量作为函数参数默认值
+    public function f($a = ONE + self::THREE) { 
         return $a;
     }
 }
@@ -30,7 +33,7 @@ const ARR = ['a', 'b'];
 echo ARR[0];  
 ```  
   
-2、使用 ... 运算符定义变长参数函数  
+2、使用 `...` 运算符定义变长参数函数  
 现在可以不依赖 func_get_args()， 使用 ... 运算符 来实现 变长参数函数。  
 
 ```  
@@ -49,8 +52,8 @@ Array
 )  
 ```  
   
-3、使用 ** 进行幂运算  
-加入右连接运算符 ** 来进行幂运算。 同时还支持简写的 **= 运算符，表示进行幂运算并赋值。  
+3、使用 `**` 进行幂运算  
+加入右连接运算符 `**` 来进行幂运算。 同时还支持简写的 `**=` 运算符，表示进行幂运算并赋值。  
 
 ```  
 printf(2 ** 3); // 8  
@@ -111,7 +114,7 @@ var_dump(new C(42));
 ### PHP 5.5  
   
 1、新增 Generators  
-yield关键字用于当函数需要返回一个迭代器的时候，逐个返回值。  
+yield 关键字用于当函数需要返回一个迭代器的时候，逐个返回值。  
 
 ```  
 function number10()  
@@ -128,7 +131,9 @@ function number10()
 ```  
   
 2、新增 finally 关键字  
-Finally处理流程:  
+
+**Finally 处理流程**:  
+
 ![Finally处理流程][1]  
   
 3、foreach 支持 list()  
@@ -167,11 +172,11 @@ echo 'PHP'[0]; // P
 缺点是缺乏互操作性，在需要和其他语言对接时会比较麻烦。  
   
 ```  
-//加密  
+// 加密  
 echo $hash = password_hash('rasmuslerdorf', PASSWORD_DEFAULT);  
 //输出结果类似于：$2y$10$.vGA1O9wmRjrwAVXD98HNOgsNpDczlqm3Jq7KnEd1rVAGv3Fykk1a  
   
-//验证  
+// 验证  
 if(password_verify('rasmuslerdorf','$2y$10$.vGA1O9wmRjrwAVXD98HNOgsNpDczlqm3Jq7KnEd1rVAGv3Fykk1a')) {  
     echo "密码正确";  
 } else {  
@@ -201,9 +206,9 @@ $names = array_column($records, 'name', 'id');
 print_r($names);  
 ```  
 
-9、放弃对Windows XP和2003 的支持
+9、放弃对 Windows XP 和 2003 的支持
 
-10、弃用e修饰符  
+10、弃用 e 修饰符  
 
 11、获取完整类别名称  
 
@@ -217,7 +222,7 @@ $reflection = new ReflectionClass('FooBar');
 echo FooBar::class;  
 ```  
 
-为了解决这个问题采用新的FooBar::class语法，它返回类的完整类别名称  
+为了解决这个问题采用新的 FooBar::class 语法，它返回类的完整类别名称  
    
 12、标量类型提示  
   
@@ -236,7 +241,7 @@ foo("abc");  // error
 13、Getter 和 Setter  
   
 ```  
-// 如果你从不喜欢写这些getXYZ()和setXYZ($value)方法，那么这应该是你最受欢迎的改变。提议添加一个新的语法来定义一个属性的设置/读取  
+// 如果你从不喜欢写这些 getXYZ() 和 setXYZ($value) 方法，那么这应该是你最受欢迎的改变。提议添加一个新的语法来定义一个属性的设置/读取  
 
 class TimePeriod {  
     public $seconds;  
@@ -279,7 +284,7 @@ $firstNames = [foreach ($users as $user) yield $user->firstName];
 ```  
 $firstNames = [];  
 foreach ($users as $user) {  
-$firstNames[] = $user->firstName;  
+    $firstNames[] = $user->firstName;  
 }  
 ```  
   
@@ -291,15 +296,15 @@ $underageUsers = [foreach ($users as $user) if ($user->age < 18) yield $user];
   
 生成器表达式也很类似，但是返回一个迭代器(用于动态生成值)而不是一个数组。  
   
-16、增加了opcache扩展  
-使用opcache会提高php的性能，你可以和其他扩展一样静态编译（–enable-opcache）或者动态扩展（zend_extension）加入这个优化项。  
+16、增加了 opcache 扩展  
+使用 opcache 会提高 php 的性能，你可以和其他扩展一样静态编译（–enable-opcache）或者动态扩展（zend_extension）加入这个优化项。  
 
 ### PHP 5.4  
   
 1、新增 Traits. [Document](https://php.net/manual/zh/language.oop5.traits.php)  
 
 ```  
-// Traits不能被单独实例化，只能被类所包含  
+// Traits 不能被单独实例化，只能被类所包含  
 trait SayWorld  
 {  
     public function sayHello()  
@@ -310,11 +315,12 @@ trait SayWorld
   
 class MyHelloWorld  
 {  
-    // 将SayWorld中的成员包含进来  
+    // 将 SayWorld 中的成员包含进来  
     use SayWorld;  
 }  
   
 $xxoo = new MyHelloWorld();  
+
 // sayHello() 函数是来自 SayWorld 构件的  
 $xxoo->sayHello();  
 ```  
@@ -325,6 +331,7 @@ $xxoo->sayHello();
 // 原来的数组写法  
 $arr = array("key" => "value", "key2" => "value2");  
 $arr = array(1,2,3,4);  
+
 // 简写形式  
 $arr = ["key" => "value", "key2" => "value2"];  
 $arr = [1,2,3,4];  
@@ -345,12 +352,14 @@ print func()[0];
 5、内置用于开发的 CLI 模式的 web server  
 
 ```  
-//启动Web服务器  
+// 启动Web服务器  
 php -S localhost:8000  
-//启动时指定根目录  
+
+// 启动时指定根目录  
 php -S localhost:8000 -t /home/me/public_html/foo  
-//使用路由（Router）脚本  
-php -S localhost:8000 index.php //所有的请求都会由index.php来处理。  
+
+// 使用路由（Router）脚本  
+php -S localhost:8000 index.php //所有的请求都会由index.php来处理。
 ```  
   
 6、新增在实例化时访问类成员  
@@ -366,7 +375,7 @@ $func = "funcXXOO";
 A::{$func}();  
 ```  
 
-8、闭包支持 this  
+8、闭包支持 \$this  
   
 9、新增二进制直接量  
 
@@ -376,7 +385,7 @@ $bin = 0b110011;
 echo $bin; //51  
 ```  
   
-10、session提供了上传进度支持  
+10、session 提供了上传进度支持  
 
 ```
 通过 $_SESSION["upload_progress_name"] 就可以获得当前文件上传的进度信息，结合 Ajax 就能很容易的实现上传进度条。  
@@ -385,7 +394,7 @@ echo $bin; //51
 11、默认使用 mysqlnd  
 
 ```
-现在mysql, mysqli, pdo_mysql默认使用mysqlnd本地库，在PHP5.4以前需要：./configure --with-mysqli=mysqlnd  
+现在 mysql, mysqli, pdo_mysql 默认使用 mysqlnd 本地库，在 PHP 5.4 以前需要：./configure --with-mysqli=mysqlnd 
 现在：./configure --with-mysqli  
 ```
   
@@ -393,19 +402,19 @@ echo $bin; //51
 
 ```  
 echo json_encode("中文", JSON_UNESCAPED_UNICODE);  
-//"中文"  
+// "中文"  
 ```  
   
-13、default_charset从ISO-8859-1已经变为UTF-8  
+13、default_charset 从 ISO-8859-1 已经变为 UTF-8  
 
 ```
-默认发送“Content-Type: text/html; charset=utf-8”  
+默认发送 Content-Type: text/html; charset=utf-8 
 ```
   
-14、Buid-in web server 内置了一个简单的Web服务器  
+14、Buid-in web server 内置了一个简单的 Web 服务器  
 
 ```
-把当前目录作为Root Document只需要这条命令即可:  
+把当前目录作为 Root Document 只需要这条命令即可:  
 # php -S localhost:3300  
 
 也可以指定其它路径：  
@@ -418,8 +427,8 @@ echo json_encode("中文", JSON_UNESCAPED_UNICODE);
 15、Traits  
 
 ```
-Traits提供了一种灵活的代码重用机制，即不像interface一样只能定义方法但不能实现，又不能像class一样只能单继承。至于在实践中怎样使用，还需要深入思考。  
-魔术常量为`__TRAIT__`  
+Traits 提供了一种灵活的代码重用机制，即不像 interface 一样只能定义方法但不能实现，又不能像 class 一样只能单继承。至于在实践中怎样使用，还需要深入思考。  
+魔术常量为 `__TRAIT__`  
 ```
   
 16、Callable typehint  
@@ -427,7 +436,7 @@ Traits提供了一种灵活的代码重用机制，即不像interface一样只�
 ```  
 function foo(callable $callback) { }  
 
-foo("false"); //错误，因为false不是callable类型  
+foo("false"); //错误，因为 false 不是 callable 类型  
 foo("printf"); //正确  
 foo(function(){}); //正确  
 
@@ -440,7 +449,7 @@ foo(array("A", "show")); //正确
   
 17、函数类型提示的增强  
   
-18、新增加了 SERVER["REQUEST_TIME_FLOAT"]，这个是用来统计服务请求时间的，并用ms来表示  
+18、新增加了 \$SERVER["REQUEST_TIME_FLOAT"]，这个是用来统计服务请求时间的，并用 ms 来表示  
 
 19、二进制直接量(binary number format)  
 
@@ -479,7 +488,7 @@ int(1)
   
 2、增加后期静态绑定. [Document](https://php.net/manual/zh/language.oop5.late-static-bindings.php)  
   
-在PHP中，我们可以在类中通过self关键字或者CLASS来判断或调用当前类。但有一个问题，如果我们是在子类中调用，得到的结果将是父类。因为在继承父类的时候，静态成员就已经被绑定了。  
+在 PHP 中，我们可以在类中通过 self 关键字或者CLASS来判断或调用当前类。但有一个问题，如果我们是在子类中调用，得到的结果将是父类。因为在继承父类的时候，静态成员就已经被绑定了。  
 
 ```  
 class A  
@@ -513,7 +522,7 @@ $b->callFuncXXOO();
 A::funcXXOO()  
 ```  
   
-PHP 5.3.0中增加了一个static关键字来引用当前类，即实现了延迟静态绑定：  
+PHP 5.3.0 中增加了一个 static 关键字来引用当前类，即实现了延迟静态绑定：  
 
 ```  
 class A  
@@ -654,10 +663,10 @@ echo $a::$foo;
 123  
 ```  
   
-12、mail()函数支持记录发送日志了  
+12、mail() 函数支持记录发送日志了  
 在配置文件 php.ini 中可设置日志路径。参数名：mail.log  
   
-13、HTTP状态码在200-399范围内均被认为访问成功  
+13、HTTP 状态码在 200-399 范围内均被认为访问成功  
   
 14、新的垃圾收集器(GC)，并默认启用  
 

@@ -1,4 +1,4 @@
-## ECMAScript6
+﻿## ECMAScript6
   
 ### ECMAScript 和 JavaScript  
   
@@ -83,7 +83,6 @@
 	* Example  
   
 		```  
-		  
 		// 数组方式的解构赋值  
 		// 右侧对应顺序的值赋给左边对应位置的变量  
 		  

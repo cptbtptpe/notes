@@ -1,4 +1,4 @@
-## Linux  
+﻿## Linux  
   
 ### 常用命令  
   
@@ -157,6 +157,7 @@ ctrl+l - 清屏
 ```  
   
 ### vim 操作  
+
 ```  
 vim filename 打开一个文件，如果文件不存在则会新建  
   
@@ -259,6 +260,7 @@ unzip -o - 解压 .zip 文件
 ### 文件操作  
   
 **创建文件**  
+
 ```  
 touch path/filename  
 
@@ -272,31 +274,37 @@ less xxx > path/filename
 ```  
   
 **移动或重命名**  
+
 ```  
 mv oldpath/oldfilename newpath/newfilename  
 ```  
   
 **拷贝文件**  
+
 ```  
 cp oldpath/oldfilename newpath/newfilename  
 ```  
   
 **拷贝目录**  
+
 ```  
 cp -R oldpath newpath  
 ```  
   
 **删除文件**  
+
 ```  
 rm path/filename  
 ```  
   
 **删除目录**  
+
 ```  
 rm -r path  
 ```  
   
 **更改文件权限**  
+
 ```  
 chmod 0777 path/filename  
 
@@ -306,6 +314,7 @@ chmod 用于修改文件 / 文件夹所属者（u）或所属组（g）或其它
 ```  
   
 **更改目录权限**  
+
 ```  
 chmod -R 0777 path  
 ```  
@@ -382,10 +391,12 @@ groupdel xxx - 删除用户组
 | x执行 | 可作为命令执行 | 可访问目录内容 | 1 |  
   
 Linux权限基于UGO模型进行控制  
-`User` `Group` `Other`  
+
+> `User` `Group` `Other`  
   
 ls -l命令列出的文件信息格式如下  
-`drwxr-xr-- 2 leon leon 58 Oct 1 13:50 filename`  
+
+> `drwxr-xr-- 2 leon leon 58 Oct 1 13:50 filename`  
 
 | UGO权限 | 链接数 | 所属用户 | 所属用户组 | 大小 | 创建修改时间 | 文件名称 |  
 | --- | --- | --- | --- | --- | --- | --- |  
@@ -450,8 +461,6 @@ umask 022 - 设置当前用户（当前终端）的 umask 值为 022
 | sgid | 以文件所属组身份执行 | 该目录中创建创建的任意新文件的所属组与该目录的所数组将保持一致 |  
 | sticky | 无 | 对目录拥有写入权限的用户仅可以删除其拥有的文件，无法删除其他用户所拥有的文件 |  
   
-  
-  
 ### 网络管理  
   
 ```  
@@ -490,17 +499,25 @@ dig www.baidu.com
 ```  
   
 ### 显示路由表  
-  
-ip route  
+
+```
+ip route
+```
   
 追踪到达目标地址的网络路径（经过的路由）  
+
+```
 traceroute www.baidu.com  
-  
-使用mtr进行网络质量测试（结合了traceroute和ping）  
+```
+
+使用 mtr 进行网络质量测试（结合了traceroute和ping）  
+
+```
 mtr www.baidu.com  
-  
+```
+
 hostname xxx  - 修改当前主机名为 xxx 重新打开终端才能看到 一次性保存，重启机器就变回去了  
-编辑 /etc/sysconfig/network 文件并保存才可永久修改主机名  
+编辑 `/etc/sysconfig/network` 文件并保存才可永久修改主机名  
   
 网络故障排查  
 遵循从底层到高层，从自身到外部的流程进行  
@@ -523,17 +540,17 @@ hostname xxx  - 修改当前主机名为 xxx 重新打开终端才能看到 一�
 
 ### Ubuntu 修改 DNS
 	
-	提醒：手动修改 /etc/resolv.conf 文件将自动被重置
+	提醒：手动修改 `/etc/resolv.conf` 文件将自动被重置
 	
 	新建 tail 文件
-	sudo vi /etc/resolvconf/resolv.conf.d/tail
+	$ sudo vi /etc/resolvconf/resolv.conf.d/tail
 	
 	写入以下两行
 	nameserver 8.8.8.8  
 	nameserver 114.114.114.114
 	
 	重启服务
-	sudo /etc/init.d/resolvconf restart 
+	$ sudo /etc/init.d/resolvconf restart 
 	
 ### 本地利用公司开发机&公司个人机器做开发  
 
@@ -574,7 +591,6 @@ hostname xxx  - 修改当前主机名为 xxx 重新打开终端才能看到 一�
 	ssh -fCNL '*:38080:localhost:38081' localhost
 
 **本地机器执行**  
-	
 	
 	# 浏览器访问指定域名:端口号
 	

@@ -149,8 +149,8 @@
   
 ### Cross Site Scripting - 跨站脚本攻击 - XSS  
   
-* XSS满足条件  
-    * 在URL中输入的值在页面有有输出  
+* XSS 满足条件  
+    * 在 URL 中输入的值在页面有有输出  
     * 输出最好是在 script 标签内  
   
 * 通过 document.cookie 获取当前用户的 cookie 信息，该 cookie 必须是非 httponly 状态才能用 javascript 代码获取  

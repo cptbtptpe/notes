@@ -1,4 +1,4 @@
-﻿## PHP7新特性  
+﻿## PHP7  
   
 **开启严格模式**  
 
@@ -122,7 +122,7 @@ echo $getName2->call(new Person);
   
 **CSPRNG**  
   
-> 新增两个函数 : random_bytes() and random_int(). 可以加密的生产被保护的整数和字符串。我这蹩脚的翻译，总之随机数变得安全了。  
+> 新增两个函数 : random_bytes() 和 random_int(). 可以加密的生产被保护的整数和字符串。我这蹩脚的翻译，总之随机数变得安全了。  
   
 > andom_bytes() — 加密生存被保护的伪随机字符串  
   
@@ -136,7 +136,7 @@ echo $getName2->call(new Person);
   
 **Session options**  
   
-> 现在， session_start() 函数可以接收一个数组作为参数，可以覆盖 php.ini 中session 的配置项。  
+> 现在， session_start() 函数可以接收一个数组作为参数，可以覆盖 php.ini 中 session 的配置项。  
   
 **生成器的返回值**  
   
