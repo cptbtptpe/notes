@@ -359,11 +359,12 @@ SELECT ＊ FROM table WHERE id = 1 FOR UPDATE;
 **FOR UPDATE**    
 
 `特点`：仅仅适用于 InnoDB，并且需要出现在 `BEGIN` 和 `COMMIT` 块中（事务）    
+
 | 上下文 | 锁状态 | 锁描述 |    
 | --- | --- | --- |    
 | 明确指定主键并存在该记录 | row lock | 行锁 |    
 | 明确制定主键但不存在该记录 | no lock | 无锁 |    
 | 无主键 | table lock | 表锁 |    
 | 主键不明确 | table lock | 表锁 |    
-    
+     
 表级锁时，不管是否查询到记录，都会锁定表    
