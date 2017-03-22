@@ -382,7 +382,8 @@ SELECT * FROM table1 IGNORE INDEX (field1, field2) …
 ```
 SELECT SQL_NO_CACHE field1, field2 FROM table1;
 
-有一些 SQL 语句需要实时地查询数据，或者并不经常使用(可能一天就执行一两次),这样就需要把缓冲关了,不管这条 SQL 语句是否被执行过，服务器都不会在缓冲区中查找，每次都会执行它。
+有一些 SQL 语句需要实时地查询数据，或者并不经常使用(可能一天就执行一两次)
+这样就需要把缓冲关了,不管这条 SQL 语句是否被执行过，服务器都不会在缓冲区中查找，每次都会执行它。
 ```
 
 **强制查询缓冲 SQL_CACHE**
@@ -414,7 +415,12 @@ LOW_PRIORITY 可以使用在 UPDATE 和 INSERT 操作中，让 MySQL 知道，�
 ```
 INSERT DELAYED INTO table1 set field1= …
 
-INSERT DELAYED INTO，是客户端提交数据给 MySQL，MySQL 返回 OK 状态给客户端。而这是并不是已经将数据插入表，而是存储在内存里面等待排队。当 MySQL 有空余时，再插入。另一个重要的好处是，来自许多客户端的插入被集中在一起，并被编写入一个块。这比执行许多独立的插入要快很多。坏处是，不能返回自动递增的 ID，以及系统崩溃时，MySQL 还没有来得及插入数据的话，这些数据将会丢失。
+INSERT DELAYED INTO，是客户端提交数据给 MySQL，MySQL 返回 OK 状态给客户端。
+而这是并不是已经将数据插入表，而是存储在内存里面等待排队。
+当 MySQL 有空余时，再插入。
+另一个重要的好处是，来自许多客户端的插入被集中在一起，并被编写入一个块。
+这比执行许多独立的插入要快很多。
+坏处是，不能返回自动递增的 ID，以及系统崩溃时，MySQL 还没有来得及插入数据的话，这些数据将会丢失。
 ```
 
 **强制连接顺序 STRAIGHT_JOIN**
@@ -422,7 +428,8 @@ INSERT DELAYED INTO，是客户端提交数据给 MySQL，MySQL 返回 OK 状态
 ```
 SELECT table1.field1, table2.field2 FROM table1 STRAIGHT_JOIN table2 WHERE …
 
-由上面的 SQL 语句可知，通过 STRAIGHT_JOIN 强迫 MySQL 按 table1、table2 的顺序连接表。如果你认为按自己的顺序比 MySQL 推荐的顺序进行连接的效率高的话，就可以通过 STRAIGHT_JOIN 来确定连接顺序。
+由上面的 SQL 语句可知，通过 STRAIGHT_JOIN 强迫 MySQL 按 table1、table2 的顺序连接表。
+如果你认为按自己的顺序比 MySQL 推荐的顺序进行连接的效率高的话，就可以通过 STRAIGHT_JOIN 来确定连接顺序。
 ```
 
 **强制使用临时表 SQL_BUFFER_RESULT**
@@ -430,7 +437,9 @@ SELECT table1.field1, table2.field2 FROM table1 STRAIGHT_JOIN table2 WHERE …
 ```
 SELECT SQL_BUFFER_RESULT * FROM table1 WHERE …
 
-当我们查询的结果集中的数据比较多时，可以通过 SQL_BUFFER_RESULT 选项强制将结果集放到临时表中，这样就可以很快地释放 MySQL 的表锁(这样其它的SQL语句就可以对这些记录进行查询了)，并且可以长时间地为客户端提供大记录集。
+当我们查询的结果集中的数据比较多时，可以通过 SQL_BUFFER_RESULT 选项强制将结果集放到临时表中
+这样就可以很快地释放 MySQL 的表锁(这样其它的SQL语句就可以对这些记录进行查询了)
+并且可以长时间地为客户端提供大记录集。
 ```
 
 **分组使用临时表 SQL_BIG_RESULT 和 SQL_SMALL_RESULT**
@@ -438,7 +447,9 @@ SELECT SQL_BUFFER_RESULT * FROM table1 WHERE …
 ```
 SELECT SQL_BUFFER_RESULT field1, COUNT(*) FROM table1 GROUP BY field1;
 
-一般用于分组或DISTINCT关键字，这个选项通知 MySQL，如果有必要，就将查询结果放到临时表中，甚至在临时表中进行排序。SQL_SMALL_RESULT 比起 SQL_BIG_RESULT 差不多，很少使用。
+一般用于分组或DISTINCT关键字，这个选项通知 MySQL
+如果有必要，就将查询结果放到临时表中，甚至在临时表中进行排序。
+SQL_SMALL_RESULT 比起 SQL_BIG_RESULT 差不多，很少使用。
 ```
 
 ### MySQL 索引
