@@ -63,7 +63,7 @@ if ( !-e $request_filename )
 
 rewrite 最后一项为标记位，Nginx 支持的标记为有：
 
-	last 			表示完成rewrite
+	last 			表示完成 rewrite
 	permanent 		返回 301 永久重定向，浏览器地址栏会显示跳转后的 URL
 	break 			本条规则匹配完成后，终止其他规则的匹配
 	redirect 		返回 302 临时重定向
