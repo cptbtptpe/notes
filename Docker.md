@@ -88,8 +88,6 @@ sudo docker top <CONTAINER ID|NAME>
 sudo docker logs -f <CONTAINER ID|NAME>
 ```
 
--
-
 > 镜像常用操作
 
 ### 持久化镜像
@@ -116,10 +114,10 @@ sudo docker build -t <IMAGE NAME> <DOCKERFILE PATH>
 
 > 其他及注意事项
 
-> Dockerfile 的 EXPOSE 相当于 docker run --expose，提供 container 之间的端口访问
-> docker run -p 允许 container 外部主机访问 container 的端口
-
--
+```
+Dockerfile 的 EXPOSE 相当于 docker run --expose，提供 container 之间的端口访问
+docker run -p 允许 container 外部主机访问 container 的端口
+```
 
 > 用户手册
 
@@ -692,8 +690,6 @@ Commands:
               直到容器停止，此时，会打印出容器的退出码。
 ```
 
--
-
 > Dockerfile 指令
 
 ```
@@ -881,8 +877,6 @@ ONBUILD			在子镜像中执行
 				ONBUILD <DOCKERFILE KEYWORD>
 				ONBUILD 指定的命令在构建镜像时并不执行，而是在它的子镜像中执行
 ```
-
--
 
 > docker-compose.yml 指令
 

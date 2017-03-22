@@ -123,15 +123,15 @@ echo $getName2->call(new Person);
 **CSPRNG**  
   
 > 新增两个函数 : random_bytes() 和 random_int(). 可以加密的生产被保护的整数和字符串。我这蹩脚的翻译，总之随机数变得安全了。  
-  
+>  
 > andom_bytes() — 加密生存被保护的伪随机字符串  
-  
+>  
 > random_int() — 加密生存被保护的伪随机整数  
   
 **preg_replace_callback_array()**  
   
 > 新增了一个函数 preg_replace_callback_array() ，使用该函数可以使得在使用preg_replace_callback() 函数时代码变得更加优雅。  
-  
+>  
 > 在 PHP7 之前，回调函数会调用每一个正则表达式，回调函数在部分分支上是被污染了。  
   
 **Session options**  
@@ -213,8 +213,6 @@ try {
 **$HTTP_RAW_POST_DATA 被移除**  
   
 > 不再提供 $HTTP_RAW_POST_DATA 变量。 请使用 php://input 作为替代。  
-  
-  
   
 **yield 变更为右联接运算符**  
   
