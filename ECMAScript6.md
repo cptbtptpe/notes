@@ -28,7 +28,7 @@
 	* `Babel`  
 	* `Traceur`  
   
-###后传  
+### 后传  
 
 * `Object.observe` 用来监听对象（以及数组）的变化  
 * `Async` 函数，在 `Promise` 和 `Generator` 函数基础上，提出的异步操作解决方案  
