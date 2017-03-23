@@ -32,8 +32,8 @@
 ```  
 interface Human{  
     const TEST_CONST = "test const"; // 定义常量  
-    // public $v; // error，不能定义变量  
-    // static $count; // error，不能定义变量  
+    // public $v; // error ，不能定义变量  
+    // static $count; // error ，不能定义变量  
     public function speak();  
     public function walk();  
     public function run();  
@@ -66,7 +66,7 @@ class Mother implements Human{
         echo "mother init n";  
     }  
   
-    # 这里必须实现walk方法  
+    # 这里必须实现 walk 方法  
     public function walk(){  
         echo "mother walk skill n";  
     }  

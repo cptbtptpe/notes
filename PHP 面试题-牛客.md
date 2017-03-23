@@ -112,7 +112,7 @@ new B();
   
 ---  
   
-下面哪种方式可以用于服务器共享 session？  
+下面哪种方式可以用于服务器共享 session ？  
   
 - [x] 利用 NFS 共享 session 数据  
 - [x] 基于数据库的 session 共享  
@@ -121,7 +121,7 @@ new B();
   
 ---  
   
-如何在PHP中自定义一个类？  
+如何在 PHP 中自定义一个类？  
   
 - [ ] &lt;?php class Class_Name(){ //...... } ?&gt;  
 - [x] &lt;?php class Class_Name{ //......} ?&gt;  
@@ -139,11 +139,11 @@ new B();
   
 ---  
   
-在PHP中，如果需要类C的实例销毁时自动完成某些逻辑，我们应该怎么做  
+在 PHP 中，如果需要类 C 的实例销毁时自动完成某些逻辑，我们应该怎么做  
   
 - [ ] 定义析构函数 `-C`  
 - [ ] 定义析构函数 `_-C`  
-- [ ] PHP中没办法实现要求  
+- [ ] PHP 中没办法实现要求  
 - [x] 定义析构函数 `__destruct`  
   
 ---  
@@ -164,7 +164,7 @@ echo date("Y-m-d:H:i:s",strtotime($datetime));
   
 ---  
   
-在PHP面向对象中有一个通用方法 `__toString()` 方法，下面关于此方法描述或定义错误的是（ ）：  
+在 PHP 面向对象中有一个通用方法 `__toString()` 方法，下面关于此方法描述或定义错误的是（ ）：  
   
 - [ ] 此方法是在直接输出对象引用时自动调用的方法。  
 - [ ] 如果对象中没有定义此方法时，直接使用 echo 输出此对象，会报如下错误：`Catchable fatal error: Object of class A could not be converted to string.`  
@@ -185,7 +185,7 @@ echo date("Y-m-d:H:i:s",strtotime($datetime));
 使用 mysqli 扩展可以很方便地完成数据库的事务处理功能，下面对数据库事务处理的描述中不正确的是？  
   
 - [ ] MySQL 目前只有 InnoDB 和 BDB 两个数据表类型才支持事务  
-- [ ] MySQL 是以自动提交（autocommit）模式运行的，必须执行 mysqli 对象中的 autocommit(0) 方法关闭 MySQL 事务机制的自动提交模式  
+- [ ] MySQL 是以自动提交（ autocommit ）模式运行的，必须执行 mysqli 对象中的 autocommit(0) 方法关闭 MySQL 事务机制的自动提交模式  
 - [ ] 调用 mysqli 类对象的 commit() 方法提交事务  
 - [x] 调用 mysqli 类对象的 rollback() 方法撤销事务，并开启自动提交模式运行  
   
@@ -200,11 +200,11 @@ echo date("Y-m-d:H:i:s",strtotime($datetime));
   
 ---  
   
-设有一个数据库 mydb 中有一个表 tb1，表中有六个字段，主键为 ID，有十条记录，ID 从 0 到 9，以下代码输出结果是?  (   )  
+设有一个数据库 mydb 中有一个表 tb1 ，表中有六个字段，主键为 ID ，有十条记录， ID 从 0 到 9 ，以下代码输出结果是?  (   )  
 
 ```  
 $link = mysql_connect("localhost","mysql_user", "mysql_password") or die("Could not connect: " . mysql_error());  
-$result = mysql_query("SELECT id,name,age FROM mydb、tb1 where id < 5") or die("Could not query:" . mysql_error());  
+$result = mysql_query("SELECT id,name,age FROM mydb 、 tb1 where id < 5") or die("Could not query:" . mysql_error());  
   
 echo mysql_num_fields($result);  
 mysql_close($link);  
@@ -262,7 +262,7 @@ switch ($strc){
     case 1:  
         echo "str > str1";  
         break;  
-    case –1:  
+    case – 1:  
         echo "str < str1";  
         break;  
     case 0:  
@@ -342,7 +342,7 @@ echo $b->num;
 
 ---  
   
-在 PHP 面向对象中，关于 `__call（）` 方法描述错误的是（ ）：  
+在 PHP 面向对象中，关于 `__call （）` 方法描述错误的是（ ）：  
   
 - [ ] `__call` 方法在调用对象中不存在的方法时自动调用的。  
 - [ ] `__call` 方法有两个参数。  
@@ -351,7 +351,7 @@ echo $b->num;
   
 ---  
   
-除了使用function `__construct()` 定义构造方法外，还可以使用（ ）  
+除了使用 function `__construct()` 定义构造方法外，还可以使用（ ）  
   
 - [ ] function  `__destruct()`  
 - [x] function 类名()  
@@ -396,7 +396,7 @@ PDO 通过执行 SQL 查询与数据库进行交互，可以分为多种不同�
   
 ---  
   
-PDO::ATTR_ERRMODE 设置为以下哪个值时，PDO 会抛出 PDOException?  
+PDO::ATTR_ERRMODE 设置为以下哪个值时， PDO 会抛出 PDOException?  
   
 - [ ] PDO::ERRMODE_SILENT  
 - [ ] PDO::ERRMODE_WARNING  
@@ -453,10 +453,10 @@ $y=array_unique($x);
 echo count($x) . "," . count($y);  
 ```  
   
-- [ ] 3，1  
-- [ ] 3，3  
-- [x] 5，4  
-- [ ] 5，5  
+- [ ] 3 ， 1  
+- [ ] 3 ， 3  
+- [x] 5 ， 4  
+- [ ] 5 ， 5  
   
 ---  
   
@@ -523,16 +523,16 @@ echo $y["ttt"];
   
 ---  
   
-下列哪一个方法用于二进制比较 String（不区分大小写） ？  
+下列哪一个方法用于二进制比较 String （不区分大小写） ？  
   
 - [ ] strcmp()  
 - [ ] stricmp()  
 - [x] strcasecmp()  
-- [ ] stristr（）  
+- [ ] stristr （）  
   
 ---  
   
-下列哪一个正则表达式能匹配 php|architect？  
+下列哪一个正则表达式能匹配 php|architect ？  
   
 - [ ] \d{3}\|\d{8}  
 - [x] \[a-z\]\[a-z\]\[a-z\]\|\w{9}  
@@ -599,7 +599,7 @@ echo x;
   
 ---  
   
-比较两个string最好用什么方法  
+比较两个 string 最好用什么方法  
   
 - [ ] 使用 strpos  
 - [ ] 使用 ==  
@@ -684,7 +684,7 @@ mysql_close();
   
 - [ ] 与数据库进行多连接  
 - [ ] 与 mysql_connect 功能相同  
-- [ ] 与 ＠mysql_connect 功能相同  
+- [ ] 与 ＠ mysql_connect 功能相同  
 - [x] 与数据库建立持久连接  
   
 ---  
@@ -733,7 +733,7 @@ print_A();
   
 ---  
   
-PHP中的错误控制操作符是：（ ）  
+PHP 中的错误控制操作符是：（ ）  
   
 - [ ] %  
 - [ ] $  
@@ -786,7 +786,7 @@ total_Sum(1);
   
 ---  
   
-下面的脚本运行以后，\$array数组所包含的值是什么？（    ）  
+下面的脚本运行以后，\$array 数组所包含的值是什么？（    ）  
 
 ```  
 $array= array('1','1');  
@@ -817,7 +817,7 @@ echo $s;
   
 ---  
   
-假如有个类 Person，实例化（new）一个对象 \$p，那么如何使用对象 \$p 调用 Person 类中的 getInfo 方法？( )  
+假如有个类 Person ，实例化（ new ）一个对象 \$p ，那么如何使用对象 \$p 调用 Person 类中的 getInfo 方法？( )  
   
 - [ ] \$p=>getInfo();  
 - [ ] \$this->getInfo();  

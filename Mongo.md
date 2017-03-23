@@ -1,6 +1,6 @@
 ## Mongo
 
-### 导出数据(文件sql)
+### 导出数据(文件 sql)
 
 ```  
 mongoexport 
@@ -24,7 +24,7 @@ mongoexport
 }  
 ```  
   
-### 导出数据(显式sql)  
+### 导出数据(显式 sql)  
 
 ```  
 mysql 

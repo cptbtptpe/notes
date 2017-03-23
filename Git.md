@@ -79,19 +79,19 @@ git commit --amend --author='<USERNAME> <EMAIL>'
 3. 运行 `git remote add <REPO NAME> git@github.com:<AUTHOR>/<PROJECT>.git` 把我的库添加为远端库
 4. 运行 `git pull <REPO NAME> <BRANCH NAME>` 拉取并合并到本地
 5. 修改代码
-6. `git commit` 后 `git push` 到自己的库（git push origin master）
-7. 登录Github在你首页可以看到一个 `pull request` 按钮，点击它，填写一些说明信息，然后提交即可
+6. `git commit` 后 `git push` 到自己的库（ git push origin master ）
+7. 登录 Github 在你首页可以看到一个 `pull request` 按钮，点击它，填写一些说明信息，然后提交即可
 
-> 1~3是初始化操作，执行一次即可
-> 在修改代码前必须执行第4步同步远程(上游)库，然后继续下面的步骤，否则容易发生冲突
+> 1~3 是初始化操作，执行一次即可
+> 在修改代码前必须执行第 4 步同步远程(上游)库，然后继续下面的步骤，否则容易发生冲突
 
 ### 压缩多个 commit
 
 ```
 git rebase -i HEAD~<NUMBER OF COMMITS>
 
-# 运行该命令时，你会看到一个交互界面，列出了许多commit让你选择哪些需要进行压缩
-# 理想情况下，你选择最后一次commit并把其它老commit都进行压缩
+# 运行该命令时，你会看到一个交互界面，列出了许多 commit 让你选择哪些需要进行压缩
+# 理想情况下，你选择最后一次 commit 并把其它老 commit 都进行压缩
 ```
 
 ### 暂存未提交的更改
@@ -116,10 +116,10 @@ git stash apply <STASH>
 ### 查看日志
 
 ```
-# 显示 Hash、作者、日期、提交描述信息
+# 显示 Hash 、作者、日期、提交描述信息
 git log
 
-# 显示 Hash、提交描述信息
+# 显示 Hash 、提交描述信息
 git log --pretty=oneline
 
 # 图形显示版本图
@@ -235,7 +235,7 @@ git ci --amend 		# 修改最后一次提交记录
 git revert <HASH> 	# 恢复某次提交的状态，恢复动作本身也创建次提交对象
 git revert HEAD 	# 恢复最后一次提交的状态
 
-查看文件diff
+查看文件 diff
 
 git diff <FILE> 	# 比较当前文件和暂存区文件差异 git diff
 git diff <HASH-1> <HASH-2> <HASH-3> ... 
@@ -275,7 +275,7 @@ git br -d <BRANCH NAME>
 git br -D <BRANCH NAME> 	
 					# 强制删除某个分支 (未被合并的分支被删除的时候需要强制)
 
-本地仓库的分支合并和rebase
+本地仓库的分支合并和 rebase
 
 git merge <BRANCH NAME> 	
 					# 将 branch 分支合并到当前分支
@@ -285,7 +285,7 @@ git rebase master <BRANCH NAME>
 					# 将 master rebase 到 branch
 					# 相当于： git co <branch> && git rebase master && git co master && git merge <branch>
 
-Git补丁管理(方便在多台机器上开发同步时用)
+Git 补丁管理(方便在多台机器上开发同步时用)
 
 git diff > ../sync.patch 
 					# 生成补丁
@@ -294,14 +294,14 @@ git apply ../sync.patch
 git apply --check ../sync.patch 
 					# 测试补丁能否成功
 
-Git暂存管理
+Git 暂存管理
 
 git stash # 暂存
 git stash list 		# 列所有 stash
 git stash apply 	# 恢复暂存的内容
 git stash drop 		# 删除暂存区
 
-Git远程分支管理
+Git 远程分支管理
 
 git pull 			# 抓取远程仓库所有分支更新并合并到本地, 相当于 git fetch && git merge
 git pull --no-ff 	# 抓取远程仓库所有分支更新并合并到本地，不要快进合并
@@ -324,7 +324,7 @@ git push origin <LOCAL BRANCH NAME>:<REMOTE BRANCH NAME>
 git push origin :<REMOTE BRANCH NAME> 
 					# 先删除本地分支(git br -d <branch>)，然后再 push 删除远程分支
 
-Git远程仓库管理
+Git 远程仓库管理
 
 git remote -v 		# 查看远程服务器地址和仓库名称
 git remote show origin 
@@ -351,9 +351,9 @@ git remote add origin <REPO ADDRESS>
 git push -u origin master 
 					# 客户端首次提交
 git push -u origin develop 
-					# 首次将本地develop分支提交到远程 develop 分支，并且 track
+					# 首次将本地 develop 分支提交到远程 develop 分支，并且 track
 git remote set-head origin master 
-					# 设置远程仓库的HEAD指向 master 分支
+					# 设置远程仓库的 HEAD 指向 master 分支
 
 命令设置跟踪远程库和本地库
 
@@ -372,10 +372,10 @@ git tag v1.0.0-rc	# 创建轻量标签
 ### .gitignore
 
 ```
-关于Git的忽略文件的语法规则
+关于 Git 的忽略文件的语法规则
 
 忽略文件中的空行或以井号（#）开始的行将会被忽略
-可以使用Linux通配符
+可以使用 Linux 通配符
 	星号（*）代表任意多个字符
 	问号（？）代表一个字符
 	方括号（[abc]）代表可选字符范围
@@ -387,9 +387,9 @@ git tag v1.0.0-rc	# 创建轻量标签
 示例：
 
 	# 这是注释行，将被忽略
-	*.a       # 忽略所有以.a为扩展名的文件    
-	!lib.a    # 但是名为lib.a的文件或目录不要忽略，即使前面设置了对*.a的忽略
-	/TODO     # 只忽略此目录下的TODO文件，子目录中的TODO文件不忽略
-	build/    # 忽略所有build目录下的文件，但如果是名为build的文件则不忽略
-	doc/*.txt # 忽略文件如doc/notes.txt，但是文件如doc/server/arch.txt不忽略
+	*.a       # 忽略所有以.a 为扩展名的文件    
+	!lib.a    # 但是名为 lib.a 的文件或目录不要忽略，即使前面设置了对*.a 的忽略
+	/TODO     # 只忽略此目录下的 TODO 文件，子目录中的 TODO 文件不忽略
+	build/    # 忽略所有 build 目录下的文件，但如果是名为 build 的文件则不忽略
+	doc/*.txt # 忽略文件如 doc/notes.txt ，但是文件如 doc/server/arch.txt 不忽略
 ```

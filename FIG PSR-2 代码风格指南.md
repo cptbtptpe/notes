@@ -90,7 +90,7 @@ use FooClass;
 use BarClass as Bar;
 use OtherVendor\OtherPackage\BazClass;
   
-// ... 其它PHP代码 ...
+// ... 其它 PHP 代码 ...
   
 ```
   
@@ -211,7 +211,7 @@ class ClassName
 }
 ```
   
-### abstract、final 和 static
+### abstract 、 final 和 static
   
 当用到 `抽象(abstract)` 和 `终结(final)` 来做类声明时，它们 `必须` 放在可见性声明的前面。
   
@@ -269,7 +269,7 @@ $foo->bar(
   
 每个控制结构的代码主体 `必须` 被括在花括号里。这样可是使代码看上去更加标准化，并且加入新代码的时候还可以因此而减少引入错误的可能性。
   
-### if、elseif、else
+### if 、 elseif 、 else
   
 下面是一个 `if` 条件控制结构的示例，注意其中括号，空格和花括号的位置。同时注意 `else` 和 `elseif` 要和前一个条件控制结构的右花括号在同一行。
   
@@ -285,7 +285,7 @@ if ($expr1) {
   
 `推荐` 用 `elseif` 来替代 `else if`，以保持所有的条件控制关键字看起来像是一个单词。
   
-### switch、case
+### switch 、 case
   
 下面是一个 `switch` 条件控制结构的示例，注意其中括号，空格和花括号的位置。`case` 语句 `必须` 要缩进一级，而 `break` 关键字（或其他中止关键字）`必须` 和 `case` 结构的代码主体在同一个缩进层级。如果一个有主体代码的 `case` 结构故意的继续向下执行则 `必须` 要有一个类似于 `// no break` 的注释。
   
@@ -308,7 +308,7 @@ switch ($expr) {
 }
 ```
   
-### while、do while
+### while 、 do while
   
 下面是一个 `while` 循环控制结构的示例，注意其中括号，空格和花括号的位置。
   
@@ -346,7 +346,7 @@ foreach ($iterable as $key => $value) {
 }
 ```
   
-### try、catch
+### try 、 catch
   
 下面是一个 `try catch` 异常处理控制结构的示例，注意其中括号，空格和花括号的位置。
   

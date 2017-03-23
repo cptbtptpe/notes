@@ -1,7 +1,7 @@
 ﻿## PHP5  
   
 ### PHP 5.6  
-1、可以使用表达式定义常量。 [Document](https://php.net/manual/zh/migration56.new-features.php)  
+1 、可以使用表达式定义常量。 [Document](https://php.net/manual/zh/migration56.new-features.php)  
   
 在之前的 PHP 版本中，必须使用静态值来定义常量，声明属性以及指定函数参数默认值。 现在你可以使用包括数值、字符串字面量以及其他常量在内的数值表达式来 定义常量、声明属性以及设置函数参数默认值。  
 
@@ -33,7 +33,7 @@ const ARR = ['a', 'b'];
 echo ARR[0];  
 ```  
   
-2、使用 `...` 运算符定义变长参数函数  
+2 、使用 `...` 运算符定义变长参数函数  
 现在可以不依赖 func_get_args()， 使用 ... 运算符 来实现 变长参数函数。  
 
 ```  
@@ -52,7 +52,7 @@ Array
 )  
 ```  
   
-3、使用 `**` 进行幂运算  
+3 、使用 `**` 进行幂运算  
 加入右连接运算符 `**` 来进行幂运算。 同时还支持简写的 `**=` 运算符，表示进行幂运算并赋值。  
 
 ```  
@@ -63,8 +63,8 @@ $a **= 3;
 printf($a);  // 8  
 ```  
   
-4、use function 以及 use const  
-use 运算符可以在类中导入外部的函数和常量了。 对应的结构为 use function 和 use const。  
+4 、 use function 以及 use const  
+use 运算符可以在类中导入外部的函数和常量了。 对应的结构为 use function 和 use const 。  
 
 ```  
 namespace Name\Space {  
@@ -81,7 +81,7 @@ namespace {
 }  
 ```  
   
-5、加入 hash_equals() 函数，以恒定的时间消耗来进行字符串比较，以避免时序攻击  
+5 、加入 hash_equals() 函数，以恒定的时间消耗来进行字符串比较，以避免时序攻击  
 
 ```  
 $expected  = crypt('12345', '$2a$07$usesomesillystringforsalt$');  
@@ -90,7 +90,7 @@ $incorrect = crypt('1234',  '$2a$07$usesomesillystringforsalt$');
 var_dump(hash_equals($expected, $incorrect)); // false  
 ```  
   
-6、加入 __debugInfo()  
+6 、加入 __debugInfo()  
 当使用 var_dump() 输出对象的时候，可以用来控制要输出的属性和值。返回值必须是个数组。  
 
 ```  
@@ -113,7 +113,7 @@ var_dump(new C(42));
   
 ### PHP 5.5  
   
-1、新增 Generators  
+1 、新增 Generators  
 yield 关键字用于当函数需要返回一个迭代器的时候，逐个返回值。  
 
 ```  
@@ -130,13 +130,13 @@ function number10()
 [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]  
 ```  
   
-2、新增 finally 关键字  
+2 、新增 finally 关键字  
 
 **Finally 处理流程**:  
 
-![Finally处理流程][1]  
+![Finally 处理流程][1]  
   
-3、foreach 支持 list()  
+3 、 foreach 支持 list()  
 foreach 支持通过 list() 将嵌套数组分离到单独的变量。  
 
 ```  
@@ -150,7 +150,7 @@ foreach ($array as list($a, $b)) {
 }  
 ```  
   
-4、empty() 支持传入一个任意表达式，而不仅是一个变量  
+4 、 empty() 支持传入一个任意表达式，而不仅是一个变量  
 
 ```  
 function always_false() {  
@@ -162,13 +162,13 @@ if (empty(always_false())) {
 }  
 ```  
   
-5、直接通过下标获取访问数组和字符串字面量的元素或字符  
+5 、直接通过下标获取访问数组和字符串字面量的元素或字符  
 
 ```  
 echo [1, 2, 3][0]; // 1  
 echo 'PHP'[0]; // P  
 ```  
-6、新的密码哈希 API. [Document](https://php.net/manual/zh/book.password.php)  
+6 、新的密码哈希 API. [Document](https://php.net/manual/zh/book.password.php)  
 缺点是缺乏互操作性，在需要和其他语言对接时会比较麻烦。  
   
 ```  
@@ -184,10 +184,10 @@ if(password_verify('rasmuslerdorf','$2y$10$.vGA1O9wmRjrwAVXD98HNOgsNpDczlqm3Jq7K
 }  
 ```  
   
-7、新增 boolval() 函数  
-PHP已经实现了strval、intval和floatval的函数。为了达到一致性将添加boolval函数。  
+7 、新增 boolval() 函数  
+PHP 已经实现了 strval 、 intval 和 floatval 的函数。为了达到一致性将添加 boolval 函数。  
   
-8、新增 array_column() 函数  
+8 、新增 array_column() 函数  
 可用来返回数组中指定的一列。  
 
 ```  
@@ -206,11 +206,11 @@ $names = array_column($records, 'name', 'id');
 print_r($names);  
 ```  
 
-9、放弃对 Windows XP 和 2003 的支持
+9 、放弃对 Windows XP 和 2003 的支持
 
-10、弃用 e 修饰符  
+10 、弃用 e 修饰符  
 
-11、获取完整类别名称  
+11 、获取完整类别名称  
 
 ```  
 // PHP5.3 中引入命名空间的别名类和命名空间短版本的功能。虽然这并不适用于字符串类名称  
@@ -224,7 +224,7 @@ echo FooBar::class;
 
 为了解决这个问题采用新的 FooBar::class 语法，它返回类的完整类别名称  
    
-12、标量类型提示  
+12 、标量类型提示  
   
 ```  
 function foo(int $i) { ... }  
@@ -238,7 +238,7 @@ foo([]);     // error
 foo("abc");  // error  
 ```  
   
-13、Getter 和 Setter  
+13 、 Getter 和 Setter  
   
 ```  
 // 如果你从不喜欢写这些 getXYZ() 和 setXYZ($value) 方法，那么这应该是你最受欢迎的改变。提议添加一个新的语法来定义一个属性的设置/读取  
@@ -258,7 +258,7 @@ var_dump($timePeriod->seconds); // int(36000)
 var_dump($timePeriod->hours);   // int(10)  
 ```  
   
-14、生成器  
+14 、生成器  
 
 ```  
 function *xrange($start, $end, $step = 1) {  
@@ -270,10 +270,10 @@ function *xrange($start, $end, $step = 1) {
 foreach (xrange(10, 20) as $i) {  
     // ...  
 }  
-// 上述xrange函数具有与内建函数相同的行为，但有一点区别：不是返回一个数组的所有值，而是返回一个迭代器动态生成的值。  
+// 上述 xrange 函数具有与内建函数相同的行为，但有一点区别：不是返回一个数组的所有值，而是返回一个迭代器动态生成的值。  
 ```  
   
-15、列表解析和生成器表达式  
+15 、列表解析和生成器表达式  
   
 ```  
 $firstNames = [foreach ($users as $user) yield $user->firstName];  
@@ -296,12 +296,12 @@ $underageUsers = [foreach ($users as $user) if ($user->age < 18) yield $user];
   
 生成器表达式也很类似，但是返回一个迭代器(用于动态生成值)而不是一个数组。  
   
-16、增加了 opcache 扩展  
-使用 opcache 会提高 php 的性能，你可以和其他扩展一样静态编译（–enable-opcache）或者动态扩展（zend_extension）加入这个优化项。  
+16 、增加了 opcache 扩展  
+使用 opcache 会提高 php 的性能，你可以和其他扩展一样静态编译（– enable-opcache ）或者动态扩展（ zend_extension ）加入这个优化项。  
 
 ### PHP 5.4  
   
-1、新增 Traits. [Document](https://php.net/manual/zh/language.oop5.traits.php)  
+1 、新增 Traits. [Document](https://php.net/manual/zh/language.oop5.traits.php)  
 
 ```  
 // Traits 不能被单独实例化，只能被类所包含  
@@ -325,7 +325,7 @@ $xxoo = new MyHelloWorld();
 $xxoo->sayHello();  
 ```  
   
-2、新增短数组语法  
+2 、新增短数组语法  
 
 ```  
 // 原来的数组写法  
@@ -337,47 +337,47 @@ $arr = ["key" => "value", "key2" => "value2"];
 $arr = [1,2,3,4];  
 ```  
   
-3、新增支持对函数返回数组的成员访问解析  
+3 、新增支持对函数返回数组的成员访问解析  
 
 ```  
 print func()[0];  
 ```  
   
-4、无论 php.ini 中是否设置 short_open_tag， 格式总是可用。  
+4 、无论 php.ini 中是否设置 short_open_tag ， 格式总是可用。  
 
 ```
 这种简写形式被称为 Short Open Tag, 在 PHP5.3 起被默认开启，在 PHP5.4 起总是可用。 使用这种简写形式在 HTML 中嵌入 PHP 变量将会非常方便。  
 ```
   
-5、内置用于开发的 CLI 模式的 web server  
+5 、内置用于开发的 CLI 模式的 web server  
 
 ```  
-// 启动Web服务器  
+// 启动 Web 服务器  
 php -S localhost:8000  
 
 // 启动时指定根目录  
 php -S localhost:8000 -t /home/me/public_html/foo  
 
-// 使用路由（Router）脚本  
-php -S localhost:8000 index.php //所有的请求都会由index.php来处理。
+// 使用路由（ Router ）脚本  
+php -S localhost:8000 index.php //所有的请求都会由 index.php 来处理。
 ```  
   
-6、新增在实例化时访问类成员  
+6 、新增在实例化时访问类成员  
 
 ```  
  (new Foo)->bar();  
 ```  
   
-7、新增了动态访问静态方法的方式  
+7 、新增了动态访问静态方法的方式  
 
 ```  
 $func = "funcXXOO";  
 A::{$func}();  
 ```  
 
-8、闭包支持 \$this  
+8 、闭包支持 \$this  
   
-9、新增二进制直接量  
+9 、新增二进制直接量  
 
 ```  
 $bin = bindec('110011'); //之前需要这样写  
@@ -385,33 +385,33 @@ $bin = 0b110011;
 echo $bin; //51  
 ```  
   
-10、session 提供了上传进度支持  
+10 、 session 提供了上传进度支持  
 
 ```
 通过 $_SESSION["upload_progress_name"] 就可以获得当前文件上传的进度信息，结合 Ajax 就能很容易的实现上传进度条。  
 ```
   
-11、默认使用 mysqlnd  
+11 、默认使用 mysqlnd  
 
 ```
 现在 mysql, mysqli, pdo_mysql 默认使用 mysqlnd 本地库，在 PHP 5.4 以前需要：./configure --with-mysqli=mysqlnd 
 现在：./configure --with-mysqli  
 ```
   
-12、让 json 更懂中文  
+12 、让 json 更懂中文  
 
 ```  
 echo json_encode("中文", JSON_UNESCAPED_UNICODE);  
 // "中文"  
 ```  
   
-13、default_charset 从 ISO-8859-1 已经变为 UTF-8  
+13 、 default_charset 从 ISO-8859-1 已经变为 UTF-8  
 
 ```
 默认发送 Content-Type: text/html; charset=utf-8 
 ```
   
-14、Buid-in web server 内置了一个简单的 Web 服务器  
+14 、 Buid-in web server 内置了一个简单的 Web 服务器  
 
 ```
 把当前目录作为 Root Document 只需要这条命令即可:  
@@ -424,14 +424,14 @@ echo json_encode("中文", JSON_UNESCAPED_UNICODE);
 # php -S localhost:3300 router.php  
 ```  
   
-15、Traits  
+15 、 Traits  
 
 ```
 Traits 提供了一种灵活的代码重用机制，即不像 interface 一样只能定义方法但不能实现，又不能像 class 一样只能单继承。至于在实践中怎样使用，还需要深入思考。  
 魔术常量为 `__TRAIT__`  
 ```
   
-16、Callable typehint  
+16 、 Callable typehint  
 
 ```  
 function foo(callable $callback) { }  
@@ -441,17 +441,17 @@ foo("printf"); //正确
 foo(function(){}); //正确  
 
 class A {  
-　　static function show() { }  
+　　 static function show() { }  
 }  
 
 foo(array("A", "show")); //正确  
 ```  
   
-17、函数类型提示的增强  
+17 、函数类型提示的增强  
   
-18、新增加了 \$SERVER["REQUEST_TIME_FLOAT"]，这个是用来统计服务请求时间的，并用 ms 来表示  
+18 、新增加了 \$SERVER["REQUEST_TIME_FLOAT"]，这个是用来统计服务请求时间的，并用 ms 来表示  
 
-19、二进制直接量(binary number format)  
+19 、二进制直接量(binary number format)  
 
 ```  
 $bin  = 0b1101;  
@@ -460,7 +460,7 @@ echo $bin; //13
 
 ### PHP 5.3  
   
-1、支持命名空间. [Document](https://php.net/manual/zh/language.namespaces.php)  
+1 、支持命名空间. [Document](https://php.net/manual/zh/language.namespaces.php)  
 
 ```  
 namespace my\name; // 定义命名空间  
@@ -486,9 +486,9 @@ int(1)
 */  
 ```  
   
-2、增加后期静态绑定. [Document](https://php.net/manual/zh/language.oop5.late-static-bindings.php)  
+2 、增加后期静态绑定. [Document](https://php.net/manual/zh/language.oop5.late-static-bindings.php)  
   
-在 PHP 中，我们可以在类中通过 self 关键字或者CLASS来判断或调用当前类。但有一个问题，如果我们是在子类中调用，得到的结果将是父类。因为在继承父类的时候，静态成员就已经被绑定了。  
+在 PHP 中，我们可以在类中通过 self 关键字或者 CLASS 来判断或调用当前类。但有一个问题，如果我们是在子类中调用，得到的结果将是父类。因为在继承父类的时候，静态成员就已经被绑定了。  
 
 ```  
 class A  
@@ -544,7 +544,7 @@ class A
 B::funcXXOO  
 ```  
   
-3、增加 goto 操作符. [Document](https://php.net/manual/zh/control-structures.goto.php)  
+3 、增加 goto 操作符. [Document](https://php.net/manual/zh/control-structures.goto.php)  
   
 goto 语句有可能会导致程序流程不清晰，可读性减弱，但在某些情况下具有其独特的方便之处，例如中断深度嵌套的循环和 if 语句。  
 
@@ -558,12 +558,12 @@ echo '2';
 //以上运行时会输出 2  
 ```  
   
-4、添加了原生的闭包(Lambda/匿名函数)支持. [Document](https://php.net/manual/zh/functions.anonymous.php)  
+4 、添加了原生的闭包(Lambda/匿名函数)支持. [Document](https://php.net/manual/zh/functions.anonymous.php)  
   
-5、新增两个魔术方法, __callStatic 和 __invoke. [Document](https://php.net/manual/zh/language.oop5.magic.php)  
+5 、新增两个魔术方法, __callStatic 和 __invoke. [Document](https://php.net/manual/zh/language.oop5.magic.php)  
   
-用静态方式中调用一个不可访问方法时，__callStatic() 会被调用。  
-当尝试以调用函数的方式调用一个对象时，__invoke() 方法会被自动调用。  
+用静态方式中调用一个不可访问方法时， __callStatic() 会被调用。  
+当尝试以调用函数的方式调用一个对象时， __invoke() 方法会被自动调用。  
 
 ```  
 class A  
@@ -584,7 +584,7 @@ $a("Hello World");
 A::__invoke(): Hello World  
 ```  
   
-6、添加 Nowdoc 语法支持. [Document](https://php.net/manual/zh/language.types.string.php#language.types.str...)  
+6 、添加 Nowdoc 语法支持. [Document](https://php.net/manual/zh/language.types.string.php#language.types.str...)  
   
 ```  
 $str = <<<'EOD'  
@@ -594,9 +594,9 @@ using nowdoc syntax.
 EOD;  
 ```  
   
-就象 heredoc 结构类似于双引号字符串，Nowdoc 结构是类似于单引号字符串的。Nowdoc 结构很象 heredoc 结构，但是 nowdoc 中不进行解析操作。  
+就象 heredoc 结构类似于双引号字符串， Nowdoc 结构是类似于单引号字符串的。 Nowdoc 结构很象 heredoc 结构，但是 nowdoc 中不进行解析操作。  
   
-7、Heredoc 结构中可以用双引号来声明标识符了。[Document](https://php.net/manual/zh/language.types.string.php#language.types.str...)  
+7 、 Heredoc 结构中可以用双引号来声明标识符了。[Document](https://php.net/manual/zh/language.types.string.php#language.types.str...)  
 
 ```  
 echo <<<"FOOBAR"  
@@ -604,7 +604,7 @@ Hello World!
 FOOBAR;  
 ```  
   
-8、const 关键字可用来在类定义之外定义常量了. [Document](https://php.net/manual/zh/language.constants.syntax.php)  
+8 、 const 关键字可用来在类定义之外定义常量了. [Document](https://php.net/manual/zh/language.constants.syntax.php)  
 
 ```  
 define("CONSTANT_A", "Hello world");  
@@ -619,10 +619,10 @@ const XXOO = 2 * 617;
   
 和使用 define() 来定义常量不同的是，使用 const 关键字定义常量必须处于最顶端的作用域，因为用此方法是在编译时定义的。即不能在函数内，循环内以及 if 语句之内用 const 来定义常量。  
   
-9、三元运算符可以简写省略中间的部分  
-表达式 expr1 ?: expr3 ，当 expr1 为 TRUE 时返回 expr1，否则返回 expr3。  
+9 、三元运算符可以简写省略中间的部分  
+表达式 expr1 ?: expr3 ，当 expr1 为 TRUE 时返回 expr1 ，否则返回 expr3 。  
   
-10、异常可以嵌套了  
+10 、异常可以嵌套了  
 
 ```  
 class MyException extends Exception { }  
@@ -646,7 +646,7 @@ $foo = new Test;
 $foo->testing();  
 ```  
   
-11、可以动态访问静态变量了  
+11 、可以动态访问静态变量了  
 
 ```  
 class C {  
@@ -663,11 +663,11 @@ echo $a::$foo;
 123  
 ```  
   
-12、mail() 函数支持记录发送日志了  
-在配置文件 php.ini 中可设置日志路径。参数名：mail.log  
+12 、 mail() 函数支持记录发送日志了  
+在配置文件 php.ini 中可设置日志路径。参数名： mail.log  
   
-13、HTTP 状态码在 200-399 范围内均被认为访问成功  
+13 、 HTTP 状态码在 200-399 范围内均被认为访问成功  
   
-14、新的垃圾收集器(GC)，并默认启用  
+14 、新的垃圾收集器(GC)，并默认启用  
 
   [1]: https://segmentfault.com/img/bVlR4N  

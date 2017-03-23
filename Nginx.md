@@ -54,14 +54,14 @@ $request_filename	请求的文件名
 ```
 rewrite regex replacement flag;
 
-用来重定向URL
+用来重定向 URL
 
 if ( !-e $request_filename )
 {
 	rewrite /(.*) /index.php last;
 }
 
-rewrite 最后一项为标记位，Nginx 支持的标记为有：
+rewrite 最后一项为标记位， Nginx 支持的标记为有：
 
 	last 			表示完成 rewrite
 	permanent 		返回 301 永久重定向，浏览器地址栏会显示跳转后的 URL

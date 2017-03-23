@@ -1,4 +1,4 @@
-﻿## PHP面试题-Leon  
+﻿## PHP 面试题-Leon  
   
 1. 翻转字符串 `$str = 'hello world'`;  
     
@@ -6,7 +6,7 @@
     strrev($str);
     ```
     
-2. 翻转字符串 `$str = 'hello,我是XX公司的工程师Leon'`;  
+2. 翻转字符串 `$str = 'hello,我是 XX 公司的工程师 Leon'`;  
 
     ```
     preg_match_all('/[\s\S]/u', $str, $result);
@@ -95,7 +95,7 @@
 7. `$_REQUEST` 全局变量中包含了哪些全局变量？  
 
     ```
-    // $_GET、$_POST、$_COOKIE
+    // $_GET 、$_POST 、$_COOKIE
     ```
   
 8. 使用原生 `PHP` 连接数据库 `common` 并查询表 `user` 中的数据。  

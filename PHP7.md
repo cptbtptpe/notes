@@ -6,7 +6,7 @@
 declare(strict_types = 1);  
 ```  
   
-**运算符（NULL合并运算符）**  
+**运算符（ NULL 合并运算符）**  
 
 ```  
 echo $_GET['page'] ?? 1;  
@@ -38,7 +38,7 @@ echo paramValueType(10.9);
   
 ```  
 $a <=> $b  
-// 当 $a 大于、等于或小于 $b 时它分别返回 -1 、0 或 1  
+// 当 $a 大于、等于或小于 $b 时它分别返回 -1 、 0 或 1  
   
 echo 2 <=> 1;  
 echo 1 <=> 1;  
@@ -61,7 +61,7 @@ echo NAME[1];
   
 **Unicode codepoint 转译语法**  
   
-> 这接受一个以 16 进制形式的 Unicode codepoint ，并打印出一个双引号或 heredoc包围的 UTF-8 编码格式的字符串。  
+> 这接受一个以 16 进制形式的 Unicode codepoint ，并打印出一个双引号或 heredoc 包围的 UTF-8 编码格式的字符串。  
 可以接受任何有效的 codepoint ，并且开头的 0 是可以省略的。  
   
 ```  
@@ -130,7 +130,7 @@ echo $getName2->call(new Person);
   
 **preg_replace_callback_array()**  
   
-> 新增了一个函数 preg_replace_callback_array() ，使用该函数可以使得在使用preg_replace_callback() 函数时代码变得更加优雅。  
+> 新增了一个函数 preg_replace_callback_array() ，使用该函数可以使得在使用 preg_replace_callback() 函数时代码变得更加优雅。  
 >  
 > 在 PHP7 之前，回调函数会调用每一个正则表达式，回调函数在部分分支上是被污染了。  
   
@@ -141,7 +141,7 @@ echo $getName2->call(new Person);
 **生成器的返回值**  
   
 > 在 PHP5.5 引入生成器的概念。生成器函数每执行一次就得到一个 yield 标识的值。  
-在 PHP7 中，当生成器迭代完成后，可以获取该生成器函数的返回值。通过Generator::getReturn() 得到。  
+在 PHP7 中，当生成器迭代完成后，可以获取该生成器函数的返回值。通过 Generator::getReturn() 得到。  
   
 **生成器中引入其他生成器**  
   
@@ -152,7 +152,7 @@ echo $getName2->call(new Person);
 **次方运算符**  
 
 ```  
-echo 2 ** 3; // 2的3次方=8  
+echo 2 ** 3; // 2 的 3 次方=8  
 ```  
   
   
@@ -166,7 +166,7 @@ try {
 }  
 ```  
   
-**string、int、float等这些关键字不能被作为类名使用了**  
+**string 、 int 、 float 等这些关键字不能被作为类名使用了**  
   
 **func_get_args()获取的是当前变量的值**  
   

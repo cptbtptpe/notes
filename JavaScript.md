@@ -47,7 +47,7 @@ console.log(arr);
 // ["A", 2: "C"]  
 ```  
   
-### array 下标是字符串 （Array 继承 Object）  
+### array 下标是字符串 （ Array 继承 Object ）  
 ```  
 var arr = []; // or new Array()  
 // undefined  

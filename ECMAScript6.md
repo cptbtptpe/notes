@@ -6,7 +6,7 @@
 * `ECMAScript` 是 `JavaScript` 语言的国际标准  
 * `JavaScript` 是 `ECMAScript` 的实现  
   
-### ECMAScript的历史  
+### ECMAScript 的历史  
 
 * 1998.06 `ECMAScript 2.0` 版发布  
 * 1999.12 `ECMAScript 3.0` 版发布，成为 `JavaScript` 的通行标准，得到了广泛支持  
@@ -410,4 +410,4 @@
 	* `{}` 既可以是对象，也可以是箭头函数的函数体  
 	* `...name` 既可以是 `rest` 参数，也可以是扩展运算符  
 * 各浏览器对 `ES6` 的语法支持并不完善且各有差异  
-* 详情请参阅书籍 《ES 6标准入门》第2版  
+* 详情请参阅书籍 《 ES 6 标准入门》第 2 版  

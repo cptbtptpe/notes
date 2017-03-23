@@ -8,7 +8,7 @@
     
         > C++, C#, Cocoa, Erlang, Haskell, Java, Ocami, Perl, PHP, Python, Ruby, Smalltalk
     
-    - [x] 规范的描述文件（IDL）
+    - [x] 规范的描述文件（ IDL ）
     - [x] 基于 `SOCKET` 的通讯方式、
     - [x] 实现了多线程（`TThreadPolServer`）、单线程非阻塞 `IO`（`TNonBlockingServer`）、多线程非阻塞 `IO`（`THsHaServer`）
     - [x] 实现了最高效的二进制序列化协议 `TCompactProtocol`，但并不支持所有语言
@@ -165,10 +165,10 @@
 
 - [x] `bool` - 布尔值
 - [x] `byte` - 有符号字节
-- [x] `i16` - 16位有符号整型
-- [x] `i32` - 32位有符号整型
-- [x] `i64` - 64位有符号整型
-- [x] `double` - 64位浮点型
+- [x] `i16` - 16 位有符号整型
+- [x] `i32` - 32 位有符号整型
+- [x] `i64` - 64 位有符号整型
+- [x] `double` - 64 位浮点型
 - [x] `string` - 编码无关的文本
 
 **Struct**
@@ -215,9 +215,9 @@ struct User {
 
 **Enum**
 
-> 枚举常量必须是32位的正整数
+> 枚举常量必须是 32 位的正整数
 
-* 编译器默认从0开始赋值
+* 编译器默认从 0 开始赋值
 * 可以赋予某个常量的某个整数
 * 允许常量是十六进制整数
 * 末尾没有分号
