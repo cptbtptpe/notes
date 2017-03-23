@@ -6,8 +6,9 @@
 
 > Note: 测试环境为 Chrome 浏览器  
   
-### prototype 和 \__proto__  
-```  
+### prototype 和 \_\_proto\_\_  
+
+```javascript  
 function person(name) {  
     this.name = name;  
     this.say = function(words) {  
@@ -24,7 +25,8 @@ console.log(leon.__proto__ === person.prototype);
 ```  
   
 ### delete object 的属性  
-```  
+
+```javascript
 var json = {a: 'A', b: 'B', c:'C'};  
 // undefined  
   
@@ -36,7 +38,8 @@ console.log(json);
 ```  
   
 ### delete array 的值  
-```  
+
+```javascript
 var arr = ['A', 'B', 'C'];  
 // undefined  
   
@@ -48,7 +51,8 @@ console.log(arr);
 ```  
   
 ### array 下标是字符串 （ Array 继承 Object ）  
-```  
+
+```javascript
 var arr = []; // or new Array()  
 // undefined  
   
@@ -66,7 +70,8 @@ Object.getOwnPropertyDescriptor(arr, 'one');
 ```  
   
 ### 函数的 length 属性  
-```  
+
+```javascript  
 var fn1 = function() {};  
 // undefined  
   
@@ -81,7 +86,8 @@ console.log(fn1.length, fn2.length, fn3.length);
 ```  
   
 ### call 与 apply （改变上下文、对象继承）  
-```  
+
+```javascript  
 function person(name) {  
     this.name = name;  
     this.say = function(words) {  
