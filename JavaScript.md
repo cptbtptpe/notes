@@ -9,12 +9,7 @@
 ### prototype 和 \_\_proto\_\_  
 
 ```javascript  
-function person(name) {  
-    this.name = name;  
-    this.say = function(words) {  
-        console.log(this.name + ' say: ' + words);  
-    };  
-}  
+function person(name) {}  
 // undefined  
   
 var leon = new person('Leon');  
@@ -27,7 +22,7 @@ console.log(leon.__proto__ === person.prototype);
 ### delete object 的属性  
 
 ```javascript
-var json = {a: 'A', b: 'B', c:'C'};  
+var json = {a: 'A', b: 'B', c: 'C'};  
 // undefined  
   
 delete json.a;  
