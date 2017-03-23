@@ -310,9 +310,7 @@ rm -r path
 ```  
 chmod 0777 path/filename  
 
-chmod u+x path/filename  
-
-chmod 用于修改文件 / 文件夹所属者（ u ）或所属组（ g ）或其它用户（ o ）的权限（读 - r - 4 ）、（写 - w - 2 ）、（执行 - x - 1 ）  
+chmod u+x path/filename   
 ```  
   
 **更改目录权限**  
