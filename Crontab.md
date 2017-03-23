@@ -22,10 +22,10 @@
   
 | 特殊字符 | 含义 |  
 | --- | --- |  
-| 星号（*） | 代表所有可能的值，例如 month 字段如果是星号<br> 则表示在满足其它字段的制约条件后每月都执行该命令操作 |  
+| 星号（\*） | 代表所有可能的值，例如 month 字段如果是星号<br> 则表示在满足其它字段的制约条件后每月都执行该命令操作 |  
 | 逗号（,） | 可以用逗号隔开的值指定一个列表范围<br>例如：1,2,5,7,8,9 |  
 | 中杠（-） | 可以用整数之间的中杠表示一个整数范围<br>例如：2-6 表示 2,3,4,5,6 |  
-| 正斜线（/） | 可以用正斜线指定时间的间隔频率<br>例如：0-23/2 表示每两小时执行一次。<br><br>同时正斜线可以和星号一起使用<br>例如：*/10，如果用在 minute 字段，表示每十分钟执行一次。 |  
+| 正斜线（/） | 可以用正斜线指定时间的间隔频率<br>例如：0-23/2 表示每两小时执行一次。<br><br>同时正斜线可以和星号一起使用<br>例如：\*/10，如果用在 minute 字段，表示每十分钟执行一次。 |  
   
 ![Crontab格式][1]  
   
@@ -41,7 +41,7 @@ yum install crontabs
 
 ```  
 /sbin/service crond start 		//启动服务  
-/sbin/service crond stop 		//关闭服务  
+/sbin/service crond stop 		  //关闭服务  
 /sbin/service crond restart 	//重启服务  
 /sbin/service crond reload 		//重新载入配置  
 ```  
@@ -86,11 +86,11 @@ crontab [-u user] [ -e | -l | -r ]
 
 | 参数 | 含义 |
 | --- | --- |
-| -u user | 用来设定某个用户的crontab服务<br>例如：-u ixdba 表示设定 ixdba 用户的 crontab 服务<br>此参数一般由 root 用户来运行|
+| -u user | 用来设定某个用户的 crontab 服务<br>例如：-u ixdba 表示设定 ixdba 用户的 crontab 服务<br>此参数一般由 root 用户来运行|
 | file | file 是命令文件的名字<br>表示将 file 做为 crontab 的任务列表文件并载入 crontab<br><br>如果在命令行中没有指定这个文件<br>crontab 命令将接受标准输入（键盘）上键入的命令<br>并将它们载入 crontab |
 | -e | 编辑某个用户的 crontab 文件内容<br>如果不指定用户，则表示编辑当前用户的 crontab 文件 |
 | -l | 显示某个用户的 crontab 文件内容<br>如果不指定用户，则表示显示当前用户的 crontab 文件内容 |
-| -r | 从 /var/spool/cron 目录中删除某个用户的 crontab 文件<br>如果不指定用户，则默认删除当前用户的 crontab 文件 |
+| -r | 从 `/var/spool/cron` 目录中删除某个用户的 crontab 文件<br>如果不指定用户，则默认删除当前用户的 crontab 文件 |
 | -i | 在删除用户的 crontab 文件时给确认提示 |
   
 #### 常用方法：  
