@@ -53,7 +53,7 @@ USE `库名`;
 DROP DATABASE `库名`;  
   
 // 查看当前库中所有表注释  
-SELECT table_name,table_comment FROM information_schema.tables WHERE table_schema=`库名`;  
+SELECT table_name, table_comment FROM information_schema.tables WHERE table_schema=`库名`;  
   
 // 显示数据库中所有表的元信息  
 SHOW TABLE STATUS FROM `库名`;  
@@ -161,7 +161,7 @@ SELECT * FROM `表名`\G;
   
 // 根据时间分组  
 
-SELECT DATE_FORMAT(addtime,"%Y-%m-%d") AS days, COUNT(*) AS lively_num  
+SELECT DATE_FORMAT(addtime, "%Y-%m-%d") AS days, COUNT(*) AS lively_num  
 FROM device_score_lively_xyweather  
 WHERE  
     channel_num = 400003  
@@ -263,19 +263,19 @@ $ sudo vim /etc/mysql/mysql.conf.d/mysqld.cnf
 
 * 事务的原子性(Atomicity)
 
-    > 是指一个事务要么全部执行,要么不执行.也就是说一个事务不可能只执行了一半就停止了.比如你从取款机取钱,这个事务可以分成两个步骤:1 划卡,2 出钱.不可能划了卡,而钱却没出来.这两步必须同时完成.要么就不完成.
+    > 是指一个事务要么全部执行, 要么不执行.也就是说一个事务不可能只执行了一半就停止了.比如你从取款机取钱, 这个事务可以分成两个步骤:1 划卡, 2 出钱.不可能划了卡, 而钱却没出来.这两步必须同时完成.要么就不完成.
 
 * 事务的一致性(Consistency)
 
-    > 是指事务的运行并不改变数据库中数据的一致性.例如,完整性约束了 a+b=10,一个事务改变了 a,那么 b 也应该随之改变.
+    > 是指事务的运行并不改变数据库中数据的一致性.例如, 完整性约束了 a+b=10, 一个事务改变了 a, 那么 b 也应该随之改变.
 
 * 独立性(Isolation)
 
-    > 事务的独立性也有称作隔离性,是指两个以上的事务不会出现交错执行的状态.因为这样可能会导致数据不一致.
+    > 事务的独立性也有称作隔离性, 是指两个以上的事务不会出现交错执行的状态.因为这样可能会导致数据不一致.
 
 * 持久性(Durability)
 
-    > 事务的持久性是指事务执行成功以后,该事务所对数据库所作的更改便是持久的保存在数据库之中，不会无缘无故的回滚.
+    > 事务的持久性是指事务执行成功以后, 该事务所对数据库所作的更改便是持久的保存在数据库之中，不会无缘无故的回滚.
 
 ### MySQL 锁    
     
@@ -362,7 +362,7 @@ SELECT * FROM table1 IGNORE INDEX (field1, field2) …
 SELECT SQL_NO_CACHE field1, field2 FROM table1;
 
 有一些 SQL 语句需要实时地查询数据，或者并不经常使用(可能一天就执行一两次)
-这样就需要把缓冲关了,不管这条 SQL 语句是否被执行过，服务器都不会在缓冲区中查找，每次都会执行它。
+这样就需要把缓冲关了, 不管这条 SQL 语句是否被执行过，服务器都不会在缓冲区中查找，每次都会执行它。
 ```
 
 **强制查询缓冲 SQL_CACHE**
@@ -583,7 +583,7 @@ $r = mysql_query("SELECT username FROM user ORDER BY RAND() LIMIT 1");
 // 这要会更好： 
 $r = mysql_query("SELECT count(*) FROM user"); 
 $d = mysql_fetch_row($r); 
-$rand = mt_rand(0,$d[0] - 1); 
+$rand = mt_rand(0, $d[0] - 1); 
 
 $r = mysql_query("SELECT username FROM user LIMIT $rand, 1");
 ```

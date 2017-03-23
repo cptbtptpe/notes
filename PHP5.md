@@ -42,7 +42,7 @@ function test(...$args)
     print_r($args);  
 }  
   
-test(1,2,3);  
+test(1, 2, 3);  
 //输出  
 Array  
 (  
@@ -177,7 +177,7 @@ echo $hash = password_hash('rasmuslerdorf', PASSWORD_DEFAULT);
 //输出结果类似于：$2y$10$.vGA1O9wmRjrwAVXD98HNOgsNpDczlqm3Jq7KnEd1rVAGv3Fykk1a  
   
 // 验证  
-if(password_verify('rasmuslerdorf','$2y$10$.vGA1O9wmRjrwAVXD98HNOgsNpDczlqm3Jq7KnEd1rVAGv3Fykk1a')) {  
+if(password_verify('rasmuslerdorf', '$2y$10$.vGA1O9wmRjrwAVXD98HNOgsNpDczlqm3Jq7KnEd1rVAGv3Fykk1a')) {  
     echo "密码正确";  
 } else {  
     echo "密码错误";  
@@ -192,9 +192,9 @@ PHP 已经实现了 strval 、 intval 和 floatval 的函数。为了达到一�
 
 ```  
 $records = array(  
-    array('id' => 2135,'name' => 'John'),  
-    array('id' => 3245,'name' => 'Smith'),  
-    array('id' => 5342,'name' => 'Peter')  
+    array('id' => 2135, 'name' => 'John'),  
+    array('id' => 3245, 'name' => 'Smith'),  
+    array('id' => 5342, 'name' => 'Peter')  
 );  
   
 //从结果集中取出 name 列  
@@ -330,11 +330,11 @@ $xxoo->sayHello();
 ```  
 // 原来的数组写法  
 $arr = array("key" => "value", "key2" => "value2");  
-$arr = array(1,2,3,4);  
+$arr = array(1, 2, 3, 4);  
 
 // 简写形式  
 $arr = ["key" => "value", "key2" => "value2"];  
-$arr = [1,2,3,4];  
+$arr = [1, 2, 3, 4];  
 ```  
   
 3 、新增支持对函数返回数组的成员访问解析  
@@ -475,7 +475,7 @@ $b = new $class;
 $c = \my\name\MYCONST;  
 $d = namespace\MYCONST;  
   
-var_dump($a,$b,$c,$d);  
+var_dump($a, $b, $c, $d);  
 /*  
 object(my\name\MyClass)#1 (0) {  
 }  

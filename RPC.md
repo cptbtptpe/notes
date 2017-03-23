@@ -98,7 +98,7 @@
 
 * 创建 `Transport` 传输控制
 
-    - `TSSLSocket` - 继承 `TSocket`，阻塞型 `Socket`,　用于客户端，采用 `openssl` 的接口进行读写数据
+    - `TSSLSocket` - 继承 `TSocket`，阻塞型 `Socket`, 　用于客户端，采用 `openssl` 的接口进行读写数据
     - `THttpTransport` - 采用 `HTTP` 传输协议进行数据传输
     - `TFileTransport` – 采用文件形式进行传输
     - `TMemoryTransport` – 将内存用于 `IO`，`Java` 实现时内部实际使用了简单的 `ByteArrayOutputStream`
@@ -200,7 +200,7 @@ struct Message
 
     > 对应 `C++` 中的 `set`，`Java` 中的 `HashSet`，`Python` 中的 `set`
     
-* `map<t,t>` - 键类型为 `t`，值类型为 `t` 的 `kv` 对，键不容许重复
+* `map<t, t>` - 键类型为 `t`，值类型为 `t` 的 `kv` 对，键不容许重复
 
     > 对用 `C++` 中的 `map`，`Java` 的 `HashMap`，`PHP` 对应 `array`，`Python`/`Ruby` 的 `dictionary`
     

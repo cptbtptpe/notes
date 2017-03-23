@@ -6,7 +6,7 @@
     strrev($str);
     ```
     
-2. 翻转字符串 `$str = 'hello,我是 XX 公司的工程师 Leon'`;  
+2. 翻转字符串 `$str = 'hello, 我是 XX 公司的工程师 Leon'`;  
 
     ```
     preg_match_all('/[\s\S]/u', $str, $result);
@@ -163,7 +163,6 @@
     ```
     $path = parse_url($url, PHP_URL_PATH);
     if ($path && $extend = pathinfo($path, PATHINFO_EXTENTION)) {
-    
         echo $extend;
     }
     ```

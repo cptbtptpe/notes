@@ -154,7 +154,7 @@ date() 将会输出什么？
 $date="2009-5-19 ";  
 $time="14:31:38";  
 $datetime=$date.$time;  
-echo date("Y-m-d:H:i:s",strtotime($datetime));  
+echo date("Y-m-d:H:i:s", strtotime($datetime));  
 ```  
   
 - [x] 2009-5-19:14:31:38  
@@ -203,8 +203,8 @@ echo date("Y-m-d:H:i:s",strtotime($datetime));
 设有一个数据库 mydb 中有一个表 tb1 ，表中有六个字段，主键为 ID ，有十条记录， ID 从 0 到 9 ，以下代码输出结果是?  (   )  
 
 ```  
-$link = mysql_connect("localhost","mysql_user", "mysql_password") or die("Could not connect: " . mysql_error());  
-$result = mysql_query("SELECT id,name,age FROM mydb 、 tb1 where id < 5") or die("Could not query:" . mysql_error());  
+$link = mysql_connect("localhost", "mysql_user", "mysql_password") or die("Could not connect: " . mysql_error());  
+$result = mysql_query("SELECT id, name, age FROM mydb 、 tb1 where id < 5") or die("Could not query:" . mysql_error());  
   
 echo mysql_num_fields($result);  
 mysql_close($link);  
@@ -257,7 +257,7 @@ if (empty($var)){
 ```  
 $str = "LAMP";  
 $str1 = "LAMPBrother";  
-$strc = strcmp($str,$str1);  
+$strc = strcmp($str, $str1);  
 switch ($strc){  
     case 1:  
         echo "str > str1";  
@@ -425,7 +425,7 @@ echo var_dump($arr);
   
 - [x] array(4) { [5]=>int(1) [12]=> int(2) [13]=> int(56) ["x"]=> int(42) }  
 - [ ] array(3) { [12]=> int(2) [13]=> int(56) ["x"]=> int(42) }  
-- [ ] 1,2,56,42  
+- [ ] 1, 2, 56, 42  
 - [ ] 42  
   
 ---  
@@ -448,9 +448,9 @@ echo $$father;
 下列代码的输出是  
 
 ```  
-$x=array("aaa","","ccc","ddd","");  
+$x=array("aaa", "", "ccc", "ddd", "");  
 $y=array_unique($x);  
-echo count($x) . "," . count($y);  
+echo count($x) . ", " . count($y);  
 ```  
   
 - [ ] 3 ， 1  
@@ -483,10 +483,10 @@ $rest2 = substr("abcdef", 0, -1);
 echo $rest1, $rest2;
 ```  
   
-- [x] f,abcde  
-- [ ] b,abcdef  
-- [ ] a,fedcb  
-- [ ] a,abcde  
+- [x] f, abcde  
+- [ ] b, abcdef  
+- [ ] a, fedcb  
+- [ ] a, abcde  
   
 ---  
   
@@ -502,7 +502,7 @@ echo $rest1, $rest2;
 下列代码的输出是  
 
 ```  
-$x=array("aaa","ttt","www","ttt","yyy","tttt");  
+$x=array("aaa", "ttt", "www", "ttt", "yyy", "tttt");  
 $y=array_count_values($x);  
 echo $y["ttt"];  
 ```  
@@ -565,14 +565,14 @@ addit ()
 - [x] \$s1 + \$s2  
 - [ ] "{\$s1}{\$s2}"  
 - [ ] \$s1.\$s2  
-- [ ] implode(' ', array(\$s1,\$s2))  
+- [ ] implode(' ', array(\$s1, \$s2))  
   
 ---  
   
 下列代码的输出是  
 
 ```  
-$x=array(1,3,2,3,7,8,9,7,3);  
+$x=array(1, 3, 2, 3, 7, 8, 9, 7, 3);  
 $y=array_count_values($x);  
 echo $y[8];  
 ```  
@@ -587,7 +587,7 @@ echo $y[8];
 下列代码的输出是？  
 
 ```  
-define("x","5");  
+define("x", "5");  
 $x=x+10;  
 echo x;  
 ```  
@@ -668,8 +668,8 @@ echo var_dump($arr);
 请看代码，数据库关闭指令将关闭哪个连接标识？(    )  
 
 ```  
-$link1 =mysql_connect("localhost","root","");  
-$link2 = mysql_connect("localhost","root","");  
+$link1 =mysql_connect("localhost", "root", "");  
+$link2 = mysql_connect("localhost", "root", "");  
 mysql_close();  
 ```  
   
@@ -689,7 +689,7 @@ mysql_close();
   
 ---  
   
-若 \$y,\$x 为 int 型变量，则执行以下语句后，\$y 的值为：（     ）  
+若 \$y, \$x 为 int 型变量，则执行以下语句后，\$y 的值为：（     ）  
 
 ```  
 $x=1;  
@@ -789,7 +789,7 @@ total_Sum(1);
 下面的脚本运行以后，\$array 数组所包含的值是什么？（    ）  
 
 ```  
-$array= array('1','1');  
+$array= array('1', '1');  
 foreach($array as $k=>$v){  
     $v= 2;  
 }  

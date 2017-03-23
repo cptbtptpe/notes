@@ -87,7 +87,7 @@ $name = $getName->bindTo(new Person, 'Person');
 echo $name();  
 ```  
   
-PHP7 可以 ,PHP5.6 报错  
+PHP7 可以 , PHP5.6 报错  
 
 ```  
 $getName2 = function () {  

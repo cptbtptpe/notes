@@ -10,7 +10,7 @@ mongoexport
   -dweather 
   -cdevice 
   --csv 
-  -f _id,sid,cpu,sn,uuid,os,ip,mb,client_time,date,addtime 
+  -f _id, sid, cpu, sn, uuid, os, ip, mb, client_time, date, addtime 
   --queryFile=query.json 
   -o /web/20160607-3063.csv  
 ```  
@@ -33,7 +33,7 @@ mysql
   -pjiuyi 
   -P3308 
   -D receive_flow_oa 
-  -e "select channel_num,sid,count(*) as total from device_score_lively_xyweather where channel_num = 400002 and date = '2016-07-17' group by sid"
+  -e "select channel_num, sid, count(*) as total from device_score_lively_xyweather where channel_num = 400002 and date = '2016-07-17' group by sid"
 > ~/Downloads/400002_20160717_live.csv  
 ```  
 
@@ -56,8 +56,8 @@ db.device.aggregate([
 ```  
 db.log_register.find({  
     addtime: {  
-        $gt: new Date(2016,4,13,23),  
-        $lt: new Date(2016,4,14,8)  
+        $gt: new Date(2016, 4, 13, 23),  
+        $lt: new Date(2016, 4, 14, 8)  
     },  
     type: 1  
 }).count()  

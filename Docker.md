@@ -453,7 +453,7 @@ docker run [options "o">] <image> [ "nb">command]  "o">[arg...]
 -h "mars" 指定容器的 hostname
 -e username="ritchie" 设置环境变量
 --env-file=[] 从指定文件读入环境变量
---cpuset="0-2" or --cpuset="0,1,2"
+--cpuset="0-2" or --cpuset="0, 1, 2"
 
 绑定容器到指定 CPU 运行
 
@@ -782,12 +782,12 @@ CMD				设置 container 启动时执行的操作
 				该操作可以是执行自定义脚本，也可以是执行系统命令
 				该指令只能在文件中存在一次，如果有多个，则只执行最后一条
 
-				CMD ["executable","param1","param2"] # like an exec, this is the preferred form
+				CMD ["executable", "param1", "param2"] # like an exec, this is the preferred form
 				CMD command param1 param2  # as a shell
 
 				当 Dockerfile 指定了 ENTRYPOINT ，那么使用下面的格式：
 
-				CMD ["param1","param2"] # as default parameters to ENTRYPOINT
+				CMD ["param1", "param2"] # as default parameters to ENTRYPOINT
 				
 				ENTRYPOINT 指定的是一个可执行的额脚本或者程序的路径
 				该指定的的脚本或者程序将会以 param1 和 param2 作为参数执行
@@ -904,7 +904,7 @@ VOLUME			指定挂载点
 
 				设置指令，使容器中的一个目录具有持久化存储数据的功能
 				该目录可以被容器本身使用，也可以共享给其他容器使用
-				我们指定容器使用的是 AUFS,这种文件系统不能持久化数据，当容器关闭后，所有的更改都会丢失
+				我们指定容器使用的是 AUFS, 这种文件系统不能持久化数据，当容器关闭后，所有的更改都会丢失
 				当容器中的应用有持久化数据的需求时可以在 Dockerfile 中使用该指令
 
 				VOLUME ["<mountpoint>"]

@@ -19,13 +19,13 @@ INCRBY 命令让这些变得很容易，通过原子递增保持计数。
 
 #### 实现方式
 
-> m,decr 等操作时会转成数值型进行计算，此时 redisObject 的 encoding 字段为 int 。  
+> m, decr 等操作时会转成数值型进行计算，此时 redisObject 的 encoding 字段为 int 。  
   
 ### Hash  
   
 #### 常用命令：  
 
-> hget,hset,hgetall 等  
+> hget, hset, hgetall 等  
 
 #### 应用场景
 
@@ -34,8 +34,8 @@ INCRBY 命令让这些变得很容易，通过原子递增保持计数。
 存储的 value 用户对象包含姓名 name ，年龄 age ，生日 birthday 等信息 
 >
 > 如果用普通的 key/value 结构来存储，主要有以下 2 种存储方式：  
-    第一种方式将用户 ID 作为查找 key,把其他信息封装成一个对象以序列化的方式存储
-    如： set u001 "李三,18,20010101"  
+    第一种方式将用户 ID 作为查找 key, 把其他信息封装成一个对象以序列化的方式存储
+    如： set u001 "李三, 18, 20010101"  
     这种方式的缺点是，增加了序列化/反序列化的开销，并且在需要修改其中一项信息时，需要把整个对象取回
     并且修改操作需要对并发进行保护，引入 CAS 等复杂问题
 >    
@@ -48,11 +48,11 @@ INCRBY 命令让这些变得很容易，通过原子递增保持计数。
 并提供了直接存取这个 map 成员的接口
 >
 > 如： hmset user:001 name "李三" age 18 birthday "20010101"
-也就是说， key 仍然是用户 ID,value 是一个 map ，这个 map 的 key 是成员的属性名， value 是属性值
+也就是说， key 仍然是用户 ID, value 是一个 map ，这个 map 的 key 是成员的属性名， value 是属性值
 这样对数据的修改和存取都可以直接通过其内部 map 的 key(Redis 里称内部 map 的 key 为 field)
 也就是通过 key(用户 ID) + field(属性标签) 操作对应属性数据了，既不需要重复存储数据，也不会带来序列化和并发修改控制的问题。很好的解决了问题。  
 >  
-> 这里同时需要注意， Redis 提供了接口(hgetall)可以直接取到全部的属性数据,但是如果内部 map 的成员很多
+> 这里同时需要注意， Redis 提供了接口(hgetall)可以直接取到全部的属性数据, 但是如果内部 map 的成员很多
 那么涉及到遍历整个内部 map 的操作，由于 Redis 单线程模型的缘故，这个遍历操作可能会比较耗时
 而另其它客户端的请求完全不响应，这点需要格外注意。  
 
@@ -67,7 +67,7 @@ INCRBY 命令让这些变得很容易，通过原子递增保持计数。
   
 #### 常用命令
 
-> lpush,rpush,lpop,rpop,lrange,BLPOP(阻塞版) 等。  
+> lpush, rpush, lpop, rpop, lrange, BLPOP(阻塞版) 等。  
 
 #### 应用场景
 
@@ -96,7 +96,7 @@ next_ip = redis.rpoplpush "downstream_ips", "downstream_ips"
 >  
 > BLPOP  
 假设现在有 job 、 command 和 request 三个列表，其中 job 不存在， command 和 request 都持有非空列表。考虑以下命令：  
-BLPOP job command request 30  #阻塞 30 秒， 0 的话就是无限期阻塞,job 列表为空,被跳过,紧接着 command 列表的第一个元素被弹出。  
+BLPOP job command request 30  #阻塞 30 秒， 0 的话就是无限期阻塞, job 列表为空, 被跳过, 紧接着 command 列表的第一个元素被弹出。  
 >  
 > \* "command"                             # 弹出元素所属的列表  
 \* "update system..."                    # 弹出元素所属的值  
@@ -107,7 +107,7 @@ BLPOP job command request 30  #阻塞 30 秒， 0 的话就是无限期阻塞,jo
   
 #### 常用命令
 
-> sadd,srem,spop,sdiff ,smembers,sunion 等。  
+> sadd, srem, spop, sdiff , smembers, sunion 等。  
 
 #### 应用场景
 
@@ -124,7 +124,7 @@ Redis 还为集合提供了求交集、并集、差集等操作，可以非常�
   
 #### 常用命令
 
-> zadd,zrange,zrem,zcard 等  
+> zadd, zrange, zrem, zcard 等  
 
 #### 应用场景
 
@@ -142,7 +142,7 @@ Redis sorted set 的使用场景与 set 类似，区别是 set 不是自动有�
   
 #### 实现方式
 
-> Redis sorted set 的内部使用 HashMap 和跳跃表(SkipList)来保证数据的存储和有序， HashMap 里放的是成员到 score 的映射，而跳跃表里存放的是所有的成员，排序依据是 HashMap 里存的 score,使用跳跃表的结构可以获得比较高的查找效率，并且在实现上比较简单  
+> Redis sorted set 的内部使用 HashMap 和跳跃表(SkipList)来保证数据的存储和有序， HashMap 里放的是成员到 score 的映射，而跳跃表里存放的是所有的成员，排序依据是 HashMap 里存的 score, 使用跳跃表的结构可以获得比较高的查找效率，并且在实现上比较简单  
 ### 锚点消息订阅 - Pub/Sub  
   
 > Pub/Sub 从字面上理解就是发布（ Publish ）与订阅（ Subscribe ），在 Redis 中，你可以设定对某一个 key 值进行消息发布及消息订阅，当一个 key 值上进行了消息发布后，所有订阅它的客户端都会收到相应的消息。这一功能最明显的用法就是用作实时消息系统，比如普通的即时聊天，群聊等功能  
