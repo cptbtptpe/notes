@@ -188,7 +188,7 @@ E_COMPILE_ERROR | E_COMPILE_WARNING | E_USER_ERROR | E_USER_WARNING | E_USER_NOT
 | 1 | E_ERROR | 运行时致命错误 |
 | 2 | E_WARNING | 运行时警告 |
 | 4 | E_PARSE | 编译时语法解析错误 |
-| 8 | E_NOTICE | 运行时通知	 |
+| 8 | E_NOTICE | 运行时通知     |
 | 16 | E_CORE_ERROR | PHP 初始化启动过程中发生的致命错误 |
 | 32 | E_CORE_WARNING | PHP 初始化启动过程中发生的警告 |
 | 64 | E_COMPILE_ERROR | 编译时致命错误 |

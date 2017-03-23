@@ -469,131 +469,131 @@ hostname xxx  - 修改当前主机名为 xxx 重新打开终端才能看到 一�
     host www.douban.com  
 
 ### Ubuntu 修改 DNS
-	
-	提醒：手动修改 `/etc/resolv.conf` 文件将自动被重置
-	
-	新建 tail 文件
-	$ sudo vi /etc/resolvconf/resolv.conf.d/tail
-	
-	写入以下两行
-	nameserver 8.8.8.8  
-	nameserver 114.114.114.114
-	
-	重启服务
-	$ sudo /etc/init.d/resolvconf restart 
-	
+    
+    提醒：手动修改 `/etc/resolv.conf` 文件将自动被重置
+    
+    新建 tail 文件
+    $ sudo vi /etc/resolvconf/resolv.conf.d/tail
+    
+    写入以下两行
+    nameserver 8.8.8.8  
+    nameserver 114.114.114.114
+    
+    重启服务
+    $ sudo /etc/init.d/resolvconf restart 
+    
 ### 本地利用公司开发机&公司个人机器做开发  
 
 **公司开发机执行**  
 
-	# 反向代理 ssh 格式
-	autossh -M <外网端口-守护> -NR <外网端口>:localhost:<内网 ssh 端口> <外网用户名>@<外网 IP>
-	
-	# 反向代理 22 端口
-	autossh -M 5678 -NR 19999:localhost:22 ubuntu@123.206.210.77 &
-	
-	# 反向代理 80 端口
-	autossh -M 8600 -NR 38081:localhost:80 ubuntu@123.206.210.77 &
+    # 反向代理 ssh 格式
+    autossh -M <外网端口-守护> -NR <外网端口>:localhost:<内网 ssh 端口> <外网用户名>@<外网 IP>
+    
+    # 反向代理 22 端口
+    autossh -M 5678 -NR 19999:localhost:22 ubuntu@123.206.210.77 &
+    
+    # 反向代理 80 端口
+    autossh -M 8600 -NR 38081:localhost:80 ubuntu@123.206.210.77 &
 
 **公司个人机执行**  
-	
-	# 反向代理 22 端口
-	autossh -M 5678 -NR 29999:localhost:22 ubuntu@123.206.210.77 &
-	
-	# 反向代理 80 端口
-	autossh -M 6600 -NR 18081:localhost:80 ubuntu@123.206.210.77 &
+    
+    # 反向代理 22 端口
+    autossh -M 5678 -NR 29999:localhost:22 ubuntu@123.206.210.77 &
+    
+    # 反向代理 80 端口
+    autossh -M 6600 -NR 18081:localhost:80 ubuntu@123.206.210.77 &
 
 **公网机器执行**  
 
-	# 端口转发 ssh 格式
-	ssh -fCNL '*:<外网端口-转发>:localhost:<外网端口>' localhost
-	
-	# 转发端口 19998 到 19999
-	ssh -fCNL '*:19998:localhost:19999' localhost
-	
-	# 转发端口 29998 到 29999
-	ssh -fCNL '*:29998:localhost:29999' localhost
-	
-	# 转发端口 18080 到 18081
-	ssh -fCNL '*:18080:localhost:18081' localhost
-	
-	# 转发端口 38080 到 38081
-	ssh -fCNL '*:38080:localhost:38081' localhost
+    # 端口转发 ssh 格式
+    ssh -fCNL '*:<外网端口-转发>:localhost:<外网端口>' localhost
+    
+    # 转发端口 19998 到 19999
+    ssh -fCNL '*:19998:localhost:19999' localhost
+    
+    # 转发端口 29998 到 29999
+    ssh -fCNL '*:29998:localhost:29999' localhost
+    
+    # 转发端口 18080 到 18081
+    ssh -fCNL '*:18080:localhost:18081' localhost
+    
+    # 转发端口 38080 到 38081
+    ssh -fCNL '*:38080:localhost:38081' localhost
 
 **本地机器执行**  
-	
-	# 浏览器访问指定域名:端口号
-	
-	# port:18080
-	123.206.210.77	old-notes.leon.com
-	123.206.210.77	db.leon.com
-	
-	# port:38080
-	123.206.210.77  git.maiqitrip.com
-	123.206.210.77  leon.kake.maiqitrip.com
-	123.206.210.77  leon.source.maiqitrip.com
-	123.206.210.77  leon.backend-kake.maiqitrip.com
-	123.206.210.77  leon.service.maiqitrip.com
+    
+    # 浏览器访问指定域名:端口号
+    
+    # port:18080
+    123.206.210.77    old-notes.leon.com
+    123.206.210.77    db.leon.com
+    
+    # port:38080
+    123.206.210.77  git.maiqitrip.com
+    123.206.210.77  leon.kake.maiqitrip.com
+    123.206.210.77  leon.source.maiqitrip.com
+    123.206.210.77  leon.backend-kake.maiqitrip.com
+    123.206.210.77  leon.service.maiqitrip.com
 
-	# 登录 ssh 格式
-	ssh -p <外网端口-转发> <内网用户名>@<外网 IP>
-	
-	# 开发机	
-	ssh -p 19998 leon@123.206.210.77
-	
-	# 个人机	
-	ssh -p 29998 leon@123.206.210.77
+    # 登录 ssh 格式
+    ssh -p <外网端口-转发> <内网用户名>@<外网 IP>
+    
+    # 开发机    
+    ssh -p 19998 leon@123.206.210.77
+    
+    # 个人机    
+    ssh -p 29998 leon@123.206.210.77
 
 ### GitLab
 
 **编辑配置文件**
 
-	vim /etc/gitlab/gitlab.rb
-	
+    vim /etc/gitlab/gitlab.rb
+    
 **重新加载配置文件**
 
-	sudo gitlab-ctl reconfigure
-	
+    sudo gitlab-ctl reconfigure
+    
 **启动、关闭、重启..**
 
-	sudo gitlab-ctl start | stop | restart
+    sudo gitlab-ctl start | stop | restart
 
 ### 禅道
 
 **下载**
-	
-	wget http://dl.cnezsoft.com/zentao/9.0.1/ZenTaoPMS.9.0.1.zbox_64.tar.gz
-	
+    
+    wget http://dl.cnezsoft.com/zentao/9.0.1/ZenTaoPMS.9.0.1.zbox_64.tar.gz
+    
 **解压**
-	
-	tar -zxvf ZenTaoPMS.9.0.1.zbox_64.tar.gz -C /opt	# 必须是 opt 目录
-	
+    
+    tar -zxvf ZenTaoPMS.9.0.1.zbox_64.tar.gz -C /opt    # 必须是 opt 目录
+    
 **修改默认端口**
 
-	/opt/zbox/zbox -ap 60001 	# apache
-	/opt/zbox/zbox -mp 60002 	# mysql
-	
+    /opt/zbox/zbox -ap 60001     # apache
+    /opt/zbox/zbox -mp 60002     # mysql
+    
 **启动/停止/重启**
 
-	/opt/zbox/zbox start
-	/opt/zbox/zbox stop
-	/opt/zbox/zbox restart
-	
+    /opt/zbox/zbox start
+    /opt/zbox/zbox stop
+    /opt/zbox/zbox restart
+    
 **创建数据库账户**
 
-	/opt/zbox/auth/adduser.sh
-	
+    /opt/zbox/auth/adduser.sh
+    
 **配置并重启防火墙**
 
-	iptables -A INPUT -p tcp --dport 60001 -j ACCEPT
-	iptables -A INPUT -p tcp --dport 60002 -j ACCEPT
-	
-	service iptables save
-	service iptables restart
-	
+    iptables -A INPUT -p tcp --dport 60001 -j ACCEPT
+    iptables -A INPUT -p tcp --dport 60002 -j ACCEPT
+    
+    service iptables save
+    service iptables restart
+    
 **访问**
 
-	http:://127.0.0.1:60001
+    http:://127.0.0.1:60001
 
 ### Shell 语法
   
