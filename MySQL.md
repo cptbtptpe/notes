@@ -7,18 +7,19 @@
 * 第二范式：数据库表中不存在非关键字段对任一关键字段的部分函数依赖（解决数据冗余和数据统一问题，即拆分出重复数据）。  
 * 第三范式：数据表中存在非关键字段对任意候选关键字段的传递函数依赖。（对分类单独设计数据表存储）  
 
-> 范式数据库设计思想主要是从数据库性能及空间为主进行考虑的，单适当时候应该利用反范式设计思想对数据进行部分冗余，即用空间换时间。
+> 范式数据库设计思想主要是从数据库性能及空间为主进行考虑的，但适当时候应该利用反范式设计思想对数据进行部分冗余，即用空间换时间。
   
 ### MySql 存储引擎  
-  
-| 存储引擎 | 事务支持 | 锁粒度 | 优势 | 短板 |
-| --- | --- | --- | --- | --- |
-| MyISAM | 否 | 表级锁 | SELECT,INSERT | 频繁读写 |  
-| MRG_MyISAM | 否 | 表级锁 | 水平分表 | 全表搜索 |
-| InnoDB | 是 | MVCC 的行级锁 | 事务处理 | 高并发 |
-| Archive | 否 | 行级锁 | 日志 | 随机读写 |
-| Ndb cluster | 是 | 行级锁 | 高可用性 | 应用 |
-  
+
+> 常用引擎： ISAM、MyISAM、HEAP（也称为MEMORY）、CSV、BLACKHOLE、ARCHIVE、PERFORMANCE_SCHEMA、InnoDB、 Berkeley、Merge、Federated、Cluster/NDB
+
+| 存储引擎 | 事务支持 | 锁粒度 | 优势 | 短板 |  
+| --- | --- | --- | --- | --- |  
+| MyISAM | 否 | 表级锁 | 高速 SELECT | 高并发 |  
+| Merge | 否 | 表级锁 | 水平分表 | 全表搜索 |  
+| InnoDB | 是 | MVCC 的行级锁 | 事务处理 | - |  
+| Archive | 否 | 行级锁 | 日志 | 随机读写 |  
+| Cluster/NDB | 是 | 行级锁 | 高可用性 | - |  
   
 ### 连接 mysql  
   
@@ -152,9 +153,11 @@ mysqlbinlog --start-postion=107 --stop-position=1000 -d 库名 二进制文件
 ```  
 // 查询结果默认按行格式打印  
 // 查询结果按列格式打印  
+
 SELECT * FROM `表名`\G;  
   
 // 根据时间分组  
+
 SELECT DATE_FORMAT(addtime,"%Y-%m-%d") AS days, COUNT(*) AS lively_num  
 FROM device_score_lively_xyweather  
 WHERE  
@@ -164,9 +167,11 @@ WHERE
             '2016-06-25 00:00:00'  
         AND  
             '2016-06-28 23:59:59'  
-GROUP BY days;  
+GROUP BY days
+ORDER BY lively_num;   
 
-// GROUP BY 后 LIMIT
+// GROUP BY 后 LIMIT (方式一)
+
 SELECT *
 FROM
 (
@@ -183,7 +188,26 @@ FROM
 ) AS temp
 GROUP BY store_id
 LIMIT 10
-```  
+
+// GROUP BY 后 LIMIT (方式二)
+
+SELECT
+    a.*,
+    b.deep_path,
+    b.filename,
+    c.deep_path AS hover_deep_path,
+    c.filename AS hover_filename
+FROM `icon` a
+LEFT JOIN `attachment` b ON a.attachment_id = b.id
+LEFT JOIN `attachment` c ON a.hover_attachment_id = c.id
+WHERE 5 >
+(
+    SELECT COUNT(*)
+    FROM `icon`
+    WHERE `group` = a.`group` AND `id` > a.`id` AND `state` = 1
+)
+ORDER BY a.`sort` ASC, a.`update_time` DESC
+```
   
 ### 慢查询工具  
   
@@ -232,54 +256,6 @@ $ sudo vim /etc/mysql/mysql.conf.d/mysqld.cnf
 注释 bind-address 127.0.0.1
 ```
 
-### msyql group 后取前 N 条
-
-```
-SELECT
-    a.*,
-    b.deep_path,
-    b.filename,
-    c.deep_path AS hover_deep_path,
-    c.filename AS hover_filename
-FROM `icon` a
-LEFT JOIN `attachment` b ON a.attachment_id = b.id
-LEFT JOIN `attachment` c ON a.hover_attachment_id = c.id
-WHERE 5 >
-(
-    SELECT COUNT(*)
-    FROM `icon`
-    WHERE `group` = a.`group` AND `id` > a.`id` AND `state` = 1
-)
-ORDER BY a.`sort` ASC, a.`update_time` DESC
-```
-
-### 按天统计
-
-```  
-SELECT  
-    DATE_FORMAT(active_time, '%Y-%m-%d') `active_date`, count(*) AS `active`  
-FROM  
-    active_log  
-WHERE  
-    active_time BETWEEN '2016-05-16 00:00:00'  
-AND '2016-05-22 23:59:59'  
-GROUP BY  
-    `active_date`  
-```  
-  
-### 按小时统计
-
-```  
-SELECT  
-    DATE_FORMAT(addtime,'%H') AS `hour`, count(*) AS `total`  
-FROM  
-    `device_score_lively_xyweather`  
-WHERE  
-    `date` = '2016-09-07'  
-GROUP BY  
-    `hour`;  
-```  
-
 ### ACID  
 
 * 事务的原子性(Atomicity)
@@ -290,11 +266,11 @@ GROUP BY
 
     > 是指事务的运行并不改变数据库中数据的一致性.例如,完整性约束了 a+b=10,一个事务改变了 a,那么 b 也应该随之改变.
 
-* `独立性(Isolation)
+* 独立性(Isolation)
 
     > 事务的独立性也有称作隔离性,是指两个以上的事务不会出现交错执行的状态.因为这样可能会导致数据不一致.
 
-* `持久性(Durability)
+* 持久性(Durability)
 
     > 事务的持久性是指事务执行成功以后,该事务所对数据库所作的更改便是持久的保存在数据库之中，不会无缘无故的回滚.
 
