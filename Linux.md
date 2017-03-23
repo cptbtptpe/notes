@@ -721,7 +721,7 @@ hostname xxx  - 修改当前主机名为 xxx 重新打开终端才能看到 一�
   
 **动态获取变量**
 
-    abhehe=hello world  
+    abchehe=hello world  
     c=hehe  
     varName=abc${c}  
     
