@@ -47,7 +47,9 @@ uptime - 查看系统运行时间，打印结果及解释如下
     19:33:22 up      5:37       2 users        load average: 0.74, 0.97, 0.97  
     系统时间          运行时长    当前登陆用户数   负载情况（ 5 分钟前， 10 分钟前， 15 分钟前）  
   
-lspci - 查看 pci 设备  
+top、free - 查看系统负载  
+  
+lspci - 查看 pci 设备  
   
 lsusb - 查看 usb 设备  
   
