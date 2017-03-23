@@ -20,9 +20,9 @@ class Foo extends Bar implements FooInterface
         if ($a === $b) {
             bar();
         } elseif ($a > $b) {
-            $foo->bar($arg1);
+            $foo->bar($arg 1);
         } else {
-            BazClass::bar($arg2, $arg3);
+            BazClass::bar($arg 2, $arg 3);
         }
     }
   
@@ -49,9 +49,9 @@ class Foo extends Bar implements FooInterface
   
 行长度 `不可` 有硬限制。
   
-行长度的软限制 `必须` 是 120 个字符；对于软限制，代码风格检查器 `必须` 警告但 `不可` 报错。
+行长度的软限制 `必须` 是 1 2 0 个字符；对于软限制，代码风格检查器 `必须` 警告但 `不可` 报错。
   
-一行代码的长度 `不建议` 超过 80 个字符；较长的行 `建议` 拆分成多个不超过 80 个字符的子行。
+一行代码的长度 `不建议` 超过 8 0 个字符；较长的行 `建议` 拆分成多个不超过 8 0 个字符的子行。
   
 在非空行后面 `不可` 有空格。
   
@@ -90,7 +90,7 @@ use FooClass;
 use BarClass as Bar;
 use OtherVendor\OtherPackage\BazClass;
   
-// ... 其它PHP代码 ...
+// ... 其它 PHP 代码 ...
   
 ```
   
@@ -167,7 +167,7 @@ namespace Vendor\Package;
   
 class ClassName
 {
-    public function fooBarBaz($arg1, &$arg2, $arg3 = [])
+    public function fooBarBaz($arg 1, &$arg 2, $arg 3 = [])
     {
         // 方法主体部分
     }
@@ -185,7 +185,7 @@ namespace Vendor\Package;
   
 class ClassName
 {
-    public function foo($arg1, &$arg2, $arg3 = [])
+    public function foo($arg 1, &$arg 2, $arg 3 = [])
     {
         // 方法主体部分
     }
@@ -202,16 +202,16 @@ namespace Vendor\Package;
 class ClassName
 {
     public function aVeryLongMethodName(
-        ClassTypeHint $arg1,
-        &$arg2,
-        array $arg3 = []
+        ClassTypeHint $arg 1,
+        &$arg 2,
+        array $arg 3 = []
     ) {
         // 方法主体部分
     }
 }
 ```
   
-### abstract、final 和 static
+### abstract 、 final 和 static
   
 当用到 `抽象(abstract)` 和 `终结(final)` 来做类声明时，它们 `必须` 放在可见性声明的前面。
   
@@ -237,8 +237,8 @@ abstract class ClassName
   
 ```
 bar();
-$foo->bar($arg1);
-Foo::bar($arg2, $arg3);
+$foo->bar($arg 1);
+Foo::bar($arg 2, $arg 3);
 ```
   
 参数列表 `可以` 被拆分成多个缩进了一次的子行。如果拆分成子行，列表中的第一项 `必须` 放在下一行，并且每一行`必须`只能有一个参数。
@@ -269,14 +269,14 @@ $foo->bar(
   
 每个控制结构的代码主体 `必须` 被括在花括号里。这样可是使代码看上去更加标准化，并且加入新代码的时候还可以因此而减少引入错误的可能性。
   
-### if、elseif、else
+### if 、 elseif 、 else
   
 下面是一个 `if` 条件控制结构的示例，注意其中括号，空格和花括号的位置。同时注意 `else` 和 `elseif` 要和前一个条件控制结构的右花括号在同一行。
   
 ```
-if ($expr1) {
+if ($expr 1) {
     // if body
-} elseif ($expr2) {
+} elseif ($expr 2) {
     // elseif body
 } else {
     // else body;
@@ -285,7 +285,7 @@ if ($expr1) {
   
 `推荐` 用 `elseif` 来替代 `else if`，以保持所有的条件控制关键字看起来像是一个单词。
   
-### switch、case
+### switch 、 case
   
 下面是一个 `switch` 条件控制结构的示例，注意其中括号，空格和花括号的位置。`case` 语句 `必须` 要缩进一级，而 `break` 关键字（或其他中止关键字）`必须` 和 `case` 结构的代码主体在同一个缩进层级。如果一个有主体代码的 `case` 结构故意的继续向下执行则 `必须` 要有一个类似于 `// no break` 的注释。
   
@@ -308,7 +308,7 @@ switch ($expr) {
 }
 ```
   
-### while、do while
+### while 、 do while
   
 下面是一个 `while` 循环控制结构的示例，注意其中括号，空格和花括号的位置。
   
@@ -331,7 +331,7 @@ do {
 下面是一个 `for` 循环控制结构的示例，注意其中括号，空格和花括号的位置。
   
 ```
-for ($i = 0; $i < 10; $i++) {
+for ($i = 0; $i < 1 0; $i++) {
     // for body
 }
 ```
@@ -346,7 +346,7 @@ foreach ($iterable as $key => $value) {
 }
 ```
   
-### try、catch
+### try 、 catch
   
 下面是一个 `try catch` 异常处理控制结构的示例，注意其中括号，空格和花括号的位置。
   
@@ -375,11 +375,11 @@ try {
 下面是一个闭包的示例。注意括号，空格和花括号的位置。
   
 ```
-$closureWithArgs = function ($arg1, $arg2) {
+$closureWithArgs = function ($arg 1, $arg 2) {
     // body
 };
   
-$closureWithArgsAndVars = function ($arg1, $arg2) use ($var1, $var2) {
+$closureWithArgsAndVars = function ($arg 1, $arg 2) use ($var 1, $var 2) {
     // body
 };
 ```
@@ -400,9 +400,9 @@ $longArgs_noVars = function (
 };
   
 $noArgs_longVars = function () use (
-    $longVar1,
-    $longerVar2,
-    $muchLongerVar3
+    $longVar 1,
+    $longerVar 2,
+    $muchLongerVar 3
 ) {
    // body
 };
@@ -412,9 +412,9 @@ $longArgs_longVars = function (
     $longerArgument,
     $muchLongerArgument
 ) use (
-    $longVar1,
-    $longerVar2,
-    $muchLongerVar3
+    $longVar 1,
+    $longerVar 2,
+    $muchLongerVar 3
 ) {
    // body
 };
@@ -423,14 +423,14 @@ $longArgs_shortVars = function (
     $longArgument,
     $longerArgument,
     $muchLongerArgument
-) use ($var1) {
+) use ($var 1) {
    // body
 };
   
 $shortArgs_longVars = function ($arg) use (
-    $longVar1,
-    $longerVar2,
-    $muchLongerVar3
+    $longVar 1,
+    $longerVar 2,
+    $muchLongerVar 3
 ) {
    // body
 };
@@ -441,10 +441,10 @@ $shortArgs_longVars = function ($arg) use (
   
 ```
 $foo->bar(
-    $arg1,
-    function ($arg2) use ($var1) {
+    $arg 1,
+    function ($arg 2) use ($var 1) {
         // body
     },
-    $arg3
+    $arg 3
 );
 ```

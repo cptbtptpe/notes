@@ -10,7 +10,7 @@
   
     `\<NamespaceName>(\<SubNamespaceNames>)*\<ClassName>`  
   
-    * 完全限定类名必须有一个顶级命名空间（Vendor Name）；  
+    * 完全限定类名必须有一个顶级命名空间（ Vendor Name ）；  
     * 完全限定类名可以有多个子命名空间；  
     * 完全限定类名应该有一个终止类名；  
     * 下划线在完全限定类名中是没有特殊含义的；  

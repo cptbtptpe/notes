@@ -1,10 +1,10 @@
 ## Mongo
 
-### 导出数据(文件sql)
+### 导出数据(文件 sql)
 
 ```  
 mongoexport 
-  -h10.10.241.157:27017 
+  -h 1 0.1 0.2 4 1.1 5 7:2 7 0 1 7 
   -utxweb 
   -ptxwebdb 
   -dweather 
@@ -12,29 +12,29 @@ mongoexport
   --csv 
   -f _id,sid,cpu,sn,uuid,os,ip,mb,client_time,date,addtime 
   --queryFile=query.json 
-  -o /web/20160607-3063.csv  
+  -o /web/2 0 1 6 0 6 0 7-3 0 6 3.csv  
 ```  
   
 > query.json  
 
 ```  
 {  
-    "channel.$id": ObjectId("574fd8f7160ba061478b4b16"),  
-    "date": ISODate("2016-06-06T16:00:00Z")  
+    "channel.$id": ObjectId("5 7 4fd 8 f 7 1 6 0ba 0 6 1 4 7 8b 4 b 1 6"),  
+    "date": ISODate("2 0 1 6-0 6-0 6 T 1 6:0 0:0 0 Z")  
 }  
 ```  
   
-### 导出数据(显式sql)  
+### 导出数据(显式 sql)  
 
 ```  
 mysql 
-  -h127.0.0.1 
+  -h 1 2 7.0.0.1 
   -uwuguolin 
   -pjiuyi 
-  -P3308 
+  -P 3 3 0 8 
   -D receive_flow_oa 
-  -e "select channel_num,sid,count(*) as total from device_score_lively_xyweather where channel_num = 400002 and date = '2016-07-17' group by sid"
-> ~/Downloads/400002_20160717_live.csv  
+  -e "select channel_num,sid,count(*) as total from device_score_lively_xyweather where channel_num = 4 0 0 0 0 2 and date = '2 0 1 6-0 7-1 7' group by sid"
+> ~/Downloads/4 0 0 0 0 2 _ 2 0 1 6 0 7 1 7_live.csv  
 ```  
 
 ### 按小时分组统计 ($hour, $month, $week, ...)  
@@ -56,8 +56,8 @@ db.device.aggregate([
 ```  
 db.log_register.find({  
     addtime: {  
-        $gt: new Date(2016,4,13,23),  
-        $lt: new Date(2016,4,14,8)  
+        $gt: new Date(2 0 1 6,4,1 3,2 3),  
+        $lt: new Date(2 0 1 6,4,1 4,8)  
     },  
     type: 1  
 }).count()  

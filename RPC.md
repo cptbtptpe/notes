@@ -8,7 +8,7 @@
     
         > C++, C#, Cocoa, Erlang, Haskell, Java, Ocami, Perl, PHP, Python, Ruby, Smalltalk
     
-    - [x] 规范的描述文件（IDL）
+    - [x] 规范的描述文件（ IDL ）
     - [x] 基于 `SOCKET` 的通讯方式、
     - [x] 实现了多线程（`TThreadPolServer`）、单线程非阻塞 `IO`（`TNonBlockingServer`）、多线程非阻塞 `IO`（`THsHaServer`）
     - [x] 实现了最高效的二进制序列化协议 `TCompactProtocol`，但并不支持所有语言
@@ -81,7 +81,7 @@
 
 ### 简介
 
-> `Thrift` 是一个跨语言的服务部署框架，由 `facebook` 在 `2007` 年开发并贡献到 `apache` 基金，与 `2008` 年进入 `apache` 开源项目  
+> `Thrift` 是一个跨语言的服务部署框架，由 `facebook` 在 `2 0 0 7` 年开发并贡献到 `apache` 基金，与 `2 0 0 8` 年进入 `apache` 开源项目  
 > `Thrift` 是通过中间接口语言 `IDL` 来定义接口和所需数据的类型，然后通过编译器生成不同语言的相关代码，从而实现跨语言的支持
 
 ### 客户端流程
@@ -165,10 +165,10 @@
 
 - [x] `bool` - 布尔值
 - [x] `byte` - 有符号字节
-- [x] `i16` - 16位有符号整型
-- [x] `i32` - 32位有符号整型
-- [x] `i64` - 64位有符号整型
-- [x] `double` - 64位浮点型
+- [x] `i 1 6` - 1 6 位有符号整型
+- [x] `i 3 2` - 3 2 位有符号整型
+- [x] `i 6 4` - 6 4 位有符号整型
+- [x] `double` - 6 4 位浮点型
 - [x] `string` - 编码无关的文本
 
 **Struct**
@@ -185,8 +185,8 @@
 struct Message
 {
     1: required string msg,     // 字段必须填写
-    2: optional i32 type = 0;   // 默认值
-    3: i32 time                 // 默认字段类型为 optional
+    2: optional i 3 2 type = 0;   // 默认值
+    3: i 3 2 time                 // 默认字段类型为 optional
 }
 ```
 
@@ -215,9 +215,9 @@ struct User {
 
 **Enum**
 
-> 枚举常量必须是32位的正整数
+> 枚举常量必须是 3 2 位的正整数
 
-* 编译器默认从0开始赋值
+* 编译器默认从 0 开始赋值
 * 可以赋予某个常量的某个整数
 * 允许常量是十六进制整数
 * 末尾没有分号
@@ -226,13 +226,13 @@ struct User {
 ```
 enum Operation {
     CMD_OK = 0,
-    CMD_NOT_EXIT = 2000,
-    CMD_EXIT = 2001,
-    CMD_ADD = 2002
+    CMD_NOT_EXIT = 2 0 0 0,
+    CMD_EXIT = 2 0 0 1,
+    CMD_ADD = 2 0 0 2
 }
 
 struct Student {
-    1: required i32 userId;
+    1: required i 3 2 userId;
     2: required string userName;
     3: optional EnOpType cmd_code = EnOpType.CMD_OK;
     4: optional string language = "english"
@@ -245,7 +245,7 @@ struct Student {
 
 ```
 exception EHandler {
-    1: i32 errorCode,
+    1: i 3 2 errorCode,
     2: string message,
     3: StUser userinfo
 }
@@ -286,7 +286,7 @@ namespace php api
 include "test.thrift"   
 ...
 struct StudentSearchResult {
-    1: in32 uid; 
+    1: in 3 2 uid; 
     ...
 }
 ```
@@ -297,13 +297,13 @@ struct StudentSearchResult {
 
 ```
 struct User{
-    1: i64 id,
+    1: i 6 4 id,
     2: string name,
-    3: i64 timestamp,
+    3: i 6 4 timestamp,
     4: bool vip  
 }
 
 service UserService{
-    User getById(1: i64 id)
+    User getById(1: i 6 4 id)
 }
 ```

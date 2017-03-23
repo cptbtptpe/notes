@@ -11,7 +11,7 @@ PHP 是一门：
 执行程序段  
 
 ```  
-echo 24%(-5);  
+echo 2 4%(-5);  
 ```  
 
 输出结果是？  
@@ -19,16 +19,16 @@ echo 24%(-5);
 - [ ] 5  
 - [x] 4 （取模运算符的操作数在运算之前都会转换成整数即除去小数部分，运算符 % 的结果和被除数的正负号相同，即 $a % $b 的结果和 $a 的符号相同）  
 - [ ] -4  
-- [ ] 19  
+- [ ] 1 9  
   
 ---  
   
 下列语句中哪条是正确定义一个常量( )  
   
-- [ ] var const PI=3.14;  
-- [x] const PI=3.14;  
-- [ ] public const PI=3.14;  
-- [ ] static PI=3.14;  
+- [ ] var const PI=3.1 4;  
+- [x] const PI=3.1 4;  
+- [ ] public const PI=3.1 4;  
+- [ ] static PI=3.1 4;  
   
 ---  
   
@@ -46,7 +46,7 @@ echo 24%(-5);
 - [ ] \$my_function  
 - [ ] \$_name  
 - [ ] declare  
-- [x] \$1_1  
+- [x] \$1 _ 1  
   
 ---  
   
@@ -62,9 +62,9 @@ echo 24%(-5);
 哪一个三元运算符相当于此脚本（     ）  
 
 ```  
-if ($a<10){  
-    if($b>11){  
-        if($c==10 && $d != $c) {  
+if ($a<1 0){  
+    if($b>1 1){  
+        if($c==1 0 && $d != $c) {  
             $x=0;  
         }else {  
             $x=1;  
@@ -73,9 +73,9 @@ if ($a<10){
 }  
 ```  
   
-- [ ] \$x = (\$a < 10 || \$b > 11 || \$c == 10 && \$d != \$c ) ? 0 : 1;  
-- [ ] \$x = ((\$a < 10 && \$b > 11) || (\$c == 10 && \$d != \$c ) ) ? 0 : 1;  
-- [ ] \$x = (\$a < 10 && \$b > 11 && \$c == 10 && \$d != \$c ) ? 0 : 1;  
+- [ ] \$x = (\$a < 1 0 || \$b > 1 1 || \$c == 1 0 && \$d != \$c ) ? 0 : 1;  
+- [ ] \$x = ((\$a < 1 0 && \$b > 1 1) || (\$c == 1 0 && \$d != \$c ) ) ? 0 : 1;  
+- [ ] \$x = (\$a < 1 0 && \$b > 1 1 && \$c == 1 0 && \$d != \$c ) ? 0 : 1;  
 - [x] 以上都不是  
   
 ---  
@@ -112,7 +112,7 @@ new B();
   
 ---  
   
-下面哪种方式可以用于服务器共享 session？  
+下面哪种方式可以用于服务器共享 session ？  
   
 - [x] 利用 NFS 共享 session 数据  
 - [x] 基于数据库的 session 共享  
@@ -121,7 +121,7 @@ new B();
   
 ---  
   
-如何在PHP中自定义一个类？  
+如何在 PHP 中自定义一个类？  
   
 - [ ] &lt;?php class Class_Name(){ //...... } ?&gt;  
 - [x] &lt;?php class Class_Name{ //......} ?&gt;  
@@ -132,18 +132,18 @@ new B();
   
 下列哪些数据库管理系统是 PHP 不支持的？（ ）  
   
-- [ ] IBM DB2  
+- [ ] IBM DB 2  
 - [ ] PostgreSQL  
 - [ ] Microsoft SQL Server  
 - [x] 以上没有一个 PHP 不支持  
   
 ---  
   
-在PHP中，如果需要类C的实例销毁时自动完成某些逻辑，我们应该怎么做  
+在 PHP 中，如果需要类 C 的实例销毁时自动完成某些逻辑，我们应该怎么做  
   
 - [ ] 定义析构函数 `-C`  
 - [ ] 定义析构函数 `_-C`  
-- [ ] PHP中没办法实现要求  
+- [ ] PHP 中没办法实现要求  
 - [x] 定义析构函数 `__destruct`  
   
 ---  
@@ -151,20 +151,20 @@ new B();
 date() 将会输出什么？  
 
 ```  
-$date="2009-5-19 ";  
-$time="14:31:38";  
+$date="2 0 0 9-5-1 9 ";  
+$time="1 4:3 1:3 8";  
 $datetime=$date.$time;  
 echo date("Y-m-d:H:i:s",strtotime($datetime));  
 ```  
   
-- [x] 2009-5-19:14:31:38  
-- [ ] 19-5-2009:2:31:38  
-- [ ] 2009-5-19:2:31:38  
-- [ ] 19/5/2009:14:31:38  
+- [x] 2 0 0 9-5-1 9:1 4:3 1:3 8  
+- [ ] 1 9-5-2 0 0 9:2:3 1:3 8  
+- [ ] 2 0 0 9-5-1 9:2:3 1:3 8  
+- [ ] 1 9/5/2 0 0 9:1 4:3 1:3 8  
   
 ---  
   
-在PHP面向对象中有一个通用方法 `__toString()` 方法，下面关于此方法描述或定义错误的是（ ）：  
+在 PHP 面向对象中有一个通用方法 `__toString()` 方法，下面关于此方法描述或定义错误的是（ ）：  
   
 - [ ] 此方法是在直接输出对象引用时自动调用的方法。  
 - [ ] 如果对象中没有定义此方法时，直接使用 echo 输出此对象，会报如下错误：`Catchable fatal error: Object of class A could not be converted to string.`  
@@ -185,7 +185,7 @@ echo date("Y-m-d:H:i:s",strtotime($datetime));
 使用 mysqli 扩展可以很方便地完成数据库的事务处理功能，下面对数据库事务处理的描述中不正确的是？  
   
 - [ ] MySQL 目前只有 InnoDB 和 BDB 两个数据表类型才支持事务  
-- [ ] MySQL 是以自动提交（autocommit）模式运行的，必须执行 mysqli 对象中的 autocommit(0) 方法关闭 MySQL 事务机制的自动提交模式  
+- [ ] MySQL 是以自动提交（ autocommit ）模式运行的，必须执行 mysqli 对象中的 autocommit(0) 方法关闭 MySQL 事务机制的自动提交模式  
 - [ ] 调用 mysqli 类对象的 commit() 方法提交事务  
 - [x] 调用 mysqli 类对象的 rollback() 方法撤销事务，并开启自动提交模式运行  
   
@@ -200,11 +200,11 @@ echo date("Y-m-d:H:i:s",strtotime($datetime));
   
 ---  
   
-设有一个数据库 mydb 中有一个表 tb1，表中有六个字段，主键为 ID，有十条记录，ID 从 0 到 9，以下代码输出结果是?  (   )  
+设有一个数据库 mydb 中有一个表 tb 1 ，表中有六个字段，主键为 ID ，有十条记录， ID 从 0 到 9 ，以下代码输出结果是?  (   )  
 
 ```  
 $link = mysql_connect("localhost","mysql_user", "mysql_password") or die("Could not connect: " . mysql_error());  
-$result = mysql_query("SELECT id,name,age FROM mydb、tb1 where id < 5") or die("Could not query:" . mysql_error());  
+$result = mysql_query("SELECT id,name,age FROM mydb 、 tb 1 where id < 5") or die("Could not query:" . mysql_error());  
   
 echo mysql_num_fields($result);  
 mysql_close($link);  
@@ -256,27 +256,27 @@ if (empty($var)){
 
 ```  
 $str = "LAMP";  
-$str1 = "LAMPBrother";  
-$strc = strcmp($str,$str1);  
+$str 1 = "LAMPBrother";  
+$strc = strcmp($str,$str 1);  
 switch ($strc){  
     case 1:  
-        echo "str > str1";  
+        echo "str > str 1";  
         break;  
-    case –1:  
-        echo "str < str1";  
+    case – 1:  
+        echo "str < str 1";  
         break;  
     case 0:  
-        echo "str=str1";  
+        echo "str=str 1";  
         break;  
     default:  
-        echo "str <> str1";  
+        echo "str <> str 1";  
 }  
 ```  
   
-- [ ] str > str1  
-- [ ] str < str1  
-- [ ] str = str1  
-- [x] str <> str1  
+- [ ] str > str 1  
+- [ ] str < str 1  
+- [ ] str = str 1  
+- [x] str <> str 1  
   
 ---  
   
@@ -327,22 +327,22 @@ echo A::$num;
 
 ```  
 class A{  
-    public $num=100;  
+    public $num=1 0 0;  
 }  
 $a = new A();  
 $b = $a;  
-$a->num=200;  
+$a->num=2 0 0;  
 echo $b->num;  
 ```  
   
-- [ ] 100  
-- [x] 200  
+- [ ] 1 0 0  
+- [x] 2 0 0  
 - [ ] 没有输出  
 - [ ] 程序报错！  
 
 ---  
   
-在 PHP 面向对象中，关于 `__call（）` 方法描述错误的是（ ）：  
+在 PHP 面向对象中，关于 `__call （）` 方法描述错误的是（ ）：  
   
 - [ ] `__call` 方法在调用对象中不存在的方法时自动调用的。  
 - [ ] `__call` 方法有两个参数。  
@@ -351,7 +351,7 @@ echo $b->num;
   
 ---  
   
-除了使用function `__construct()` 定义构造方法外，还可以使用（ ）  
+除了使用 function `__construct()` 定义构造方法外，还可以使用（ ）  
   
 - [ ] function  `__destruct()`  
 - [x] function 类名()  
@@ -396,7 +396,7 @@ PDO 通过执行 SQL 查询与数据库进行交互，可以分为多种不同�
   
 ---  
   
-PDO::ATTR_ERRMODE 设置为以下哪个值时，PDO 会抛出 PDOException?  
+PDO::ATTR_ERRMODE 设置为以下哪个值时， PDO 会抛出 PDOException?  
   
 - [ ] PDO::ERRMODE_SILENT  
 - [ ] PDO::ERRMODE_WARNING  
@@ -417,16 +417,16 @@ PDO::ATTR_ERRMODE 设置为以下哪个值时，PDO 会抛出 PDOException?
 下列代码的输出是  
 
 ```  
-$arr = array(5 => 1, 12 => 2);  
-$arr[] = 56;  
-$arr["x"] = 42;  
+$arr = array(5 => 1, 1 2 => 2);  
+$arr[] = 5 6;  
+$arr["x"] = 4 2;  
 echo var_dump($arr);  
 ```  
   
-- [x] array(4) { [5]=>int(1) [12]=> int(2) [13]=> int(56) ["x"]=> int(42) }  
-- [ ] array(3) { [12]=> int(2) [13]=> int(56) ["x"]=> int(42) }  
-- [ ] 1,2,56,42  
-- [ ] 42  
+- [x] array(4) { [5]=>int(1) [1 2]=> int(2) [1 3]=> int(5 6) ["x"]=> int(4 2) }  
+- [ ] array(3) { [1 2]=> int(2) [1 3]=> int(5 6) ["x"]=> int(4 2) }  
+- [ ] 1,2,5 6,4 2  
+- [ ] 4 2  
   
 ---  
   
@@ -453,10 +453,10 @@ $y=array_unique($x);
 echo count($x) . "," . count($y);  
 ```  
   
-- [ ] 3，1  
-- [ ] 3，3  
-- [x] 5，4  
-- [ ] 5，5  
+- [ ] 3 ， 1  
+- [ ] 3 ， 3  
+- [x] 5 ， 4  
+- [ ] 5 ， 5  
   
 ---  
   
@@ -477,10 +477,10 @@ echo preg_match("/^to/", $qpt);
 下列代码的输出是  
 
 ```  
-$rest1 = substr("abcdef", -1);  
-$rest2 = substr("abcdef", 0, -1);  
+$rest 1 = substr("abcdef", -1);  
+$rest 2 = substr("abcdef", 0, -1);  
 
-echo $rest1, $rest2;
+echo $rest 1, $rest 2;
 ```  
   
 - [x] f,abcde  
@@ -523,16 +523,16 @@ echo $y["ttt"];
   
 ---  
   
-下列哪一个方法用于二进制比较 String（不区分大小写） ？  
+下列哪一个方法用于二进制比较 String （不区分大小写） ？  
   
 - [ ] strcmp()  
 - [ ] stricmp()  
 - [x] strcasecmp()  
-- [ ] stristr（）  
+- [ ] stristr （）  
   
 ---  
   
-下列哪一个正则表达式能匹配 php|architect？  
+下列哪一个正则表达式能匹配 php|architect ？  
   
 - [ ] \d{3}\|\d{8}  
 - [x] \[a-z\]\[a-z\]\[a-z\]\|\w{9}  
@@ -544,7 +544,7 @@ echo $y["ttt"];
 以下代码的输出是  
 
 ```  
-$somevar=15;  
+$somevar=1 5;  
 function addit () {  
    GLOBAL $somevar;  
    $somevar++ ;  
@@ -553,19 +553,19 @@ function addit () {
 addit ()  
 ```  
   
-- [ ] somevar is 15  
-- [x] somevar is 16  
+- [ ] somevar is 1 5  
+- [x] somevar is 1 6  
 - [ ] somevar is 1  
 - [ ] somevar is $ somevar  
   
 ---  
   
-下列那一个不会将 \$s1 和 \$s2 合并到一个 String  
+下列那一个不会将 \$s 1 和 \$s 2 合并到一个 String  
   
-- [x] \$s1 + \$s2  
-- [ ] "{\$s1}{\$s2}"  
-- [ ] \$s1.\$s2  
-- [ ] implode(' ', array(\$s1,\$s2))  
+- [x] \$s 1 + \$s 2  
+- [ ] "{\$s 1}{\$s 2}"  
+- [ ] \$s 1.\$s 2  
+- [ ] implode(' ', array(\$s 1,\$s 2))  
   
 ---  
   
@@ -577,7 +577,7 @@ $y=array_count_values($x);
 echo $y[8];  
 ```  
   
-- [ ] 43  
+- [ ] 4 3  
 - [ ] 8  
 - [x] 1  
 - [ ] 6  
@@ -588,18 +588,18 @@ echo $y[8];
 
 ```  
 define("x","5");  
-$x=x+10;  
+$x=x+1 0;  
 echo x;  
 ```  
   
 - [ ] Error  
 - [x] 5  
-- [ ] 10  
-- [ ] 15  
+- [ ] 1 0  
+- [ ] 1 5  
   
 ---  
   
-比较两个string最好用什么方法  
+比较两个 string 最好用什么方法  
   
 - [ ] 使用 strpos  
 - [ ] 使用 ==  
@@ -642,16 +642,16 @@ $x->close();
 以下代码的输出为？  
 
 ```  
-$arr = array(5 => 1, 12 => 2);  
-$arr[] = 56;  
-$arr["x"] = 42;  
+$arr = array(5 => 1, 1 2 => 2);  
+$arr[] = 5 6;  
+$arr["x"] = 4 2;  
 unset($arr);  
 echo var_dump($arr);  
 ```  
   
-- [ ] 56  
-- [ ] x=42  
-- [ ] 42  
+- [ ] 5 6  
+- [ ] x=4 2  
+- [ ] 4 2  
 - [x] Null  
   
 ---  
@@ -668,13 +668,13 @@ echo var_dump($arr);
 请看代码，数据库关闭指令将关闭哪个连接标识？(    )  
 
 ```  
-$link1 =mysql_connect("localhost","root","");  
-$link2 = mysql_connect("localhost","root","");  
+$link 1 =mysql_connect("localhost","root","");  
+$link 2 = mysql_connect("localhost","root","");  
 mysql_close();  
 ```  
   
-- [ ] \$link1  
-- [x] \$link2  
+- [ ] \$link 1  
+- [x] \$link 2  
 - [ ] 全部关闭  
 - [ ] 报错  
   
@@ -684,7 +684,7 @@ mysql_close();
   
 - [ ] 与数据库进行多连接  
 - [ ] 与 mysql_connect 功能相同  
-- [ ] 与 ＠mysql_connect 功能相同  
+- [ ] 与 ＠ mysql_connect 功能相同  
 - [x] 与数据库建立持久连接  
   
 ---  
@@ -733,7 +733,7 @@ print_A();
   
 ---  
   
-PHP中的错误控制操作符是：（ ）  
+PHP 中的错误控制操作符是：（ ）  
   
 - [ ] %  
 - [ ] $  
@@ -786,7 +786,7 @@ total_Sum(1);
   
 ---  
   
-下面的脚本运行以后，\$array数组所包含的值是什么？（    ）  
+下面的脚本运行以后，\$array 数组所包含的值是什么？（    ）  
 
 ```  
 $array= array('1','1');  
@@ -805,19 +805,19 @@ foreach($array as $k=>$v){
 下面的代码的输出是什么？（     ）  
 
 ```  
-$s = '12345';  
+$s = '1 2 3 4 5';  
 $s[$s[1]]= '2';  
 echo $s;  
 ```  
   
-- [ ] 12345  
-- [x] 12245  
-- [ ] 22345  
-- [ ] 11345  
+- [ ] 1 2 3 4 5  
+- [x] 1 2 2 4 5  
+- [ ] 2 2 3 4 5  
+- [ ] 1 1 3 4 5  
   
 ---  
   
-假如有个类 Person，实例化（new）一个对象 \$p，那么如何使用对象 \$p 调用 Person 类中的 getInfo 方法？( )  
+假如有个类 Person ，实例化（ new ）一个对象 \$p ，那么如何使用对象 \$p 调用 Person 类中的 getInfo 方法？( )  
   
 - [ ] \$p=>getInfo();  
 - [ ] \$this->getInfo();  
@@ -830,16 +830,16 @@ echo $s;
 
 ```  
 class A{  
-    public $num=100;  
+    public $num=1 0 0;  
 }  
 $a = new A();  
 $b = clone $a;  
-$a->num=200;  
+$a->num=2 0 0;  
 echo $b->num;  
 ```  
   
-- [x] 100  
-- [ ] 200  
+- [x] 1 0 0  
+- [ ] 2 0 0  
 - [ ] 没有输出  
 - [ ] 程序报错！  
   

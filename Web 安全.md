@@ -5,14 +5,14 @@
 * TCP 协议数据包  
     * 相关知识  
         
-        | OSI层 | 协议 | 作用 | 设备 |
+        | OSI 层 | 协议 | 作用 | 设备 |
         | --- | --- | --- | --- |
         | 应用层 | HTTP | | 网关（程序）  
         | 安全层(HTTPs) | SSL/TSL | 数据封装、压缩、加密  | | 
         | 传输层 | TCP | 数据块、数据分组 | |
         | 网络层 | IP | | 路由器 |
-        | 数据链路层 | | 网络特有的链路接口 | 网桥（Bridge）、交换机（Switch）| 
-        | 物理层 | | 网络硬件 | 集线器（Hub）、中继器（Repeater） |
+        | 数据链路层 | | 网络特有的链路接口 | 网桥（ Bridge ）、交换机（ Switch ）| 
+        | 物理层 | | 网络硬件 | 集线器（ Hub ）、中继器（ Repeater ） |
   
         HTTP    超文本传输协议  
         TCP     传输控制协议  
@@ -31,11 +31,11 @@
 * 压力测试  
     * 相关知识  
         
-        `apache` 压力测试工具ab  
+        `apache` 压力测试工具 ab  
         
         ```  
         # `ulimit` 可修改最多连接数
-        ab -n 1000 -c 100 HTTP://www.baidu.com/  
+        ab -n 1 0 0 0 -c 1 0 0 HTTP://www.baidu.com/  
         ```  
 
     * 引起原因  
@@ -57,10 +57,10 @@
     
     * 引起原因  
         
-        `SYN` 类型的请求只有 40~60 字节  
+        `SYN` 类型的请求只有 4 0~6 0 字节  
         当开放了一个 `TCP` 端口后，该端口就处于 `Listening` 状态，不停地监视发到该端口的 `SYN` 报文  
-        一旦接收到 `client` 发来的 `SYN` 报文，就需要为该请求分配一个 `TCB`（Transmission Control Block）  
-        通常一个 `TCB` 至少需要 280 个字节，在某些操作系统中 `TCB` 甚至需要 1300 个字节，并返回一个 `SYN` `ACK` 命令，立即转为 `SYN-RECEIVED` 即半开连接状态  
+        一旦接收到 `client` 发来的 `SYN` 报文，就需要为该请求分配一个 `TCB`（ Transmission Control Block ）  
+        通常一个 `TCB` 至少需要 2 8 0 个字节，在某些操作系统中 `TCB` 甚至需要 1 3 0 0 个字节，并返回一个 `SYN` `ACK` 命令，立即转为 `SYN-RECEIVED` 即半开连接状态  
     
     * 危害  
         
@@ -95,13 +95,13 @@
         | Method | 含义 |  
         | --- | --- |  
         | GET | 请求服务器发送某个资源 |  
-        | HEAD | 与GET方法的行为很类似，但服务器在响应中只返回首部。不会反回实体的主体部分 |  
-        | POST | 创建一个不存在的资源，通常用于html的form表单 |  
+        | HEAD | 与 GET 方法的行为很类似，但服务器在响应中只返回首部。不会反回实体的主体部分 |  
+        | POST | 创建一个不存在的资源，通常用于 html 的 form 表单 |  
         | PUT | 创建一个已存在的资源，即完全替换 |  
         | *PATCH | 用来对已知资源进行局部更新 |  
         | TRACE | 允许客户端在最终将请求发送给服务器时，看看他变成了什么样子 |  
-        | OPTIONS | 请求WEB服务器告知其支持的各种功能 |  
-        | DELETE | 请服务器删除请求URL所指定的资源 |  
+        | OPTIONS | 请求 WEB 服务器告知其支持的各种功能 |  
+        | DELETE | 请服务器删除请求 URL 所指定的资源 |  
   
     * 定义  
         
@@ -155,8 +155,8 @@
   
 * 通过 document.cookie 获取当前用户的 cookie 信息，该 cookie 必须是非 httponly 状态才能用 javascript 代码获取  
 * HTML URL 编码  
-    * `"` => `%22`  
-    * `;` => `%3B`  
+    * `"` => `%2 2`  
+    * `;` => `%3 B`  
     * 可以使用 escape('x') 函数获取字符的 URL 编码  
 * HTML 实体编码  
     * `<` => `&lt;`  
@@ -167,28 +167,28 @@
   
 ### Cross Site Request Forgery - 跨站请求伪造 - CSRF  
   
-* 通过点击隐藏连接执行用户本意不想执行的 URL，该 URL 一般含某些动作  
+* 通过点击隐藏连接执行用户本意不想执行的 URL ，该 URL 一般含某些动作  
   
 ### SQL 注入  
   
 * 关键字  
-    * 注释：username=xxx --  
-    * 条件：username=xxx OR 1=1  
-    * 条件：username=xxx || 1=1  
-    * 截断：username=xxx'; DROP TABLE \`users\`;  
-    * 合并：username=xxx UNION SELECT * FROM \`users\`;  
+    * 注释： username=xxx --  
+    * 条件： username=xxx OR 1=1  
+    * 条件： username=xxx || 1=1  
+    * 截断： username=xxx'; DROP TABLE \`users\`;  
+    * 合并： username=xxx UNION SELECT * FROM \`users\`;  
   
 ### 上传文件漏洞 - 适用于 php web 服务器  
   
 * 需要满足文件上传前和上传后的文件名称一致的条件  
 * 预先准备一个 hello.phpabc.jpg  
 * 表面是 jpg 图片文件，其内容为 php 代码  
-* 在上传的时候可使用抓包工具 fiddler 软件修改 header 信息，将文件名修改为 * hello.php;abc.jpg，甚至可以修改文件的 mime 类型  
+* 在上传的时候可使用抓包工具 fiddler 软件修改 header 信息，将文件名修改为 * hello.php;abc.jpg ，甚至可以修改文件的 mime 类型  
 * 该文件可以通过 php 服务器的正常验证，当在 move_upload_files 时该文件会自动保存为 hello.php  
 * 然后就可以通过 url 访问该 php 文件执行其中的 php 代码了  
   
 ---  
   
 ### 相关知识书籍推荐  
-* 《白帽子讲web安全》  
-* 《HTTP权威指南》  
+* 《白帽子讲 web 安全》  
+* 《 HTTP 权威指南》  

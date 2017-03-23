@@ -23,7 +23,7 @@ if( condition )
 作用范围为如：
 if ( $host ~ "linuxidc-taiwan-5" )
 {
-        set $linuxidc_name linuxidc5;
+        set $linuxidc_name linuxidc 5;
 }
 
 if 指令用于检查一个条件是否符合，如果条件符合，则执行大括号内的内容
@@ -54,19 +54,19 @@ $request_filename	请求的文件名
 ```
 rewrite regex replacement flag;
 
-用来重定向URL
+用来重定向 URL
 
 if ( !-e $request_filename )
 {
 	rewrite /(.*) /index.php last;
 }
 
-rewrite 最后一项为标记位，Nginx 支持的标记为有：
+rewrite 最后一项为标记位， Nginx 支持的标记为有：
 
 	last 			表示完成 rewrite
-	permanent 		返回 301 永久重定向，浏览器地址栏会显示跳转后的 URL
+	permanent 		返回 3 0 1 永久重定向，浏览器地址栏会显示跳转后的 URL
 	break 			本条规则匹配完成后，终止其他规则的匹配
-	redirect 		返回 302 临时重定向
+	redirect 		返回 3 0 2 临时重定向
 
  
 last 和 break 完成 URL 的重定向，浏览器上的地址不会变，但在服务器端上的位置发生了变化

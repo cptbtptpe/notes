@@ -1,4 +1,4 @@
-﻿## PHP7  
+﻿## PHP 7  
   
 **开启严格模式**  
 
@@ -6,7 +6,7 @@
 declare(strict_types = 1);  
 ```  
   
-**运算符（NULL合并运算符）**  
+**运算符（ NULL 合并运算符）**  
 
 ```  
 echo $_GET['page'] ?? 1;  
@@ -24,21 +24,21 @@ echo returnValueType();
   
 **参数标量类型声明**  
   
-`php5 [className, interfaceName, array, callable]`  
-`php7 [php5 + [string, int, float, bool]]`  
+`php 5 [className, interfaceName, array, callable]`  
+`php 7 [php 5 + [string, int, float, bool]]`  
 ```  
 function paramValueType(float $number) : int {  
     return intval($number);  
 }  
   
-echo paramValueType(10.9);  
+echo paramValueType(1 0.9);  
 ```  
   
 **太空船操作符（组合比较符）**  
   
 ```  
 $a <=> $b  
-// 当 $a 大于、等于或小于 $b 时它分别返回 -1 、0 或 1  
+// 当 $a 大于、等于或小于 $b 时它分别返回 -1 、 0 或 1  
   
 echo 2 <=> 1;  
 echo 1 <=> 1;  
@@ -61,11 +61,11 @@ echo NAME[1];
   
 **Unicode codepoint 转译语法**  
   
-> 这接受一个以 16 进制形式的 Unicode codepoint ，并打印出一个双引号或 heredoc包围的 UTF-8 编码格式的字符串。  
+> 这接受一个以 1 6 进制形式的 Unicode codepoint ，并打印出一个双引号或 heredoc 包围的 UTF-8 编码格式的字符串。  
 可以接受任何有效的 codepoint ，并且开头的 0 是可以省略的。  
   
 ```  
-echo "\u{9876}"; // 顶  
+echo "\u{9 8 7 6}"; // 顶  
 ```  
   
 **Closure::call() 现在有着更好的性能，简短干练的暂时绑定一个方法到对象上闭包并调用它**  
@@ -76,7 +76,7 @@ class Person {
 }  
 ```  
 
-PHP7 和 PHP5.6 都可以  
+PHP 7 和 PHP 5.6 都可以  
 
 ```  
 $getName = function() {  
@@ -87,14 +87,14 @@ $name = $getName->bindTo(new Person, 'Person');
 echo $name();  
 ```  
   
-PHP7 可以 ,PHP5.6 报错  
+PHP 7 可以 ,PHP 5.6 报错  
 
 ```  
-$getName2 = function () {  
+$getName 2 = function () {  
     return $this->name;  
 };  
   
-echo $getName2->call(new Person);  
+echo $getName 2->call(new Person);  
 ```  
   
 **为 unserialize() 提供过滤**  
@@ -130,9 +130,9 @@ echo $getName2->call(new Person);
   
 **preg_replace_callback_array()**  
   
-> 新增了一个函数 preg_replace_callback_array() ，使用该函数可以使得在使用preg_replace_callback() 函数时代码变得更加优雅。  
+> 新增了一个函数 preg_replace_callback_array() ，使用该函数可以使得在使用 preg_replace_callback() 函数时代码变得更加优雅。  
 >  
-> 在 PHP7 之前，回调函数会调用每一个正则表达式，回调函数在部分分支上是被污染了。  
+> 在 PHP 7 之前，回调函数会调用每一个正则表达式，回调函数在部分分支上是被污染了。  
   
 **Session options**  
   
@@ -140,19 +140,19 @@ echo $getName2->call(new Person);
   
 **生成器的返回值**  
   
-> 在 PHP5.5 引入生成器的概念。生成器函数每执行一次就得到一个 yield 标识的值。  
-在 PHP7 中，当生成器迭代完成后，可以获取该生成器函数的返回值。通过Generator::getReturn() 得到。  
+> 在 PHP 5.5 引入生成器的概念。生成器函数每执行一次就得到一个 yield 标识的值。  
+在 PHP 7 中，当生成器迭代完成后，可以获取该生成器函数的返回值。通过 Generator::getReturn() 得到。  
   
 **生成器中引入其他生成器**  
   
-> 在生成器中可以引入另一个或几个生成器，只需要写 yield from functionName1  
+> 在生成器中可以引入另一个或几个生成器，只需要写 yield from functionName 1  
   
   
   
 **次方运算符**  
 
 ```  
-echo 2 ** 3; // 2的3次方=8  
+echo 2 ** 3; // 2 的 3 次方=8  
 ```  
   
   
@@ -166,7 +166,7 @@ try {
 }  
 ```  
   
-**string、int、float等这些关键字不能被作为类名使用了**  
+**string 、 int 、 float 等这些关键字不能被作为类名使用了**  
   
 **func_get_args()获取的是当前变量的值**  
   
@@ -178,7 +178,7 @@ try {
   
 **十六进制字符串不再被认为是数字**  
   
-**PHP7 中被移除的函数**  
+**PHP 7 中被移除的函数**  
 
 * call_user_func() 和 call_user_func_array() 从 PHP 4.1.0 开始被废弃。  
 * 已废弃的 mcrypt_generic_end() 函数已被移除，请使用 mcrypt_generic_deinit() 代替。  

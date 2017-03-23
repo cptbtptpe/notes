@@ -47,7 +47,7 @@ console.log(arr);
 // ["A", 2: "C"]  
 ```  
   
-### array 下标是字符串 （Array 继承 Object）  
+### array 下标是字符串 （ Array 继承 Object ）  
 ```  
 var arr = []; // or new Array()  
 // undefined  
@@ -67,16 +67,16 @@ Object.getOwnPropertyDescriptor(arr, 'one');
   
 ### 函数的 length 属性  
 ```  
-var fn1 = function() {};  
+var fn 1 = function() {};  
 // undefined  
   
-var fn2 = function(a) {}  
+var fn 2 = function(a) {}  
 // undefined  
   
-var fn3 = function(a, b) {}  
+var fn 3 = function(a, b) {}  
 // undefined  
   
-console.log(fn1.length, fn2.length, fn3.length);  
+console.log(fn 1.length, fn 2.length, fn 3.length);  
 // 0 1 2  
 ```  
   

@@ -1,4 +1,4 @@
-﻿## PHP面试题-Leon  
+﻿## PHP 面试题-Leon  
   
 1. 翻转字符串 `$str = 'hello world'`;  
     
@@ -6,7 +6,7 @@
     strrev($str);
     ```
     
-2. 翻转字符串 `$str = 'hello,我是XX公司的工程师Leon'`;  
+2. 翻转字符串 `$str = 'hello,我是 XX 公司的工程师 Leon'`;  
 
     ```
     preg_match_all('/[\s\S]/u', $str, $result);
@@ -95,7 +95,7 @@
 7. `$_REQUEST` 全局变量中包含了哪些全局变量？  
 
     ```
-    // $_GET、$_POST、$_COOKIE
+    // $_GET 、$_POST 、$_COOKIE
     ```
   
 8. 使用原生 `PHP` 连接数据库 `common` 并查询表 `user` 中的数据。  
@@ -103,7 +103,7 @@
     ```
     $connect = mysql_connect($host, $user, $password) or die('Connect error:' . mysql_error());
     mysql_select_db($dbname, $connect) or die('Select database error:' . mysql_error());
-    mysql_query('SET NAMES "UTF8"', $connect);
+    mysql_query('SET NAMES "UTF 8"', $connect);
     
     $result = mysql_query('SELECT * FROM `user`', $connect);
     while ($record = mysql_fetch_array($result, MYSQL_ASSOC)) {
@@ -117,20 +117,20 @@
     // xxx
     ```
     
-10. 解释以下 `http` 状态码表达的含义。  
+1 0. 解释以下 `http` 状态码表达的含义。  
   
     ```  
-    200 ： OK  
-    301 ： Moved Permanently  
-    302 ： Move temporarily  
-    304 ： Not Modified  
-    401 ： Unauthorized
-    403 ： Forbidden  
-    404 ： Not Found  
-    504 ： Gateway Timeout  
+    2 0 0 ： OK  
+    3 0 1 ： Moved Permanently  
+    3 0 2 ： Move temporarily  
+    3 0 4 ： Not Modified  
+    4 0 1 ： Unauthorized
+    4 0 3 ： Forbidden  
+    4 0 4 ： Not Found  
+    5 0 4 ： Gateway Timeout  
     ```  
   
-11. 请写出以下数据类型使用的场景, 请问 `varchar` 和 `char` 有什么区别？  
+1 1. 请写出以下数据类型使用的场景, 请问 `varchar` 和 `char` 有什么区别？  
   
     ```  
     int         整数
@@ -140,13 +140,13 @@
     text        文本类型
     ```  
   
-12. `abstract` (抽象类)和 `interface` (接口)的区别。  
+1 2. `abstract` (抽象类)和 `interface` (接口)的区别。  
   
     ```
     // xxx
     ```
     
-13. 简单说明以下 `PHP` 函数的作用。  
+1 3. 简单说明以下 `PHP` 函数的作用。  
   
     ```  
     extract()  
@@ -158,7 +158,7 @@
     array_count_values()  
     ```  
   
-14. 写一个函数，尽可能高效的，从 `$url = 'https://www.integle.com/index.php?user=8'`; 里取出文件的扩展名 `php` 或者 `.php` 
+1 4. 写一个函数，尽可能高效的，从 `$url = 'https://www.integle.com/index.php?user=8'`; 里取出文件的扩展名 `php` 或者 `.php` 
 
     ```
     $path = parse_url($url, PHP_URL_PATH);
@@ -168,7 +168,7 @@
     }
     ```
   
-15. 将以下划线风格的变量名（如：`get_name_by_user_id`），转换成大驼峰风格（如：`GetNameByUserId`）  
+1 5. 将以下划线风格的变量名（如：`get_name_by_user_id`），转换成大驼峰风格（如：`GetNameByUserId`）  
     ```
     $var = 'get_name_by_user_id';
     

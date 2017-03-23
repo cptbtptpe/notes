@@ -1,4 +1,4 @@
-﻿## ECMAScript6
+﻿## ECMAScript 6
   
 ### ECMAScript 和 JavaScript  
   
@@ -6,24 +6,24 @@
 * `ECMAScript` 是 `JavaScript` 语言的国际标准  
 * `JavaScript` 是 `ECMAScript` 的实现  
   
-### ECMAScript的历史  
+### ECMAScript 的历史  
 
-* 1998.06 `ECMAScript 2.0` 版发布  
-* 1999.12 `ECMAScript 3.0` 版发布，成为 `JavaScript` 的通行标准，得到了广泛支持  
-* 2007.10 `ECMAScript 4.0` 版草案发布  
-* 2009.12 `ECMAScript 5.0` 版正式发布  
-* 2011.06 `ECMAscript 5.1` 版发布，并且成为 `ISO` 国际标准  
-* 2013.03 `ECMAScript 6` 草案冻结，不再添加新功能。新的功能设想将被放到 `ECMAScript 7`  
-* 2013.12 `ECMAScript 6` 草案发布。然后是 `12` 个月的讨论期，听取各方反馈  
-* 2015.06 `ECMAScript 6` 正式通过，成为国际标准  
+* 1 9 9 8.0 6 `ECMAScript 2.0` 版发布  
+* 1 9 9 9.1 2 `ECMAScript 3.0` 版发布，成为 `JavaScript` 的通行标准，得到了广泛支持  
+* 2 0 0 7.1 0 `ECMAScript 4.0` 版草案发布  
+* 2 0 0 9.1 2 `ECMAScript 5.0` 版正式发布  
+* 2 0 1 1.0 6 `ECMAscript 5.1` 版发布，并且成为 `ISO` 国际标准  
+* 2 0 1 3.0 3 `ECMAScript 6` 草案冻结，不再添加新功能。新的功能设想将被放到 `ECMAScript 7`  
+* 2 0 1 3.1 2 `ECMAScript 6` 草案发布。然后是 `1 2` 个月的讨论期，听取各方反馈  
+* 2 0 1 5.0 6 `ECMAScript 6` 正式通过，成为国际标准  
   
 ### 前言  
 
-* `Node.js` 对 `ES6` 的支持，需要打开 `harmony` 参数  
+* `Node.js` 对 `ES 6` 的支持，需要打开 `harmony` 参数  
 	* `node --harmony`  
-* 接着进入 `REPL` 环境，该环境支持所有已经实现的 `ES6` 特性  
+* 接着进入 `REPL` 环境，该环境支持所有已经实现的 `ES 6` 特性  
 * 查看已支持的特性  
-	* `node --v8-options | grep harmony`  
+	* `node --v 8-options | grep harmony`  
 * 转码器  
 	* `Babel`  
 	* `Traceur`  
@@ -60,7 +60,7 @@
 		* 由于 `const` 命令只是指向变量所在的地址，所以将一个对象声明为常量必须非常小心  
 	* 附加知识点  
 		* 全局对象是最顶层的对象，在浏览器环境指的是 `window` 对象，在 `Node.js` 指的是 `global` 对象。  
-		* `ES6` 明确规定  
+		* `ES 6` 明确规定  
 			* `var` 命令和 `function` 命令声明的全局变量，属于全局对象的属性  
 			* `let` 命令、`const` 命令、`class` 命令声明的全局变量，不属于全局对象的属性  
   
@@ -102,7 +102,7 @@
 		// 对象方式的解构赋值  
 		// 右侧对应的 key 的值将赋给左边与 key 同名的变量，与顺序无关  
 		  
-		let {foo, bar} = {foo: 111, bar: 222};  
+		let {foo, bar} = {foo: 1 1 1, bar: 2 2 2};  
 		  
 		// 变量别名，使用 a 获取对应的值 Leon, 但是变量名为 name, 使用变量 a 将报错  
 		let {a: name} = {a: 'Leon'};  
@@ -319,10 +319,10 @@
 	* `WeakMap` 数据结构类似 `Map` 结构，用于存储弱引用的对象，只能是对象  
 		* 属性和方法仅限于 `get()`、`set()`、`has()`、`delete()`，用法与 `Map` 结构的方法一致  
   
-10. **Iterator 和 for...of 循环**  
+1 0. **Iterator 和 for...of 循环**  
 	* `Iterator` 属于一种接口规范，任何数据结构只要部署这个接口，就可以使用 `for...of` 遍历  
 	* 默认的 `Iterator` 接口部署在数据结构的 `Symbol.iterator` 属性  
-	* 在 `ES6 中`，`Array`、`Set`、`Map` 数据结构具有原生 `Iterator` 接口  
+	* 在 `ES 6 中`，`Array`、`Set`、`Map` 数据结构具有原生 `Iterator` 接口  
 	* 调用默认 `Iterator` 接口的场合  
 		* 解构赋值  
 		* 扩展运算符  
@@ -331,7 +331,7 @@
 		* `Map()`、`Set()`、`WeakMap()`、`WeakSet()`  
 		* `Promise.all()`、`Promise.race()`  
   
-11. **Generator 函数**  
+1 1. **Generator 函数**  
 	* 函数的内部状态的遍历器，每次调用返回的状态都不一样  
 	* 表现形式与普通函数基本相同，不同点如下  
 		* `function` 关键字后有一个 `*` 号  
@@ -366,7 +366,7 @@
 		}  
 		```  
   
-12. **Promise 对象**  
+1 2. **Promise 对象**  
 	* 异步操作 `api` 集合对象  
 	* `Promise` 构造函数接受一个函数作为参数，该函数的两个参数分别是成功 `resolve` 方法和失败 `reject` 方法  
 	* `Promise.then()` 返回的是一个新的 `Promise` 对象，因此可以采用链式写法  
@@ -380,7 +380,7 @@
 		* 如果 `Promise.resolve()` 方法的参数，不是具有 `Promise.then()` 方法(`thenable`)的对象，则返回一个新的 `Promise`对象，且它的状态为`fulfilled/resolved`  
 	* `Promise.reject()` 与 `Promise.resolve()` 类似返回的状态为 `rejected`  
   
-13. **Class 和 Module**  
+1 3. **Class 和 Module**  
 	* `Class` 对语法进行封装  
 		* 初始化方法 `contructor`，在实例化类的时候自动调用  
 		* `name` 属性将返回类名  
@@ -399,15 +399,15 @@
 		* `export` 命令用于用户自定义模块，规定对外接口  
 		* `import` 命令用于输入其他模块提供的功能，同时创造命名空间（`namespace`）  
 		* `module` 命令可以取代 `import` 语句，达到整体输入模块的作用  
-			* `import {name1, name2} from xxx`  
+			* `import {name 1, name 2} from xxx`  
 			* `import * as name from xxx`  
 			* `module name from xxx`   
   
 ### 小结  
 
-* `ES6` 和 `ES5` 中有许多一样的表达式，但是解释器能根据不同的上下文进行解释，需要及其小心  
+* `ES 6` 和 `ES 5` 中有许多一样的表达式，但是解释器能根据不同的上下文进行解释，需要及其小心  
 	* `[]` 既可以是数组，也可以是解构赋值  
 	* `{}` 既可以是对象，也可以是箭头函数的函数体  
 	* `...name` 既可以是 `rest` 参数，也可以是扩展运算符  
-* 各浏览器对 `ES6` 的语法支持并不完善且各有差异  
-* 详情请参阅书籍 《ES 6标准入门》第2版  
+* 各浏览器对 `ES 6` 的语法支持并不完善且各有差异  
+* 详情请参阅书籍 《 ES 6 标准入门》第 2 版  

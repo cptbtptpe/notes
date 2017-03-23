@@ -44,8 +44,8 @@ date +%Y-%m-%d - 系统时间，后面的 + 号及加号以后的可有可无，
 cal - 打印日历  
   
 uptime - 查看系统运行时间，打印结果及解释如下  
-    19:33:22 up      5:37       2 users        load average: 0.74, 0.97, 0.97  
-    系统时间          运行时长    当前登陆用户数   负载情况（5分钟前，10分钟前，15分钟前）  
+    1 9:3 3:2 2 up      5:3 7       2 users        load average: 0.7 4, 0.9 7, 0.9 7  
+    系统时间          运行时长    当前登陆用户数   负载情况（ 5 分钟前， 1 0 分钟前， 1 5 分钟前）  
   
 lspci - 查看 pci 设备  
   
@@ -53,7 +53,7 @@ lsusb - 查看 usb 设备
   
 lsmod - 查看加载的模块（驱动）  
   
-shutdown - 关机重启，h 参数表示关机，r 参数表示重启，now 表示现在，+10 表示 10 分钟后执行，15:20 表示 15 点 20 分执行  
+shutdown - 关机重启， h 参数表示关机， r 参数表示重启， now 表示现在，+1 0 表示 1 0 分钟后执行， 1 5:2 0 表示 1 5 点 2 0 分执行  
   
 poweroff - 关机别名命令  
   
@@ -86,12 +86,12 @@ scp - 基于 ssh 的远程拷贝命令
 rsync - 远程同步命令  
 ```  
   
-### which、whereis、locate、find 的区别  
+### which 、 whereis 、 locate 、 find 的区别  
   
 ```  
-which - 在PATH变量指定的路径中，搜索某个系统命令的位置，并且返回第一个搜索结果。  
+which - 在 PATH 变量指定的路径中，搜索某个系统命令的位置，并且返回第一个搜索结果。  
   
-whereis - whereis命令只能用于程序名的搜索，而且只搜索二进制文件（参数-b）、man说明文件（参数-m）和源代码文件（参数-s）  
+whereis - whereis 命令只能用于程序名的搜索，而且只搜索二进制文件（参数-b ）、 man 说明文件（参数-m ）和源代码文件（参数-s ）  
   
 locate - 配合数据库查看文件位置。  
   
@@ -107,7 +107,7 @@ find . -name *xxx* - 查找当前目录下文件名中含 xxx 关键字的文件
   
 find / -name *.conf - 查找根目录下以 .conf 为后缀的配置文件  
   
-find / -perm 777 - 查找根目录下权限为 777 的文件  
+find / -perm 7 7 7 - 查找根目录下权限为 7 7 7 的文件  
   
 find / -type d - 查找根目录下的所有目录类型  
   
@@ -123,11 +123,11 @@ grep xxx -R path -  在指定目录下查找 xxx 字符串的行
   
 env | grep GOROOT - 查找环境变量 GOROOT  
   
-netstat -nat | grep 9000 - 查看端口 9000 情况  
+netstat -nat | grep 9 0 0 0 - 查看端口 9 0 0 0 情况  
   
-ps -ef | grep 9000 - 查看端口 9000 情况  
+ps -ef | grep 9 0 0 0 - 查看端口 9 0 0 0 情况  
   
-lsof -i:9000 - 查看端口 9000 情况  
+lsof -i:9 0 0 0 - 查看端口 9 0 0 0 情况  
 ```  
   
 ### 命令行中的常用快捷键  
@@ -141,7 +141,7 @@ ctrl+e - 跳到本行的行尾
   
 ctrl+w - 删除光标前面的单词  
 
-alt+d - 删除光标后面的单词 （同 alt+backsapce）  
+alt+d - 删除光标后面的单词 （同 alt+backsapce ）  
   
 backspace - 删除光标之前的字符  
 
@@ -161,13 +161,13 @@ ctrl+l - 清屏
 ```  
 vim filename 打开一个文件，如果文件不存在则会新建  
   
-vim filename1 filename2 filename3 可以打开或新建多个文件  
+vim filename 1 filename 2 filename 3 可以打开或新建多个文件  
   
 vim + filename 打开文件并将光标定位到最后  
   
-vim +10 filename 打开文件并将光标定位到第10行  
+vim +1 0 filename 打开文件并将光标定位到第 1 0 行  
   
-vim +/findString filename 打开文件并将光标定位到含findString字符串的第一行，并可以按n定位到下一个目标行  
+vim +/findString filename 打开文件并将光标定位到含 findString 字符串的第一行，并可以按 n 定位到下一个目标行  
 ```  
   
 - 编辑模式中按 esc 进入命令模式  
@@ -187,14 +187,14 @@ vim +/findString filename 打开文件并将光标定位到含findString字符�
     | u | 后退操作 |  
     | ctrl+r | 撤销后退 |  
     | yy | 复制(缓冲)当前行 |  
-    | 5yy | 复制(缓冲)多行，从当前行往下开始的 5 行 |  
+    | 5 yy | 复制(缓冲)多行，从当前行往下开始的 5 行 |  
     | p | 当前行的下一行粘贴 |  
     | P | 当前行的上一行粘贴 |  
     | r | 替换当前光标所在字符 |  
     | 0 | 光标移动到行首 | |  
     | $ | 光标移动到行尾 |  
-    | / | 进入查找功能（向下），输入关键字后按回车开始查找，按n显示下一个位置 |  
-    | ? | 进入查找功能（向上），输入关键字后按回车开始查找，按n显示上一个位置 |  
+    | / | 进入查找功能（向下），输入关键字后按回车开始查找，按 n 显示下一个位置 |  
+    | ? | 进入查找功能（向上），输入关键字后按回车开始查找，按 n 显示上一个位置 |  
     | ctrl+f | 向下翻页 front |  
     | ctrl+b | 向上翻页 back |  
     | ctrl+d | 向下翻半页 down |  
@@ -214,7 +214,7 @@ vim +/findString filename 打开文件并将光标定位到含findString字符�
     | :q | 退出 |  
     | :q! | 强制退出不保存 |  
     | :wq | 保存并退出 |  
-    | :x |保存并退出同：wq |  
+    | :x |保存并退出同： wq |  
     | :set nu/number | 显示行号 |  
     | :set nonu/nonumber | 不显示行号 |  
     | :sh | 切换到 shell 命令行，使用 ctrl+d 返回 vim |  
@@ -232,9 +232,9 @@ vim +/findString filename 打开文件并将光标定位到含findString字符�
     | :e! | 当前文件内容返回到上次保存的状态 |  
     | :e filename | 切换到另一个文件进行编辑 |  
     | :%s/oldString/newString/g | 全局替换 |  
-    | :1,10s/oldString/newString | 将第1-10行中的第一个 oldString 替换成 | newString，命令最后加/g可全局替换 |  
-    | :1,.s/oldString/newString | 将第1行至当前光标所在行中的第一个 oldString 替换成 newString，. 表示当前行，命令最后加/g可全局替换 |  
-    | :1,\$s/oldString/newString | 将第1行至最后一行的第一个 oldString 替换成 newString，\$ 表示最后一行，命令最后加/g可全局替换 |  
+    | :1,1 0 s/oldString/newString | 将第 1-1 0 行中的第一个 oldString 替换成 | newString ，命令最后加/g 可全局替换 |  
+    | :1,.s/oldString/newString | 将第 1 行至当前光标所在行中的第一个 oldString 替换成 newString ，. 表示当前行，命令最后加/g 可全局替换 |  
+    | :1,\$s/oldString/newString | 将第 1 行至最后一行的第一个 oldString 替换成 newString ，\$ 表示最后一行，命令最后加/g 可全局替换 |  
   
   
 ### 解压  
@@ -242,13 +242,13 @@ vim +/findString filename 打开文件并将光标定位到含findString字符�
 ```  
 tar -xzvf - 解压 .tar 文件，-C 参数指定目标文件夹  
 
-tar -xjf - 解压 .tar.bz2 文件  
+tar -xjf - 解压 .tar.bz 2 文件  
 
 tar -xZf - 解压 .tar.Z 文件  
 
 gzip -d / gunzip - 解压 .gz 文件  
 
-bzip2 -d / bunzip2 - 解压 .bz2 文件  
+bzip 2 -d / bunzip 2 - 解压 .bz 2 文件  
 
 uncompress - 解压 .Z 文件  
 
@@ -306,23 +306,23 @@ rm -r path
 **更改文件权限**  
 
 ```  
-chmod 0777 path/filename  
+chmod 0 7 7 7 path/filename  
 
 chmod u+x path/filename  
 
-chmod 用于修改文件 / 文件夹所属者（u）或所属组（g）或其它用户（o）的权限（读 - r - 4）、（写 - w - 2）、（执行 - x - 1）  
+chmod 用于修改文件 / 文件夹所属者（ u ）或所属组（ g ）或其它用户（ o ）的权限（读 - r - 4 ）、（写 - w - 2 ）、（执行 - x - 1 ）  
 ```  
   
 **更改目录权限**  
 
 ```  
-chmod -R 0777 path  
+chmod -R 0 7 7 7 path  
 ```  
   
   
 ### 标准（输入/ 输出 / 错误）重定向  
   
-**命令行shell的数据流有以下定义**  
+**命令行 shell 的数据流有以下定义**  
   
 |名称 | 说明 | 编号 | 默认 |  
 | --- | --- | --- | --- |  
@@ -330,31 +330,31 @@ chmod -R 0777 path
 | STDOUT | 标准输出 | 1 | 终端 |  
 | STDERR | 标准错误 | 2 | 终端 |  
   
-**通过管道和重定向可以控制CLI的数据流**  
+**通过管道和重定向可以控制 CLI 的数据流**  
   
 | 分类 | 关键字 | 定义 | 例子 |  
 | --- | --- | --- | --- |  
-| 重定向 | > | 将STDOUT重定向到文件(覆盖) | echo 'hello world' > test.txt |  
-| 重定向 | \>\> | 将STDOUT重定向到文件(追加) | echo 'the end' >> test.txt |  
-| 重定向 | 2> | 将STDERR重定向到文件(覆盖) | ls dir 2> error.log |  
-| 重定向 | 2>&1 | 将STDERR与STDOUT结合 | ls dir 2>&1 output.txt |  
-| 重定向 | < | 重定向STDIN | grep leon < /etc/passwd |  
-| 管道 | \| | 将一个命令STDOUT作为另一个命令STDIN的 | ls -l \| grep leon |  
+| 重定向 | > | 将 STDOUT 重定向到文件(覆盖) | echo 'hello world' > test.txt |  
+| 重定向 | \>\> | 将 STDOUT 重定向到文件(追加) | echo 'the end' >> test.txt |  
+| 重定向 | 2> | 将 STDERR 重定向到文件(覆盖) | ls dir 2> error.log |  
+| 重定向 | 2>&1 | 将 STDERR 与 STDOUT 结合 | ls dir 2>&1 output.txt |  
+| 重定向 | < | 重定向 STDIN | grep leon < /etc/passwd |  
+| 管道 | \| | 将一个命令 STDOUT 作为另一个命令 STDIN 的 | ls -l \| grep leon |  
   
   
 ### 用户权限与组权限  
   
-每一个用户拥有一个 UserID，操作系统实际使用的是用户 UserID，而非用户名  
-每个用户属于一个主组，属于一个或多个附属组（最多31个附属组）  
-每个组拥有一个GroupID  
+每一个用户拥有一个 UserID ，操作系统实际使用的是用户 UserID ，而非用户名  
+每个用户属于一个主组，属于一个或多个附属组（最多 3 1 个附属组）  
+每个组拥有一个 GroupID  
 每个进程以一个用户身份运行，并受该用户可访问的资源限制  
 每个可登陆用户拥有一个指定的 shell  
-用户ID为32位，从0开始，但是为了和老式系统兼容，用户ID限制在60000以下  
+用户 ID 为 3 2 位，从 0 开始，但是为了和老式系统兼容，用户 ID 限制在 6 0 0 0 0 以下  
 用户分为三种：  
   
-    root - ID为0的超级用户  
-    系统用户 - 1~499 没有登陆 shell  
-    普通用户 - 500以上  
+    root - ID 为 0 的超级用户  
+    系统用户 - 1~4 9 9 没有登陆 shell  
+    普通用户 - 5 0 0 以上  
   
 系统中的文件都有一个所属用户及所属组  
 使用 id 命令可以显示当前用户的信息，也可指定用户参数  
@@ -380,29 +380,29 @@ userdel -R xxx - 删除用户信息并删除家目录
 groupadd xxx - 创建一个用户组  
 groupdel xxx - 删除用户组  
   
-权限一般分为读r、写w、执行x  
+权限一般分为读 r 、写 w 、执行 x  
 系统中每个文件都有特定的权限、所属用户及所属组  
 通过这一的机制来显示那些用户、那些组可以对特定文件进行什么样的操作  
   
 | 权限 | 对文件的影响 | 对目录的影响 | 值 |  
 | --- | --- | --- | --- |  
-| r读 | 可读取文件内容 | 可列出目录内容 | 4 |  
-| w写 | 可修改文件内容 | 可在目录中创建删除文件 | 2 |  
-| x执行 | 可作为命令执行 | 可访问目录内容 | 1 |  
+| r 读 | 可读取文件内容 | 可列出目录内容 | 4 |  
+| w 写 | 可修改文件内容 | 可在目录中创建删除文件 | 2 |  
+| x 执行 | 可作为命令执行 | 可访问目录内容 | 1 |  
   
-Linux权限基于UGO模型进行控制  
+Linux 权限基于 UGO 模型进行控制  
 
 > `User` `Group` `Other`  
   
-ls -l命令列出的文件信息格式如下  
+ls -l 命令列出的文件信息格式如下  
 
-> `drwxr-xr-- 2 leon leon 58 Oct 1 13:50 filename`  
+> `drwxr-xr-- 2 leon leon 5 8 Oct 1 1 3:5 0 filename`  
 
-| UGO权限 | 链接数 | 所属用户 | 所属用户组 | 大小 | 创建修改时间 | 文件名称 |  
+| UGO 权限 | 链接数 | 所属用户 | 所属用户组 | 大小 | 创建修改时间 | 文件名称 |  
 | --- | --- | --- | --- | --- | --- | --- |  
-| drwxr-xr-- | 2 | leon | leon | 58 | Oct 1 13:50 | filename |  
+| drwxr-xr-- | 2 | leon | leon | 5 8 | Oct 1 1 3:5 0 | filename |  
   
-其中 UGO 部分第一个字符表示类型，d表文件夹，-表文件，l表链接 … 后面 9 位每 3 位分别对于 User-Group-Other 的权限  
+其中 UGO 部分第一个字符表示类型， d 表文件夹，-表文件， l 表链接 … 后面 9 位每 3 位分别对于 User-Group-Other 的权限  
   
     chown -R 用户名 文件 - 将指定文件所属用户修改为指定的用户  
     chgrp -R 组名 文件 - 将指定文件所属组修改为指定的组  
@@ -410,8 +410,8 @@ ls -l命令列出的文件信息格式如下
   
 模式  
   
-    u、g、o分别代表用户、组和其他  
-    a 可以指代 ugo（即all）  
+    u 、 g 、 o 分别代表用户、组和其他  
+    a 可以指代 ugo （即 all ）  
     + - 代表加入或删除对应权限  
     r w x 代表三种权限  
   
@@ -422,7 +422,7 @@ ls -l命令列出的文件信息格式如下
     chmod go+r index.php - 为所属组和其他添加对该文件的读权限  
     chmod a-x index.php - 删除所有对该文件的操作权限  
   
-chmod命令也支持以数字数字方式修改权限，三个权限(UGO)分别有三个数字表示  
+chmod 命令也支持以数字数字方式修改权限，三个权限(UGO)分别有三个数字表示  
   
     r=4 (2^2)  
     w=2 (2^1)  
@@ -433,26 +433,26 @@ chmod命令也支持以数字数字方式修改权限，三个权限(UGO)分别�
     rw- = 6 = 4+2  
     rwx = 7 = 4+2+1  
     r-x = 5 = 4+1  
-    chmod 660 文件 == rw-rw----  
-    chmod 775 文件 == rwxrwxr-x  
-    chmod 777 文件 == rwxrwxrwx  
-    chmod 755 文件 == rwxr-xr-x  
+    chmod 6 6 0 文件 == rw-rw----  
+    chmod 7 7 5 文件 == rwxrwxr-x  
+    chmod 7 7 7 文件 == rwxrwxrwx  
+    chmod 7 5 5 文件 == rwxr-xr-x  
   
 每个终端都拥有一个 umask 属性来确定新建文件、文件夹的默认权限  
-umask使用数字权限方式表示  
+umask 使用数字权限方式表示  
   
-    目录的默认权限是：777-umask 值  
-    文件的默认权限是：666-umask 值  
+    目录的默认权限是： 7 7 7-umask 值  
+    文件的默认权限是： 6 6 6-umask 值  
   
-一般普通用户的默认 umask 是 002，root用户的默认 umask 是 022  
+一般普通用户的默认 umask 是 0 0 2 ， root 用户的默认 umask 是 0 2 2  
 也就是说，对于普通用户  
   
-    新建文件的权限是：666-002=664  
-    新建目录的权限是：777-022=775  
+    新建文件的权限是： 6 6 6-0 0 2=6 6 4  
+    新建目录的权限是： 7 7 7-0 2 2=7 7 5  
   
 umask 值可以使用 umask 命令查看和设置  
 umask - 查看当前用户（当前终端）的 umask 值  
-umask 022 - 设置当前用户（当前终端）的 umask 值为 022  
+umask 0 2 2 - 设置当前用户（当前终端）的 umask 值为 0 2 2  
 特殊权限，即 umask 值的第一位  
   
 | 权限 | 对文件的影响 | 对目录的影响 |  
@@ -464,22 +464,22 @@ umask 022 - 设置当前用户（当前终端）的 umask 值为 022
 ### 网络管理  
   
 ```  
-lspci 可以查看网卡即其他pci类型硬件信息  
+lspci 可以查看网卡即其他 pci 类型硬件信息  
   
-lsusb 可以查看所有的USB设备信息  
+lsusb 可以查看所有的 USB 设备信息  
   
 ifconfig -a - 所有网卡接口  
   
 ifconfig xxx - 只显示 xxx 网卡的信息  
   
-ifup xxx - 打开xxx接口  
+ifup xxx - 打开 xxx 接口  
   
-ifdown xxx - 关闭xxx接口  
+ifdown xxx - 关闭 xxx 接口  
   
 setup 命令可以配置网络信息（等其他信息），配置完后使用 ifup 启用命令  
   
 相应的网络配置保存在 /etc/sysconfig/network-scripts/ifcfg-etxxx  
-DNS配置文件保存在 /etc/resolv.conf  
+DNS 配置文件保存在 /etc/resolv.conf  
 主机名配置文件保存在 /etc/sysconfig/network  
 静态主机名配置文件保存在 /etc/hosts  
 ```  
@@ -487,8 +487,8 @@ DNS配置文件保存在 /etc/resolv.conf
 ### 测试网络连通命令  
   
 ```  
-ping 192.168.2.2 - 直接ping IP地址  
-ping www.baidu.com - ping域名，先会进行 dns 解析  
+ping 1 9 2.1 6 8.2.2 - 直接 ping IP 地址  
+ping www.baidu.com - ping 域名，先会进行 dns 解析  
 ```  
   
 ### 测试 dns 解析  
@@ -510,7 +510,7 @@ ip route
 traceroute www.baidu.com  
 ```
 
-使用 mtr 进行网络质量测试（结合了traceroute和ping）  
+使用 mtr 进行网络质量测试（结合了 traceroute 和 ping ）  
 
 ```
 mtr www.baidu.com  
@@ -535,7 +535,7 @@ hostname xxx  - 修改当前主机名为 xxx 重新打开终端才能看到 一�
 查看 dns 解析是否正确  
   
     host www.baidu.com  
-    host www.126.com  
+    host www.1 2 6.com  
     host www.douban.com  
 
 ### Ubuntu 修改 DNS
@@ -547,7 +547,7 @@ hostname xxx  - 修改当前主机名为 xxx 重新打开终端才能看到 一�
 	
 	写入以下两行
 	nameserver 8.8.8.8  
-	nameserver 114.114.114.114
+	nameserver 1 1 4.1 1 4.1 1 4.1 1 4
 	
 	重启服务
 	$ sudo /etc/init.d/resolvconf restart 
@@ -557,62 +557,62 @@ hostname xxx  - 修改当前主机名为 xxx 重新打开终端才能看到 一�
 **公司开发机执行**  
 
 	# 反向代理 ssh 格式
-	autossh -M <外网端口-守护> -NR <外网端口>:localhost:<内网ssh端口> <外网用户名>@<外网IP>
+	autossh -M <外网端口-守护> -NR <外网端口>:localhost:<内网 ssh 端口> <外网用户名>@<外网 IP>
 	
-	# 反向代理 22 端口
-	autossh -M 5678 -NR 19999:localhost:22 ubuntu@123.206.210.77 &
+	# 反向代理 2 2 端口
+	autossh -M 5 6 7 8 -NR 1 9 9 9 9:localhost:2 2 ubuntu@1 2 3.2 0 6.2 1 0.7 7 &
 	
-	# 反向代理 80 端口
-	autossh -M 8600 -NR 38081:localhost:80 ubuntu@123.206.210.77 &
+	# 反向代理 8 0 端口
+	autossh -M 8 6 0 0 -NR 3 8 0 8 1:localhost:8 0 ubuntu@1 2 3.2 0 6.2 1 0.7 7 &
 
 **公司个人机执行**  
 	
-	# 反向代理 22 端口
-	autossh -M 5678 -NR 29999:localhost:22 ubuntu@123.206.210.77 &
+	# 反向代理 2 2 端口
+	autossh -M 5 6 7 8 -NR 2 9 9 9 9:localhost:2 2 ubuntu@1 2 3.2 0 6.2 1 0.7 7 &
 	
-	# 反向代理 80 端口
-	autossh -M 6600 -NR 18081:localhost:80 ubuntu@123.206.210.77 &
+	# 反向代理 8 0 端口
+	autossh -M 6 6 0 0 -NR 1 8 0 8 1:localhost:8 0 ubuntu@1 2 3.2 0 6.2 1 0.7 7 &
 
 **公网机器执行**  
 
 	# 端口转发 ssh 格式
 	ssh -fCNL '*:<外网端口-转发>:localhost:<外网端口>' localhost
 	
-	# 转发端口 19998 到 19999
-	ssh -fCNL '*:19998:localhost:19999' localhost
+	# 转发端口 1 9 9 9 8 到 1 9 9 9 9
+	ssh -fCNL '*:1 9 9 9 8:localhost:1 9 9 9 9' localhost
 	
-	# 转发端口 29998 到 29999
-	ssh -fCNL '*:29998:localhost:29999' localhost
+	# 转发端口 2 9 9 9 8 到 2 9 9 9 9
+	ssh -fCNL '*:2 9 9 9 8:localhost:2 9 9 9 9' localhost
 	
-	# 转发端口 18080 到 18081
-	ssh -fCNL '*:18080:localhost:18081' localhost
+	# 转发端口 1 8 0 8 0 到 1 8 0 8 1
+	ssh -fCNL '*:1 8 0 8 0:localhost:1 8 0 8 1' localhost
 	
-	# 转发端口 38080 到 38081
-	ssh -fCNL '*:38080:localhost:38081' localhost
+	# 转发端口 3 8 0 8 0 到 3 8 0 8 1
+	ssh -fCNL '*:3 8 0 8 0:localhost:3 8 0 8 1' localhost
 
 **本地机器执行**  
 	
 	# 浏览器访问指定域名:端口号
 	
-	# port:18080
-	123.206.210.77	old-notes.leon.com
-	123.206.210.77	db.leon.com
+	# port:1 8 0 8 0
+	1 2 3.2 0 6.2 1 0.7 7	old-notes.leon.com
+	1 2 3.2 0 6.2 1 0.7 7	db.leon.com
 	
-	# port:38080
-	123.206.210.77  git.maiqitrip.com
-	123.206.210.77  leon.kake.maiqitrip.com
-	123.206.210.77  leon.source.maiqitrip.com
-	123.206.210.77  leon.backend-kake.maiqitrip.com
-	123.206.210.77  leon.service.maiqitrip.com
+	# port:3 8 0 8 0
+	1 2 3.2 0 6.2 1 0.7 7  git.maiqitrip.com
+	1 2 3.2 0 6.2 1 0.7 7  leon.kake.maiqitrip.com
+	1 2 3.2 0 6.2 1 0.7 7  leon.source.maiqitrip.com
+	1 2 3.2 0 6.2 1 0.7 7  leon.backend-kake.maiqitrip.com
+	1 2 3.2 0 6.2 1 0.7 7  leon.service.maiqitrip.com
 
-	# 登录ssh格式
-	ssh -p <外网端口-转发> <内网用户名>@<外网IP>
+	# 登录 ssh 格式
+	ssh -p <外网端口-转发> <内网用户名>@<外网 IP>
 	
 	# 开发机	
-	ssh -p 19998 leon@123.206.210.77
+	ssh -p 1 9 9 9 8 leon@1 2 3.2 0 6.2 1 0.7 7
 	
 	# 个人机	
-	ssh -p 29998 leon@123.206.210.77
+	ssh -p 2 9 9 9 8 leon@1 2 3.2 0 6.2 1 0.7 7
 
 ### GitLab
 
@@ -632,16 +632,16 @@ hostname xxx  - 修改当前主机名为 xxx 重新打开终端才能看到 一�
 
 **下载**
 	
-	wget http://dl.cnezsoft.com/zentao/9.0.1/ZenTaoPMS.9.0.1.zbox_64.tar.gz
+	wget http://dl.cnezsoft.com/zentao/9.0.1/ZenTaoPMS.9.0.1.zbox_ 6 4.tar.gz
 	
 **解压**
 	
-	tar -zxvf ZenTaoPMS.9.0.1.zbox_64.tar.gz -C /opt	# 必须是 opt 目录
+	tar -zxvf ZenTaoPMS.9.0.1.zbox_ 6 4.tar.gz -C /opt	# 必须是 opt 目录
 	
 **修改默认端口**
 
-	/opt/zbox/zbox -ap 60001 	# apache
-	/opt/zbox/zbox -mp 60002 	# mysql
+	/opt/zbox/zbox -ap 6 0 0 0 1 	# apache
+	/opt/zbox/zbox -mp 6 0 0 0 2 	# mysql
 	
 **启动/停止/重启**
 
@@ -655,25 +655,25 @@ hostname xxx  - 修改当前主机名为 xxx 重新打开终端才能看到 一�
 	
 **配置并重启防火墙**
 
-	iptables -A INPUT -p tcp --dport 60001 -j ACCEPT
-	iptables -A INPUT -p tcp --dport 60002 -j ACCEPT
+	iptables -A INPUT -p tcp --dport 6 0 0 0 1 -j ACCEPT
+	iptables -A INPUT -p tcp --dport 6 0 0 0 2 -j ACCEPT
 	
 	service iptables save
 	service iptables restart
 	
 **访问**
 
-	http:://127.0.0.1:60001
+	http:://1 2 7.0.0.1:6 0 0 0 1
 
 ### Shell 语法
   
 **$$**
 
-    Shell本身的PID（ProcessID）  
+    Shell 本身的 PID （ ProcessID ）  
 
 **$!**
 
-    Shell最后运行的后台Process的PID  
+    Shell 最后运行的后台 Process 的 PID  
   
 **$?**
 
@@ -681,7 +681,7 @@ hostname xxx  - 修改当前主机名为 xxx 重新打开终端才能看到 一�
   
 **$-**
 
-    使用Set命令设定的Flag一览  
+    使用 Set 命令设定的 Flag 一览  
   
 **$_**
 
@@ -697,19 +697,19 @@ hostname xxx  - 修改当前主机名为 xxx 重新打开终端才能看到 一�
   
 **$#**
 
-    (命令行中)添加到Shell的参数个数  
+    (命令行中)添加到 Shell 的参数个数  
   
 **$0**
 
-    (命令行中)Shell本身的文件名  
+    (命令行中)Shell 本身的文件名  
   
-**$1～$n**
+**$1 ～$n**
 
-    (命令行中)添加到Shell的各参数值。$1是第1参数、$2是第2参数…。  
+    (命令行中)添加到 Shell 的各参数值。$1 是第 1 参数、$2 是第 2 参数…。  
   
 **result=$(ls)**
 
-    将括号中的表达式以命令方式执行并把结果赋值给变量result  
+    将括号中的表达式以命令方式执行并把结果赋值给变量 result  
 
 **result=${abc}**
 
@@ -717,7 +717,7 @@ hostname xxx  - 修改当前主机名为 xxx 重新打开终端才能看到 一�
   
 **result=$(($a + $b))**
 
-    计算变量a和变量b的和，同 result=$[$a + $b]、result=$(expr $a + $b)  
+    计算变量 a 和变量 b 的和，同 result=$[$a + $b]、 result=$(expr $a + $b)  
   
 **动态获取变量**
 
@@ -739,13 +739,13 @@ hostname xxx  - 修改当前主机名为 xxx 重新打开终端才能看到 一�
     a=arr  
     declare -a arr  
     
-    (($a[1]=111))  
+    (($a[1]=1 1 1))  
     
-    (($a[2]=222))  
+    (($a[2]=2 2 2))  
     
-    echo ${arr[1]} # 111  
+    echo ${arr[1]} # 1 1 1  
     
-    echo ${arr[2]} # 222  
+    echo ${arr[2]} # 2 2 2  
   
 **获取字符串的长度**
 
@@ -759,10 +759,10 @@ hostname xxx  - 修改当前主机名为 xxx 重新打开终端才能看到 一�
   
 **双小括号表达式 (())**
 
-    所有表达式可以像c语言一样，如：a++,b--,c+=1等  
+    所有表达式可以像 c 语言一样，如： a++,b--,c+=1 等  
     所有变量可以不加入$符号进行调用  
     
     可以进行逻辑运算，四则运算  
-    扩展了for,while,if条件测试运算  
+    扩展了 for,while,if 条件测试运算  
     支持多个表达式运算，各个表达式之间用逗号分开  
-    d=$((1,2,3,4,5)) $d的值为最后一个表达式的值  
+    d=$((1,2,3,4,5)) $d 的值为最后一个表达式的值  
