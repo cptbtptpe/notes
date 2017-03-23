@@ -1,92 +1,49 @@
 ﻿## Linux  
   
 ### 常用命令  
-  
-```  
-hostname - 显示主机名  
-  
-uname - 显示底层系统信息  
-  
-jobs - 查看当前在后台运行的全部进程  
-  
-sleep 5 - 暂停 5 秒  
-  
-bg 2 - 继续运行后台编号为 2 的命令  
-  
-fg 2 - 将后台编号为 2 的命令拿回到前台执行  
-  
-!! - 执行上一次执行的命令 同小键盘的上 + 回车  
-  
-!u - 执行历史执行命令中以 u 开头的命令，就近原则  
-  
-!2 - 执行历史执行命令中序号为 2 的命令  
-  
-!?abc - 执行历史执行命令中包含 abc 命令的命令就近原则  
-  
-!-3 - 执行历史执行命令中倒数第 3 个命令  
-  
-!$ - 上一条命令的参数  
-  
-ctrl+r - 搜索历史执行命令，接着输入要搜索的关键字  
-  
-esc+. - 调用上一个命令的参数  
-  
-id - 获取当前用户信息  
-  
-passwd - 修改当前用户密码  
-  
-pwd - 显示当前工作目录  
-  
-file - 查看文件的类型  
-  
-date +%Y-%m-%d - 系统时间，后面的 + 号及加号以后的可有可无，有则格式化时间显示  
-  
-cal - 打印日历  
-  
-uptime - 查看系统运行时间，打印结果及解释如下  
-    19:33:22 up      5:37       2 users        load average: 0.74, 0.97, 0.97  
-    系统时间          运行时长    当前登陆用户数   负载情况（ 5 分钟前， 10 分钟前， 15 分钟前）  
-  
-top、free - 查看系统负载  
-  
-lspci - 查看 pci 设备  
-  
-lsusb - 查看 usb 设备  
-  
-lsmod - 查看加载的模块（驱动）  
-  
-shutdown - 关机重启， h 参数表示关机， r 参数表示重启， now 表示现在，+10 表示 10 分钟后执行， 15:20 表示 15 点 20 分执行  
-  
-poweroff - 关机别名命令  
-  
-reboot - 重启别名命令  
-  
-du -sh filename - 查看文件大小  
-  
-who - 查看当前登陆的用户  
-  
----  
-  
-cut - 分割字符串  
-  
-awk - 格式化字符串  
-  
-wc - 文本统计  
-  
-sort - 排序  
-  
-uniq - 去重复  
-  
-diff - 比对  
-  
-sed - 文本替换  
-  
-tr - sed 命令的简化版本  
-  
-scp - 基于 ssh 的远程拷贝命令  
-  
-rsync - 远程同步命令  
-```  
+
+| 命令 | 作用 |
+| --- | --- |
+| hostname | 显示主机名 |
+| uname | 显示底层系统信息 |
+| jobs | 查看当前在后台运行的全部进程 |
+| sleep 5 | 暂停 5 秒 |
+| bg 2 | 继续运行后台编号为 2 的命令 |
+| fg 2 | 将后台编号为 2 的命令拿回到前台执行 |
+| !! | 执行上一次执行的命令 同小键盘的上 + 回车 |
+| !u | 执行历史执行命令中以 u 开头的命令，就近原则 |
+| !2 | 执行历史执行命令中序号为 2 的命令 |
+| !?abc | 执行历史执行命令中包含 abc 命令的命令就近原则 |
+| !-3 | 执行历史执行命令中倒数第 3 个命令 |
+| !$ | 上一条命令的参数 |
+| ctrl+r | 搜索历史执行命令，接着输入要搜索的关键字 |
+| esc+. | 调用上一个命令的参数 |
+| id | 获取当前用户信息 |
+| passwd | 修改当前用户密码 |
+| pwd | 显示当前工作目录 |
+| file | 查看文件的类型 |
+| date +%Y-%m-%d | 系统时间 |
+| cal | 打印日历 |
+| uptime | 查看系统 1、5、15 分钟的负载情况 |
+| top、free | 查看系统负载 |
+| lspci | 查看 pci 设备 |
+| lsusb | 查看 usb 设备 |
+| lsmod | 查看加载的模块（驱动） |
+| shutdown | 关机重启<br>h 关机<br>r 重启<br>now 现在<br>+10 10 分钟后执行<br>15:20 表示 15 点 20 分执行 |  
+| poweroff | 关机别名命令 |
+| reboot | 重启别名命令 |
+| du -sh filename | 查看文件大小 |
+| who | 查看当前登陆的用户 |  
+| cut | 分割字符串 |
+| awk | 格式化字符串 |
+| wc | 文本统计 |
+| sort | 排序 |
+| uniq | 去重复 |
+| diff | 比对 |
+| sed | 文本替换 |
+| tr | sed 命令的简化版本 |
+| scp | 基于 ssh 的远程拷贝命令 |
+| rsync | 远程同步命令 |
   
 ### which 、 whereis 、 locate 、 find 的区别  
   
@@ -102,75 +59,48 @@ find - 实际搜寻硬盘查询文件名称
   
 ### 搜索和查找  
   
-```  
-locate  - 快速查找文件，需预先建立的数据库，数据库每天更新，查找速度快，但实时性比较差，可用 updatedb 命令更新这个数据库  
-  
-find . -name *xxx* - 查找当前目录下文件名中含 xxx 关键字的文件  
-  
-find / -name *.conf - 查找根目录下以 .conf 为后缀的配置文件  
-  
-find / -perm 777 - 查找根目录下权限为 777 的文件  
-  
-find / -type d - 查找根目录下的所有目录类型  
-  
-find . name "a*" -exec 命令 {} \; - 查找当前目录下文件名以 a 开头的文件集并执行子命令，子命令两边的符号为固定格式  
-  
-find path | grep xxx - 在 path 下查找并将结果作为 grep 的标准输入继续查找 xxx 字符串  
-  
-find path | xargs grep xxx - 在 path 下查找并将结果作为 grep 的输入参数继续查找 xxx 字符串  
-  
-grep xxx filename - 在指定文件下查找 xxx 字符串的行  
-  
-grep xxx -R path -  在指定目录下查找 xxx 字符串的行  
-  
-env | grep GOROOT - 查找环境变量 GOROOT  
-  
-netstat -nat | grep 9000 - 查看端口 9000 情况  
-  
-ps -ef | grep 9000 - 查看端口 9000 情况  
-  
-lsof -i:9000 - 查看端口 9000 情况  
-```  
+| 命令 | 作用 |
+| --- | --- |
+| locate | 快速查找文件，需预先建立的数据库，数据库每天更新，查找速度快<br>但实时性比较差，可用 updatedb 命令更新这个数据库 |
+| find . -name *xxx* | 查找当前目录下文件名中含 xxx 关键字的文件 |
+| find / -name *.conf | 查找根目录下以 .conf 为后缀的配置文件 |
+| find / -perm 777 | 查找根目录下权限为 777 的文件 |
+| find / -type d | 查找根目录下的所有目录类型 |
+| find . name "a\*" -exec 命令 {} \; | 查找当前目录下文件名以 a 开头的文件集并执行子命令<br>子命令两边的符号为固定格式 |
+| find path \| grep xxx | 在 path 下查找并将结果作为 grep 的标准输入继续查找 xxx 字符串 |
+| find path \| xargs grep xxx | 在 path 下查找并将结果作为 grep 的输入参数继续查找 xxx 字符串 |
+| grep xxx filename | 在指定文件下查找 xxx 字符串的行 |
+| grep xxx -R path |  在指定目录下查找 xxx 字符串的行 |
+| env | grep GOROOT | 查找环境变量 GOROOT |
+| netstat -nat \| grep 9000 | 查看端口 9000 情况 |
+| ps -ef \| grep 9000 | 查看端口 9000 情况 |
+| lsof -i:9000 | 查看端口 9000 情况 |
   
 ### 命令行中的常用快捷键  
   
-```  
-ctrl+左右键 - 单词自己的切换  
-  
-ctrl+a - 跳到本行的行首  
-  
-ctrl+e - 跳到本行的行尾  
-  
-ctrl+w - 删除光标前面的单词  
-
-alt+d - 删除光标后面的单词 （同 alt+backsapce ）  
-  
-backspace - 删除光标之前的字符  
-
-ctrl+d - 删除光标后面的字符  
-  
-ctrl+u - 删除光标之前所有的字符  
-
-ctrl+k - 删除光标之后所有的字符
-
-ctrl+y - 恢复删除
-
-ctrl+l - 清屏
-```  
+| 快捷键 | 作用 |
+| --- | --- |
+| ctrl+左右键 | 单词自己的切换 |
+| ctrl+a | 跳到本行的行首 |
+| ctrl+e | 跳到本行的行尾 |
+| ctrl+w | 删除光标前面的单词 |
+| alt+d | 删除光标后面的单词 （同 alt+backsapce ） |
+| backspace | 删除光标之前的字符 |
+| ctrl+d | 删除光标后面的字符 |
+| ctrl+u | 删除光标之前所有的字符 |
+| ctrl+k | 删除光标之后所有的字符 |
+| ctrl+y | 恢复删除 |
+| ctrl+l | 清屏 |
   
 ### vim 操作  
 
-```  
-vim filename 打开一个文件，如果文件不存在则会新建  
-  
-vim filename1 filename2 filename3 可以打开或新建多个文件  
-  
-vim + filename 打开文件并将光标定位到最后  
-  
-vim +10 filename 打开文件并将光标定位到第 10 行  
-  
-vim +/findString filename 打开文件并将光标定位到含 findString 字符串的第一行，并可以按 n 定位到下一个目标行  
-```  
+| 命令 | 作用 |
+| --- | --- |
+| vim filename | 打开一个文件，如果文件不存在则会新建 |
+| vim filename1 filename2 filename3 | 可以打开或新建多个文件 |
+| vim + filename | 打开文件并将光标定位到最后 |
+| vim +10 filename | 打开文件并将光标定位到第 10 行 |
+| vim +/findString filename | 打开文件并将光标定位到含 findString 字符串的第一行<br>并可以按 n 定位到下一个目标行 |
   
 - 编辑模式中按 esc 进入命令模式  
 - 命令模式中按 a 或 i 或 o 进入编辑模式  
