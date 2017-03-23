@@ -147,15 +147,6 @@ echo $getName2->call(new Person);
   
 > 在生成器中可以引入另一个或几个生成器，只需要写 yield from functionName1  
   
-  
-  
-**次方运算符**  
-
-```  
-echo 2 ** 3; // 2 的 3 次方=8  
-```  
-  
-  
 **Try Catch**  
 
 ```  

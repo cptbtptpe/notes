@@ -113,21 +113,19 @@ var_dump(new C(42));
   
 ### PHP 5.5  
   
-1 、新增 Generators  
-yield 关键字用于当函数需要返回一个迭代器的时候，逐个返回值。  
+1 、新增 Generators 生成器函数
 
 ```  
-function number10()  
-{  
-    for($i = 1; $i <= 10; $i += 1)  
+function *xrange($start, $end, $step = 1) {  
+    for ($i = $start; $i < $end; $i += $step) {  
         yield $i;  
+    }  
 }  
-```  
 
-该函数的返回值是一个数组：  
-
-```  
-[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]  
+foreach (xrange(10, 20) as $i) {  
+    // ...  
+}  
+// 上述 xrange 函数具有与内建函数相同的行为，但有一点区别：不是返回一个数组的所有值，而是返回一个迭代器动态生成的值。  
 ```  
   
 2 、新增 finally 关键字  
@@ -224,24 +222,11 @@ echo FooBar::class;
 
 为了解决这个问题采用新的 FooBar::class 语法，它返回类的完整类别名称  
    
-12 、标量类型提示  
+12 、 Getter 和 Setter  
   
 ```  
-function foo(int $i) { ... }  
-
-foo(1);      // $i = 1  
-foo(1.0);    // $i = 1  
-foo("1");    // $i = 1  
-foo("1abc"); // not yet clear, maybe $i = 1 with notice  
-foo(1.5);    // not yet clear, maybe $i = 1 with notice  
-foo([]);     // error  
-foo("abc");  // error  
-```  
-  
-13 、 Getter 和 Setter  
-  
-```  
-// 如果你从不喜欢写这些 getXYZ() 和 setXYZ($value) 方法，那么这应该是你最受欢迎的改变。提议添加一个新的语法来定义一个属性的设置/读取  
+// 如果你从不喜欢写这些 getXYZ() 和 setXYZ($value) 方法
+// 那么这应该是你最受欢迎的改变。提议添加一个新的语法来定义一个属性的设置/读取  
 
 class TimePeriod {  
     public $seconds;  
@@ -258,22 +243,7 @@ var_dump($timePeriod->seconds); // int(36000)
 var_dump($timePeriod->hours);   // int(10)  
 ```  
   
-14 、生成器  
-
-```  
-function *xrange($start, $end, $step = 1) {  
-    for ($i = $start; $i < $end; $i += $step) {  
-        yield $i;  
-    }  
-}  
-
-foreach (xrange(10, 20) as $i) {  
-    // ...  
-}  
-// 上述 xrange 函数具有与内建函数相同的行为，但有一点区别：不是返回一个数组的所有值，而是返回一个迭代器动态生成的值。  
-```  
-  
-15 、列表解析和生成器表达式  
+13 、列表解析和生成器表达式  
   
 ```  
 $firstNames = [foreach ($users as $user) yield $user->firstName];  
@@ -296,7 +266,7 @@ $underageUsers = [foreach ($users as $user) if ($user->age < 18) yield $user];
   
 生成器表达式也很类似，但是返回一个迭代器(用于动态生成值)而不是一个数组。  
   
-16 、增加了 opcache 扩展  
+14 、增加了 opcache 扩展  
 使用 opcache 会提高 php 的性能，你可以和其他扩展一样静态编译（– enable-opcache ）或者动态扩展（ zend_extension ）加入这个优化项。  
 
 ### PHP 5.4  
@@ -346,7 +316,9 @@ print func()[0];
 4 、无论 php.ini 中是否设置 short_open_tag ， 格式总是可用。  
 
 ```
-这种简写形式被称为 Short Open Tag, 在 PHP5.3 起被默认开启，在 PHP5.4 起总是可用。 使用这种简写形式在 HTML 中嵌入 PHP 变量将会非常方便。  
+这种简写形式被称为 Short Open Tag
+在 PHP5.3 起被默认开启，在 PHP5.4 起总是可用。 
+使用这种简写形式在 HTML 中嵌入 PHP 变量将会非常方便。  
 ```
   
 5 、内置用于开发的 CLI 模式的 web server  
@@ -411,27 +383,16 @@ echo json_encode("中文", JSON_UNESCAPED_UNICODE);
 默认发送 Content-Type: text/html; charset=utf-8 
 ```
   
-14 、 Buid-in web server 内置了一个简单的 Web 服务器  
+14 、 Traits  
 
 ```
-把当前目录作为 Root Document 只需要这条命令即可:  
-# php -S localhost:3300  
-
-也可以指定其它路径：  
-# php -S localhost:3300 -t /path/to/root  
-
-还可以指定路由：  
-# php -S localhost:3300 router.php  
-```  
-  
-15 、 Traits  
-
-```
-Traits 提供了一种灵活的代码重用机制，即不像 interface 一样只能定义方法但不能实现，又不能像 class 一样只能单继承。至于在实践中怎样使用，还需要深入思考。  
+Traits 提供了一种灵活的代码重用机制
+即不像 interface 一样只能定义方法但不能实现，又不能像 class 一样只能单继承。
+至于在实践中怎样使用，还需要深入思考。  
 魔术常量为 `__TRAIT__`  
 ```
   
-16 、 Callable typehint  
+15 、 Callable typehint  
 
 ```  
 function foo(callable $callback) { }  
@@ -447,16 +408,9 @@ class A {
 foo(array("A", "show")); //正确  
 ```  
   
-17 、函数类型提示的增强  
+16 、函数类型提示的增强  
   
-18 、新增加了 \$SERVER["REQUEST_TIME_FLOAT"]，这个是用来统计服务请求时间的，并用 ms 来表示  
-
-19 、二进制直接量(binary number format)  
-
-```  
-$bin  = 0b1101;  
-echo $bin; //13  
-```  
+17 、新增加了 \$SERVER["REQUEST_TIME_FLOAT"]，这个是用来统计服务请求时间的，并用 ms 来表示  
 
 ### PHP 5.3  
   
