@@ -77,7 +77,7 @@ var fn 3 = function(a, b) {}
 // undefined  
   
 console.log(fn 1.length, fn 2.length, fn 3.length);  
-// 0 1 2  
+// 01 2  
 ```  
   
 ### call 与 apply （改变上下文、对象继承）  

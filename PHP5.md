@@ -1,7 +1,7 @@
 ﻿## PHP 5  
   
 ### PHP 5.6  
-1 、可以使用表达式定义常量。 [Document](https://php.net/manual/zh/migration 5 6.new-features.php)  
+1 、可以使用表达式定义常量。 [Document](https://php.net/manual/zh/migration 56.new-features.php)  
   
 在之前的 PHP 版本中，必须使用静态值来定义常量，声明属性以及指定函数参数默认值。 现在你可以使用包括数值、字符串字面量以及其他常量在内的数值表达式来 定义常量、声明属性以及设置函数参数默认值。  
 
@@ -68,7 +68,7 @@ use 运算符可以在类中导入外部的函数和常量了。 对应的结构
 
 ```  
 namespace Name\Space {  
-    const FOO = 4 2;  
+    const FOO = 42;  
     function f() { echo __FUNCTION__."\n"; }  
 }  
   
@@ -84,8 +84,8 @@ namespace {
 5 、加入 hash_equals() 函数，以恒定的时间消耗来进行字符串比较，以避免时序攻击  
 
 ```  
-$expected  = crypt('1 2 3 4 5', '$2 a$0 7$usesomesillystringforsalt$');  
-$incorrect = crypt('1 2 3 4',  '$2 a$0 7$usesomesillystringforsalt$');  
+$expected  = crypt('12 34 5', '$2 a$07$usesomesillystringforsalt$');  
+$incorrect = crypt('12 34',  '$2 a$07$usesomesillystringforsalt$');  
   
 var_dump(hash_equals($expected, $incorrect)); // false  
 ```  
@@ -108,7 +108,7 @@ class C {
     }  
 }  
   
-var_dump(new C(4 2));  
+var_dump(new C(42));  
 ```  
   
 ### PHP 5.5  
@@ -117,9 +117,9 @@ var_dump(new C(4 2));
 yield 关键字用于当函数需要返回一个迭代器的时候，逐个返回值。  
 
 ```  
-function number 1 0()  
+function number 10()  
 {  
-    for($i = 1; $i <= 1 0; $i += 1)  
+    for($i = 1; $i <= 10; $i += 1)  
         yield $i;  
 }  
 ```  
@@ -127,7 +127,7 @@ function number 1 0()
 该函数的返回值是一个数组：  
 
 ```  
-[1, 2, 3, 4, 5, 6, 7, 8, 9, 1 0]  
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]  
 ```  
   
 2 、新增 finally 关键字  
@@ -174,10 +174,10 @@ echo 'PHP'[0]; // P
 ```  
 // 加密  
 echo $hash = password_hash('rasmuslerdorf', PASSWORD_DEFAULT);  
-//输出结果类似于：$2 y$1 0$.vGA 1 O 9 wmRjrwAVXD 9 8HNOgsNpDczlqm 3 Jq 7 KnEd 1 rVAGv 3 Fykk 1 a  
+//输出结果类似于：$2 y$10$.vGA 1 O 9 wmRjrwAVXD 98HNOgsNpDczlqm 3 Jq 7 KnEd 1 rVAGv 3 Fykk 1 a  
   
 // 验证  
-if(password_verify('rasmuslerdorf','$2 y$1 0$.vGA 1 O 9 wmRjrwAVXD 9 8HNOgsNpDczlqm 3 Jq 7 KnEd 1 rVAGv 3 Fykk 1 a')) {  
+if(password_verify('rasmuslerdorf','$2 y$10$.vGA 1 O 9 wmRjrwAVXD 98HNOgsNpDczlqm 3 Jq 7 KnEd 1 rVAGv 3 Fykk 1 a')) {  
     echo "密码正确";  
 } else {  
     echo "密码错误";  
@@ -192,9 +192,9 @@ PHP 已经实现了 strval 、 intval 和 floatval 的函数。为了达到一�
 
 ```  
 $records = array(  
-    array('id' => 2 1 3 5,'name' => 'John'),  
-    array('id' => 3 2 4 5,'name' => 'Smith'),  
-    array('id' => 5 3 4 2,'name' => 'Peter')  
+    array('id' => 21 35,'name' => 'John'),  
+    array('id' => 32 45,'name' => 'Smith'),  
+    array('id' => 53 42,'name' => 'Peter')  
 );  
   
 //从结果集中取出 name 列  
@@ -206,11 +206,11 @@ $names = array_column($records, 'name', 'id');
 print_r($names);  
 ```  
 
-9 、放弃对 Windows XP 和 2 0 0 3 的支持
+9 、放弃对 Windows XP 和 20 03 的支持
 
-1 0 、弃用 e 修饰符  
+10 、弃用 e 修饰符  
 
-1 1 、获取完整类别名称  
+11 、获取完整类别名称  
 
 ```  
 // PHP 5.3 中引入命名空间的别名类和命名空间短版本的功能。虽然这并不适用于字符串类名称  
@@ -224,7 +224,7 @@ echo FooBar::class;
 
 为了解决这个问题采用新的 FooBar::class 语法，它返回类的完整类别名称  
    
-1 2 、标量类型提示  
+12 、标量类型提示  
   
 ```  
 function foo(int $i) { ... }  
@@ -238,7 +238,7 @@ foo([]);     // error
 foo("abc");  // error  
 ```  
   
-1 3 、 Getter 和 Setter  
+13 、 Getter 和 Setter  
   
 ```  
 // 如果你从不喜欢写这些 getXYZ() 和 setXYZ($value) 方法，那么这应该是你最受欢迎的改变。提议添加一个新的语法来定义一个属性的设置/读取  
@@ -246,19 +246,19 @@ foo("abc");  // error
 class TimePeriod {  
     public $seconds;  
     public $hours {  
-        get { return $this->seconds / 3 6 0 0; }  
-        set { $this->seconds = $value * 3 6 0 0; }  
+        get { return $this->seconds / 36 00; }  
+        set { $this->seconds = $value * 36 00; }  
     }  
 }  
 
 $timePeriod = new TimePeriod;  
-$timePeriod->hours = 1 0;  
+$timePeriod->hours = 10;  
 
-var_dump($timePeriod->seconds); // int(3 6 0 0 0)  
-var_dump($timePeriod->hours);   // int(1 0)  
+var_dump($timePeriod->seconds); // int(36 00 0)  
+var_dump($timePeriod->hours);   // int(10)  
 ```  
   
-1 4 、生成器  
+14 、生成器  
 
 ```  
 function *xrange($start, $end, $step = 1) {  
@@ -267,13 +267,13 @@ function *xrange($start, $end, $step = 1) {
     }  
 }  
 
-foreach (xrange(1 0, 2 0) as $i) {  
+foreach (xrange(10, 20) as $i) {  
     // ...  
 }  
 // 上述 xrange 函数具有与内建函数相同的行为，但有一点区别：不是返回一个数组的所有值，而是返回一个迭代器动态生成的值。  
 ```  
   
-1 5 、列表解析和生成器表达式  
+15 、列表解析和生成器表达式  
   
 ```  
 $firstNames = [foreach ($users as $user) yield $user->firstName];  
@@ -291,12 +291,12 @@ foreach ($users as $user) {
 也可以这样过滤数组:  
 
 ```  
-$underageUsers = [foreach ($users as $user) if ($user->age < 1 8) yield $user];  
+$underageUsers = [foreach ($users as $user) if ($user->age < 18) yield $user];  
 ```  
   
 生成器表达式也很类似，但是返回一个迭代器(用于动态生成值)而不是一个数组。  
   
-1 6 、增加了 opcache 扩展  
+16 、增加了 opcache 扩展  
 使用 opcache 会提高 php 的性能，你可以和其他扩展一样静态编译（– enable-opcache ）或者动态扩展（ zend_extension ）加入这个优化项。  
 
 ### PHP 5.4  
@@ -353,13 +353,13 @@ print func()[0];
 
 ```  
 // 启动 Web 服务器  
-php -S localhost:8 0 0 0  
+php -S localhost:80 00  
 
 // 启动时指定根目录  
-php -S localhost:8 0 0 0 -t /home/me/public_html/foo  
+php -S localhost:80 00 -t /home/me/public_html/foo  
 
 // 使用路由（ Router ）脚本  
-php -S localhost:8 0 0 0 index.php //所有的请求都会由 index.php 来处理。
+php -S localhost:80 00 index.php //所有的请求都会由 index.php 来处理。
 ```  
   
 6 、新增在实例化时访问类成员  
@@ -380,58 +380,58 @@ A::{$func}();
 9 、新增二进制直接量  
 
 ```  
-$bin = bindec('1 1 0 0 1 1'); //之前需要这样写  
-$bin = 0 b 1 1 0 0 1 1;  
-echo $bin; //5 1  
+$bin = bindec('11 00 11'); //之前需要这样写  
+$bin = 0 b 11 00 11;  
+echo $bin; //51  
 ```  
   
-1 0 、 session 提供了上传进度支持  
+10 、 session 提供了上传进度支持  
 
 ```
 通过 $_SESSION["upload_progress_name"] 就可以获得当前文件上传的进度信息，结合 Ajax 就能很容易的实现上传进度条。  
 ```
   
-1 1 、默认使用 mysqlnd  
+11 、默认使用 mysqlnd  
 
 ```
 现在 mysql, mysqli, pdo_mysql 默认使用 mysqlnd 本地库，在 PHP 5.4 以前需要：./configure --with-mysqli=mysqlnd 
 现在：./configure --with-mysqli  
 ```
   
-1 2 、让 json 更懂中文  
+12 、让 json 更懂中文  
 
 ```  
 echo json_encode("中文", JSON_UNESCAPED_UNICODE);  
 // "中文"  
 ```  
   
-1 3 、 default_charset 从 ISO-8 8 5 9-1 已经变为 UTF-8  
+13 、 default_charset 从 ISO-88 59-1 已经变为 UTF-8  
 
 ```
 默认发送 Content-Type: text/html; charset=utf-8 
 ```
   
-1 4 、 Buid-in web server 内置了一个简单的 Web 服务器  
+14 、 Buid-in web server 内置了一个简单的 Web 服务器  
 
 ```
 把当前目录作为 Root Document 只需要这条命令即可:  
-# php -S localhost:3 3 0 0  
+# php -S localhost:33 00  
 
 也可以指定其它路径：  
-# php -S localhost:3 3 0 0 -t /path/to/root  
+# php -S localhost:33 00 -t /path/to/root  
 
 还可以指定路由：  
-# php -S localhost:3 3 0 0 router.php  
+# php -S localhost:33 00 router.php  
 ```  
   
-1 5 、 Traits  
+15 、 Traits  
 
 ```
 Traits 提供了一种灵活的代码重用机制，即不像 interface 一样只能定义方法但不能实现，又不能像 class 一样只能单继承。至于在实践中怎样使用，还需要深入思考。  
 魔术常量为 `__TRAIT__`  
 ```
   
-1 6 、 Callable typehint  
+16 、 Callable typehint  
 
 ```  
 function foo(callable $callback) { }  
@@ -447,15 +447,15 @@ class A {
 foo(array("A", "show")); //正确  
 ```  
   
-1 7 、函数类型提示的增强  
+17 、函数类型提示的增强  
   
-1 8 、新增加了 \$SERVER["REQUEST_TIME_FLOAT"]，这个是用来统计服务请求时间的，并用 ms 来表示  
+18 、新增加了 \$SERVER["REQUEST_TIME_FLOAT"]，这个是用来统计服务请求时间的，并用 ms 来表示  
 
-1 9 、二进制直接量(binary number format)  
+19 、二进制直接量(binary number format)  
 
 ```  
-$bin  = 0 b 1 1 0 1;  
-echo $bin; //1 3  
+$bin  = 0 b 11 01;  
+echo $bin; //13  
 ```  
 
 ### PHP 5.3  
@@ -612,9 +612,9 @@ const CONSTANT_B = 'Hello World';
 const 形式仅适用于常量，不适用于运行时才能求值的表达式：  
   
 // 正确  
-const XXOO = 1 2 3 4;  
+const XXOO = 12 34;  
 // 错误  
-const XXOO = 2 * 6 1 7;  
+const XXOO = 2 * 61 7;  
 ```  
   
 和使用 define() 来定义常量不同的是，使用 const 关键字定义常量必须处于最顶端的作用域，因为用此方法是在编译时定义的。即不能在函数内，循环内以及 if 语句之内用 const 来定义常量。  
@@ -622,7 +622,7 @@ const XXOO = 2 * 6 1 7;
 9 、三元运算符可以简写省略中间的部分  
 表达式 expr 1 ?: expr 3 ，当 expr 1 为 TRUE 时返回 expr 1 ，否则返回 expr 3 。  
   
-1 0 、异常可以嵌套了  
+10 、异常可以嵌套了  
 
 ```  
 class MyException extends Exception { }  
@@ -646,11 +646,11 @@ $foo = new Test;
 $foo->testing();  
 ```  
   
-1 1 、可以动态访问静态变量了  
+11 、可以动态访问静态变量了  
 
 ```  
 class C {  
-   public static $foo = 1 2 3;  
+   public static $foo = 12 3;  
 }  
   
 $a = "C";  
@@ -660,14 +660,14 @@ echo $a::$foo;
 上边运行时输出：  
 
 ```  
-1 2 3  
+12 3  
 ```  
   
-1 2 、 mail() 函数支持记录发送日志了  
+12 、 mail() 函数支持记录发送日志了  
 在配置文件 php.ini 中可设置日志路径。参数名： mail.log  
   
-1 3 、 HTTP 状态码在 2 0 0-3 9 9 范围内均被认为访问成功  
+13 、 HTTP 状态码在 20 0-39 9 范围内均被认为访问成功  
   
-1 4 、新的垃圾收集器(GC)，并默认启用  
+14 、新的垃圾收集器(GC)，并默认启用  
 
   [1]: https://segmentfault.com/img/bVlR 4 N  

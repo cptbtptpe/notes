@@ -35,7 +35,7 @@
         
         ```  
         # `ulimit` 可修改最多连接数
-        ab -n 1 0 0 0 -c 1 0 0 HTTP://www.baidu.com/  
+        ab -n 10 00 -c 10 0 HTTP://www.baidu.com/  
         ```  
 
     * 引起原因  
@@ -57,10 +57,10 @@
     
     * 引起原因  
         
-        `SYN` 类型的请求只有 4 0~6 0 字节  
+        `SYN` 类型的请求只有 40~60 字节  
         当开放了一个 `TCP` 端口后，该端口就处于 `Listening` 状态，不停地监视发到该端口的 `SYN` 报文  
         一旦接收到 `client` 发来的 `SYN` 报文，就需要为该请求分配一个 `TCB`（ Transmission Control Block ）  
-        通常一个 `TCB` 至少需要 2 8 0 个字节，在某些操作系统中 `TCB` 甚至需要 1 3 0 0 个字节，并返回一个 `SYN` `ACK` 命令，立即转为 `SYN-RECEIVED` 即半开连接状态  
+        通常一个 `TCB` 至少需要 28 0 个字节，在某些操作系统中 `TCB` 甚至需要 13 00 个字节，并返回一个 `SYN` `ACK` 命令，立即转为 `SYN-RECEIVED` 即半开连接状态  
     
     * 危害  
         
@@ -155,7 +155,7 @@
   
 * 通过 document.cookie 获取当前用户的 cookie 信息，该 cookie 必须是非 httponly 状态才能用 javascript 代码获取  
 * HTML URL 编码  
-    * `"` => `%2 2`  
+    * `"` => `%22`  
     * `;` => `%3 B`  
     * 可以使用 escape('x') 函数获取字符的 URL 编码  
 * HTML 实体编码  

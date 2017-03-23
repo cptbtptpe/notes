@@ -11,10 +11,10 @@
   
 | 段 | 含义 | 范围 |  
 | --- | --- | --- |  
-| minute | 分钟 | 从 0 到 5 9 之间的任何整数 |  
-| hour | 小时 | 从 0 到 2 3 之间的任何整数 |  
-| day | 日期 | 从 1 到 3 1 之间的任何整数 |  
-| month | 月份 | 从 1 到 1 2 之间的任何整数 |  
+| minute | 分钟 | 从 0 到 59 之间的任何整数 |  
+| hour | 小时 | 从 0 到 23 之间的任何整数 |  
+| day | 日期 | 从 1 到 31 之间的任何整数 |  
+| month | 月份 | 从 1 到 12 之间的任何整数 |  
 | week | 星期几 | 从 0 到 7 之间的任何整数，这里的 0 或 7 代表星期日 |  
 | command | 要执行的命令 | 系统命令，也可以是自己编写的脚本文件 |  
   
@@ -22,10 +22,10 @@
   
 | 特殊字符 | 含义 |  
 | --- | --- |  
-| 星号（*） | 代表所有可能的值，例如 month 字段如果是星号<br> 则表示在满足其它字段的制约条件后每月都执行该命令操作 |  
+| 星号（\*） | 代表所有可能的值，例如 month 字段如果是星号<br> 则表示在满足其它字段的制约条件后每月都执行该命令操作 |  
 | 逗号（,） | 可以用逗号隔开的值指定一个列表范围<br>例如： 1,2,5,7,8,9 |  
 | 中杠（-） | 可以用整数之间的中杠表示一个整数范围<br>例如： 2-6 表示 2,3,4,5,6 |  
-| 正斜线（/） | 可以用正斜线指定时间的间隔频率<br>例如： 0-2 3/2 表示每两小时执行一次。<br><br>同时正斜线可以和星号一起使用<br>例如：*/1 0 ，如果用在 minute 字段，表示每十分钟执行一次。 |  
+| 正斜线（/） | 可以用正斜线指定时间的间隔频率<br>例如： 0-23/2 表示每两小时执行一次。<br><br>同时正斜线可以和星号一起使用<br>例如：\*/10 ，如果用在 minute 字段，表示每十分钟执行一次。 |  
   
 ![Crontab 格式][1]  
   
@@ -40,10 +40,10 @@ yum install crontabs
 服务操作说明：  
 
 ```  
-/sbin/service crond start 		//启动服务  
-/sbin/service crond stop 		//关闭服务  
-/sbin/service crond restart 	//重启服务  
-/sbin/service crond reload 		//重新载入配置  
+/sbin/service crond start     //启动服务  
+/sbin/service crond stop      //关闭服务  
+/sbin/service crond restart   //重启服务  
+/sbin/service crond reload    //重新载入配置  
 ```  
   
 查看 crontab 服务状态：  
@@ -67,7 +67,7 @@ ntsysv
 加入开机自动启动：  
 
 ```  
-chkconfig – level 3 5 crond on  
+chkconfig – level 35 crond on  
 ```  
   
 ### crontab 命令详解  
@@ -90,14 +90,14 @@ crontab [-u user] [ -e | -l | -r ]
 | file | file 是命令文件的名字<br>表示将 file 做为 crontab 的任务列表文件并载入 crontab<br><br>如果在命令行中没有指定这个文件<br>crontab 命令将接受标准输入（键盘）上键入的命令<br>并将它们载入 crontab |
 | -e | 编辑某个用户的 crontab 文件内容<br>如果不指定用户，则表示编辑当前用户的 crontab 文件 |
 | -l | 显示某个用户的 crontab 文件内容<br>如果不指定用户，则表示显示当前用户的 crontab 文件内容 |
-| -r | 从 /var/spool/cron 目录中删除某个用户的 crontab 文件<br>如果不指定用户，则默认删除当前用户的 crontab 文件 |
+| -r | 从 `/var/spool/cron` 目录中删除某个用户的 crontab 文件<br>如果不指定用户，则默认删除当前用户的 crontab 文件 |
 | -i | 在删除用户的 crontab 文件时给确认提示 |
   
 #### 常用方法：  
   
 **创建一个新的 crontab 文件**  
   
-在考虑向 cron 进程提交一个 crontab 文件之前，首先要做的一件事情就是设置环境变量 EDITOR 。 cron 进程根据它来确定使用哪个编辑器编辑 crontab 文件。 9 9% 的 unix 和 linux 用户都使用 vi ，如果你也是这样，那么你就编辑 `$HOME` 目录下的 `. profile` 文件，在其中加入这样一行：  
+在考虑向 cron 进程提交一个 crontab 文件之前，首先要做的一件事情就是设置环境变量 EDITOR 。 cron 进程根据它来确定使用哪个编辑器编辑 crontab 文件。 99% 的 unix 和 linux 用户都使用 vi ，如果你也是这样，那么你就编辑 `$HOME` 目录下的 `. profile` 文件，在其中加入这样一行：  
 
 ```  
 EDITOR=vi; export EDITOR  
@@ -107,19 +107,19 @@ EDITOR=vi; export EDITOR
 
 ```  
 # (put your own initials here)echo the date to the console every  
-# 1 5 minutes between 6 pm and 6 am  
-0,1 5,3 0,4 5 1 8-0 6 * * * /bin/echo 'date' > /dev/console  
+# 15 minutes between 6 pm and 6 am  
+0,15,30,45 18-06 * * * /bin/echo 'date' > /dev/console  
 ```  
   
 保存并退出。确信前面 5 个域用空格分隔。  
   
-在上面的例子中，系统将每隔 1 5 分钟向控制台输出一次当前时间。如果系统崩溃或挂起，从最后所显示的时间就可以一眼看出系统是什么时间停止工作的。在有些系统中，用 tty 1 来表示控制台，可以根据实际情况对上面的例子进行相应的修改。为了提交你刚刚创建的 crontab 文件，可以把这个新创建的文件作为 cron 命令的参数：  
+在上面的例子中，系统将每隔 15 分钟向控制台输出一次当前时间。如果系统崩溃或挂起，从最后所显示的时间就可以一眼看出系统是什么时间停止工作的。在有些系统中，用 tty 1 来表示控制台，可以根据实际情况对上面的例子进行相应的修改。为了提交你刚刚创建的 crontab 文件，可以把这个新创建的文件作为 cron 命令的参数：  
 
 ```  
 $ crontab davecron  
 ```  
   
-现在该文件已经提交给 cron 进程，它将每隔 1 5 分钟运行一次。  
+现在该文件已经提交给 cron 进程，它将每隔 15 分钟运行一次。  
 同时，新创建文件的一个副本已经被放在 `/var/spool/cron` 目录中，文件名就是用户名(即 dave)。  
   
 **列出 crontab 文件**  
@@ -128,7 +128,7 @@ $ crontab davecron
 
 ```  
  $ crontab -l  
- 0,1 5,3 0,4 5,1 8-0 6 * * * /bin/echo `date` > dev/tty 1  
+ 0,15,30,45,18-06 * * * /bin/echo `date` > dev/tty 1  
 ```  
   
 你将会看到和上面类似的内容。可以使用这种方法在 `$HOME` 目录中对 crontab 文件做一备份：  
@@ -151,8 +151,8 @@ $ crontab -e
 我们在编辑 crontab 文件时，没准会加入新的条目。例如，加入下面的一条：  
 
 ```  
-# DT:delete core files,at 3.3 0 am on 1,7,1 4,2 1,2 6,2 6 days of each month  
-3 0 3 1,7,1 4,2 1,2 6 * * /bin/find -name "core' -exec rm {} \;  
+# DT:delete core files,at 3.30 am on 1,7,14,21,26,26 days of each month  
+30 31,7,14,21,26 * * /bin/find -name "core' -exec rm {} \;  
 ```  
   
 现在保存并退出。最好在 crontab 文件的每一个条目之上加入一条注释，这样就可以知道它的功能、运行时间，更为重要的是，知道这是哪位用户的作业。  
@@ -160,11 +160,11 @@ $ crontab -e
 
 ```  
 $ crontab -l  
-# (crondave installed on Tue May 4 1 3:0 7:4 3 1 9 9 9)  
-# DT:ech the date to the console every 3 0 minites  
-0,1 5,3 0,4 5 1 8-0 6 * * * /bin/echo `date` > /dev/tty 1  
-# DT:delete core files,at 3.3 0 am on 1,7,1 4,2 1,2 6,2 6 days of each month  
-3 0 3 1,7,1 4,2 1,2 6 * * /bin/find -name "core' -exec rm {} \;  
+# (crondave installed on Tue May 41 3:07:43 19 99)  
+# DT:ech the date to the console every 30 minites  
+0,15,30,45 18-06 * * * /bin/echo `date` > /dev/tty 1  
+# DT:delete core files,at 3.30 am on 1,7,14,21,26,26 days of each month  
+30 31,7,14,21,26 * * /bin/find -name "core' -exec rm {} \;  
 ```  
   
 **删除 crontab 文件**  
@@ -192,47 +192,47 @@ $ crontab
     实例 1 ：每 1 分钟执行一次 command  
     命令： * * * * * command  
   
-    实例 2 ：每小时的第 3 和第 1 5 分钟执行  
-    命令： 3,1 5 * * * * command  
+    实例 2 ：每小时的第 3 和第 15 分钟执行  
+    命令： 3,15 * * * * command  
   
-    实例 3 ：在上午 8 点到 1 1 点的第 3 和第 1 5 分钟执行  
-    命令： 3,1 5 8-1 1 * * * command  
+    实例 3 ：在上午 8 点到 11 点的第 3 和第 15 分钟执行  
+    命令： 3,15 8-11 * * * command  
   
-    实例 4 ：每隔两天的上午 8 点到 1 1 点的第 3 和第 1 5 分钟执行  
-    命令： 3,1 5 8-1 1 */2 * * command  
+    实例 4 ：每隔两天的上午 8 点到 11 点的第 3 和第 15 分钟执行  
+    命令： 3,15 8-11 */2 * * command  
   
-    实例 5 ：每个星期一的上午 8 点到 1 1 点的第 3 和第 1 5 分钟执行  
-    命令： 3,1 5 8-1 1 * * 1 command  
+    实例 5 ：每个星期一的上午 8 点到 11 点的第 3 和第 15 分钟执行  
+    命令： 3,15 8-11 * * 1 command  
   
-    实例 6 ：每晚的 2 1:3 0 重启 smb  
-    命令： 3 0 2 1 * * * /etc/init.d/smb restart  
+    实例 6 ：每晚的 21:30 重启 smb  
+    命令： 30 21 * * * /etc/init.d/smb restart  
   
-    实例 7 ：每月 1 、 1 0 、 2 2 日的 4:4 5 重启 smb  
-    命令： 4 5 4 1,1 0,2 2 * * /etc/init.d/smb restart  
+    实例 7 ：每月 1 、 10 、 22 日的 4:45 重启 smb  
+    命令： 45 41,10,22 * * /etc/init.d/smb restart  
   
-    实例 8 ：每周六、周日的 1:1 0 重启 smb  
-    命令： 1 0 1 * * 6,0 /etc/init.d/smb restart  
+    实例 8 ：每周六、周日的 1:10 重启 smb  
+    命令： 10 1 * * 6,0 /etc/init.d/smb restart  
   
-    实例 9 ：每天 1 8:0 0 至 2 3:0 0 之间每隔 3 0 分钟重启 smb  
-    命令： 0,3 0 1 8-2 3 * * * /etc/init.d/smb restart  
+    实例 9 ：每天 18:00 至 23:00 之间每隔 30 分钟重启 smb  
+    命令： 0,30 18-23 * * * /etc/init.d/smb restart  
   
-    实例 1 0 ：每星期六的晚上 1 1:0 0 pm 重启 smb  
-    命令： 0 2 3 * * 6 /etc/init.d/smb restart  
+    实例 10 ：每星期六的晚上 11:00 pm 重启 smb  
+    命令： 02 3 * * 6 /etc/init.d/smb restart  
   
-    实例 1 1 ：每一小时重启 smb  
+    实例 11 ：每一小时重启 smb  
     命令： * */1 * * * /etc/init.d/smb restart  
   
-    实例 1 2 ：晚上 1 1 点到早上 7 点之间，每隔一小时重启 smb  
-    命令： * 2 3-7/1 * * * /etc/init.d/smb restart  
+    实例 12 ：晚上 11 点到早上 7 点之间，每隔一小时重启 smb  
+    命令： * 23-7/1 * * * /etc/init.d/smb restart  
   
-    实例 1 3 ：每月的 4 号与每周一到周三的 1 1 点重启 smb  
-    命令： 0 1 1 4 * mon-wed /etc/init.d/smb restart  
+    实例 13 ：每月的 4 号与每周一到周三的 11 点重启 smb  
+    命令： 01 14 * mon-wed /etc/init.d/smb restart  
   
-    实例 1 4 ：一月一号的 4 点重启 smb  
-    命令： 0 4 1 jan * /etc/init.d/smb restart  
+    实例 14 ：一月一号的 4 点重启 smb  
+    命令： 04 1 jan * /etc/init.d/smb restart  
   
-    实例 1 5 ：每小时执行 /etc/cron.hourly 目录内的脚本  
-    命令： 0 1 * * * * root run-parts /etc/cron.hourly  
+    实例 15 ：每小时执行 /etc/cron.hourly 目录内的脚本  
+    命令： 01 * * * * root run-parts /etc/cron.hourly  
   
 说明：  
 run-parts 这个参数了，如果去掉这个参数的话，后面就可以写要运行的某个脚本名，而不是目录名了  
@@ -253,7 +253,7 @@ run-parts 这个参数了，如果去掉这个参数的话，后面就可以写�
     cat start_cbp.sh  
     #!/bin/sh  
     source /etc/profile  
-    export RUN_CONF=/home/d 1 3 9/conf/platform/cbp/cbp_jboss.conf  
+    export RUN_CONF=/home/d 13 9/conf/platform/cbp/cbp_jboss.conf  
     /usr/local/jboss-4.0.5/bin/run.sh -c mev &  
     ```  
   

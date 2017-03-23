@@ -31,7 +31,7 @@ function paramValueType(float $number) : int {
     return intval($number);  
 }  
   
-echo paramValueType(1 0.9);  
+echo paramValueType(10.9);  
 ```  
   
 **太空船操作符（组合比较符）**  
@@ -61,11 +61,11 @@ echo NAME[1];
   
 **Unicode codepoint 转译语法**  
   
-> 这接受一个以 1 6 进制形式的 Unicode codepoint ，并打印出一个双引号或 heredoc 包围的 UTF-8 编码格式的字符串。  
+> 这接受一个以 16 进制形式的 Unicode codepoint ，并打印出一个双引号或 heredoc 包围的 UTF-8 编码格式的字符串。  
 可以接受任何有效的 codepoint ，并且开头的 0 是可以省略的。  
   
 ```  
-echo "\u{9 8 7 6}"; // 顶  
+echo "\u{98 76}"; // 顶  
 ```  
   
 **Closure::call() 现在有着更好的性能，简短干练的暂时绑定一个方法到对象上闭包并调用它**  

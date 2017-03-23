@@ -99,7 +99,7 @@ namespace Vendor\Model;
 class Foo
 {
     const VERSION = '1.0';
-    const DATE_APPROVED = '2 0 1 2-0 6-0 1';
+    const DATE_APPROVED = '20 12-06-01';
 }
 ```
   

@@ -35,19 +35,19 @@ INCRBY 命令让这些变得很容易，通过原子递增保持计数。
 >
 > 如果用普通的 key/value 结构来存储，主要有以下 2 种存储方式：  
     第一种方式将用户 ID 作为查找 key,把其他信息封装成一个对象以序列化的方式存储
-    如： set u 0 0 1 "李三,1 8,2 0 0 1 0 1 0 1"  
+    如： set u 00 1 "李三,18,20 01 01 01"  
     这种方式的缺点是，增加了序列化/反序列化的开销，并且在需要修改其中一项信息时，需要把整个对象取回
     并且修改操作需要对并发进行保护，引入 CAS 等复杂问题
 >    
 >    第二种方法是这个用户信息对象有多少成员就存成多少个 key/value 对儿
     用用户 `ID+对应属性的名称` 作为唯一标识来取得对应属性的值
-    如： mset user:0 0 1:name "李三 "user:0 0 1:age 1 8 user:0 0 1:birthday "2 0 0 1 0 1 0 1"
+    如： mset user:00 1:name "李三 "user:00 1:age 18 user:00 1:birthday "20 01 01 01"
     虽然省去了序列化开销和并发问题，但是用户 ID 为重复存储，如果存在大量这样的数据，内存浪费还是非常可观的  
 >  
 > 那么 Redis 提供的 Hash 很好的解决了这个问题， Redis 的 Hash 实际是内部存储的 value 为一个 HashMap
 并提供了直接存取这个 map 成员的接口
 >
-> 如： hmset user:0 0 1 name "李三" age 1 8 birthday "2 0 0 1 0 1 0 1"
+> 如： hmset user:00 1 name "李三" age 18 birthday "20 01 01 01"
 也就是说， key 仍然是用户 ID,value 是一个 map ，这个 map 的 key 是成员的属性名， value 是属性值
 这样对数据的修改和存取都可以直接通过其内部 map 的 key(Redis 里称内部 map 的 key 为 field)
 也就是通过 key(用户 ID) + field(属性标签) 操作对应属性数据了，既不需要重复存储数据，也不会带来序列化和并发修改控制的问题。很好的解决了问题。  
@@ -87,16 +87,16 @@ Lists 的另一个应用就是消息队列，可以利用 Lists 的 PUSH 操作
 如果 source 和 destination 相同，则列表中的表尾元素被移动到表头，并返回该元素，可以把这种特殊情况视作列表的旋转(rotation)操作。  
 一个典型的例子就是服务器的监控程序：它们需要在尽可能短的时间内，并行地检查一组网站，确保它们的可访问性。  
 >
-> redis.lpush "downstream_ips", "1 9 2.1 6 8.0.1 0"  
-redis.lpush "downstream_ips", "1 9 2.1 6 8.0.1 1"  
-redis.lpush "downstream_ips", "1 9 2.1 6 8.0.1 2"  
-redis.lpush "downstream_ips", "1 9 2.1 6 8.0.1 3"  
+> redis.lpush "downstream_ips", "19 2.16 8.0.10"  
+redis.lpush "downstream_ips", "19 2.16 8.0.11"  
+redis.lpush "downstream_ips", "19 2.16 8.0.12"  
+redis.lpush "downstream_ips", "19 2.16 8.0.13"  
 Then:  
 next_ip = redis.rpoplpush "downstream_ips", "downstream_ips"  
 >  
 > BLPOP  
 假设现在有 job 、 command 和 request 三个列表，其中 job 不存在， command 和 request 都持有非空列表。考虑以下命令：  
-BLPOP job command request 3 0  #阻塞 3 0 秒， 0 的话就是无限期阻塞,job 列表为空,被跳过,紧接着 command 列表的第一个元素被弹出。  
+BLPOP job command request 30  #阻塞 30 秒， 0 的话就是无限期阻塞,job 列表为空,被跳过,紧接着 command 列表的第一个元素被弹出。  
 >  
 > \* "command"                             # 弹出元素所属的列表  
 \* "update system..."                    # 弹出元素所属的值  
@@ -129,7 +129,7 @@ Redis 还为集合提供了求交集、并集、差集等操作，可以非常�
 #### 应用场景
 
 > 以某个条件为权重，比如按顶的次数排序.  
-ZREVRANGE 命令可以用来按照得分来获取前 1 0 0 名的用户， ZRANK 可以用来获取用户排名，非常直接而且操作容易。  
+ZREVRANGE 命令可以用来按照得分来获取前 10 0 名的用户， ZRANK 可以用来获取用户排名，非常直接而且操作容易。  
 Redis sorted set 的使用场景与 set 类似，区别是 set 不是自动有序的，而 sorted set 可以通过用户额外提供一个优先级(score)的参数来为成员排序，并且是插入有序的，即自动排序。  
 >  
 > 比如: twitter 的 public timeline 可以以发表时间作为 score 来存储，这样获取时就是自动按时间排好序的。  
@@ -159,38 +159,38 @@ Redis sorted set 的使用场景与 set 类似，区别是 set 不是自动有�
 * Step 1 - Session 1  
 
     ```  
-    redis 1 2 7.0.0.1:6 3 7 9> get age  
-    "1 0"  
-    redis 1 2 7.0.0.1:6 3 7 9> watch age  
+    redis 12 7.0.0.1:63 79> get age  
+    "10"  
+    redis 12 7.0.0.1:63 79> watch age  
     OK  
-    redis 1 2 7.0.0.1:6 3 7 9> multi  
+    redis 12 7.0.0.1:63 79> multi  
     OK  
-    redis 1 2 7.0.0.1:6 3 7 9>  
+    redis 12 7.0.0.1:63 79>  
     ```  
   
 * Step 2 - Session 2  
 
     ```  
-    redis 1 2 7.0.0.1:6 3 7 9> set age 3 0  
+    redis 12 7.0.0.1:63 79> set age 30  
     OK  
-    redis 1 2 7.0.0.1:6 3 7 9> get age  
-    "3 0"  
-    redis 1 2 7.0.0.1:6 3 7 9>  
+    redis 12 7.0.0.1:63 79> get age  
+    "30"  
+    redis 12 7.0.0.1:63 79>  
     ```  
   
 * Step 3 - Session 1  
 
     ```  
-    redis 1 2 7.0.0.1:6 3 7 9> set age 2 0  
+    redis 12 7.0.0.1:63 79> set age 20  
     QUEUED  
-    redis 1 2 7.0.0.1:6 3 7 9> exec  
+    redis 12 7.0.0.1:63 79> exec  
     (nil)  
-    redis 1 2 7.0.0.1:6 3 7 9> get age  
-    "3 0"  
+    redis 12 7.0.0.1:63 79> get age  
+    "30"  
     ```  
   
     `Step 1`： Session 1 还没有来得及对 age 的值进行修改  
-    `Step 2`： Session 2 已经将 age 的值设为 3 0  
+    `Step 2`： Session 2 已经将 age 的值设为 30  
     `Step 3`： Session 1 
 
-> 希望将 age 的值设为 2 0 ，但结果一执行返回是 nil ，说明执行失败，之后我们再取一下 age 的值是 3 0 ，这是由于 Session 1 中对 age 加了乐观锁导致的。  
+> 希望将 age 的值设为 20 ，但结果一执行返回是 nil ，说明执行失败，之后我们再取一下 age 的值是 30 ，这是由于 Session 1 中对 age 加了乐观锁导致的。  

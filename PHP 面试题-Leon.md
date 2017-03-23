@@ -117,20 +117,20 @@
     // xxx
     ```
     
-1 0. 解释以下 `http` 状态码表达的含义。  
+10. 解释以下 `http` 状态码表达的含义。  
   
     ```  
-    2 0 0 ： OK  
-    3 0 1 ： Moved Permanently  
-    3 0 2 ： Move temporarily  
-    3 0 4 ： Not Modified  
-    4 0 1 ： Unauthorized
-    4 0 3 ： Forbidden  
-    4 0 4 ： Not Found  
-    5 0 4 ： Gateway Timeout  
+    20 0 ： OK  
+    30 1 ： Moved Permanently  
+    30 2 ： Move temporarily  
+    30 4 ： Not Modified  
+    40 1 ： Unauthorized
+    40 3 ： Forbidden  
+    40 4 ： Not Found  
+    50 4 ： Gateway Timeout  
     ```  
   
-1 1. 请写出以下数据类型使用的场景, 请问 `varchar` 和 `char` 有什么区别？  
+11. 请写出以下数据类型使用的场景, 请问 `varchar` 和 `char` 有什么区别？  
   
     ```  
     int         整数
@@ -140,13 +140,13 @@
     text        文本类型
     ```  
   
-1 2. `abstract` (抽象类)和 `interface` (接口)的区别。  
+12. `abstract` (抽象类)和 `interface` (接口)的区别。  
   
     ```
     // xxx
     ```
     
-1 3. 简单说明以下 `PHP` 函数的作用。  
+13. 简单说明以下 `PHP` 函数的作用。  
   
     ```  
     extract()  
@@ -158,7 +158,7 @@
     array_count_values()  
     ```  
   
-1 4. 写一个函数，尽可能高效的，从 `$url = 'https://www.integle.com/index.php?user=8'`; 里取出文件的扩展名 `php` 或者 `.php` 
+14. 写一个函数，尽可能高效的，从 `$url = 'https://www.integle.com/index.php?user=8'`; 里取出文件的扩展名 `php` 或者 `.php` 
 
     ```
     $path = parse_url($url, PHP_URL_PATH);
@@ -168,7 +168,7 @@
     }
     ```
   
-1 5. 将以下划线风格的变量名（如：`get_name_by_user_id`），转换成大驼峰风格（如：`GetNameByUserId`）  
+15. 将以下划线风格的变量名（如：`get_name_by_user_id`），转换成大驼峰风格（如：`GetNameByUserId`）  
     ```
     $var = 'get_name_by_user_id';
     

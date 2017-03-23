@@ -7,7 +7,7 @@
 ### 安装步骤
 
 * 按下 `alt+f 2`，进入命令行模式
-* `ls /dev/sd*`，或者 `tail 1 0 0 /var/log/syslog`
+* `ls /dev/sd*`，或者 `tail 10 0 /var/log/syslog`
     
     看看刚插得 U 盘挂在哪，假如是 `/dev/sdc`
 
@@ -19,7 +19,7 @@
 
 * 按下 `alt+f 1`，回到图形界面，选择 `no`
 * 又回到上一层界面，继续报错，继续 `alt+f 2`
-* \$ mount -t iso 9 6 6 0 -o loop /mnt/sdc/ubuntu.iso /cdrom
+* \$ mount -t iso 96 60 -o loop /mnt/sdc/ubuntu.iso /cdrom
 
 ### 其他
 

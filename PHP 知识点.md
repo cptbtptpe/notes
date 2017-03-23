@@ -37,7 +37,7 @@
     PHP_OS          // 执行 PHP 解释器的操作系统名称，如 Windows  
     PHP_SAPI        // 用来判断是使用命令行还是浏览器执行的，如果 PHP_SAPI=='cli' 表示是在命令行下执行  
     PHP_EOL         // 系统换行符， Windows 是（\r\n ）， Linux 是（/n ）， MAC 是（\r ）
-                    // 自 PHP 4.3.1 0 和 PHP 5.0.2 起可用  
+                    // 自 PHP 4.3.10 和 PHP 5.0.2 起可用  
     DIRECTORY_SEPARATOR   // 系统目录分隔符， Windows 是反斜线（\）， Linux 是斜线（/）  
     PATH_SEPARATOR        // 多路径间分隔符， Windows 是分号（;）， Linux 是冒号（:）  
   
@@ -113,9 +113,9 @@
     ord();  
   
 // 能够返回指定月份共有多少天。  
-    cal_days_in_month(CAL_GREGORIAN, 1 2, 2 0 1 6);  
+    cal_days_in_month(CAL_GREGORIAN, 12, 20 16);  
   
-// 将 md 5()返回的 3 2 位 1 6 进制字符串转换为 1 6 位的二进制字符串，可以节省存储空间  
+// 将 md 5()返回的 32 位 16 进制字符串转换为 16 位的二进制字符串，可以节省存储空间  
     pack('H*',$str);  
     unpack();  
   
@@ -133,7 +133,7 @@
     bzdecompress();  
   
 // 可以获得系统负载情况。
-// 该函数返回一个包含三个元素的数组，每个元素分别代表系统在过去的 1 分钟、 5 分钟、 1 5 分钟的系统负载情况  
+// 该函数返回一个包含三个元素的数组，每个元素分别代表系统在过去的 1 分钟、 5 分钟、 15 分钟的系统负载情况  
     sys_getloadavg();  // Use uptime on linux 
   
 // 返回脚本执行的过程  
@@ -181,8 +181,8 @@
     if(strpos($HTTP_SERVER_VARS[HTTP_USER_AGENT], "Mozilla/5.0"))  //对"/"和中文字符不支持  
   
 // ASCII 码  
-    A-Z     6 5-9 0  
-    a-z     9 7-1 2 2  
+    A-Z     65-90  
+    a-z     97-12 2  
   
 // 遍历数组  
     foreach($arr as $key=>$val){  
@@ -234,7 +234,7 @@
     格式日期： DATE_FORMAT('日期','%Y-%m-%d %H:%i:%S')、 FROM_UNIXTIME('时间戳','%Y-%m-%d %H:%i:%S')  
   
 // 实现中文字串截取无乱码的方法  
-    mb_substr($str,$start,$length,"GB 2 3 1 2");  
+    mb_substr($str,$start,$length,"GB 23 12");  
   
 // 用 PHP 写出显示客户端 IP 与服务器 IP 的代码  
     $_SERVER["REMOTE_ADDR"]  
@@ -253,42 +253,42 @@
 // 如何修改 SESSION 的生存时间  
     session_set_cookie_params($lifetime);  
   
-//在 HTTP/1.0 中，状态码 4 0 1 的含义是(?);如果返回"找不到文件"的提示，则可用 header 函数，其语句为(?)  
+//在 HTTP/1.0 中，状态码 40 1 的含义是(?);如果返回"找不到文件"的提示，则可用 header 函数，其语句为(?)  
     
-    4 0 1-未授权  
-    header("HTTP/1.0 4 0 4 Not Found");  
-    header("Status: 4 0 4 Not Found"); //fast CGI 中  
+    40 1-未授权  
+    header("HTTP/1.04 04 Not Found");  
+    header("Status: 40 4 Not Found"); //fast CGI 中  
   
     其他常见状态码：  
   
-    2 0 0 OK                  请求已成功，请求所希望的响应头或数据体将随此响应返回。  
+    20 0 OK                  请求已成功，请求所希望的响应头或数据体将随此响应返回。  
     
-    3 0 1 Moved Permanently   被请求的资源已永久移动到新位置。  
+    30 1 Moved Permanently   被请求的资源已永久移动到新位置。  
     
-    3 0 2 Move temporarily    请求的资源现在临时从不同的 URI 响应请求。  
+    30 2 Move temporarily    请求的资源现在临时从不同的 URI 响应请求。  
     
-    3 0 4 Not Modified        客户端发送了一个带条件的 GET 请求且已被允许
+    30 4 Not Modified        客户端发送了一个带条件的 GET 请求且已被允许
                             而文档的内容并没有改变，则服务器应当返回这个状态码。  
     
-    4 0 1 Unauthorized        当前请求需要用户验证。  
+    40 1 Unauthorized        当前请求需要用户验证。  
     
-    4 0 2 Payment Required    该状态码是为了将来可能的需求而预留的。  
+    40 2 Payment Required    该状态码是为了将来可能的需求而预留的。  
     
-    4 0 3 Forbidden           服务器已经理解请求，但是拒绝执行它。
-                            与 4 0 1 响应不同的是，身份验证并不能提供任何帮助
+    40 3 Forbidden           服务器已经理解请求，但是拒绝执行它。
+                            与 40 1 响应不同的是，身份验证并不能提供任何帮助
                             而且这个请求也不应该被重复提交。  
     
-    4 0 4 Not Found           请求失败，请求所希望得到的资源未被在服务器上发现。  
+    40 4 Not Found           请求失败，请求所希望得到的资源未被在服务器上发现。  
    
-    4 0 7 Proxy Authentication Required 
-                            与 4 0 1 响应类似，只不过客户端必须在代理服务器上进行身份验证。  
+    40 7 Proxy Authentication Required 
+                            与 40 1 响应类似，只不过客户端必须在代理服务器上进行身份验证。  
     
-    5 0 0 Internal Server Error 
+    50 0 Internal Server Error 
                             服务器遇到了一个未曾预料的状况，导致了它无法完成对请求的处理。  
     
-    5 0 3 Service Unavailable 由于临时的服务器维护或者过载，服务器当前无法处理请求。  
+    50 3 Service Unavailable 由于临时的服务器维护或者过载，服务器当前无法处理请求。  
     
-    5 0 4 Gateway Timeout     作为网关或者代理工作的服务器尝试执行请求超时  
+    50 4 Gateway Timeout     作为网关或者代理工作的服务器尝试执行请求超时  
   
 // 在 PHP 中， heredoc 是一种特殊的字符串，它的结束标志必须?  
     结束标记与开始标记一致并且不再其中出现过，需顶头书写(无任何缩进)，并跟上;号  
@@ -367,10 +367,10 @@
     }  
     var_dump(allFile("/home/test/sql"));  
   
-// 求两个日期的差数，例如 2 0 0 7-2-5 ~ 2 0 0 7-3-6 的日期差数  
-    $begin=strtotime('2 0 0 7-2-5');  
-    $end=strtotime('2 0 0 7-3-6');  
-    echo ($end-$begin)/(2 4*3 6 0 0);  
+// 求两个日期的差数，例如 20 07-2-5 ~ 20 07-3-6 的日期差数  
+    $begin=strtotime('20 07-2-5');  
+    $end=strtotime('20 07-3-6');  
+    echo ($end-$begin)/(24*36 00);  
   
 // 请写一个函数，实现字符串 open_door 、 make_by_id 转换成 OpenDoor 、 MakeById  
     $str=str_replace("_"," ",$str);  
@@ -413,7 +413,7 @@
         LEFT JOIN `user_core` AS uc ON ub.uid=uc.uid  
         LEFT JOIN `user_data` AS ud ON uc.uid=ud.uid  
         ORDER BY ub.uid  
-        LIMIT 1 0  
+        LIMIT 10  
     ");  
     $result=mysql_query("SELECT * FROM `vUser`");  
   
@@ -434,8 +434,8 @@
         END;  
     ");  
     $result=model('u_base')->query("  
-        SET @a=1 0;  
-        SET @b=2 0;  
+        SET @a=10;  
+        SET @b=20;  
         CALL pUser(@a,@b);  
     ");  
   
@@ -500,24 +500,24 @@
   
 // MySQL 数据类型长度列表。(2 进制的 8 位表示一个字节)  
     
-    TINYINT     1 字节 (-1 2 8 ， 1 2 7) (0 ， 2 5 5) (2^8-1)         // 微整数值  
-    SMALLINT    2 字节 (-3 2 7 6 8 ， 3 2 7 6 7) (0 ， 6 5 5 3 5) (2^1 6-1)  // 小整数值  
-    MEDIUMINT   3 字节 (0 ， 1 6 7 7 7 2 1 5) (2^2 4-1)               // 中整数值  
-    INT/INTEGER 4 字节 (0 ， 4 2 9 4 9 6 7 2 9 5) (2^3 2-1)             // 整数值  
-    BIGINT      8 字节 (0 ， 1 8 4 4 6 7 4 4 0 7 3 7 0 9 5 5 1 6 1 5) (2^6 4-1)   // 大整数值  
+    TINYINT     1 字节 (-12 8 ， 12 7) (0 ， 25 5) (2^8-1)         // 微整数值  
+    SMALLINT    2 字节 (-32 76 8 ， 32 76 7) (0 ， 65 53 5) (2^16-1)  // 小整数值  
+    MEDIUMINT   3 字节 (0 ， 16 77 72 15) (2^24-1)               // 中整数值  
+    INT/INTEGER 4 字节 (0 ， 42 94 96 72 95) (2^32-1)             // 整数值  
+    BIGINT      8 字节 (0 ， 18 44 67 44 07 37 09 55 16 15) (2^64-1)   // 大整数值  
     FLOAT       4 字节              // 单精度  
     DOUBLE      8 字节              // 双精度  
-    CHAR        0-2 5 5 字节           // 定长字符串  
-    VARCHAR     0-2 5 5 字节           // 变长字符串 （版本不一致，范围不一致）
-                                    // 最大 6 5 5 3 5 （ ALLOW NULL - 6 5 5 3 3, NOT NULL - 6 5 5 3 2 ）
-    TINYBLOB    0-2 5 5 字节           // 不超过 2 5 5 个字符的二进制字符串  
-    TINYTEXT    0-2 5 5 字节           // 短文本字符串  
-    BLOB        0-6 5 5 3 5 字节         // 二进制形式的长文本数据  
-    TEXT        0-6 5 5 3 5 字节         // 长文本数据  
-    MEDIUMBLOB  0-1 6 7 7 7 2 1 5 字节      // 二进制形式的中等长度文本数据  
-    MEDIUMTEXT  0-1 6 7 7 7 2 1 5 字节      // 中等长度文本数据  
-    LOGNGBLOB   0-4 2 9 4 9 6 7 2 9 5 字节    // 二进制形式的极大文本数据  
-    LONGTEXT    0-4 2 9 4 9 6 7 2 9 5 字节    // 极大文本数据  
+    CHAR        0-25 5 字节           // 定长字符串  
+    VARCHAR     0-25 5 字节           // 变长字符串 （版本不一致，范围不一致）
+                                    // 最大 65 53 5 （ ALLOW NULL - 65 53 3, NOT NULL - 65 53 2 ）
+    TINYBLOB    0-25 5 字节           // 不超过 25 5 个字符的二进制字符串  
+    TINYTEXT    0-25 5 字节           // 短文本字符串  
+    BLOB        0-65 53 5 字节         // 二进制形式的长文本数据  
+    TEXT        0-65 53 5 字节         // 长文本数据  
+    MEDIUMBLOB  0-16 77 72 15 字节      // 二进制形式的中等长度文本数据  
+    MEDIUMTEXT  0-16 77 72 15 字节      // 中等长度文本数据  
+    LOGNGBLOB   0-42 94 96 72 95 字节    // 二进制形式的极大文本数据  
+    LONGTEXT    0-42 94 96 72 95 字节    // 极大文本数据  
   
 // 各数据库使用 PDO 类时需要的驱动  
     Oracle  php_pdo_oci.dll  
@@ -548,7 +548,7 @@
 // echo count("abc"); 输出什么？  
     1  
   
-// error_reporting(2 0 4 7)什么作用？  
+// error_reporting(20 47)什么作用？  
     E_ERROR | E_WARNING | E_PARSE | E_NOTICE | E_CORE_ERROR | E_CORE_WARNING | E_COMPILE_ERROR | E_COMPILE_WARNING | E_USER_ERROR | E_USER_WARNING | E_USER_NOTICE  
     
     |       => 相当于加法  
@@ -561,18 +561,18 @@
     2	    E_WARNING (integer)	            运行时警告 
     4	    E_PARSE (integer)	            编译时语法解析错误
     8	    E_NOTICE (integer)	            运行时通知	 
-    1 6	    E_CORE_ERROR (integer)	        PHP 初始化启动过程中发生的致命错误
-    3 2	    E_CORE_WARNING (integer)	    PHP 初始化启动过程中发生的警告
-    6 4	    E_COMPILE_ERROR (integer)	    编译时致命错误
-    1 2 8	    E_COMPILE_WARNING (integer)	    编译时警告
-    2 5 6	    E_USER_ERROR (integer)	        用户产生的错误信息
-    5 1 2	    E_USER_WARNING (integer)	    用户产生的警告信息
-    1 0 2 4	E_USER_NOTICE (integer)	        用户产生的通知信息
-    2 0 4 8	E_STRICT (integer)	            启用 PHP 对代码的修改建议
-    4 0 9 6	E_RECOVERABLE_ERROR (integer)	可被捕捉的致命错误
-    8 1 9 2	E_DEPRECATED (integer)	        运行时通知
-    1 6 3 8 4	E_USER_DEPRECATED (integer)	    用户产生的警告信息
-    3 0 7 1 9	E_ALL (integer)	                E_STRICT 除外的所有错误和警告信息
+    16	    E_CORE_ERROR (integer)	        PHP 初始化启动过程中发生的致命错误
+    32	    E_CORE_WARNING (integer)	    PHP 初始化启动过程中发生的警告
+    64	    E_COMPILE_ERROR (integer)	    编译时致命错误
+    12 8	    E_COMPILE_WARNING (integer)	    编译时警告
+    25 6	    E_USER_ERROR (integer)	        用户产生的错误信息
+    51 2	    E_USER_WARNING (integer)	    用户产生的警告信息
+    10 24	E_USER_NOTICE (integer)	        用户产生的通知信息
+    20 48	E_STRICT (integer)	            启用 PHP 对代码的修改建议
+    40 96	E_RECOVERABLE_ERROR (integer)	可被捕捉的致命错误
+    81 92	E_DEPRECATED (integer)	        运行时通知
+    16 38 4	E_USER_DEPRECATED (integer)	    用户产生的警告信息
+    30 71 9	E_ALL (integer)	                E_STRICT 除外的所有错误和警告信息
   
 // 打开 php.ini 中的 Safe_mode ，会影响哪些参数？至少说出 6 个。  
     此模块打开时， php 将检查当前脚本的拥有者是否和被操作文件的拥有者相同，因此，将影响文件操作类函数，程序执行函数（ program Execution Functions ）。这些函数有.pathinfo,basename,fopen,system,exec,proc_open 等函数  

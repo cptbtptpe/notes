@@ -64,7 +64,7 @@ SHOW TABLES;
   
 // 创建表  
 CREATE TABLE IF NOT EXISTS `表名`(  
-    `id` int(1 0) unsigned NOT NULL PRIMARY KEY AUTO_INCREMENT COMMENT '本条记录 ID',  
+    `id` int(10) unsigned NOT NULL PRIMARY KEY AUTO_INCREMENT COMMENT '本条记录 ID',  
     `add_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '新增时间',  
     `update_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',  
     `status` tinyint(1) unsigned NOT NULL DEFAULT '1' COMMENT '本条记录状态 1 - 正常 0 - 删除'  
@@ -103,14 +103,14 @@ SHOW CREATE TABLE `表名`;
 ALTER TABLE `表名` COMMENT '注释';  
   
 // 新增字段  
-ALTER TABLE `表名` ADD `字段` int(1 0) unsigned NOT NULL AFTER `字段`;  
+ALTER TABLE `表名` ADD `字段` int(10) unsigned NOT NULL AFTER `字段`;  
   
 // 删除字段  
 ALTER TABLE `表名` DROP `字段`;  
   
 // 修改字段元数据  
 ALTER TABLE `表名` MODIFY `字段` varchar(8); // 修改制定字段的元数据  
-ALTER TABLE `表名` CHANGE `老字段名` `新字段名` varchar(2 0) NOT NULL; // 与 MODIFY 一致并可以修改字段名称  
+ALTER TABLE `表名` CHANGE `老字段名` `新字段名` varchar(20) NOT NULL; // 与 MODIFY 一致并可以修改字段名称  
   
 // 修改字段默认值  
 AlTER TABLE `表名` ALTER `字段` SET DEFAULT '默认值';  
@@ -135,16 +135,16 @@ show binary logs;
 show binlog events;
 
 // 查看指定 binlog 文件的内容
-show binlog events in 'mysql-bin.0 0 0 0 0 2';
+show binlog events in 'mysql-bin.00 00 02';
 
 // 查看当前正在写入的 binlog 文件
 show master status;
 
 // 基于开始/结束时间
-mysqlbinlog --start-datetime='2 0 1 3-0 9-1 0 0 0:0 0:0 0' --stop-datetime='2 0 1 3-0 9-1 0 0 1:0 1:0 1' -d 库名 二进制文件
+mysqlbinlog --start-datetime='20 13-09-10 00:00:00' --stop-datetime='20 13-09-10 01:01:01' -d 库名 二进制文件
 
 // 基于 position 值
-mysqlbinlog --start-postion=1 0 7 --stop-position=1 0 0 0 -d 库名 二进制文件
+mysqlbinlog --start-postion=10 7 --stop-position=10 00 -d 库名 二进制文件
 ```
 
 ### 常用查询  
@@ -158,12 +158,12 @@ SELECT * FROM `表名`\G;
 SELECT DATE_FORMAT(addtime,"%Y-%m-%d") AS days, COUNT(*) AS lively_num  
 FROM device_score_lively_xyweather  
 WHERE  
-    channel_num = 4 0 0 0 0 3  
+    channel_num = 40 00 03  
     AND addtime  
         BETWEEN  
-            '2 0 1 6-0 6-2 5 0 0:0 0:0 0'  
+            '20 16-06-25 00:00:00'  
         AND  
-            '2 0 1 6-0 6-2 8 2 3:5 9:5 9'  
+            '20 16-06-28 23:59:59'  
 GROUP BY days;  
 
 // GROUP BY 后 LIMIT
@@ -175,14 +175,14 @@ FROM
     WHERE
         store_id IN (1, 2, 3)
         AND set_status&1
-        AND ~set_status&1 6
+        AND ~set_status&16
         AND ~set_status&2
     ORDER BY
         set_status&4 DESC,
         rank DESC
 ) AS temp
 GROUP BY store_id
-LIMIT 1 0
+LIMIT 10
 ```  
   
 ### 慢查询工具  
@@ -229,7 +229,7 @@ $ mysql -u root -pxxx
 > FLUSH PRIVILEGES;
 
 $ sudo vim /etc/mysql/mysql.conf.d/mysqld.cnf
-注释 bind-address 1 2 7.0.0.1
+注释 bind-address 12 7.0.0.1
 ```
 
 ### msyql group 后取前 N 条
@@ -261,8 +261,8 @@ SELECT
 FROM  
     active_log  
 WHERE  
-    active_time BETWEEN '2 0 1 6-0 5-1 6 0 0:0 0:0 0'  
-AND '2 0 1 6-0 5-2 2 2 3:5 9:5 9'  
+    active_time BETWEEN '20 16-05-16 00:00:00'  
+AND '20 16-05-22 23:59:59'  
 GROUP BY  
     `active_date`  
 ```  
@@ -275,7 +275,7 @@ SELECT
 FROM  
     `device_score_lively_xyweather`  
 WHERE  
-    `date` = '2 0 1 6-0 9-0 7'  
+    `date` = '20 16-09-07'  
 GROUP BY  
     `hour`;  
 ```  
@@ -288,7 +288,7 @@ GROUP BY
 
 * 事务的一致性(Consistency)
 
-    > 是指事务的运行并不改变数据库中数据的一致性.例如,完整性约束了 a+b=1 0,一个事务改变了 a,那么 b 也应该随之改变.
+    > 是指事务的运行并不改变数据库中数据的一致性.例如,完整性约束了 a+b=10,一个事务改变了 a,那么 b 也应该随之改变.
 
 * `独立性(Isolation)
 
@@ -485,7 +485,7 @@ SQL_SMALL_RESULT 比起 SQL_BIG_RESULT 差不多，很少使用。
 > > * 查询中某个列有范围查询，则其右边的所有列都无法使用查询（多列查询）
 > > > Where c 1= 'xxx' and c 2 like = 'aa%' and c 3='sss' 改查询只会使用索引中的前两列，因为 like 是范围查询
 > > * 不能跳过某个字段来进行查询，这样利用不到索引
-> > > 比如我的 sql 是 explain select * from `award` where nickname > 'rSUQFzpkDz 3 R' and account = 'DYxJoqZq 2 rd 7' and created_time = 1 4 4 9 5 6 7 8 2 2; 
+> > > 比如我的 sql 是 explain select * from `award` where nickname > 'rSUQFzpkDz 3 R' and account = 'DYxJoqZq 2 rd 7' and created_time = 14 49 56 78 22; 
 > > >
 > > > 那么这时候他使用不到其组合索引。
 > > >
@@ -527,7 +527,7 @@ SQL_SMALL_RESULT 比起 SQL_BIG_RESULT 差不多，很少使用。
 * 在一些 where 之后的 < <= > >= BETWEEN IN 以及某个情况下的 like 建立字段的索引(B-TREE)
 * like 语句的 如果你对 nickname 字段建立了一个索引。当查询的时候的语句是 nickname lick '%ABC%' 那么这个索引讲不会起到作用。而 nickname lick 'ABC%' 那么将可以用到索引
 * 索引不会包含 NULL 列，如果列中包含 NULL 值都将不会被包含在索引中，复合索引中如果有一列含有 NULL 值那么这个组合索引都将失效，一般需要给默认值 0 或者 ' ' 字符串
-* 使用短索引，如果你的一个字段是 Char(3 2) 或者 int(3 2)，在创建索引的时候指定前缀长度 比如前 1 0 个字符 (前提是多数值是唯一的)那么短索引可以提高查询速度，并且可以减少磁盘的空间，也可以减少 I/0 操作。
+* 使用短索引，如果你的一个字段是 Char(32) 或者 int(32)，在创建索引的时候指定前缀长度 比如前 10 个字符 (前提是多数值是唯一的)那么短索引可以提高查询速度，并且可以减少磁盘的空间，也可以减少 I/0 操作。
 * 不要在列上进行运算，这样会使得 mysql 索引失效，也会进行全表扫描
 * 选择越小的数据类型越好，因为通常越小的数据类型通常在磁盘，内存， cpu ，缓存中 占用的空间很少，处理起来更快。
 
@@ -670,9 +670,9 @@ echo "Welcome {$d['username']}";
 
 **把 IP 地址存成 UNSIGNED INT**
 
-> 很多程序员都会创建一个 VARCHAR(1 5) 字段来存放字符串形式的 IP 而不是整形的 IP 。如果你用整形来存放，只需要 4 个字节，并且你可以有定长的字段。而且，这会为你带来查询上的优势，尤其是当你需要使用这样的 WHERE 条件： IP between ip 1 and ip 2 。 
+> 很多程序员都会创建一个 VARCHAR(15) 字段来存放字符串形式的 IP 而不是整形的 IP 。如果你用整形来存放，只需要 4 个字节，并且你可以有定长的字段。而且，这会为你带来查询上的优势，尤其是当你需要使用这样的 WHERE 条件： IP between ip 1 and ip 2 。 
 >
-> 我们必需要使用 UNSIGNED INT ，因为 IP 地址会使用整个 3 2 位的无符号整形。 
+> 我们必需要使用 UNSIGNED INT ，因为 IP 地址会使用整个 32 位的无符号整形。 
 >
 > 而你的查询，你可以使用 INET_ATON() 来把一个字符串 IP 转成一个整形，并使用 INET_NTOA() 把一个整形转成一个字符串 IP 。在 PHP 中，也有这样的函数 ip 2 long() 和 long 2 ip()。 
 
@@ -692,7 +692,7 @@ UPDATE users SET ip = INET_ATON('{$_SERVER['REMOTE_ADDR']}') WHERE user_id = $us
 
 **垂直分割**
 
-> `垂直分割` 是一种把数据库中的表按列变成几张表的方法，这样可以降低表的复杂度和字段的数目，从而达到优化的目的。（以前，在银行做过项目，见过一张表有 1 0 0 多个字段，很恐怖） 
+> `垂直分割` 是一种把数据库中的表按列变成几张表的方法，这样可以降低表的复杂度和字段的数目，从而达到优化的目的。（以前，在银行做过项目，见过一张表有 10 0 多个字段，很恐怖） 
 >
 > 示例一：在 Users 表中有一个字段是家庭地址，这个字段是可选字段，相比起，而且你在数据库操作的时候除了个人信息外，你并不需要经常读取或是改写这个字段。那么，为什么不把他放到另外一张表中呢？ 这样会让你的表有更好的性能，大家想想是不是，大量的时候，我对于用户表来说，只有用户 ID ，用户名，口令，用户角色等会被经常使用。小一点的表总是会有好的性能。 
 >
@@ -706,15 +706,15 @@ UPDATE users SET ip = INET_ATON('{$_SERVER['REMOTE_ADDR']}') WHERE user_id = $us
 >
 > Apache 会有很多的子进程或线程。所以，其工作起来相当有效率，而我们的服务器也不希望有太多的子进程，线程和数据库链接，这是极大的占服务器资源的事情，尤其是内存。 
 > 
-> 如果你把你的表锁上一段时间，比如 3 0 秒钟，那么对于一个有很高访问量的站点来说，这 3 0 秒所积累的访问进程/线程，数据库链接，打开的文件数，可能不仅仅会让你泊 WEB 服务 Crash ，还可能会让你的整台服务器马上掛了。 
+> 如果你把你的表锁上一段时间，比如 30 秒钟，那么对于一个有很高访问量的站点来说，这 30 秒所积累的访问进程/线程，数据库链接，打开的文件数，可能不仅仅会让你泊 WEB 服务 Crash ，还可能会让你的整台服务器马上掛了。 
 >
 > 所以，如果你有一个大的处理，你定你一定把其拆分，使用 LIMIT 条件是一个好的方法。下面是一个示例：
 
 ```
 while (1) { 
     
-    //每次只做 1 0 0 0 条 
-    mysql_query("DELETE FROM logs WHERE log_date <= '2 0 0 9-1 1-0 1' LIMIT 1 0 0 0"); 
+    //每次只做 10 00 条 
+    mysql_query("DELETE FROM logs WHERE log_date <= '20 09-11-01' LIMIT 10 00"); 
     
     // 没得可删了，退出！ 
     if (mysql_affected_rows() == 0) { 
@@ -722,7 +722,7 @@ while (1) {
     } 
     
     // 每次都要休息一会儿 
-    usleep(5 0 0 0 0); 
+    usleep(50 00 0); 
 }
 ```
 
@@ -734,7 +734,7 @@ while (1) {
 > 
 > 如果一个表只会有几列罢了（比如说字典表，配置表），那么，我们就没有理由使用 INT 来做主键，使用 MEDIUMINT, SMALLINT 或是更小的 TINYINT 会更经济一些。如果你不需要记录时间，使用 DATE 要比 DATETIME 好得多。 
 > 
-> 当然，你也需要留够足够的扩展空间，不然，你日后来干这个事，你会死的很难看，参看 Slashdot 的例子（ 2 0 0 9 年 1 1 月 0 6 日），一个简单的 ALTER TABLE 语句花了 3 个多小时，因为里面有一千六百万条数据。
+> 当然，你也需要留够足够的扩展空间，不然，你日后来干这个事，你会死的很难看，参看 Slashdot 的例子（ 20 09 年 11 月 06 日），一个简单的 ALTER TABLE 语句花了 3 个多小时，因为里面有一千六百万条数据。
 
 **选择正确的存储引擎**
 

@@ -81,7 +81,7 @@
 
 ### 简介
 
-> `Thrift` 是一个跨语言的服务部署框架，由 `facebook` 在 `2 0 0 7` 年开发并贡献到 `apache` 基金，与 `2 0 0 8` 年进入 `apache` 开源项目  
+> `Thrift` 是一个跨语言的服务部署框架，由 `facebook` 在 `20 07` 年开发并贡献到 `apache` 基金，与 `20 08` 年进入 `apache` 开源项目  
 > `Thrift` 是通过中间接口语言 `IDL` 来定义接口和所需数据的类型，然后通过编译器生成不同语言的相关代码，从而实现跨语言的支持
 
 ### 客户端流程
@@ -165,10 +165,10 @@
 
 - [x] `bool` - 布尔值
 - [x] `byte` - 有符号字节
-- [x] `i 1 6` - 1 6 位有符号整型
-- [x] `i 3 2` - 3 2 位有符号整型
-- [x] `i 6 4` - 6 4 位有符号整型
-- [x] `double` - 6 4 位浮点型
+- [x] `i 16` - 16 位有符号整型
+- [x] `i 32` - 32 位有符号整型
+- [x] `i 64` - 64 位有符号整型
+- [x] `double` - 64 位浮点型
 - [x] `string` - 编码无关的文本
 
 **Struct**
@@ -185,8 +185,8 @@
 struct Message
 {
     1: required string msg,     // 字段必须填写
-    2: optional i 3 2 type = 0;   // 默认值
-    3: i 3 2 time                 // 默认字段类型为 optional
+    2: optional i 32 type = 0;   // 默认值
+    3: i 32 time                 // 默认字段类型为 optional
 }
 ```
 
@@ -215,7 +215,7 @@ struct User {
 
 **Enum**
 
-> 枚举常量必须是 3 2 位的正整数
+> 枚举常量必须是 32 位的正整数
 
 * 编译器默认从 0 开始赋值
 * 可以赋予某个常量的某个整数
@@ -226,13 +226,13 @@ struct User {
 ```
 enum Operation {
     CMD_OK = 0,
-    CMD_NOT_EXIT = 2 0 0 0,
-    CMD_EXIT = 2 0 0 1,
-    CMD_ADD = 2 0 0 2
+    CMD_NOT_EXIT = 20 00,
+    CMD_EXIT = 20 01,
+    CMD_ADD = 20 02
 }
 
 struct Student {
-    1: required i 3 2 userId;
+    1: required i 32 userId;
     2: required string userName;
     3: optional EnOpType cmd_code = EnOpType.CMD_OK;
     4: optional string language = "english"
@@ -245,7 +245,7 @@ struct Student {
 
 ```
 exception EHandler {
-    1: i 3 2 errorCode,
+    1: i 32 errorCode,
     2: string message,
     3: StUser userinfo
 }
@@ -286,7 +286,7 @@ namespace php api
 include "test.thrift"   
 ...
 struct StudentSearchResult {
-    1: in 3 2 uid; 
+    1: in 32 uid; 
     ...
 }
 ```
@@ -297,13 +297,13 @@ struct StudentSearchResult {
 
 ```
 struct User{
-    1: i 6 4 id,
+    1: i 64 id,
     2: string name,
-    3: i 6 4 timestamp,
+    3: i 64 timestamp,
     4: bool vip  
 }
 
 service UserService{
-    User getById(1: i 6 4 id)
+    User getById(1: i 64 id)
 }
 ```

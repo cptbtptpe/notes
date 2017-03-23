@@ -44,7 +44,7 @@ Docker 仓库（ Repository ）类似与代码仓库，是 Docker 集中存放�
 有时候会看到有资料将 Docker 仓库和注册服务器（ Registry ）混为一谈，并不严格区分。
 实际上，注册服务器是存放仓库的地方，其上往往存放着多个仓库。
 每个仓库集中存放某一类镜像，往往包括多个镜像文件，通过不同的标签（ tag ）来进行区分。
-例如存放 Ubuntu 操作系统镜像的仓库，称为 Ubuntu 仓库，其中可能包括 1 4.0 4, 1 2.0 4 等不同版本的镜像。
+例如存放 Ubuntu 操作系统镜像的仓库，称为 Ubuntu 仓库，其中可能包括 14.04, 12.04 等不同版本的镜像。
 
 根据存储的镜像公开分享与否， Docker 仓库分为公开仓库（ Public ）和私有仓库（ Private ）两种形式。
 
@@ -94,8 +94,8 @@ sudo docker logs <CONTAINER ID> 2>&1 | grep '^User: ' | tail -n 1
 
 sudo docker run 
 	--name redmine 
-	-p 9 0 0 3:8 0 
-	-p 9 0 2 3:2 2 
+	-p 90 03:80 
+	-p 90 23:22 
 	-d 
 	-v /var/redmine/files:/redmine/files 
 	-v /var/redmine/mysql:/var/lib/mysql 
@@ -199,7 +199,7 @@ docker search -s  django
 
 --automated 只列出 automated build 类型的镜像
 --no-trunc 可显示完整的镜像描述
--s 4 0 列出收藏数不小于 4 0 的镜像
+-s 40 列出收藏数不小于 40 的镜像
 
 ---
 
@@ -272,10 +272,10 @@ docker rmi nginx:latest postgres:latest python:latest
 
 ---
 
-1 0. docker rm
+10. docker rm
 
 docker rm [options "o">] <container>  "o">[container...]
-docker rm nginx-0 1 nginx-0 2 db-0 1 db-0 2
+docker rm nginx-01 nginx-02 db-01 db-02
 sudo docker rm -l /webapp/redis
 
 
@@ -285,7 +285,7 @@ sudo docker rm -l /webapp/redis
 
 ---
 
-1 1. docker history
+11. docker history
 
 docker history  "o">[options] <image>
 
@@ -296,7 +296,7 @@ docker history  "o">[options] <image>
 
 ---
 
-1 2. docker start|stop|restart
+12. docker start|stop|restart
 
 docker start|stop "p">|restart [options "o">] <container>  "o">[container...]
 
@@ -304,11 +304,11 @@ docker start|stop "p">|restart [options "o">] <container>  "o">[container...]
 
 -a 待完成
 -i 启动一个容器并进入交互模式
--t 1 0 停止或者重启容器的超时时间（秒），超时后系统将杀死进程
+-t 10 停止或者重启容器的超时时间（秒），超时后系统将杀死进程
 
 ---
 
-1 3. docker kill
+13. docker kill
 
 docker kill  "o">[options "o">] <container>  "o">[container...]
 
@@ -318,17 +318,17 @@ docker kill  "o">[options "o">] <container>  "o">[container...]
 
 ---
 
-1 4. docker events
+14. docker events
 
 docker events [options "o">]
-docker events --since= "s 2">"2 0 1 4 1 0 2 0"
-docker events --until= "s 2">"2 0 1 2 0 3 1 0"
+docker events --since= "s 2">"20 14 10 20"
+docker events --until= "s 2">"20 12 03 10"
 
 从服务器拉取个人动态，可选择时间区间
 
 ---
 
-1 5. docker save
+15. docker save
 
 docker save -i "debian.tar"
 docker save > "debian.tar"
@@ -339,7 +339,7 @@ docker save > "debian.tar"
 
 ---
 
-1 6. docker load
+16. docker load
 
 docker load [options]
 docker load < debian.tar
@@ -352,17 +352,17 @@ docker load -i "debian.tar"
 
 ---
 
-1 7. docker export
+17. docker export
 
 docker export <container>
-docker export nginx-0 1 > export.tar
+docker export nginx-01 > export.tar
 
 将指定的容器保存成 tar 归档文件， docker import 的逆操作
 导出后导入（ exported-imported)）的容器会丢失所有的提交历史，无法回滚
 
 ---
 
-1 8. docker import
+18. docker import
 
 docker import url|-  "o">[repository[:tag "o">]]
 cat export.tar  "p">| docker import - imported-nginx:latest
@@ -373,7 +373,7 @@ docker import http://example.com/export.tar
 
 ---
 
-1 9. docker top
+19. docker top
 
 docker top <running_container>  "o">[ps options]
 
@@ -381,7 +381,7 @@ docker top <running_container>  "o">[ps options]
 
 ---
 
-2 0. docker inspect
+20. docker inspect
 
 docker instpect nginx:latest
 docker inspect nginx-container
@@ -392,20 +392,20 @@ docker inspect nginx-container
 
 ---
 
-2 1. docker pause
+21. docker pause
 
 暂停某一容器的所有进程
 
 ---
 
-2 2. docker unpause
+22. docker unpause
 docker unpause <container>
 
 恢复某一容器的所有进程
 
 ---
 
-2 3. docker tag
+23. docker tag
 
 docker tag [options "o">] <image>[:tag "o">] [repository/ "o">][username/]name "o">[:tag]
 
@@ -415,7 +415,7 @@ docker tag [options "o">] <image>[:tag "o">] [repository/ "o">][username/]name "
 
 ---
 
-2 4. docker push
+24. docker push
 
 docker push name[:tag "o">]
 docker push laozhu/nginx:latest
@@ -424,20 +424,20 @@ docker push laozhu/nginx:latest
 
 ---
 
-2 5. docker logs
+25. docker logs
 
 docker logs [options "o">] <container>
-docker logs -f -t --tail= "s 2">"1 0" insane_babbage
+docker logs -f -t --tail= "s 2">"10" insane_babbage
 
 获取容器运行时的输出日志
 
 -f 跟踪容器日志的最近更新
 -t 显示容器日志的时间戳
---tail="1 0" 仅列出最新 1 0 条容器日志
+--tail="10" 仅列出最新 10 条容器日志
 
 ---
 
-2 6. docker run
+26. docker run
 
 docker run [options "o">] <image> [ "nb">command]  "o">[arg...]
 
@@ -494,13 +494,13 @@ Commands:
               
               1.运行一个交互型容器
                 [root@localhost ~]# docker run -i -t centos /bin/bash
-                [root@f 0 a 0 2b 4 7 3 0 6 7 /]# 
+                [root@f 0 a 02b 47 30 67 /]# 
               
               2.在另一个窗口上查看该容器的状态
                 [root@localhost ~]# docker ps -a
               
               3.退出第一步中运行的容器
-                [root@d 4 a 7 5f 1 6 5 ce 6 /]# exit
+                [root@d 4 a 75f 16 5 ce 6 /]# exit
               
               4.查看该容器的状态
                 [root@localhost ~]# docker ps -a
@@ -515,7 +515,7 @@ Commands:
               
               7.通过 attach 命令进行交互
                 [root@localhost ~]# docker attach cranky_mahavira
-                [root@d 4 a 7 5f 1 6 5 ce 6 /]# 
+                [root@d 4 a 75f 16 5 ce 6 /]# 
 
     build     Build an image from a Dockerfile
               -- 通过 Dockerfile 创建镜像
@@ -539,13 +539,13 @@ Commands:
               
               需要注意的是-的用法，我在容器新建了两个文本文件
               其中一个为 test.txt ，内容如下：
-              root@8 3 9 8 6 6 a 3 3 8 db:/# cat test.txt 
-              1 2 3
-              4 5 6
-              7 8 9
+              root@83 98 66 a 33 8 db:/# cat test.txt 
+              12 3
+              45 6
+              78 9
               
               另一个文件为 test 1 ， txt ，内容为：
-              root@8 3 9 8 6 6 a 3 3 8 db:/# cat test 1.txt
+              root@83 98 66 a 33 8 db:/# cat test 1.txt
               helloworld
 
     create    Create a new container  
@@ -575,11 +575,11 @@ Commands:
               -- 用于容器启动之后，执行其它的任务
               
               通过 exec 命令可以创建两种任务：后台型任务和交互型任务
-              后台型任务： docker exec -d cc touch 1 2 3  其中 cc 是容器名
+              后台型任务： docker exec -d cc touch 12 3  其中 cc 是容器名
               
               交互型任务：
               [root@localhost ~]# docker exec -i -t cc /bin/bash
-              root@1 e 5 bb 4 6d 8 0 1 b:/# ls
+              root@1 e 5 bb 46d 80 1 b:/# ls
 
     export    Export a container\'s filesystem as a tar archive
               -- 将容器的文件系统打包成 tar 文件
@@ -604,32 +604,32 @@ Commands:
                 [root@localhost ~]# docker info
               
                 Containers: 3    --当前有 3 个容器
-                Images: 2 9 8      
+                Images: 29 8      
                 Storage Driver: devicemapper
-                    Pool Name: docker-2 5 3:0-3 4 4 0 2 6 2 3-pool
-                    Pool Blocksize: 6 5.5 4 kB
+                    Pool Name: docker-25 3:0-34 40 26 23-pool
+                    Pool Blocksize: 65.54 kB
                     Backing Filesystem: xfs
                     Data file: /dev/loop 0
                     Metadata file: /dev/loop 1
-                    Data Space Used: 8.6 7 7 GB     -- 对应的是下面 Data loop file 大小
-                    Data Space Total: 1 0 7.4 GB
-                    Data Space Available: 5.7 3 7 GB
-                    Metadata Space Used: 1 3.4 MB  -- 对应的是下面 Metadata loop file 大小
-                    Metadata Space Total: 2.1 4 7 GB
-                    Metadata Space Available: 2.1 3 4 GB
+                    Data Space Used: 8.67 7 GB     -- 对应的是下面 Data loop file 大小
+                    Data Space Total: 10 7.4 GB
+                    Data Space Available: 5.73 7 GB
+                    Metadata Space Used: 13.4 MB  -- 对应的是下面 Metadata loop file 大小
+                    Metadata Space Total: 2.14 7 GB
+                    Metadata Space Available: 2.13 4 GB
                     Udev Sync Supported: true
                     Deferred Removal Enabled: false
                     Data loop file: /var/lib/docker/devicemapper/devicemapper/data
                     Metadata loop file: /var/lib/docker/devicemapper/devicemapper/metadata
-                    Library Version: 1.0 2.9 3-RHEL 7 (2 0 1 5-0 1-2 8)
+                    Library Version: 1.02.93-RHEL 7 (20 15-01-28)
                 Execution Driver: native-0.2
                 Logging Driver: json-file
-                Kernel Version: 3.1 0.0-2 2 9.el 7.x 8 6_ 6 4
+                Kernel Version: 3.10.0-22 9.el 7.x 86_ 64
                 Operating System: CentOS Linux 7 (Core)
                 CPUs: 2
-                Total Memory: 9 7 9.7 MiB
+                Total Memory: 97 9.7 MiB
                 Name: localhost.localdomain
-                ID: TFVB:BXGQ:VVOC:K 2 DJ:LECE:2 HNK:2 3 B 2:LEVF:P 3 IQ:L 7 D 5:NG 2 V:UKNL
+                ID: TFVB:BXGQ:VVOC:K 2 DJ:LECE:2 HNK:23 B 2:LEVF:P 3 IQ:L 7 D 5:NG 2 V:UKNL
                 WARNING: bridge-nf-call-iptables is disabled
                 WARNING: bridge-nf-call-ip 6 tables is disabled
 
@@ -671,10 +671,10 @@ Commands:
               
               譬如：
                [root@localhost ~]# docker port blog
-               8 0/tcp -> 0.0.0.0:8 0
+               80/tcp -> 0.0.0.0:80
               
-              容器 blog 的内部端口 8 0 映射到宿主机的 8 0 端口
-              这样可通过宿主机的 8 0 端口查看容器 blog 提供的服务
+              容器 blog 的内部端口 80 映射到宿主机的 80 端口
+              这样可通过宿主机的 80 端口查看容器 blog 提供的服务
 
     ps        List containers  
               -- 列出所有容器，其中 docker ps 用于查看正在运行的容器， ps -a 则用于查看所有容器。
@@ -952,7 +952,7 @@ image			指定为镜像名称或镜像 ID
 
 				image: ubuntu
 				image: orchardup/postgresql
-				image: a 4 bc 6 5fd
+				image: a 4 bc 65fd
 
 
 build			指定 Dockerfile 所在文件夹的路径
@@ -963,7 +963,7 @@ build			指定 Dockerfile 所在文件夹的路径
 
 command			覆盖容器启动后默认执行的命令
 
-				command: bundle exec thin -p 3 0 0 0
+				command: bundle exec thin -p 30 00
 
 
 links			链接到其它服务中的容器
@@ -976,7 +976,7 @@ links			链接到其它服务中的容器
 				
 				使用的别名将会自动在服务容器中的 /etc/hosts 里创建
 				例如
-				1 7 2.1 7.2.1 8 6 db
+				17 2.17.2.18 6 db
 				相应的环境变量也将被创建
 
 
@@ -993,13 +993,13 @@ ports			暴露端口信息
 				使用宿主：容器 （ HOST:CONTAINER ）格式或者仅仅指定容器的端口（宿主将会随机选择端口）都可以
 
 				ports:
-					- "3 0 0 0"
-					- "8 0 0 0:8 0 0 0"
-					- "1 2 7.0.0.1:8 0 0 1:8 0 0 1"
+					- "30 00"
+					- "80 00:80 00"
+					- "12 7.0.0.1:80 01:80 01"
 				
 				当使用 HOST:CONTAINER 格式来映射端口时
-				如果你使用的容器端口小于 6 0 你可能会得到错误得结果
-				因为 YAML 将会解析 xx:yy 这种数字格式为 6 0 进制
+				如果你使用的容器端口小于 60 你可能会得到错误得结果
+				因为 YAML 将会解析 xx:yy 这种数字格式为 60 进制
 				所以建议采用字符串格式。
 
 
@@ -1007,8 +1007,8 @@ expose			暴露端口，但不映射到宿主机，只被连接的服务访问
 				仅可以指定内部端口为参数
 
 				expose:
-					- "3 0 0 0"
-					- "8 0 0 0"
+					- "30 00"
+					- "80 00"
 
 
 volumes			卷挂载路径设置
@@ -1069,7 +1069,7 @@ extends			基于已有的服务进行扩展，并可以覆盖其中一些选项
 						file: common.yml
 				    	service: webapp
 				  	ports:
-				  		-"8 0 0 0:8 0 0 0"
+				  		-"80 00:80 00"
 				  	links:
 				  		- db
 				  	environment:
@@ -1134,13 +1134,13 @@ tty
 cpu_shares		这些都是和 docker run 支持的选项
 				
 				类似
-				cpu_shares: 7 3
+				cpu_shares: 73
 				working_dir: /code
 				entrypoint: /code/entrypoint.sh
 				user: postgresql
 				hostname: foo
 				domainname: foo.com
-				mem_limit: 1 0 0 0 0 0 0 0 0 0
+				mem_limit: 10 00 00 00 00
 				privileged: true
 				restart: always
 				stdin_open: true

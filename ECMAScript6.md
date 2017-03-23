@@ -8,14 +8,14 @@
   
 ### ECMAScript 的历史  
 
-* 1 9 9 8.0 6 `ECMAScript 2.0` 版发布  
-* 1 9 9 9.1 2 `ECMAScript 3.0` 版发布，成为 `JavaScript` 的通行标准，得到了广泛支持  
-* 2 0 0 7.1 0 `ECMAScript 4.0` 版草案发布  
-* 2 0 0 9.1 2 `ECMAScript 5.0` 版正式发布  
-* 2 0 1 1.0 6 `ECMAscript 5.1` 版发布，并且成为 `ISO` 国际标准  
-* 2 0 1 3.0 3 `ECMAScript 6` 草案冻结，不再添加新功能。新的功能设想将被放到 `ECMAScript 7`  
-* 2 0 1 3.1 2 `ECMAScript 6` 草案发布。然后是 `1 2` 个月的讨论期，听取各方反馈  
-* 2 0 1 5.0 6 `ECMAScript 6` 正式通过，成为国际标准  
+* 19 98.06 `ECMAScript 2.0` 版发布  
+* 19 99.12 `ECMAScript 3.0` 版发布，成为 `JavaScript` 的通行标准，得到了广泛支持  
+* 20 07.10 `ECMAScript 4.0` 版草案发布  
+* 20 09.12 `ECMAScript 5.0` 版正式发布  
+* 20 11.06 `ECMAscript 5.1` 版发布，并且成为 `ISO` 国际标准  
+* 20 13.03 `ECMAScript 6` 草案冻结，不再添加新功能。新的功能设想将被放到 `ECMAScript 7`  
+* 20 13.12 `ECMAScript 6` 草案发布。然后是 `12` 个月的讨论期，听取各方反馈  
+* 20 15.06 `ECMAScript 6` 正式通过，成为国际标准  
   
 ### 前言  
 
@@ -102,7 +102,7 @@
 		// 对象方式的解构赋值  
 		// 右侧对应的 key 的值将赋给左边与 key 同名的变量，与顺序无关  
 		  
-		let {foo, bar} = {foo: 1 1 1, bar: 2 2 2};  
+		let {foo, bar} = {foo: 11 1, bar: 22 2};  
 		  
 		// 变量别名，使用 a 获取对应的值 Leon, 但是变量名为 name, 使用变量 a 将报错  
 		let {a: name} = {a: 'Leon'};  
@@ -319,7 +319,7 @@
 	* `WeakMap` 数据结构类似 `Map` 结构，用于存储弱引用的对象，只能是对象  
 		* 属性和方法仅限于 `get()`、`set()`、`has()`、`delete()`，用法与 `Map` 结构的方法一致  
   
-1 0. **Iterator 和 for...of 循环**  
+10. **Iterator 和 for...of 循环**  
 	* `Iterator` 属于一种接口规范，任何数据结构只要部署这个接口，就可以使用 `for...of` 遍历  
 	* 默认的 `Iterator` 接口部署在数据结构的 `Symbol.iterator` 属性  
 	* 在 `ES 6 中`，`Array`、`Set`、`Map` 数据结构具有原生 `Iterator` 接口  
@@ -331,7 +331,7 @@
 		* `Map()`、`Set()`、`WeakMap()`、`WeakSet()`  
 		* `Promise.all()`、`Promise.race()`  
   
-1 1. **Generator 函数**  
+11. **Generator 函数**  
 	* 函数的内部状态的遍历器，每次调用返回的状态都不一样  
 	* 表现形式与普通函数基本相同，不同点如下  
 		* `function` 关键字后有一个 `*` 号  
@@ -366,7 +366,7 @@
 		}  
 		```  
   
-1 2. **Promise 对象**  
+12. **Promise 对象**  
 	* 异步操作 `api` 集合对象  
 	* `Promise` 构造函数接受一个函数作为参数，该函数的两个参数分别是成功 `resolve` 方法和失败 `reject` 方法  
 	* `Promise.then()` 返回的是一个新的 `Promise` 对象，因此可以采用链式写法  
@@ -380,7 +380,7 @@
 		* 如果 `Promise.resolve()` 方法的参数，不是具有 `Promise.then()` 方法(`thenable`)的对象，则返回一个新的 `Promise`对象，且它的状态为`fulfilled/resolved`  
 	* `Promise.reject()` 与 `Promise.resolve()` 类似返回的状态为 `rejected`  
   
-1 3. **Class 和 Module**  
+13. **Class 和 Module**  
 	* `Class` 对语法进行封装  
 		* 初始化方法 `contructor`，在实例化类的时候自动调用  
 		* `name` 属性将返回类名  
