@@ -40,10 +40,10 @@ yum install crontabs
 服务操作说明：  
 
 ```  
-/sbin/service crond start 		//启动服务  
-/sbin/service crond stop 		  //关闭服务  
-/sbin/service crond restart 	//重启服务  
-/sbin/service crond reload 		//重新载入配置  
+/sbin/service crond start     //启动服务  
+/sbin/service crond stop      //关闭服务  
+/sbin/service crond restart   //重启服务  
+/sbin/service crond reload    //重新载入配置  
 ```  
   
 查看 crontab 服务状态：  
