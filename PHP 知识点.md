@@ -1595,7 +1595,8 @@ hr();
   
 # Java 的方法重写，又称为方法覆盖  
 # 父类与子类之间的多态性，对父类的函数进行重新定义。  
-# 如果在子类中定义某方法与其父类有相同的名称和参数，我们说该方法被重写 (Overriding)。有时子类并不想原封不动地继承父类的方法，而是想作一定的修改，这就需要采用方法的重写。  
+# 如果在子类中定义某方法与其父类有相同的名称和参数，我们说该方法被重写 (Overriding)。
+# 有时子类并不想原封不动地继承父类的方法，而是想作一定的修改，这就需要采用方法的重写。  
   
   
 #-----------------------  
@@ -1615,7 +1616,8 @@ hr();
  */  
 # 因为 PHP 处理赋值运算的方式， __set() 的返回值将被忽略。
 # 类似的, 在下面这样的链式赋值中， __get() 不会被调用：$a = $obj->b = 8;  
-# 在除 isset() 外的其它语言结构中无法使用重载的属性，这意味着当对一个重载的属性使用 empty() 时，重载魔术方法将不会被调用。为避开此限制，必须将重载属性赋值到本地变量再使用 empty()。  
+# 在除 isset() 外的其它语言结构中无法使用重载的属性，这意味着当对一个重载的属性使用 empty() 时，重载魔术方法将不会被调用。
+# 为避开此限制，必须将重载属性赋值到本地变量再使用 empty()。  
   
   
 #-----------------------  
@@ -1702,7 +1704,8 @@ hr();
 # 对象中的 __clone() 方法不能被直接调用。  
 # 当对象被 clone 复制后， PHP 5 会对对象的所有属性执行一个浅复制（ shallow copy ）。
 # 所有的引用属性 仍然会是一个指向原来的变量的引用。  
-# 当复制完成时，如果定义了 __clone() 方法，则新创建的对象（复制生成的对象）中的 __clone() 方法会被调用，可用于修改属性的值（如果有必要的话）。  
+# 当复制完成时，如果定义了 __clone() 方法
+# 则新创建的对象（复制生成的对象）中的 __clone() 方法会被调用，可用于修改属性的值（如果有必要的话）。  
   
 # 我们使用 clone 来复制对象，这种复制叫做“浅复制”
 # 被复制对象的所有变量都含有与原来的对象相同的值，而所有的对其他对象的引用都仍然指向原来的对象。  
@@ -1713,7 +1716,8 @@ hr();
   
 # 深克隆  
 # 使用 __clone() 魔术方法一一对引用类型的属性进行处理，太麻烦，不推荐该方法  
-# PHP 有串行化(serialize)和反串行化(unserialize)函数，我们只需要用 serialize()将一个对象写入一个流，然后从流中读回对象，那么对象就被复制了。
+# PHP 有串行化(serialize)和反串行化(unserialize)函数
+# 我们只需要用 serialize()将一个对象写入一个流，然后从流中读回对象，那么对象就被复制了。
 # 在 JAVA 语言里面，这个过程叫做“冷藏”和“解冻”。  
 # $obj2 = unserialize(serialize($obj1))  
   
@@ -1786,7 +1790,8 @@ hr();
 # 什么是命名空间？从广义上来说，命名空间是一种封装事物的方法。  
 # 在很多地方都可以见到这种抽象概念。  
 # 例如，在操作系统中目录用来将相关文件分组，对于目录中的文件来说，它就扮演了命名空间的角色。  
-# 具体举个例子，文件 foo.txt 可以同时在目录/home/greg 和 /home/other 中存在，但在同一个目录中不能存在两个 foo.txt 文件。  
+# 具体举个例子，文件 foo.txt 可以同时在目录/home/greg 和 /home/other 中存在
+# 但在同一个目录中不能存在两个 foo.txt 文件。  
 # 另外，在目录 /home/greg 外访问 foo.txt 文件时
 # 我们必须将目录名以及目录分隔符放在文件名之前得到 /home/greg/foo.txt 。
 # 这个原理应用到程序设计领域就是命名空间的概念。  
@@ -1797,7 +1802,8 @@ hr();
 # 1.用户编写的代码与 PHP 内部的类/函数/常量或第三方类/函数/常量之间的名字冲突。  
 # 2.为很长的标识符名称(通常是为了缓解第一类问题而定义的)创建一个别名（或简短）的名称，提高源代码的可读性。  
   
-# 名为 PHP 或 php 的命名空间，以及以这些名字开头的命名空间（例如 PHP\Classes ）被保留用作语言内核使用，而不应该在用户空间的代码中使用。  
+# 名为 PHP 或 php 的命名空间，以及以这些名字开头的命名空间（例如 PHP\Classes ）被保留用作语言内核使用
+# 而不应该在用户空间的代码中使用。  
   
   
 #-----------------------  
@@ -1862,15 +1868,18 @@ hr();
   
 # PHP 命名空间中的元素使用同样的原理。例如，类名可以通过三种方式引用  
 /**  
- * 1.非限定名称，或不包含前缀的类名称，例如 $a=new foo(); 或 foo::staticmethod();。  
+ * 1.非限定名称，或不包含前缀的类名称
+ *   例如 $a=new foo(); 或 foo::staticmethod();。  
  *   如果当前命名空间是 currentnamespace ， foo 将被解析为 currentnamespace\foo 。  
  *   如果使用 foo 的代码是全局的，不包含在任何命名空间中的代码，则 foo 会被解析为 foo 。  
  *   警告：如果命名空间中的函数或常量未定义，则该非限定的函数名称或常量名称会被解析为全局函数名称或常量名称。
  *   详情参见 使用命名空间：后备全局函数名称/常量名称。  
- * 2.限定名称,或包含前缀的名称，例如 $a = new subnamespace\foo(); 或 subnamespace\foo::staticmethod();。  
+ * 2.限定名称,或包含前缀的名称
+ *   例如 $a = new subnamespace\foo(); 或 subnamespace\foo::staticmethod();。  
  *   如果当前的命名空间是 currentnamespace ，则 foo 会被解析为 currentnamespace\subnamespace\foo 。  
  *   如果使用 foo 的代码是全局的，不包含在任何命名空间中的代码， foo 会被解析为 subnamespace\foo 。  
- * 3.完全限定名称，或包含了全局前缀操作符的名称，例如， $a = new \currentnamespace\foo(); 或 \currentnamespace\foo::staticmethod();。  
+ * 3.完全限定名称，或包含了全局前缀操作符的名称，
+ *   例如， $a = new \currentnamespace\foo(); 或 \currentnamespace\foo::staticmethod();。  
  *   在这种情况下， foo 总是被解析为代码中的文字名(literal name)currentnamespace\foo 。  
  */  
   
@@ -2060,7 +2069,8 @@ hr();
 # 然后返回该数组, 结果就是会产生多个很大的数组。  
 # 比如，调用 range(0, 1000000) 将导致内存占用超过 100 MB 。  
   
-# 做为一种替代方法, 我们可以实现一个 xrange() 生成器, 只需要足够的内存来创建 Iterator 对象并在内部跟踪生成器的当前状态，这样只需要不到 1K 字节的内存。  
+# 做为一种替代方法, 我们可以实现一个 xrange() 生成器
+# 只需要足够的内存来创建 Iterator 对象并在内部跟踪生成器的当前状态，这样只需要不到 1K 字节的内存。  
   
 # 个生成器函数看起来像一个普通的函数，不同的是普通函数返回一个值
 # 而一个生成器可以 yield 生成许多它所需要的值（包含之前运算的集合）  
@@ -2125,12 +2135,13 @@ function quote() {
     return $b;  
 }  
   
-$a = quote(); // 这条语句会输出　$b 的值　为１  
+$a = quote();   // 这条语句会输出　$b 的值　为１  
 $a = 5;  
-$a = quote(); // 这条语句会输出　$b 的值　为 2  
-$a =& quote(); // 这条语句会输出　$b 的值　为 3  // 将返回 &$b 可看作 $a = &$b;  
+$a = quote();   // 这条语句会输出　$b 的值　为 2  
+$a =& quote();  // 这条语句会输出　$b 的值　为 3
+                // 将返回 &$b 可看作 $a = &$b;  
 $a = 5;  
-$a = quote(); // 这条语句会输出　$b 的值　为 6  
+$a = quote();   // 这条语句会输出　$b 的值　为 6  
 hr();  
   
   
@@ -2147,41 +2158,43 @@ hr();
 #-----------------------  
 # 超全局变量 — 超全局变量是在全部作用域中始终可用的内置变量  
 /**  
- * $GLOBALS     // 一个包含了全部变量的全局组合数组。变量的名字就是数组的键。  
- *              // 与所有其他超全局变量不同，$GLOBALS 在 PHP 中总是可用的。  
+ * $GLOBALS     一个包含了全部变量的全局组合数组。变量的名字就是数组的键。  
+ *              与所有其他超全局变量不同，$GLOBALS 在 PHP 中总是可用的。  
  *  
- * $_SERVER     // $HTTP_SERVER_VARS [已弃用] — 服务器和执行环境信息  
- *              // $HTTP_SERVER_VARS 包含着相同的信息，但它不是一个超全局变量。  
- *              // 是一个包含了诸如头信息(header)、路径(path)、以及脚本位置(script locations)等等信息的数组。  
- *              // 这个数组中的项目由 Web 服务器创建。不能保证每个服务器都提供全部项目；服务器可能会忽略一些，或者提供一些没有在这里列举出来的项目。  
+ * $_SERVER     $HTTP_SERVER_VARS [已弃用] — 服务器和执行环境信息  
+ *              $HTTP_SERVER_VARS 包含着相同的信息，但它不是一个超全局变量。  
+ *              是一个包含了诸如头信息(header)、路径(path)、以及脚本位置(script locations)等等信息的数组。  
+ *              这个数组中的项目由 Web 服务器创建。
+ *              不能保证每个服务器都提供全部项目；服务器可能会忽略一些，或者提供一些没有在这里列举出来的项目。  
  *  
- * $_GET        // 通过 URL 参数传递给当前脚本的变量的数组。  
- *              // $HTTP_GET_VARS 包含相同的信息， 但它不是一个超全局变量。  
- *              // GET 是通过 urldecode() 传递的。  
+ * $_GET        通过 URL 参数传递给当前脚本的变量的数组。  
+ *              $HTTP_GET_VARS 包含相同的信息， 但它不是一个超全局变量。  
+ *              GET 是通过 urldecode() 传递的。  
  *  
- * $_POST       // $HTTP_POST_VARS [已弃用] — HTTP POST 变量  
- *              // $HTTP_POST_VARS 包含相同的信息，但它不是一个超全局变量。  
+ * $_POST       $HTTP_POST_VARS [已弃用] — HTTP POST 变量  
+ *              $HTTP_POST_VARS 包含相同的信息，但它不是一个超全局变量。  
  *  
- * $_FILES      // $HTTP_POST_FILES [已弃用] — HTTP 文件上传变量  
- *              // 通过 HTTP POST 方式上传到当前脚本的项目的数组。  
- *              // $HTTP_POST_FILES 包含相同的信息，但它不是一个超全局变量。  
+ * $_FILES      $HTTP_POST_FILES [已弃用] — HTTP 文件上传变量  
+ *              通过 HTTP POST 方式上传到当前脚本的项目的数组。  
+ *              $HTTP_POST_FILES 包含相同的信息，但它不是一个超全局变量。  
  *  
- * $_COOKIE     // $HTTP_COOKIE_VARS [已弃用] — HTTP Cookies  
- *              // 通过 HTTP Cookies 方式传递给当前脚本的变量的数组。  
- *              // $HTTP_COOKIE_VARS 包含相同的信息，但它不是一个超全局变量。  
+ * $_COOKIE     $HTTP_COOKIE_VARS [已弃用] — HTTP Cookies  
+ *              通过 HTTP Cookies 方式传递给当前脚本的变量的数组。  
+ *              $HTTP_COOKIE_VARS 包含相同的信息，但它不是一个超全局变量。  
  *  
- * $_SESSION    // $HTTP_SESSION_VARS [已弃用] — Session 变量  
- *              // 当前脚本可用 SESSION 变量的数组。更多关于如何使用的信息。  
- *              // $HTTP_SESSION_VARS 包含相同的信息，但它不是一个超全局变量。  
+ * $_SESSION    $HTTP_SESSION_VARS [已弃用] — Session 变量  
+ *              当前脚本可用 SESSION 变量的数组。更多关于如何使用的信息。  
+ *              $HTTP_SESSION_VARS 包含相同的信息，但它不是一个超全局变量。  
  *  
- * $_REQUEST    // HTTP Request 变量  
- *              // 默认情况下包含了 $_GET ，$_POST 和 $_COOKIE 的数组。  
- *              // 以命令行方式运行时，将不包含 argv 和 argc 信息；它们将存在于 $_SERVER 数组。  
- *              // 由于 $_REQUEST 中的变量通过 GET ， POST 和 COOKIE 输入机制传递给脚本文件，因此可以被远程用户篡改而并不可信。  
+ * $_REQUEST    HTTP Request 变量  
+ *              默认情况下包含了 $_GET ，$_POST 和 $_COOKIE 的数组。  
+ *              以命令行方式运行时，将不包含 argv 和 argc 信息；它们将存在于 $_SERVER 数组。  
+ *              由于 $_REQUEST 中的变量通过 GET ， POST 和 COOKIE 输入机制传递给脚本文件
+ *              因此可以被远程用户篡改而并不可信。  
  *  
- * $_ENV        // $HTTP_ENV_VARS [已弃用] — 环境变量  
- *              // 通过环境方式传递给当前脚本的变量的数组。  
- *              // $HTTP_ENV_VARS 包含相同的信息，但它不是一个超全局变量。  
+ * $_ENV        $HTTP_ENV_VARS [已弃用] — 环境变量  
+ *              通过环境方式传递给当前脚本的变量的数组。  
+ *              $HTTP_ENV_VARS 包含相同的信息，但它不是一个超全局变量。  
  *  
  */  
   
@@ -2194,30 +2207,30 @@ hr();
 #-----------------------  
 # 除超全局变量外的 PHP 预定义变量  
 /**  
- * $php_errormsg        // 前一个错误信息  
- *                      // $php_errormsg 变量包含由 PHP 生成的最新错误信息。
- *                      // 这个变量只在错误发生的作用域内可用，并要求 track_errors 配置项开启（默认关闭）  
- *                      // 如果用户定义了错误处理句柄（ set_error_handler()）并且返回 FALSE 的时候
- *                      // $php_errormsg 就会被设置。  
+ * $php_errormsg         前一个错误信息  
+ *                       $php_errormsg 变量包含由 PHP 生成的最新错误信息。
+ *                       这个变量只在错误发生的作用域内可用，并要求 track_errors 配置项开启（默认关闭）  
+ *                       如果用户定义了错误处理句柄（ set_error_handler()）并且返回 FALSE 的时候
+ *                       $php_errormsg 就会被设置。  
  *  
- * $HTTP_RAW_POST_DATA  // 原生 POST 数据，在 PHP5.6.0 已经过时，并不推荐该变量  
- *                      // $HTTP_RAW_POST_DATA 包含 POST 提交的原始数据。  
- *                      // 一般而言，使用 php://input 代替 $HTTP_RAW_POST_DATA 。  
+ * $HTTP_RAW_POST_DATA   原生 POST 数据，在 PHP5.6.0 已经过时，并不推荐该变量  
+ *                       $HTTP_RAW_POST_DATA 包含 POST 提交的原始数据。  
+ *                       一般而言，使用 php://input 代替 $HTTP_RAW_POST_DATA 。  
  *  
- * $http_response_header// HTTP 响应头  
- *                      // $http_response_header 数组与 get_headers() 函数类似。  
- *                      // 当使用 HTTP 包装器时，$http_response_header 将会被 HTTP 响应头信息填充。
- *                      // $http_response_header 将被创建于局部作用域中。  
+ * $http_response_header HTTP 响应头  
+ *                       $http_response_header 数组与 get_headers() 函数类似。  
+ *                       当使用 HTTP 包装器时，$http_response_header 将会被 HTTP 响应头信息填充。
+ *                       $http_response_header 将被创建于局部作用域中。  
  *  
- * $argc    // 传递给脚本的参数数目  
- *          // 包含当运行于命令行下时传递给当前脚本的参数的数目。  
- *          // 脚本的文件名总是作为参数传递给当前脚本，因此 $argc 的最小值为 1 。  
- *          // 这个变量仅在 register_argc_argv 打开时可用。  
+ * $argc    传递给脚本的参数数目  
+ *          包含当运行于命令行下时传递给当前脚本的参数的数目。  
+ *          脚本的文件名总是作为参数传递给当前脚本，因此 $argc 的最小值为 1 。  
+ *          这个变量仅在 register_argc_argv 打开时可用。  
  *  
- * $argv    // 传递给脚本的参数数组  
- *          // 包含当运行于命令行下时传递给当前脚本的参数的数组。  
- *          // 第一个参数总是当前脚本的文件名，因此 $argv[0] 就是脚本文件名。  
- *          // 这个变量仅在 register_argc_argv 打开时可用。  
+ * $argv    传递给脚本的参数数组  
+ *          包含当运行于命令行下时传递给当前脚本的参数的数组。  
+ *          第一个参数总是当前脚本的文件名，因此 $argv[0] 就是脚本文件名。  
+ *          这个变量仅在 register_argc_argv 打开时可用。  
  */  
   
   
