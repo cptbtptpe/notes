@@ -173,26 +173,7 @@ WHERE
 GROUP BY days
 ORDER BY lively_num;   
 
-// GROUP BY 后 LIMIT (方式一)
-
-SELECT *
-FROM
-(
-    SELECT casrn, goods_id, store_id, goods_mol_id, goods_name, goods_english_name
-    FROM ecm_goods
-    WHERE
-        store_id IN (1, 2, 3)
-        AND set_status&1
-        AND ~set_status&16
-        AND ~set_status&2
-    ORDER BY
-        set_status&4 DESC,
-        rank DESC
-) AS temp
-GROUP BY store_id
-LIMIT 10
-
-// GROUP BY 后 LIMIT (方式二)
+// GROUP BY 后 LIMIT
 
 SELECT
     a.*,
