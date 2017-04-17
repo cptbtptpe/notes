@@ -191,8 +191,30 @@ WHERE 5 >
     WHERE `group` = a.`group` AND `id` > a.`id` AND `state` = 1
 )
 ORDER BY a.`sort` ASC, a.`update_time` DESC
+
+// LEFT JOIN 按条件取右表中的一条
+
+SELECT 
+    `product`.`id`, 
+    `product`.`title`, 
+    `product`.`attachment_cover`, 
+    `package`.`price`, 
+    `cover`.`deep_path` AS `cover_deep_path`, 
+    `cover`.`filename` AS `cover_filename`, 
+    `hotel`.`name` 
+FROM `product` 
+LEFT JOIN (
+    SELECT `product_id`, min(price) AS `price` 
+    FROM `product_package` 
+    GROUP BY `product_id` 
+) AS `package` ON `product`.`id` = `package`.`product_id` 
+LEFT JOIN `attachment` AS `cover` ON `product`.`attachment_cover` = `cover`.`id` 
+LEFT JOIN `hotel` AS `hotel` ON `product`.`hotel_id` = `hotel`.`id` 
+WHERE `product`.`state`=1 ' . $where . '
+ORDER BY `product`.`top` DESC, `product`.`update_time` DESC 
+LIMIT %d OFFSET %d
 ```
-  
+
 ### 慢查询工具  
   
 * mysqldumpslow  

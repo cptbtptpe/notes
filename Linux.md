@@ -548,6 +548,22 @@ hostname xxx  - 修改当前主机名为 xxx 重新打开终端才能看到 一�
     # 个人机    
     ssh -p 29998 leon@123.206.210.77
 
+**举个栗子**
+
+```
+# 云服务器
+ssh -fCNL *:29998:localhost:29999 localhost # 微信环境
+ssh -fCNL *:18080:localhost:18081 localhost # 公司内网
+ssh -fCNL *:38080:localhost:38081 localhost # 公司电脑
+
+# 公司内网
+autossh -M 8660 -NR 38081:localhost:80 root@106.14.65.39
+
+# 公司电脑
+autossh -M 5678 -NR 29999:localhost:22 root@cloud
+autossh -M 6660 -NR 18081:localhost:80 root@cloud
+```
+
 ### GitLab
 
 **编辑配置文件**
