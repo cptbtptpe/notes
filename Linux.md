@@ -388,6 +388,37 @@ umask 使用数字权限方式表示
 | sgid | 以文件所属组身份执行 | 该目录中创建创建的任意新文件的所属组与该目录的所数组将保持一致 |  
 | sticky | 无 | 对目录拥有写入权限的用户仅可以删除其拥有的文件，无法删除其他用户所拥有的文件 |  
   
+### Mac OSX 用户操作
+
+#### 创建用户
+
+```
+sudo dscl . -create /Users/hello
+sudo dscl . -create /Users/hello UserShell /bin/bash
+sudo dscl . -create /Users/hello RealName "Leon"
+
+sudo dscl . -create /Users/hello UniqueID "1010"
+sudo dscl . -create /Users/hello PrimaryGroupID 80
+sudo dscl . -create /Users/hello NFSHomeDirectory /Users/luser
+```
+
+#### 修改密码
+
+```
+sudo dscl . -passwd /Users/hello password
+```
+#### 创建用户组
+
+```
+sudo dscl . -create /Group/world
+```
+
+#### 加入用户组
+
+```
+sudo dscl . -append /Groups/world GroupMembership hello
+```
+
 ### 网络管理  
   
 ```  
@@ -551,17 +582,15 @@ hostname xxx  - 修改当前主机名为 xxx 重新打开终端才能看到 一�
 **举个栗子**
 
 ```
+# 个人电脑
+autossh -M 6600 -NR 6601:localhost:22 root@cloud &
+autossh -M 6700 -NR 6701:localhost:80 root@cloud &
+autossh -M 6800 -NR 6801:localhost:80 root@cloud & # 微信开发环境
+
 # 云服务器
-ssh -fCNL *:29998:localhost:29999 localhost # 微信环境
-ssh -fCNL *:18080:localhost:18081 localhost # 公司内网
-ssh -fCNL *:38080:localhost:38081 localhost # 公司电脑
-
-# 公司内网
-autossh -M 8660 -NR 38081:localhost:80 root@106.14.65.39
-
-# 公司电脑
-autossh -M 5678 -NR 29999:localhost:22 root@cloud
-autossh -M 6660 -NR 18081:localhost:80 root@cloud
+ssh -fCNL *:1022:localhost:6601 localhost
+ssh -fCNL *:1080:localhost:6701 localhost
+ssh -fCNL '*:80:localhost:6801' localhost # 微信开发环境
 ```
 
 ### GitLab
