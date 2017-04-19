@@ -203,6 +203,14 @@ git commit --amend
 # 第二次提交将代替第一次提交的结果
 ```
 
+### 删除误传的隐私文件及历史
+
+```
+git filter-branch -f --tree-filter 'rm -rf mixed/password' HEAD
+# 有必要需把对应的文件写入到 .gitignore 中
+git push origin master --force
+```
+
 ### git command
 
 ```
