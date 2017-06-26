@@ -210,9 +210,9 @@ LEFT JOIN (
 ) AS `package` ON `product`.`id` = `package`.`product_id` 
 LEFT JOIN `attachment` AS `cover` ON `product`.`attachment_cover` = `cover`.`id` 
 LEFT JOIN `hotel` AS `hotel` ON `product`.`hotel_id` = `hotel`.`id` 
-WHERE `product`.`state`=1 ' . $where . '
+WHERE `product`.`state`=1
 ORDER BY `product`.`top` DESC, `product`.`update_time` DESC 
-LIMIT %d OFFSET %d
+LIMIT 1 OFFSET 0
 ```
 
 ### 慢查询工具  
